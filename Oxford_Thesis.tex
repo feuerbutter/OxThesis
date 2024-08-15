@@ -23,11 +23,11 @@
 % The most common choices should be below.  You can also do other things, like replacing "a4paper" with "letterpaper", etc.
 
 % This one will format for two-sided binding (ie left and right pages have mirror margins; blank pages inserted where needed):
-\documentclass[a4paper,twoside]{ociamthesis}
+%\documentclass[a4paper,twoside]{ociamthesis}
 % This one will format for one-sided binding (ie left margin > right margin; no extra blank pages):
 %\documentclass[a4paper]{ociamthesis}
 % This one will format for PDF output (ie equal margins, no extra blank pages):
-%\documentclass[a4paper,nobind]{ociamthesis} 
+\documentclass[a4paper,nobind]{ociamthesis} 
 
 
 
@@ -36,12 +36,12 @@
 % generating a PDF to send to the printer!
 
 % This adds a "DRAFT" footer to every normal page.  (The first page of each chapter is not a "normal" page.)
-\fancyfoot[C]{\emph{DRAFT Printed on \today}}  
+%\fancyfoot[C]{\emph{DRAFT Printed on \today}}  
 
 % This highlights (in blue) corrections marked with (for words) \mccorrect{blah} or (for whole
 % paragraphs) \begin{mccorrection} . . . \end{mccorrection}.  This can be useful for sending a PDF of
 % your corrected thesis to your examiners for review.  Turn it off, and the blue disappears.
-\correctionstrue
+%\correctionstrue
 
 
 %%%%% BIBLIOGRAPHY SETUP
@@ -73,9 +73,9 @@
 
 %%%%% THESIS / TITLE PAGE INFORMATION
 % Everybody needs to complete the following:
-\title{Suitably impressive thesis title}
-\author{Your Name}
-\college{Your College}
+\title{Neutrinos!ND up!}
+\author{Weijun Li}
+\college{The Queen's College}
 
 % Master's candidates who require the alternate title page (with candidate number and word count)
 % must also un-comment and complete the following three lines:
@@ -88,7 +88,7 @@
 % Your full degree name.  (But remember that DPhils aren't "in" anything.  They're just DPhils.)
 \degree{Doctor of Philosophy}
 % Term and year of submission, or date if your board requires (eg most masters)
-\degreedate{Michaelmas 2014}
+\degreedate{Michaelmas 2025}
 
 
 %%%%% YOUR OWN PERSONAL MACROS
@@ -202,7 +202,7 @@
 % Add or remove any chapters you'd like here, by file name (excluding '.tex'):
 \flushbottom
 \include{text/ch1-intro}
-\include{text/ch2-litreview}
+\include{text/ch2-neutrinos}
 
 
 %% APPENDICES %% 
@@ -219,6 +219,8 @@
 \begin{savequote}[8cm]
 The first kind of intellectual and artistic personality belongs to the hedgehogs, the second to the foxes \dots
   \qauthor{--- Sir Isaiah Berlin \cite{berlin_hedgehog_2013}}
+If I see further, that is because I am on the shoulders of giants.
+    \qauthor{--- Sir Issac Newton}
 \end{savequote}
 
 \setlength{\baselineskip}{0pt} % JEM: Single-space References
