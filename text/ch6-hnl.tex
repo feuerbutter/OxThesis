@@ -12,13 +12,58 @@ There is no one who loves pain itself, who seeks after it and wants to have it, 
 
     \subsection{Heavy Neutral Leptons (HNL)}
     \subsubsection{Background}
-        As a detailed review of HNL would exceed the scope of this report, only a highly simplified introduction to HNL is given here. The origin of the neutrino mass is still a mystery. 
-        one intuitive solution is to extend the neutrino family to include heavy members, which mix with the existing SM neutrinos via an extended PMNS matrix and give them the small masses observed via the see-saw mechanism~\cite{Abada_2007}. As they mix the SM neutrinos, they could be produced in the intense neutrino beam in the long-baseline neutrino experiments, so the near detector of these experiments is the best place to look for HNL. The signal comes from HNL decays, some of which are distinct from SM neutrino interactions. Previously, T2K has searched for HNL~\cite{T2K:2019jwa} using the TPCs, a combined volume of about $7~\textrm{m}^3$, in ND280. As the ND280 upgrade replaces the P0D with SFGD and HATPC, a combined volume of $8~\textrm{m}^3$, which are much better trackers than the P0D, they could be used in an HNL search as well, thereby improving the overall sensitivity. 
+        As a detailed review of HNL would exceed the scope of this report, only a highly simplified introduction to HNL is given here. 
+        The origin of the neutrino mass is still a mystery. 
+        One intuitive solution is to extend the neutrino family to include heavy members, which mix with the existing SM neutrinos via an extended PMNS matrix and give them the small masses observed via the see-saw mechanism~\cite{Abada_2007}. 
+        As they mix the SM neutrinos, they could be produced in the intense neutrino beam in the long-baseline neutrino experiments, so the near detector of these experiments is the best place to look for HNL. 
+        The signal comes from HNL decays, some of which are distinct from SM neutrino interactions. 
+        Previously, T2K has searched for HNL~\cite{T2K:2019jwa} using the TPCs, a combined volume of about $7~\textrm{m}^3$, in ND280. As 
+        the ND280 upgrade replaces the P0D with SFGD and HATPC, a combined volume of $8~\textrm{m}^3$, which are much better trackers than the P0D, they could be used in an HNL search as well, thereby improving the overall sensitivity. 
 
-        To perform such an HNL search, a complicated chain of simulations is required, including the generation of an HNL flux based on the SM neutrino flux, the propagation of HNL and the decay of HNL. The previous T2K search was based on a dedicated tool-set, \code{nd280HNLSim}, which was built only to search for $N\rightarrow l + \pi$ decay channels, where $l$ is a lepton. It would require a large amount of efforts to extend it to include other production and decay channels. Hence, I adapt the recently published general HNL package, \code{BeamHNL}~\cite{Plows:2022gxc}, to the T2K ND280 simulation to evaluate the sensitivity improvement brought by the upgrade.
+        To perform such an HNL search, a complicated chain of simulations is required, including the generation of an HNL flux based on the SM neutrino flux, the propagation of HNL and the decay of HNL. 
+        The previous T2K search was based on a dedicated tool-set, \code{nd280HNLSim}, which was built only to search for $N\rightarrow l + \pi$ decay channels, where $l$ is a lepton. 
+        It would require a large amount of efforts to extend it to include other production and decay channels. 
+        Hence, I adapt the recently published general HNL package, \code{BeamHNL}~\cite{Plows:2022gxc}, to the T2K ND280 simulation to evaluate the sensitivity improvement brought by the upgrade.
 
     \subsubsection{Implementation}
-        As \code{BeamHNL} aims to be a cross-experiment package, it requires a standardised flux input, the \code{dk2nu} format. Hence, I wrote the conversion program to convert the T2K flux file to a \code{dk2nu} file. Before running subsequent steps, we validate that if we feed the T2K \code{dk2nu} file to \code{BeamHNL} and set the HNL mass, $\mn$, to a small value, such as $1~\kev$, the output HNL flux should closely mimic the SM flux. The result is shown in Fig.~\ref{fig:hnl-fluxes}, which shows that the pink dash line ($\mn=1~\kev$) overlaps closely with the black solid line, which plotted directly from the T2K input flux.  
+        The simulation of production and decay of HNL by \code{BeamHNL} is performed in several steps.
+        Firstly, information about the neutrino source beam must be supplied in a standard format, \code{dk2nu}.
+        With this input, desired channels of HNL production can then be performed with a few additional parameters specified by a configuration \code{xml} file, \code{CommonHNL.xml}, inside the \code{GENIE} configuration directory. 
+        These parameters are experiment-specific, so they need to be set by the user as well and are listed below.
+        \begin{enumerate}
+            \item $M_{N}$, mass of the HNL
+            \item $\uae$ and $\uam$, the mixing coffeicient of the extended PMNS matrix between the HNL and the electron neutrino and muon neutrino respectively.
+            \item XXXX, position of the centre of the detector relative to the centre of the target (?)
+            \item XXXX, angle between the beam axis and the longitudinal axis of the detector.
+            \item POT parent scaling, the average number of hadrons produced per POT.
+        \end{enumerate}
+        As the hadrons produced by the T2K beam are predominantly pions and kaons, the $M_{N}$ range that can be explored from hadron decay is between $140\mev$ to $390\mev$. 
+        Furthermore, as the decay channel investigated in this work are the two-body decay channels, namely $\pi$+$e$ and $\pi$+$\mu$, the chosen range for $M_{N}$ is from $140\mev$ (250 if mupi only) to $390\mev$ (???).
+        
+        $\uae$ adn $\uam$ are chosen to be equal to $10^{-7}$. They are chosen to be small such that the first order approximation of the proportionality between the number of observed events and the fourth power of the mixing elements are valid.
+
+        In order to specify the relations bewteen the target position, the beam direction and the detector position accurately, three coordiante systems are used.
+        The NEAR frame has the origin inside the target with its $y$ axis parallel to the floor of the target hall.
+        The NEAR frame is also the frame used by the NEUT generator.
+        The BEAM frame is typically rotated from the NEAR frame with the $z$ axis parallel to the beam direction. 
+        The USER frame is the coordiante system setup at ND280 for event selection and analysis.
+
+        Taken from official document, the centre of the USER frame is at $(-3.222,-8.146,280.1)$ in the NEAR frame. 
+        The BEAM frame is rotated from the NEAR frame downwards around the $x$-axis by $63.44\mrad$. 
+        (CHECK how is 63.44 calculated)
+
+        As \code{BeamHNL} aims to be a cross-experiment package, it requires a standardised flux input, the \code{dk2nu} format. 
+        The \code{dk2nu} file is a simple flattree root file that needs to contain the minimally sufficient information for \code{BeamHNL} to work.
+        As the T2K flux is available in its specific format, a conversion is required. 
+        The required \code{dk2nu} variables and the corresponding variables in a T2K flux file is given in Table~\ref{tab:dk2nu-t2k-conv}.
+
+        TABLE- Conversion of variables from T2K flux file to \code{dk2nu}.
+
+
+
+        Hence, I wrote the conversion program to convert the T2K flux file to a \code{dk2nu} file. 
+        Before running subsequent steps, we validate that if we feed the T2K \code{dk2nu} file to \code{BeamHNL} and set the HNL mass, $\mn$, to a small value, such as $1~\kev$, the output HNL flux should closely mimic the SM flux. 
+        The result is shown in Fig.~\ref{fig:hnl-fluxes}, which shows that the pink dash line ($\mn=1~\kev$) overlaps closely with the black solid line, which plotted directly from the T2K input flux.  
         \begin{figure}[!htb] 
             \centering 		
             \includegraphics[width=0.45\textwidth]{fig/hnl_fluxes.png}
