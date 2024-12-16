@@ -446,3 +446,148 @@
 % JEM: combine all of the commands you run before appendices start
 \newcommand{\startappendices}
   {\appendix\adjustmtc\noappendicestocpagenum\addappheadtotoc\appendixpage}
+
+
+% \usepackage{subcaption}
+% ------ units --------
+\newcommand{\gevc}{\textrm{GeV}/c}
+\newcommand{\mevc}{\textrm{MeV}/c}
+\newcommand{\gev}{\textrm{GeV}}
+\newcommand{\mev}{\textrm{MeV}}
+
+
+% ------ particles ------
+\newcommand{\nue}{\nu_{\textrm{e}}}
+\newcommand{\nuebar}{\bar{\nu_{\textrm{e}}}}
+\newcommand{\numu}{\nu_{\mu}}
+\newcommand{\numubar}{\bar{\nu_{\mu}}}
+\newcommand{\p}{\textrm{p}}
+\newcommand{\n}{\textrm{n}}
+\newcommand{\pip}{\pi^+}
+\newcommand{\pim}{\pi^-}
+\newcommand{\piz}{\pi^0}
+\newcommand{\piC}{\pi^{\pm}}
+\newcommand{\deltapp}{\Delta^{++}}
+
+% ------ Topologies -------
+\newcommand{\cczpi}{$\textrm{CC}0\pi$}
+\newcommand{\ccopi}{\textrm{CC}1\pi}
+\newcommand{\ccopiop}{\textrm{CC}1\pi1\textrm{p}}
+\newcommand{\numucczpi}{\nu_{\mu}\textrm{CC}0\pi}
+\newcommand{\numucczpinp}{\nu_{\mu}\textrm{CC}0\pi N\textrm{p}}
+\newcommand{\numuccopi}{\nu_{\mu}\textrm{CC}1\pi}
+\newcommand{\numuccopinp}{\nu_{\mu}\textrm{CC}1\pi N\textrm{p}}
+\newcommand{\numucczpiop}{\nu_{\mu}\textrm{CC}0\pi1\textrm{p}}
+\newcommand{\numuccopiop}{\nu_{\mu}\textrm{CC}1\pi1\textrm{p}}
+\newcommand{\numuccopipnp}{\nu_{\mu}\textrm{CC}1\pi^+ N\textrm{p}}
+\newcommand{\numuccmpiznp}{\nu_{\mu}\textrm{CC}M\pi^0 N\textrm{p}}
+\newcommand{\numucc}{\nu_{\mu}\textrm{CC}}
+
+
+% ------ Variables -------
+% --- TKI
+\newcommand{\dat}{\delta\alpha_\textrm{T}}
+\newcommand{\dphit}{\delta\phi_\textrm{T}}
+\newcommand{\pn}{p_\textrm{N}}
+\newcommand{\dpt}{\delta p_\textrm{T}}
+\newcommand{\vecdpt}{\delta \vec{p}_\textrm{T}}
+\newcommand{\dptx}{\delta p_\textrm{Tx}}
+\newcommand{\dpty}{\delta p_\textrm{Ty}}
+\newcommand{\dptt}{\delta p_\textrm{TT}}
+\newcommand{\pt}{p_\textrm{T}}
+\newcommand{\pmut}{p_{\mu}^T}
+
+% --- COM
+\newcommand{\psum}{p_{\textrm{sum}}}
+\newcommand{\vecpsum}{\vec{p}_{\textrm{sum}}}
+\newcommand{\esum}{E_{\textrm{sum}}}
+\newcommand{\vecppicom}{\vec{p}_{\pi}^{(\textrm{COM})}}
+\newcommand{\thetacom}{\theta_{\textrm{COM}}}
+\newcommand{\thetaadt}{\theta_{\textrm{Adt}}}
+\newcommand{\thetapidel}{\theta_{\pi\Delta}}
+\newcommand{\thetaR}{\theta_{\pi\textrm{R}}}
+\newcommand{\pdel}{p_{\Delta}}
+\newcommand{\vecpdel}{\vec{p}_{\Delta}}
+
+\newcommand{\plong}{p_{\textrm{long}}}
+
+% --- SPK
+\newcommand{\pp}{p_\textrm{p}}
+\newcommand{\thetap}{\theta_\textrm{p}}
+\newcommand{\ep}{E_\textrm{p}}
+\newcommand{\ppi}{p_{\pi}}
+\newcommand{\epi}{E_{\pi}}
+\newcommand{\enu}{E_{\nu}}
+\newcommand{\vecpp}{\vec{p}_\textrm{p}}
+\newcommand{\vecppi}{\vec{p}_{\pi}}
+\newcommand{\vecppp}{\vec{p}_\textrm{p}^{\prime}}
+\newcommand{\vecppip}{\vec{p}_{\pi}^{\prime}}
+\newcommand{\vecppirest}{\vec{p}_{\pi}^{(0)}}
+\newcommand{\pnu}{p_{\nu}}
+\newcommand{\pmu}{p_{\mu}}
+\newcommand{\vecpnu}{\vec{p}_{\nu}}
+\newcommand{\vecpmu}{\vec{p}_{\mu}}
+\newcommand{\mdeldec}{m_{\Delta}^{(0)}}
+\newcommand{\mdel}{m_{\Delta}}
+
+\newcommand{\dedx}{\,\textrm{d}E/\,\textrm{d}x}
+
+% ------ Parameters -------
+\newcommand{\MA}{M_{\textrm{A}}}
+\newcommand{\dcp}{\delta_\textrm{CP}}
+
+
+\newcommand{\cpimfp}{S_\lambda^{\pi^{\pm}}}
+\newcommand{\pizmfp}{S_\lambda^{\pi^{0}}}
+\newcommand{\picex}{S_\textrm{CEX}^{\pi}}
+\newcommand{\piinel}{S_\textrm{INEL}^{\pi}}
+\newcommand{\cpiabs}{S_\textrm{ABS}^{\pi^{\pm}}}
+\newcommand{\pizabs}{S_\textrm{ABS}^{\pi^0}}
+\newcommand{\pipiprod}{S_\textrm{PIPD}^{\pi}}
+\newcommand{\nmfp}{S_\lambda^\textrm{N}}
+\newcommand{\ncex}{S_\textrm{CEX}^\textrm{N}}
+\newcommand{\ninel}{S_\textrm{INEL}^\textrm{N}}
+\newcommand{\nabs}{S_\textrm{ABS}^\textrm{N}}
+\newcommand{\npiprod}{S_\textrm{PIPD}^\textrm{N}}
+
+\newcommand{\srcfr}{R_\textrm{SRC}}
+\newcommand{\nurmec}{E_\textrm{RM}^\textrm{C}}
+
+% ------ Tuning samples ------
+\newcommand{\ttkzpi}{T2K-$0\pi$\xspace}
+\newcommand{\ttkpip}{T2K-$\pi^{+}$\xspace}
+
+\newcommand{\minzpi}{MINERvA-$0\pi$\xspace}
+\newcommand{\minpiz}{MINERvA-$\pi^{0}$\xspace}
+
+% ------ Coding ------------
+\newcommand{\genie}{\texttt{GENIE}~}
+% -- tunes
+\newcommand{\blue}[1]{\color{blue}#1\color{black}}
+\newcommand{\geighteen}{\texttt{G18\_10a\_02\_11b}}
+\newcommand{\newtune}{\texttt{G24\_20i\_00\_000}\xspace}
+\newcommand{\restunefull}{\texttt{G24\_20i\_06\_22c}\xspace}
+\newcommand{\restunefsi}{\texttt{G24\_20i\_FSIParaOnly\_partial}\xspace}
+\newcommand{\alttune}{\texttt{G24\_20i\_fullpara\_alt}\xspace}
+
+\newcommand{\gZero}{\texttt{G24-0}\xspace}
+\newcommand{\gC}{\texttt{G24-c}\xspace}
+\newcommand{\gT}{\texttt{G24-t}\xspace}
+
+% ------ Latex utils --------
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\degree}{\circ}
+\newcommand{\tick}{\checkmark}
+
+\newcommand{\sgfigwid}{0.8}
+\newcommand{\dbfigwid}{0.45}
+\newcommand{\trfigwid}{0.3}
+
+% ------ tuning specific ------
+\newcommand{\redpar}{\texttt{RedPar}\xspace}
+\newcommand{\allpar}{\texttt{AllPar}\xspace}
+\newcommand{\cbRedPar}{\texttt{Combi-Best-\redpar}\xspace}
+\newcommand{\cbAllPar}{\texttt{Combi-Best-\allpar}\xspace}
+\newcommand{\cSuper}{\texttt{Combi-Super}\xspace}
+
+\newcommand{\sfcfg}{SF-CFG\xspace}

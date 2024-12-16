@@ -5,11 +5,18 @@ There is no one who loves pain itself, who seeks after it and wants to have it, 
   \qauthor{--- Cicero's \textit{de Finibus Bonorum et Malorum}}
 \end{savequote}
 
-\chapter{\label{ch:4-spk}Single Particle Kinematics Improvement} 
+\chapter{\label{ch:4-datamc}New Techniques and Data-MC Comparisons} 
 
+The upgrade new detector has enhanced measuring capabilities. 
+The granular structure of SFGD enables precise position and $\dedx$ measurements with fast response.
+This is especially important for hadrons, as they tend to have much shorter tracks and are conventionally harder to reconstruct in scintillator detectors compared to muons.
+As a result, the explored hadronic kinematic phase space is relatively restricted and the reconstructed hadronic variables have relatively large uncertainties.
+Since more exclusive event topology such as $\numuccopiop$ allows the measurement of high-level variables like the Transverse Kinematic Imbalance (TKI) variables, which provide invaluable insights on neutrino-nucleus interactions, it is highly desirable to reconstruct hadrons, to measure their kinematic properties as precisely as possible and to explore their phase space as large as possible.
+The T2K ND upgrade make possible the implementation of sophisticated techniques from other experiments, like the Elastically Scattered and Contained proton technique~\cite{Lu:2016mjf} that has shown significant improvement in proton momentum reconstruction resolution, and novel techniques implemented for the first time, i.e. the pion trackless reconstruction technique.
+The benefits of these techniques will be illustrated based on MC studies and further showcase in data-MC comparisons for both low level variables, such as the single particle kinematic variables and the high level variables, like the Transverse Kinematic Imbalance (TKI) variables and the Centre-of-Momentum (COM) variables. 
+
+\section{New Techniques}
 \minitoc
-   The granular structure of SFGD brings many improvements to single-particle kinematics measurement. 
-   This is especially important for hadrons, as they tend to have shorter tracks and hence poorer momentum resolution compared to muons. 
    Two of the most common product hadrons from neutrino-nucleus interaction are protons and pions. 
    The default particle identification and momentum reconstruction have been developed by colleagues at T2K using the Boosted Decision Tree (BDT) algorithm. The BDT algorithm has good performance, but it is still lacking in some aspects.
    For instance, as it uses only single-track information, it cannot effectively distinguish between pions and muons. 
@@ -83,44 +90,8 @@ There is no one who loves pain itself, who seeks after it and wants to have it, 
         
             For the events passing all the selection steps, the presence of a primary pion is implied by the existence of a proper ME candidate, and its momentum is reconstructed by range. 
             
-        
-        \subsubsection{Results}
-            The results of the $\numuccopi$ selection using the trackless pion technique are summarised in Fig.~\ref{fig:piTLres}.
-           As shown in Fig,~\ref{fig:ppi-stack}, the trackless selection has achieved the set goal - reconstructing low momentum pions. 
-           There are a considerable number of events with a pion below $100~\mevc$, which correspond to a track of about $50~\textrm{mm}$. 
-           Moreover, pions below $80~\mevc$ have also been reconstructed, which travels about $30~\textrm{mm}$ and cannot be reconstructed as a track. 
-           Furthermore, the momentum-by-range calculation has achieved an excellent resolution at about $2\%$, as shown in $\ref{fig:ppi-res}$.
-           More encouragingly, the overall efficiencies are still relatively high. 
-           The step-by-step efficiencies with respect to each step is shown in Fig.~\ref{fig:tl-accum-eff}. 
-           The signal definition used in the calculation is to have one true muon that has travelled to the vertical TPC and one true pion that is contained in SFGD. 
-           Steps 1 to 7 are the $\numucc$-inclusive selection. 
-           The large drop in efficiency in Step 8 is expected as it requires exactly one pion reconstructed tracklessly. 
-           All pions undergoing secondary interactions except deflection cannot be reconstructed via this method. 
-           Hence, the relative efficiency of $0.37/0.66\approx56\%$ is considerably high. 
-           The further significant drop in efficiency comes with the next step, the kink cut, which is a reasonable as a considerable portion of pions undergo deflection. 
-           The subsequent drops are graduate cuts to remove backgrounds, which leads to a high purity of $\numuccopi$ as shown in Fig.~\ref{fig:ppi-stack}.
-
-           \begin{figure}[t]
-               \centering
-               \begin{subfigure}{0.3\textwidth}
-                    \includegraphics[width=\textwidth]{fig/ppi_stack.png}
-                    \caption{Momentum distribution.}
-                    \label{fig:ppi-stack}
-               \end{subfigure}
-               \begin{subfigure}{0.3\textwidth}
-                    \includegraphics[width=\textwidth]{fig/ppi_res.png}
-                    \caption{Momentum resolution.}
-                    \label{fig:ppi-res}
-               \end{subfigure}
-               \begin{subfigure}{0.3\textwidth}
-                    \includegraphics[width=\textwidth]{fig/INCL_p_pi_accum_eff_al11.png}
-                    \caption{Accumulative efficiency.}
-                    \label{fig:tl-accum-eff}
-               \end{subfigure}
-               \caption{Pion trackless reconstruction results.}
-               \label{fig:piTLres}
-            \end{figure}
-            
+    
+    
     %------------------- ESC ----------------%
     \subsection{ESC proton selection}
 
@@ -168,7 +139,47 @@ There is no one who loves pain itself, who seeks after it and wants to have it, 
            \label{fig:pprESC-res}
         \end{figure}
 
+\section{MC studies and Comparisons with Data}
     
+        \subsubsection{Results}
+            The results of the $\numuccopi$ selection using the trackless pion technique are summarised in Fig.~\ref{fig:piTLres}.
+           As shown in Fig,~\ref{fig:ppi-stack}, the trackless selection has achieved the set goal - reconstructing low momentum pions. 
+           There are a considerable number of events with a pion below $100~\mevc$, which correspond to a track of about $50~\textrm{mm}$. 
+           Moreover, pions below $80~\mevc$ have also been reconstructed, which travels about $30~\textrm{mm}$ and cannot be reconstructed as a track. 
+           Furthermore, the momentum-by-range calculation has achieved an excellent resolution at about $2\%$, as shown in $\ref{fig:ppi-res}$.
+           More encouragingly, the overall efficiencies are still relatively high. 
+           The step-by-step efficiencies with respect to each step is shown in Fig.~\ref{fig:tl-accum-eff}. 
+           The signal definition used in the calculation is to have one true muon that has travelled to the vertical TPC and one true pion that is contained in SFGD. 
+           Steps 1 to 7 are the $\numucc$-inclusive selection. 
+           The large drop in efficiency in Step 8 is expected as it requires exactly one pion reconstructed tracklessly. 
+           All pions undergoing secondary interactions except deflection cannot be reconstructed via this method. 
+           Hence, the relative efficiency of $0.37/0.66\approx56\%$ is considerably high. 
+           The further significant drop in efficiency comes with the next step, the kink cut, which is a reasonable as a considerable portion of pions undergo deflection. 
+           The subsequent drops are graduate cuts to remove backgrounds, which leads to a high purity of $\numuccopi$ as shown in Fig.~\ref{fig:ppi-stack}.
+
+           \begin{figure}[t]
+               \centering
+               \begin{subfigure}{0.3\textwidth}
+                    \includegraphics[width=\textwidth]{fig/ppi_stack.png}
+                    \caption{Momentum distribution.}
+                    \label{fig:ppi-stack}
+               \end{subfigure}
+               \begin{subfigure}{0.3\textwidth}
+                    \includegraphics[width=\textwidth]{fig/ppi_res.png}
+                    \caption{Momentum resolution.}
+                    \label{fig:ppi-res}
+               \end{subfigure}
+               \begin{subfigure}{0.3\textwidth}
+                    \includegraphics[width=\textwidth]{fig/INCL_p_pi_accum_eff_al11.png}
+                    \caption{Accumulative efficiency.}
+                    \label{fig:tl-accum-eff}
+               \end{subfigure}
+               \caption{Pion trackless reconstruction results.}
+               \label{fig:piTLres}
+            \end{figure}
+
+
+            
 
     \subsection{Discussion}
         Both the pion and ESC proton selections are finished for muons going into the vertical TPC and SFGD. The High Angle TPC reconstruction is under development and will be expected to finish in the end of July 2024. Hence, the full selection will be done in the following months. The estimation of systematic uncertainties using control samples is being developed by colleagues and is expected to be done in the next few months. 
