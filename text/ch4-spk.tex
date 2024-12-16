@@ -24,7 +24,65 @@ The benefits of these techniques will be illustrated based on MC studies and fur
    To address these gaps, I have developed and implemented new techniques for both hadrons. 
    For pions, I have invented the pion trackless reconstruction, a novel technique to reconstruct pions without requiring the presence of a reconstructed track, thereby lowering the detection threshold and significantly increasing reconstruction efficiency for low-momentum pions. 
    As for protons, I have adapted the Elastically Scattered and Contained (ESC) protons technique~\cite{Lu:2016mjf} first implemented in MINERvA to create an ESC proton selection in SFGD, leading to a proton sample with excellent momentum resolution. 
+
+   %------------------- ESC ----------------%
+  \subsection{ESC proton selection}
+
+    \subsubsection{Working Principles}
+    Protons stopping at rest would deposit a large amount of energy, the so-called Bragg Peak, just before it stops.
+    These protons tend to have their momenta better constructed as its momentum is more strongly correlated with its range. 
+    As shown in Fig.~\ref{fig:andedx2}, protons having energy below $1000$ units has large variances in momentum reconstruction. 
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.5\linewidth]{fig/an_dedx2_colnor_vs_p_pr_res_hist2d_al12_zoom.png}
+        \caption{Proton momentum fractional difference against energy deposited at the third last node.}
+        \label{fig:andedx2}
+    \end{figure}
+    Hence, these protons can be selected by placing a lower boundary cut on the energy deposited at the nodes near the end of the reconstructed tracks to have a sample with a high proton momentum resolution.   
+    
+   \subsubsection{Implementation}
+   To determine the suitable boundary values without biasing the analysis with any underlying information in the signal sample, a stopping proton control sample is used.
+   The stopping proton control sample has been developed by a colleague, which aims to select protons traversing one of the two HATs and stopping in SFGD. 
+   Based on this selection, I need to extract the $\dedx$ information. 
+   However, the $\dedx$ calculation is not straighforward. 
+
+   To investigate the proper way of estimatiing $\dedx$, I have simulated multiple particle gun (PGUN) samples with the proton travelling in different directions in the SFGD.
+   More specifically, three samples are travelling 
+   As the proton direction should not affect its energy deposition, the Bragg peak pattern for these different PGUN samples should be essentially the same.
+   I first began the naive implementation - take the energy deposited per node as an approximation for $\dedx$. 
    
+   
+   The lower boundary cut is implemented as an extra step on the existing $\numuccopiop$ sample, where the $p$ stands for proton.
+   This selection leads to an improvement in proton momentum resolution of about $50\%$ while decreasing the efficiency by about $2/3$, as shown in Fig.~\ref{fig:pprESC-res}.   
+   The drop of efficiency might seem drastic, but it proves to be necessary for the TKI analysis, as shown later in Sec.~\ref{sec:do-TKI}. The ESC selection leads to significant improvement to the TKI variables evaluation. 
+
+   \begin{figure}[t]
+      \centering
+      \begin{subfigure}{0.45\textwidth}
+           \includegraphics[width=\textwidth]{fig/p_pr_res_pdf_al13_zoom.eps}
+           \caption{Momentum resolution before ESC selection.}
+           \label{fig:ppr-res-bfESC}
+      \end{subfigure}
+      \begin{subfigure}{0.45\textwidth}
+           \includegraphics[width=\textwidth]{fig/p_pr_eff_al13.png}
+           \caption{Selection efficiency before ESC selection.}
+           \label{fig:ppr-eff-bfESC}
+      \end{subfigure}
+      \\
+      \begin{subfigure}{0.45\textwidth}
+           \includegraphics[width=\textwidth]{fig/p_pr_res_pdf_al14_zoom.eps}
+           \caption{Momentum resolution after ESC selection.}
+           \label{fig:ppr-res-afESC}
+      \end{subfigure}
+      \begin{subfigure}{0.45\textwidth}
+           \includegraphics[width=\textwidth]{fig/p_pr_eff_al14.png}
+           \caption{Selection efficiency after ESC selection.}
+           \label{fig:ppr-eff-afESC}
+      \end{subfigure}
+      \caption{Proton ESC selection results. The grey histograms are the true probability distribution, while the pink ones are those that get reconstructed. }
+      \label{fig:pprESC-res}
+   \end{figure}
+
     %------------------- pion TL ----------------%
     \subsection{Pion Trackless Reconstruction}
        In SFGD, when particles pass through the detector, they deposit energy and emit scintillation light, which would be captured by the three optical fibres and the electronics connected to the end of the fibres, 
@@ -92,57 +150,11 @@ The benefits of these techniques will be illustrated based on MC studies and fur
             
     
     
-    %------------------- ESC ----------------%
-    \subsection{ESC proton selection}
-
-         \subsubsection{Working Principles}
-         Protons stopping at rest would deposit a large amount of energy, the so-called Bragg Peak, just before it stops.
-         These protons tend to have their momenta better constructed as its momentum is more strongly correlated with its range. As shown in Fig.~\ref{fig:andedx2}, protons having energy below $1000$ units has large variances in momentum reconstruction. 
-         \begin{figure}[h]
-             \centering
-             \includegraphics[width=0.5\linewidth]{fig/an_dedx2_colnor_vs_p_pr_res_hist2d_al12_zoom.png}
-             \caption{Proton momentum fractional difference against energy deposited at the third last node.}
-             \label{fig:andedx2}
-         \end{figure}
-         Hence, these protons can be selected by placing a lower boundary cut on the energy deposited at the nodes near the end of the reconstructed tracks to have a sample with a high proton momentum resolution.   
-         
-        \subsubsection{Implementation}
-        To determine the suitable boundary values, a large particle gun proton sample is simulated and the suitable lower bounds are extracted from the resolution plots. % how many
-        The lower boundary cut is implemented as an extra step on the existing $\numuccopiop$ sample, where the $p$ stands for proton.
-        This selection leads to an improvement in proton momentum resolution of about $50\%$ while decreasing the efficiency by about $2/3$, as shown in Fig.~\ref{fig:pprESC-res}.   
-        The drop of efficiency might seem drastic, but it proves to be necessary for the TKI analysis, as shown later in Sec.~\ref{sec:do-TKI}. The ESC selection leads to significant improvement to the TKI variables evaluation. 
-
-        \begin{figure}[t]
-           \centering
-           \begin{subfigure}{0.45\textwidth}
-                \includegraphics[width=\textwidth]{fig/p_pr_res_pdf_al13_zoom.eps}
-                \caption{Momentum resolution before ESC selection.}
-                \label{fig:ppr-res-bfESC}
-           \end{subfigure}
-           \begin{subfigure}{0.45\textwidth}
-                \includegraphics[width=\textwidth]{fig/p_pr_eff_al13.png}
-                \caption{Selection efficiency before ESC selection.}
-                \label{fig:ppr-eff-bfESC}
-           \end{subfigure}
-           \\
-           \begin{subfigure}{0.45\textwidth}
-                \includegraphics[width=\textwidth]{fig/p_pr_res_pdf_al14_zoom.eps}
-                \caption{Momentum resolution after ESC selection.}
-                \label{fig:ppr-res-afESC}
-           \end{subfigure}
-           \begin{subfigure}{0.45\textwidth}
-                \includegraphics[width=\textwidth]{fig/p_pr_eff_al14.png}
-                \caption{Selection efficiency after ESC selection.}
-                \label{fig:ppr-eff-afESC}
-           \end{subfigure}
-           \caption{Proton ESC selection results. The grey histograms are the true probability distribution, while the pink ones are those that get reconstructed. }
-           \label{fig:pprESC-res}
-        \end{figure}
 
 \section{MC studies and Comparisons with Data}
     
         \subsubsection{Results}
-            The results of the $\numuccopi$ selection using the trackless pion technique are summarised in Fig.~\ref{fig:piTLres}.
+           The results of the $\numuccopi$ selection using the trackless pion technique are summarised in Fig.~\ref{fig:piTLres}.
            As shown in Fig,~\ref{fig:ppi-stack}, the trackless selection has achieved the set goal - reconstructing low momentum pions. 
            There are a considerable number of events with a pion below $100~\mevc$, which correspond to a track of about $50~\textrm{mm}$. 
            Moreover, pions below $80~\mevc$ have also been reconstructed, which travels about $30~\textrm{mm}$ and cannot be reconstructed as a track. 

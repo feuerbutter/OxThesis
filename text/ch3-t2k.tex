@@ -9,6 +9,8 @@ There is no one who loves pain itself, who seeks after it and wants to have it, 
 
 \minitoc
 
+\section{Hardware}
+
 It is a long-baseline neutrino experiment, measuring neutrino oscillation.
 
 More specifically, $\dcp$ can be measured in long-baseline neutrino experiments, for example, the Tokai-to-Kamioka (T2K) experiment\cite{T2KEXP}. 
@@ -17,3 +19,17 @@ The neutrino source is generated in J-PARC in Tokai.
 A near detector, ND280, is placed at $280\mathrm{m}$ from the generation point, and a far detector, the Super Kamiokande (SK), is situated 296km away. As neutrinos interact extremely weakly, direct measurement is not yet possible. These detectors measure the neutrino energy spectra from the product particles from the interaction between neutrinos and hydrocarbons in ND280 and water molecules in SK. The difference between neutrino oscillation and anti-neutrino oscillation can be measured by comparing the neutrino energy spectra observed at the far and near detectors in the neutrino mode and the anti-neutrino mode. In 2020, the Tokai-to-Kamioka (T2K) experiment\cite{T2KEXP} has made the first measurement of $\dcp$\cite{T2Knature}, which ruled out CP conservation at the $95\%$ confidence level. It is an impressive first step, but it is still limited both by statistical and systematic uncertainties. 
 
  
+\section{Software}
+  As a considerable portion of this thesis consists of improvement made on reconstruction performance, it is also apt to provide an overarching introduction to the reconstruction framework implemented for the T2K ND upgrade to aid understanding of the content follows.
+
+  Each scintillation fibre in the SFGD constitutes a electronic signal channel.
+  Hence, scintillation photons produced as a particle travels through the cubes are collected by the three planes of electronic boards on the three sides of SFGD.
+  These electronic signal will be converted to digital singals after calibration.
+  The three 2-dimensional planes of signals are then combined into one collectiion of 3-dimensional "Hits", each of which corresponds to a cube, with a 3-dimensional coordinate and a number of charges deposited. 
+  These "Hits" are then passed through a combination of grouping and track-fitting algorithms, which collects the Hits into physically identifiable objects, namely clusters and tracks. 
+  Clusters are isolated objects, which are not long enough to form a track, usually with less than 3 Hits.
+  Tracks, on the other hand, contain many more Hits. 
+  However, as the optical insulation coating on the cube is not perfect, there bounds to be leakage of photons to the neighbouring cubes that the particle has not actually passed by.
+  Hence, the reconstruction algorithm also combines neighbouring Hits into Nodes, which reflect the particle trajectory more closely.
+  Besides, the energy deposited at each Node is also estimated from the charges deposited at the constituent Hits and is further smoothed due to physical considerations that the energy deposited along a particle trajectgory is expected to be continuous.
+  The smoothed energy along with other accessible information is passed through a Boosted Decision Tree (BDT) algorithm, trained on Particle Gun (PGUN) simulations, for particle identification and momentum reconstruction.
