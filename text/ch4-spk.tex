@@ -105,12 +105,16 @@ The benefits of these techniques will be illustrated based on MC studies and fur
          Secondly, the pion decay, $\pi \rightarrow \mu + \nu$, is a two-body process, the kinematics of the daughters can be completely determined by energy-momentum conservation, 
          When a pion decays at rest, the daughter muon will only move about $0.12~\textrm{cm}$. Hence, the starting point of the ME is a good estimation of the ending point of the pion.
          The pion momentum can then be reconstructed by range based on the distance between the primary neutrino interaction vertex and the ME starting point. 
-         A relation between the pion momentum, via its kinetic energy, and its range is obtained from an empirical fit on particle gun simulation, as shown in shown in \figref{fig:fit}.
-        
+         A relation between the pion momentum, via its kinetic energy, and its range is obtained from an empirical fit using a PGUN sample, as shown in shown in \figref{fig:fit}.
+          The PGUN sample starts from the centre of SFGD and progates isotropically.
+          It has a sample size of $500,000$ with a kinetic energy uniformly distributed between $20~\mev$ and $200~\mev$.
+          The $\log10$ of the true kinetic energy is plotted against the true pion length as shown in Fig.~\ref{fig:pi-mombr-fit}.
+          A fourth order polynomial is fitted to the central region of the plots, where the fitted line matches the data point well.
+
            \begin{figure}[h]
               \centering
-              \includegraphics[width=0.5\textwidth]{fig/hplog_KE_len_with_p_log10_pol4_60260_pf0.eps} 
-              \caption{A degree 4 polynomial fit of $\log_{10}{T_\pi}$ against $\log_{10}{L_\pi}$, where $T_\pi$ and $L_\pi$ are the kinetic energy and the range of the pion respectively. The $p_i$'s are the corresponding coefficients of the term of order $i$. The fit is satisfactory considering the close to 1 $\chi^2/ndf$ value. }
+              \includegraphics[width=\sgfidwid\textwidth]{figures/pi_len_pi_len_vs_pi_ke_hist2d_al0_true_nokink.eps} 
+              \caption{A degree 4 polynomial fit of $\log_{10}{T_\pi}$ against $\log_{10}{L_\pi}$, where $T_\pi$ and $L_\pi$ are the kinetic energy and the range of the pion respectively. The $p_i$'s are the corresponding coefficients of the term of order $i$. The fit is satisfactory considering the close to 1 (\mccorrect{NOT TRUE}) $\chi^2/ndf$ value. }
               \label{fig:fit}
            \end{figure}
 
@@ -159,6 +163,8 @@ The benefits of these techniques will be illustrated based on MC studies and fur
             More details of the other track number cuts are provided in Appendix.~\ref{sec:app-tlpi-trknumcut}
         
             For the events passing all the selection steps, the presence of a primary pion is implied by the existence of a proper ME candidate, and its momentum is reconstructed by range. 
+
+
             
     
     
