@@ -165,7 +165,27 @@ The benefits of these techniques will be illustrated based on MC studies and fur
             For the events passing all the selection steps, the presence of a primary pion is implied by the existence of a proper ME candidate, and its momentum is reconstructed by range. 
 
 
-            
+    \subsection{Development of stopping pion control sample}
+          Conventionally, selections will be used for cross section analysis, which requires a sufficient portion of all detector systematics to be properly evaluated.
+          However, due to time constraint, this is unlikely to happen within the time frame of my doctoral study. 
+          Hence, only preliminary data-MC comparisons are possible.
+          Nontheless, as systematics evaluation is an important ingredient of cross section analysis, which is crucial for improving our understanding of neutrino-nucleus interactions, I implemented the propagation of the systematics of the momentum-by-range reconstruction for pions tagged by ME.
+          To evaluate this systematic, I developed the stopping pion control sample with the following steps:
+          \begin{enumerate}
+          \item Find all tracks that contain an SFGD segment and segments in the other sub-detectors.
+          \item Check that one end of this track is stopped in SFGD.
+          \item Check the PID of this track provided by the other sub-detectors, i.e. HAT or TPC.
+          \item Check that there are no other (except ME) near the track end in SFGD.
+          \item A final cut requiring the presence of an ME near the track end in SFGD.
+          \item Keep only the event with a single stopping pion candidate.
+          \end{enumerate}
+          The preliminary result suggests that the control sample consists predorminantly of tracks passing HAT and stopping in SFGD.
+          As the current PID in HAT is not fully developed, I investigated further the impact of the log likelihood on pion PID.
+          I discovered that the previous cuts need to be made more stringent to achieve a high purity.
+
+          FIG- HAT LLH cuts
+
+           
     
     
 
@@ -248,3 +268,4 @@ The benefits of these techniques will be illustrated based on MC studies and fur
 
 
      \subsection{systematics ovaluation}
+          
