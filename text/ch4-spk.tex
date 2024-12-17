@@ -41,47 +41,50 @@ The benefits of these techniques will be illustrated based on MC studies and fur
     Hence, these protons can be selected by placing a lower boundary cut on the energy deposited at the nodes near the end of the reconstructed tracks to have a sample with a high proton momentum resolution.   
     
    \subsubsection{Implementation}
-   To determine the suitable boundary values without biasing the analysis with any underlying information in the signal sample, a stopping proton control sample is used.
-   The stopping proton control sample has been developed by a colleague, which aims to select protons traversing one of the two HATs and stopping in SFGD. 
-   Based on this selection, I need to extract the $\dedx$ information. 
-   However, the $\dedx$ calculation is not straighforward. 
-
+   As the ESC selection is based on $\dedx$ at the end of the proton track, a good reconstuction of $\dedx$ must be obtained first.
    To investigate the proper way of estimatiing $\dedx$, I have simulated multiple particle gun (PGUN) samples with the proton travelling in different directions in the SFGD.
-   More specifically, three samples are travelling 
-   As the proton direction should not affect its energy deposition, the Bragg peak pattern for these different PGUN samples should be essentially the same.
-   I first began the naive implementation - take the energy deposited per node as an approximation for $\dedx$. 
-   
-   
-   The lower boundary cut is implemented as an extra step on the existing $\numuccopiop$ sample, where the $p$ stands for proton.
-   This selection leads to an improvement in proton momentum resolution of about $50\%$ while decreasing the efficiency by about $2/3$, as shown in Fig.~\ref{fig:pprESC-res}.   
-   The drop of efficiency might seem drastic, but it proves to be necessary for the TKI analysis, as shown later in Sec.~\ref{sec:do-TKI}. The ESC selection leads to significant improvement to the TKI variables evaluation. 
+   More specifically, three samples are travelling along the $x$-, $y$- and $z$-axis and five other samples are travelling at $15\degree$, $30\degree$, $45\degree$, $60\degree$ and $75\degree$ to the $x$-axis in the $x$-$z$ plane.
+   As the proton direction should not affect its energy deposition, distinct characteristics of $\dedx$ along the proton trajectory can be utilized to validate the quality of the reconstructed $\dedx$.
+   Other than the Bragg peak, another distinct feature of $\dedx$ is the minimal ionizing particle (MIP) region, where the particle at high momentum traverses the scintillator despositing the minimal amount of energy. 
+   Hence, the $\dedx$ remains at a relatively constant value for all such particles.
+   When the $\dedx$ at the end of the proton tracks are plotted, besides the Bragg peak at large $\dedx$, corresponding to protons stopping to rest, there should be another peak at smaller $\dedx$, corresponding protons that undergo secondary interactions and thus are stopped prematurely when it still possesses high momentum.
 
-   \begin{figure}[t]
-      \centering
-      \begin{subfigure}{0.45\textwidth}
-           \includegraphics[width=\textwidth]{fig/p_pr_res_pdf_al13_zoom.eps}
-           \caption{Momentum resolution before ESC selection.}
-           \label{fig:ppr-res-bfESC}
-      \end{subfigure}
-      \begin{subfigure}{0.45\textwidth}
-           \includegraphics[width=\textwidth]{fig/p_pr_eff_al13.png}
-           \caption{Selection efficiency before ESC selection.}
-           \label{fig:ppr-eff-bfESC}
-      \end{subfigure}
-      \\
-      \begin{subfigure}{0.45\textwidth}
-           \includegraphics[width=\textwidth]{fig/p_pr_res_pdf_al14_zoom.eps}
-           \caption{Momentum resolution after ESC selection.}
-           \label{fig:ppr-res-afESC}
-      \end{subfigure}
-      \begin{subfigure}{0.45\textwidth}
-           \includegraphics[width=\textwidth]{fig/p_pr_eff_al14.png}
-           \caption{Selection efficiency after ESC selection.}
-           \label{fig:ppr-eff-afESC}
-      \end{subfigure}
-      \caption{Proton ESC selection results. The grey histograms are the true probability distribution, while the pink ones are those that get reconstructed. }
-      \label{fig:pprESC-res}
-   \end{figure}
+   The first attempt is to use the smoothed energy directly. 
+   Fig.~\ref{fig:dedx-pgun-smoothed} plots energy deposit for the last third to sixth nodes for all PGUN samples travelling at different angles.
+   It is reassuring to indeed observe the two peaks, the MIP peak and the Bragg peak, as hypothesized. 
+   FIG-PGUN-DEDX-SMOOTH-bfANGNORM
+   However, there are still some discrepancies. 
+   The MIP peaks are close to each other, but their positions differ noticeably from each other.
+   This is due to the different grouping of Hits into Nodes for protons travelling in different directions.
+   The different number of Hits in a Nodes lead to different distances between nodes, so using the energy deposited per Node as an estimation of $\dedx$ is not strictly valid anymore.
+   To account for the different propagation directions, I divided the energy by the sine of the angle of the trajectory made with the $z$-axis.
+   The angle-normalized energy is plotted in Fig.~\ref{fig:dedx-pgun-angnorm}, which demonstrates that the angle-normalization step has achieved its goal - all MIP peaks have the same position.
+
+   FIG-PGUN-DEDX-SMOOTH-afANGNORM
+
+   Hence, the angle-normalized energy can serve as a good reconstruction of $\dedx$ for the ESC selection.
+   To determine the suitable threshold $\dedx$ values without biasing the analysis with any underlying information in the signal sample, a stopping proton control sample is used.
+   The stopping proton control sample has been developed by a colleague, which aims to select protons traversing one of the two HATs and stopping in SFGD. 
+   For these stopping protons, their momenta can be reconstucted independently from HAT and SFGD.
+   As momentum reconstruction in HAT (TPC) has high resolution and is well understood, the fractional difference between the reconstructed momenta in HAT and in SFGD for the same track is plotted against the angle-normalized energy to extract the range of $\dedx$ values that possess good momentum reconstruction in SFGD.
+   For example, as shown in Fig.~\ref{fig:angnorm-dedx0}, a cut at xxxx should be placed.
+   FIG-ANGNORM-dedx0
+   FIG-ANGNORM-dedx1
+   FIG-ANGNORM-dedx2
+   FIG-ANGNORM-dedx3
+   FIG-ANGNORM-dedx4
+   FIG-ANGNORM-dedx5
+   Hence, the respective thresholds for the last 6 nodes are xxx,xxx,xxx,xxx,xxx, and xxx, respectively.
+
+   Furthermore, based on distributions of angle-normalized energy for the last 6 nodes, the average Bragg peak profile can be obtained by fitting the peaks of the distributions.
+    The angle-normalized energy for the last 6 nodes for each track can then be compared with this average profile by a $\chi^2$,
+    \begin{equation}
+     \chi^2 = \Sum^6_1 \frac{(\dedx_i - \overline{\dedx_i})^2}{\overline{\dedx_i}}
+    \end{equation}
+    A proton coming to rest should have a similar profile, so an upper cut on $\chi^2$ could further select protons with good momentum resolution. 
+    Similar to the determination of the threshold for the individual $\dedx$, the momenta fractional difference is plotted against $\chi^2$ as shown in Fig.~\ref{fig:esc-mom-res-chi2}.
+    FIG-ESC-MOM-RES-CHI2
+    The upper cut on $\chi^2$ is implemented as xxx.
 
     %------------------- pion TL ----------------%
     \subsection{Pion Trackless Reconstruction}
@@ -152,6 +155,38 @@ The benefits of these techniques will be illustrated based on MC studies and fur
     
 
 \section{MC studies and Comparisons with Data}
+
+   The lower boundary cut is implemented as an extra step on the existing $\numuccopiop$ sample, where the $p$ stands for proton.
+   This selection leads to an improvement in proton momentum resolution of about $50\%$ while decreasing the efficiency by about $2/3$, as shown in Fig.~\ref{fig:pprESC-res}.   
+   The drop of efficiency might seem drastic, but it proves to be necessary for the TKI analysis, as shown later in Sec.~\ref{sec:do-TKI}. The ESC selection leads to significant improvement to the TKI variables evaluation. 
+
+   \begin{figure}[t]
+      \centering
+      \begin{subfigure}{0.45\textwidth}
+           \includegraphics[width=\textwidth]{fig/p_pr_res_pdf_al13_zoom.eps}
+           \caption{Momentum resolution before ESC selection.}
+           \label{fig:ppr-res-bfESC}
+      \end{subfigure}
+      \begin{subfigure}{0.45\textwidth}
+           \includegraphics[width=\textwidth]{fig/p_pr_eff_al13.png}
+           \caption{Selection efficiency before ESC selection.}
+           \label{fig:ppr-eff-bfESC}
+      \end{subfigure}
+      \\
+      \begin{subfigure}{0.45\textwidth}
+           \includegraphics[width=\textwidth]{fig/p_pr_res_pdf_al14_zoom.eps}
+           \caption{Momentum resolution after ESC selection.}
+           \label{fig:ppr-res-afESC}
+      \end{subfigure}
+      \begin{subfigure}{0.45\textwidth}
+           \includegraphics[width=\textwidth]{fig/p_pr_eff_al14.png}
+           \caption{Selection efficiency after ESC selection.}
+           \label{fig:ppr-eff-afESC}
+      \end{subfigure}
+      \caption{Proton ESC selection results. The grey histograms are the true probability distribution, while the pink ones are those that get reconstructed. }
+      \label{fig:pprESC-res}
+   \end{figure}
+
     
         \subsubsection{Results}
            The results of the $\numuccopi$ selection using the trackless pion technique are summarised in Fig.~\ref{fig:piTLres}.
