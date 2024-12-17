@@ -1,0 +1,29 @@
+ \begin{savequote}[8cm]
+\textlatin{Cor animalium, fundamentum e\longs t vitæ, princeps omnium, Microco\longs mi Sol, a quo omnis vegetatio dependet, vigor omnis \& robur emanat.}
+
+The heart of animals is the foundation of their life, the sovereign of everything within them, the sun of their microcosm, that upon which all growth depends, from which all power proceeds.
+  \qauthor{--- William Harvey \cite{harvey_exercitatio_1628}}
+\end{savequote}
+
+\chapter{\label{app:newtech}New Reconstruction Technical Details}
+
+\minitoc
+
+\section{Track number cuts in pioon trackless selection}
+\label{sec:app-tlpi-trknumcut}
+There are a few track number variables that are helpful in reducing background events for the $\numuccopi$ selection. 
+These are:
+\begin{enumerate}
+    \item $N_{\textrm{tot}}$, The total number of reconstructed tracks.
+    \item $N_{\textrm{S-tot}}$, The total number of reconstructed tracks that have a segment in SFGD.
+    \item $N_{\textrm{delayed}}$, The number of long delayed tracks.
+    \item $N_{\textrm{pri}}$, The number of primary tracks.
+    \item $N_{\textrm{non-pri}}$, The number of non-primary tracks.
+\end{enumerate}
+A common feature for these track numbers is that they should not be too large, which should correspond to DIS events.
+Hence, a upper cut is implemented on them.
+Furthermore, a lower cut, $N_{\textrm{S-tot}}>2$, is useful in cutting away OOFV backgrounds for the TPC-$\mu$ sample.
+This is understandable as a $\numuccopi$ event should have the primary muon, the primary pion and most likely, the primary proton as well, thereby leading to at least $3$ reconstructed tracks in SFGD.
+As for the SFGD-$\mu$ event, additional lower cuts on  $N_{\textrm{delayed}}$, $N_{\textrm{pri}}$ and $N_{\textrm{tot}}$ are effective in removing CC$0\pi$ backgrounds.
+The presence of the CC$0\pi$ background could be due to the mis-identification of a proton track as a muon track and the ME from the muon is mis-identified as the ME from the pion.
+These events are likely to have only fewer primary tracks and total number of tracks, so lower cuts on these track number could help to remove such backgrounds.

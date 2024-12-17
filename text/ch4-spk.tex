@@ -88,12 +88,7 @@ The benefits of these techniques will be illustrated based on MC studies and fur
 
     %------------------- pion TL ----------------%
     \subsection{Pion Trackless Reconstruction}
-       In SFGD, when particles pass through the detector, they deposit energy and emit scintillation light, which would be captured by the three optical fibres and the electronics connected to the end of the fibres, 
-       The signal from each cube constitutes a "Hit". 
-       All Hits are fed into the existing tracking algorithm, which tries to find a track pattern through the Hits. 
-       If such a track is possible, the Hits along the track are grouped into "Nodes" consistently as points along the track. 
-       Particle identification and momentum reconstruction are then performed on these reconstructed tracks. 
-       It is clear from this track reconstruction process that, for a track to be reconstructed, it has to be long enough, i.e. containing at least $3$ nodes, corresponding to about $30\textrm{mm}$. 
+       As briefly elaborated in Sec.~\ref{sec:t2k-sw}, in SFGD, particle identification and momentum reconstruction are only performed on reconstructed tracks, which has a minimum length of about $30.0$~mm. 
        Hence, low-momentum particles, which travel only a short distance, could not be reconstructed at all. 
        When these low-momentum pions are not reconstructed, these $\ccopi$ events would then be misidentified as $\cczpi$ events, both decreasing the signal for the $\ccopi$ samples and increasing the background for the $\cczpi$ sample. 
        Thus, it would be highly beneficial if we could reconstruct these pions, and the pion trackless reconstruction technique I develop can address this gap perfectly. 
@@ -148,6 +143,20 @@ The benefits of these techniques will be illustrated based on MC studies and fur
             Hence, events with an ME connected to any non-primary tracks would be rejected.
         
             \textbf{Background reduction} - Several background reduction steps are implemented, for example, an existing $\pi^0$ rejection developed by Colleagues at T2K.
+            However, they are insufficient as shown by the considerable portion of CC-other backgrounds in Fig.~\ref{fig:tlpi-bf-trknumcut}.
+            FIG-TLPI-BF-trknumcut
+            Hence, based on logical understanding of different event topologies, I developed a series of track number cuts and a new idea, called the track family tree.
+            
+            An event topology resembles a family tree sideway. 
+            The first generation contains the primary tracks.
+            The second generation are tracks connecting to the end of the primary tracks.
+            The family tree tracing step loops through all reconstructed tracks to form the family tree starting from the primary vertex.
+            One useful variable is the number of generations.
+            A $\numuccopi$ event should not contain a large number of generations as the primary pion can have an ME attached to its end, but there is no shower or multiple scattering.
+            Hence, the number of generation is required to be smaller than $3$.
+            Another associated variable is the number of lone tracks, which are not connected to any tracks in the family tree. 
+            A clean $\numuccopi$ event should have a limited number of lone tracks, which could be due to noise, or low energy scattering of the ME, which leads to clusters isolated from the ME track. 
+            More details of the other track number cuts are provided in Appendix.~\ref{sec:app-tlpi-trknumcut}
         
             For the events passing all the selection steps, the presence of a primary pion is implied by the existence of a proper ME candidate, and its momentum is reconstructed by range. 
             
