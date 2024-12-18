@@ -13,62 +13,87 @@ This chapter will first describe the experimental setup and provide a brief over
 
 
 \section{Hardware}
-As a long-baseline experiment, T2K is comprised of a near detector, ND280, and a far detector, Super-Kamiokande (SK).
-To measure neutrino oscillation, both detectors need to be able to distinguish between $\numu$ and $\nue$.  
-Of course, no detectors can detect neutrinos directly.
-In practice, both detectors should possess the capability to distinguish well the different products from neutrino interaction with the active material of the detectors.
-The most common products of neutrino-nucleus interactions are the corresponding leptons, i.e. electron and muon, and several hadrons, including protons, nucleons and light mesons like pions.
+  As a long-baseline experiment, T2K is comprised of a near detector, ND280, and a far detector, Super-Kamiokande (SK).
+  To measure neutrino oscillation, both detectors need to be able to distinguish between $\numu$ and $\nue$.  
+  Of course, no detectors can detect neutrinos directly.
+  In practice, both detectors should possess the capability to distinguish well the different products from neutrino interaction with the active material of the detectors.
+  The most common products of neutrino-nucleus interactions are the corresponding leptons, i.e. electron and muon, and several hadrons, including protons, nucleons and light mesons like pions.
 
-The far detector, SK, is a huge water Cherenkov detector.
-It detects the presence of particles by capturing the Cherenkov light emitted due to their superluminal motion in water.
-Hadrons produced in neutrino interactions are not energetic enough to emit Cherenkov radiation, while the leptons typically are able to travel faster than light.
-Thus, SK mainly measure electrons and muons.
-The Cherenkov radiation from these leptons typically forms a ring-like pattern perpendicular to the particle motion.
-Due to the lighter mass of the electron, its propagation direction is more likely to change due to scattering along its motion than muon.
-Hence, the Cherenkov ring from an electron is more diffuse than that from a muon, as shown in Fig.~\ref{fig:sk-e-mu}.
-
-    \begin{figure}
-          \centering
-          \begin{subfigure}[b]{\dbfigwid\textwidth}
-               \centering
-               \includegraphics[width=\dbfigwid\textwidth]{figures/t2k/sk-nue.eps}
-               \caption{nue}
-               \label{subfig:sk-nue}
-          \end{subfigure}
-          \begin{subfigure}[b]{\dbfigwid\textwidth}
-               \centering
-               \includegraphics[width=\dbfigwid\textwidth]{figures/t2k/sk-numu.eps}
-               \caption{numu}
-               \label{subfig:sk-numu}
-          \end{subfigure}
-          \caption{SK event displays.}
-          \label{fig:sk-e-mu}
-    \end{figure}
-
-
-More specifically, $\dcp$ can be measured in long-baseline neutrino experiments, for example, the Tokai-to-Kamioka (T2K) experiment\cite{T2KEXP}. 
-T2K is a long-baseline neutrino experiment located in Japan. 
-The neutrino source is generated in J-PARC in Tokai. 
-A near detector, ND280, is placed at $280\mathrm{m}$ from the generation point, and a far detector, the Super Kamiokande (SK), is situated 296km away. As neutrinos interact extremely weakly, direct measurement is not yet possible. These detectors measure the neutrino energy spectra from the product particles from the interaction between neutrinos and hydrocarbons in ND280 and water molecules in SK. The difference between neutrino oscillation and anti-neutrino oscillation can be measured by comparing the neutrino energy spectra observed at the far and near detectors in the neutrino mode and the anti-neutrino mode. In 2020, the Tokai-to-Kamioka (T2K) experiment\cite{T2KEXP} has made the first measurement of $\dcp$\cite{T2Knature}, which ruled out CP conservation at the $95\%$ confidence level. It is an impressive first step, but it is still limited both by statistical and systematic uncertainties. 
-
- 
-\subsection{\label{sec:ndup} ND280 Upgrade}
-   In the upgrade, the $\piz$ detector is replaced by a suite of sophisticated new sub-detectors, namely the Time-of-flight detector (TOF), two high angle TPCs and the Super Fine Grained Detector (SFGD). 
-   The TOF consists of 6 planes of scintillation bars, providing excellent sub-nano second timing resolution. 
-   It can effectively veto trespassing particles, thus improving the sample purity.
-   The high angle TPCs (HAT) have a new field cage design and new Micromegas, leading to a larger tracking volume and better resolution than the existing vertical TPCs in ND280. 
-   The SFGD is the new active target, consisting of about 2 million scintillation cubes, each with a size of $1~\textrm{cm}^3$. 
-   The granularity of SFGD improves the high-angle acceptance significantly and thus leads to better phase space matching between the ND and the FD. 
-   Moreover, the tracking capabilities are also enhanced by the more precise measurement of energy deposited along the particle track. 
-   Hence, detection thresholds are lowered and resolution improved, opening up avenues for novel reconstruction techniques, such as trackless pion reconstruction, and creative construction of variables, like COM variables. 
-   The upgrade has finished in April 2024 and the upgraded detector has started taking data in June 2024. An example event display is shown in Fig.~\ref{fig:ndup-evedis}. 
-
-    \begin{figure}[!htb]
+  The far detector, SK, is a huge water Cherenkov detector.
+  It detects the presence of particles by capturing the Cherenkov light emitted due to their superluminal motion in water.
+  Hadrons produced in neutrino interactions are not energetic enough to emit Cherenkov radiation, while the leptons typically are able to travel faster than light.
+  Thus, SK mainly measure electrons and muons.
+  The Cherenkov radiation from these leptons typically forms a ring-like pattern perpendicular to the particle motion.
+  Due to the lighter mass of the electron, its propagation direction is more likely to change due to scattering along its motion than muon.
+  Hence, the Cherenkov ring from an electron is more diffuse than that from a muon, as shown in Fig.~\ref{fig:sk-e-mu}.
+  \begin{figure}
         \centering
-        \includegraphics[width=0.5\linewidth]{fig/upgradeEvtDis.png}
-        \caption{Event display of a possible $\pi^+$ event.}
-        \label{fig:ndup-evedis}
-    \end{figure}
+        \begin{subfigure}[b]{\dbfigwid\textwidth}
+             \centering
+             \includegraphics[width=\textwidth]{figures/t2k/sk-nue.eps}
+             \caption{nue}
+             \label{subfig:sk-nue}
+        \end{subfigure}
+        \begin{subfigure}[b]{\dbfigwid\textwidth}
+             \centering
+             \includegraphics[width=\textwidth]{figures/t2k/sk-numu.eps}
+             \caption{numu}
+             \label{subfig:sk-numu}
+        \end{subfigure}
+        \caption{SK event displays.}
+        \label{fig:sk-e-mu}
+  \end{figure}
+
+  In contrast, the near detector, ND280, consists of multiple advanced sub-detectors and is capable of detecting hadrons.
+  The classic ND280 is shown in Fig.~\ref{subfig:nd280-classic}.
+  The main detector complex contains a $\piz$-detector (P0D), three vertical Time Projection Chambers (TPC) and two Fine Grained Detectors (FGD) sandwiched between the vertical TPCs.
+  These detectors are surrounded by several calorimeters (ECAL), namely the P0D ECAL, the Barrel ECAL, the Upstream ECAL and the Downstream ECAL, which are further enclosed by the UA1 magnet, which is made up of the solenoid coil and the yoke. 
+  \begin{figure}
+        \centering
+        \begin{subfigure}[b]{\dbfigwid\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{figures/t2k/ND280-classic.eps}
+            \caption{classic}
+            \label{subfig:nd280-classic}
+        \end{subfigure}
+        \begin{subfigure}[b]{\dbfigwid\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{figures/t2k/ND280-up.png}
+            \caption{upgrade}
+            \label{subfig:nd280-up}
+        \end{subfigure}
+        \caption{ND280 detector diagram.}
+        \label{fig:nd280-diagram}
+  \end{figure}
+  The neutrino travels through P0D, TPCs and FGDs. 
+  The FGDs are made up of scintillation bars each with a cross section of $1.0~\cm$ by $1.0~\cm$. 
+  Each layer of scintillation bars is arranged orthogonal to the previous.
+  As the particle passes through the layers scintillation bars, it will excite photons, which will be collected by the wave-length shifting optical fibre in the middle of the bar and collected by the electronics at the end of the bar.
+  Hence, the track position information transverse to the neutrino direction is provided by checking which scintillation bar has been excited, while the longitudinal information is given by the number of layer the excitation takes place.
+  Before the upgrade, FGDs are the active target where neutrino interaction happens.
+  One shortfall of the bar geometry of the scintillator is the low acceptance rate for particles travelling at large angle to the beam direction, i.e. close to the long axis of a single bar, as these particles would only pass through a limited number of bars before existing the detector and hence are difficult to reconstruct.
+  This leads to a mis-match of the phase spcae between the near and far detector as particle acceptance at SK is isotropic, leading to additional systematics in oscillation analysis.
+  Besides, reconstruction resolution also suffers from the small number of signals along the particle track.
+  These are the two of the major motivations for upgrading ND280.
+
+  As the shortcomings are largely due to the bar shape of the scintillators, the ND280 upgrade has aptly used cubic scintillators for the new active target, the Super Fine Grained Detector (SFGD).
+  In the upgrade, the $\piz$ detector is replaced by a suite of sophisticated new sub-detectors, as shown in Fig.~\ref{subfig:nd280-up}, namely the Time-of-flight detector (TOF), two high angle TPCs (HATs) and the Super Fine Grained Detector (SFGD). 
+  The TOF consists of 6 planes of scintillation bars, providing excellent sub-nano second timing resolution. 
+  It can effectively veto trespassing particles, thus improving the sample purity.
+  HATs have a new field cage design and new Micromegas, leading to a larger tracking volume and better resolution than the existing vertical TPCs in ND280. 
+  The SFGD is the new active target, consisting of about 2 million scintillation cubes, each with a size of $1~\textrm{cm}^3$. 
+  The granularity of SFGD improves the high-angle acceptance significantly and thus leads to better phase space matching between the ND and the FD. 
+  Moreover, the tracking capabilities are also enhanced by the more precise measurement of energy deposited along the particle track. 
+  Hence, detection thresholds are lowered and resolution improved, opening up avenues for novel reconstruction techniques, such as trackless pion reconstruction, and creative construction of variables, like COM variables, both of which will be illustrated in the next chapter. 
+  The upgrade has finished in April 2024 and the upgraded ND280 has started taking data in June 2024. 
+  
+  % An example event display is shown in Fig.~\ref{fig:ndup-evedis}. 
+  %   \begin{figure}[!htb]
+  %       \centering
+  %       \includegraphics[width=0.5\linewidth]{fig/upgradeEvtDis.png}
+  %       \caption{Event display of a possible $\pi^+$ event.}
+  %       \label{fig:ndup-evedis}
+  %   \end{figure}
 
 \section{Software}
   \label{sec:t2k-sw}
