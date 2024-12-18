@@ -7,43 +7,42 @@ There is no one who loves pain itself, who seeks after it and wants to have it, 
 
 \chapter{\label{ch:4-sel}New Techniques in Selection Development} 
 
-The upgrade new detector has enhanced measuring capabilities. 
-The granular structure of SFGD enables precise position and $\dedx$ measurements with fast response.
-This is especially important for hadrons, as they tend to have much shorter tracks and are conventionally harder to reconstruct in scintillator detectors compared to muons.
-As a result, the explored hadronic kinematic phase space is relatively restricted and the reconstructed hadronic variables have relatively large uncertainties.
+The upgrade new detector has enhanced measuring capabilities, which is especially important for hadrons,
+As hadrons tend to have much shorter tracks and are conventionally harder to reconstruct in scintillator detectors compared to muons, the explored hadronic kinematic phase space has been relatively restricted and the reconstructed hadronic variables have relatively large uncertainties.
 Since more exclusive event topology such as $\numuccopiop$ allows the measurement of high-level variables like the Transverse Kinematic Imbalance (TKI) variables, which provide invaluable insights on neutrino-nucleus interactions, it is highly desirable to reconstruct hadrons, to measure their kinematic properties as precisely as possible and to explore their phase space as large as possible.
-The T2K ND upgrade make possible the implementation of sophisticated techniques from other experiments, like the Elastically Scattered and Contained proton technique~\cite{Lu:2016mjf} that has shown significant improvement in proton momentum reconstruction resolution, and novel techniques implemented for the first time, i.e. the pion trackless reconstruction technique.
-The benefits of these techniques will be illustrated based on MC studies and further showcase in data-MC comparisons for both low level variables, such as the single particle kinematic variables and the high level variables, like the Transverse Kinematic Imbalance (TKI) variables and the Centre-of-Momentum (COM) variables. 
 
-\section{New Techniques}
+Two of the most common product hadrons from neutrino-nucleus interaction are protons and pions. 
+The default particle identification and momentum reconstruction have been developed by colleagues at T2K using the Boosted Decision Tree (BDT) algorithm. The BDT algorithm has good performance, but it is still lacking in some aspects.
+For instance, as it uses only single-track information, it cannot effectively distinguish between pions and muons. 
+It could reconstruct proton momentum with an excellent resolution of about $3.5\%$, but it is insufficient for TKI analysis, which is highly sensitive to hadron kinematics. 
+
+To address these gaps, I have developed and implemented new techniques for both hadrons exploiting the precise position and $\dedx$ measurements and timeing resolution.
+For pions, I have invented the pion trackless reconstruction, a novel technique to reconstruct pions without requiring the presence of a reconstructed track, thereby lowering the detection threshold and significantly increasing reconstruction efficiency for low-momentum pions. 
+As for protons, I have adapted the Elastically Scattered and Contained (ESC) protons technique~\cite{Lu:2016mjf} first implemented in MINERvA to demonstrate significant improvement in proton momentum reconstruction resolution, to SFGD. 
+These new techniques are applied in the development of two signal sample selections, namely the $\numucczpiop$-ESC selection and the $\numuccopi$-TL selection, where the ``TL'' refers to the use of the trackless reconstruction technique.
+Additionally, to prepare for the data-MC comparisons and future cross section analysis, I have also developed a stopping pion control sample selection.
+
+\section{$\numucczpiop$-ESC}
 \minitoc
-   Two of the most common product hadrons from neutrino-nucleus interaction are protons and pions. 
-   The default particle identification and momentum reconstruction have been developed by colleagues at T2K using the Boosted Decision Tree (BDT) algorithm. The BDT algorithm has good performance, but it is still lacking in some aspects.
-   For instance, as it uses only single-track information, it cannot effectively distinguish between pions and muons. 
-   It could reconstruct proton momentum with an excellent resolution of about $3.5\%$, but it is insufficient for TKI analysis, which is highly sensitive to hadron kinematics. 
-   To address these gaps, I have developed and implemented new techniques for both hadrons. 
-   For pions, I have invented the pion trackless reconstruction, a novel technique to reconstruct pions without requiring the presence of a reconstructed track, thereby lowering the detection threshold and significantly increasing reconstruction efficiency for low-momentum pions. 
-   As for protons, I have adapted the Elastically Scattered and Contained (ESC) protons technique~\cite{Lu:2016mjf} first implemented in MINERvA to create an ESC proton selection in SFGD, leading to a proton sample with excellent momentum resolution. 
-
+     The $\numucczpiop$-ESC is adding an additional ESC selection step to the $\numucczpiop$ selection developed by a T2K colleauge.
+     The details of the ESC step is elaborated below.
    %------------------- ESC ----------------%
-  \subsection{ESC proton selection}
-
-    \subsubsection{Working Principles}
+    \subsection{Working Principles}
     Protons stopping at rest would deposit a large amount of energy, the so-called Bragg Peak, just before it stops.
     These protons tend to have their momenta better constructed as its momentum is more strongly correlated with its range. 
     As shown in Fig.~\ref{fig:andedx2}, protons having energy below $1000$ units has large variances in momentum reconstruction. 
     \begin{figure}[h]
         \centering
-        \includegraphics[width=0.5\linewidth]{fig/an_dedx2_colnor_vs_p_pr_res_hist2d_al12_zoom.png}
+        \includegraphics[width=0.5\linewidth]{figures/sel/an_dedx2_colnor_vs_p_pr_res_hist2d_al12_zoom.png}
         \caption{Proton momentum fractional difference against energy deposited at the third last node.}
         \label{fig:andedx2}
     \end{figure}
     Hence, these protons can be selected by placing a lower boundary cut on the energy deposited at the nodes near the end of the reconstructed tracks to have a sample with a high proton momentum resolution.   
     
-   \subsubsection{Implementation}
+   \subsection{Implementation}
    As the ESC selection is based on $\dedx$ at the end of the proton track, a good reconstuction of $\dedx$ must be obtained first.
    To investigate the proper way of estimatiing $\dedx$, I have simulated multiple particle gun (PGUN) samples with the proton travelling in different directions in the SFGD.
-   More specifically, three samples are travelling along the $x$-, $y$- and $z$-axis and five other samples are travelling at $15\degree$, $30\degree$, $45\degree$, $60\degree$ and $75\degree$ to the $x$-axis in the $x$-$z$ plane.
+   More specifically, three samples are travelling along the $x$-, $y$- and $z$-axis and five other samples are travelling at $15\deg$, $30\deg$, $45\deg$, $60\deg$ and $75\deg$ to the $x$-axis in the $x$-$z$ plane.
    As the proton direction should not affect its energy deposition, distinct characteristics of $\dedx$ along the proton trajectory can be utilized to validate the quality of the reconstructed $\dedx$.
    Other than the Bragg peak, another distinct feature of $\dedx$ is the minimal ionizing particle (MIP) region, where the particle at high momentum traverses the scintillator despositing the minimal amount of energy. 
    Hence, the $\dedx$ remains at a relatively constant value for all such particles.
@@ -87,7 +86,7 @@ The benefits of these techniques will be illustrated based on MC studies and fur
     The upper cut on $\chi^2$ is implemented as xxx.
 
     %------------------- pion TL ----------------%
-    \subsection{Pion Trackless Reconstruction}
+    \section{Pion Trackless Reconstruction}
        As briefly elaborated in Sec.~\ref{sec:t2k-sw}, in SFGD, particle identification and momentum reconstruction are only performed on reconstructed tracks, which has a minimum length of about $30.0$~mm. 
        Hence, low-momentum particles, which travel only a short distance, could not be reconstructed at all. 
        When these low-momentum pions are not reconstructed, these $\ccopi$ events would then be misidentified as $\cczpi$ events, both decreasing the signal for the $\ccopi$ samples and increasing the background for the $\cczpi$ sample. 
@@ -113,7 +112,7 @@ The benefits of these techniques will be illustrated based on MC studies and fur
 
            \begin{figure}[h]
               \centering
-              \includegraphics[width=\sgfidwid\textwidth]{figures/pi_len_pi_len_vs_pi_ke_hist2d_al0_true_nokink.eps} 
+              \includegraphics[width=\sgfidwid\textwidth]{figures/sel/pi_len_pi_len_vs_pi_ke_hist2d_al0_true_nokink.eps} 
               \caption{A degree 4 polynomial fit of $\log_{10}{T_\pi}$ against $\log_{10}{L_\pi}$, where $T_\pi$ and $L_\pi$ are the kinetic energy and the range of the pion respectively. The $p_i$'s are the corresponding coefficients of the term of order $i$. The fit is satisfactory considering the close to 1 (\mccorrect{NOT TRUE}) $\chi^2/ndf$ value. }
               \label{fig:fit}
            \end{figure}
@@ -204,23 +203,23 @@ The benefits of these techniques will be illustrated based on MC studies and fur
    \begin{figure}[t]
       \centering
       \begin{subfigure}{0.45\textwidth}
-           \includegraphics[width=\textwidth]{fig/p_pr_res_pdf_al13_zoom.eps}
+           \includegraphics[width=\textwidth]{figures/sel/p_pr_res_pdf_al13_zoom.eps}
            \caption{Momentum resolution before ESC selection.}
            \label{fig:ppr-res-bfESC}
       \end{subfigure}
       \begin{subfigure}{0.45\textwidth}
-           \includegraphics[width=\textwidth]{fig/p_pr_eff_al13.png}
+           \includegraphics[width=\textwidth]{figures/sel/p_pr_eff_al13.png}
            \caption{Selection efficiency before ESC selection.}
            \label{fig:ppr-eff-bfESC}
       \end{subfigure}
       \\
       \begin{subfigure}{0.45\textwidth}
-           \includegraphics[width=\textwidth]{fig/p_pr_res_pdf_al14_zoom.eps}
+           \includegraphics[width=\textwidth]{figures/sel/p_pr_res_pdf_al14_zoom.eps}
            \caption{Momentum resolution after ESC selection.}
            \label{fig:ppr-res-afESC}
       \end{subfigure}
       \begin{subfigure}{0.45\textwidth}
-           \includegraphics[width=\textwidth]{fig/p_pr_eff_al14.png}
+           \includegraphics[width=\textwidth]{figures/sel/p_pr_eff_al14.png}
            \caption{Selection efficiency after ESC selection.}
            \label{fig:ppr-eff-afESC}
       \end{subfigure}
@@ -248,17 +247,17 @@ The benefits of these techniques will be illustrated based on MC studies and fur
            \begin{figure}[t]
                \centering
                \begin{subfigure}{0.3\textwidth}
-                    \includegraphics[width=\textwidth]{fig/ppi_stack.png}
+                    \includegraphics[width=\textwidth]{figures/sel/ppi_stack.png}
                     \caption{Momentum distribution.}
                     \label{fig:ppi-stack}
                \end{subfigure}
                \begin{subfigure}{0.3\textwidth}
-                    \includegraphics[width=\textwidth]{fig/ppi_res.png}
+                    \includegraphics[width=\textwidth]{figures/sel/ppi_res.png}
                     \caption{Momentum resolution.}
                     \label{fig:ppi-res}
                \end{subfigure}
                \begin{subfigure}{0.3\textwidth}
-                    \includegraphics[width=\textwidth]{fig/INCL_p_pi_accum_eff_al11.png}
+                    \includegraphics[width=\textwidth]{figures/sel/INCL_p_pi_accum_eff_al11.png}
                     \caption{Accumulative efficiency.}
                     \label{fig:tl-accum-eff}
                \end{subfigure}

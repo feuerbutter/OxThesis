@@ -448,7 +448,7 @@
   {\appendix\adjustmtc\noappendicestocpagenum\addappheadtotoc\appendixpage}
 
 
-% \usepackage{subcaption}
+\usepackage{subcaption}
 % ------ units --------
 \newcommand{\gevc}{\textrm{GeV}/c}
 \newcommand{\mevc}{\textrm{MeV}/c}
@@ -576,7 +576,7 @@
 
 % ------ Latex utils --------
 \newcommand{\blue}[1]{\textcolor{blue}{#1}}
-\newcommand{\degree}{\circ}
+\newcommand{\deg}{\circ}
 \newcommand{\tick}{\checkmark}
 
 \newcommand{\sgfigwid}{0.8}
