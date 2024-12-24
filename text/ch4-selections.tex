@@ -30,12 +30,12 @@ Additionally, to prepare for the data-MC comparisons and future cross section an
     \subsection{Working Principles}
     Protons stopping at rest would deposit a large amount of energy, the so-called Bragg Peak, just before it stops.
     These protons tend to have their momenta better constructed as its momentum is more strongly correlated with its range. 
-    As shown in Fig.~\ref{fig:andedx2}, protons having energy below $1000$ units has large variances in momentum reconstruction. 
+    As shown in Fig.~\ref{fig:dedx-pprres-eg}, protons having energy deposit below $1000$ units has large variances in momentum reconstruction. 
     \begin{figure}[h]
         \centering
         \includegraphics[width=0.5\linewidth]{figures/sel/an_dedx2_colnor_vs_p_pr_res_hist2d_al12_zoom.png}
         \caption{Proton momentum fractional difference against energy deposited at the third last node.}
-        \label{fig:andedx2}
+        \label{fig:dedx-pprres-eg}
     \end{figure}
     Hence, these protons can be selected by placing a lower boundary cut on the energy deposited at the nodes near the end of the reconstructed tracks to have a sample with a high proton momentum resolution.   
     
@@ -49,41 +49,222 @@ Additionally, to prepare for the data-MC comparisons and future cross section an
    When the $\dedx$ at the end of the proton tracks are plotted, besides the Bragg peak at large $\dedx$, corresponding to protons stopping to rest, there should be another peak at smaller $\dedx$, corresponding protons that undergo secondary interactions and thus are stopped prematurely when it still possesses high momentum.
 
    The first attempt is to use the smoothed energy directly. 
-   Fig.~\ref{fig:dedx-pgun-smoothed} plots energy deposit for the last third to sixth nodes for all PGUN samples travelling at different angles.
+   Fig.~\ref{subfig:esc-smooth-e} plots energy deposit for the last third to sixth nodes for all PGUN samples travelling at non-orthogonal angles.
    It is reassuring to indeed observe the two peaks, the MIP peak and the Bragg peak, as hypothesized. 
-   FIG-PGUN-DEDX-SMOOTH-bfANGNORM
+
+  \begin{figure}
+        \centering
+        \begin{subfigure}[b]{\dbfigwid\textwidth}
+             \centering
+             \includegraphics[width=\textwidth]{figures/sel/dedx5_pdf_skew_smooth_labelled.eps}
+             \caption{Smoothed energy}
+             \label{subfig:esc-smooth-e}
+        \end{subfigure}
+        \begin{subfigure}[b]{\dbfigwid\textwidth}
+             \centering
+             \includegraphics[width=\textwidth]{figures/sel/ans_dedx2_colnor_vs_p_pr_res_hist2d_al2_selpr_con.eps}
+             \caption{Angle-normalized smoothed energy}
+             \label{subfig:esc-an-smooth-e}
+        \end{subfigure}
+        \caption{$\dedx$ estimation.}
+        \label{fig:esc-angnorm}
+  \end{figure}
+
    However, there are still some discrepancies. 
    The MIP peaks are close to each other, but their positions differ noticeably from each other.
    This is due to the different grouping of Hits into Nodes for protons travelling in different directions.
    The different number of Hits in a Nodes lead to different distances between nodes, so using the energy deposited per Node as an estimation of $\dedx$ is not strictly valid anymore.
    To account for the different propagation directions, I divided the energy by the sine of the angle of the trajectory made with the $z$-axis.
-   The angle-normalized energy is plotted in Fig.~\ref{fig:dedx-pgun-angnorm}, which demonstrates that the angle-normalization step has achieved its goal - all MIP peaks have the same position.
-
-   FIG-PGUN-DEDX-SMOOTH-afANGNORM
-
+   The angle-normalized energy is plotted in Fig.~\ref{subfig:esc-an-smooth-e}, which demonstrates that the angle-normalization step has achieved its goal - all MIP peaks have the same position.
    Hence, the angle-normalized energy can serve as a good reconstruction of $\dedx$ for the ESC selection.
-   To determine the suitable threshold $\dedx$ values without biasing the analysis with any underlying information in the signal sample, a stopping proton control sample is used.
-   The stopping proton control sample has been developed by a colleague, which aims to select protons traversing one of the two HATs and stopping in SFGD. 
-   For these stopping protons, their momenta can be reconstucted independently from HAT and SFGD.
-   As momentum reconstruction in HAT (TPC) has high resolution and is well understood, the fractional difference between the reconstructed momenta in HAT and in SFGD for the same track is plotted against the angle-normalized energy to extract the range of $\dedx$ values that possess good momentum reconstruction in SFGD.
-   For example, as shown in Fig.~\ref{fig:angnorm-dedx0}, a cut at xxxx should be placed.
-   FIG-ANGNORM-dedx0
-   FIG-ANGNORM-dedx1
-   FIG-ANGNORM-dedx2
-   FIG-ANGNORM-dedx3
-   FIG-ANGNORM-dedx4
-   FIG-ANGNORM-dedx5
-   Hence, the respective thresholds for the last 6 nodes are xxx,xxx,xxx,xxx,xxx, and xxx, respectively.
 
-   Furthermore, based on distributions of angle-normalized energy for the last 6 nodes, the average Bragg peak profile can be obtained by fitting the peaks of the distributions.
+   The multiple PGUN samples are combined into one large sample to determine the suitable threshold $\dedx$ values.
+   While plots like Fig.~\ref{fig:dedx-pprres-eg} are clear in showing the underlying idea of the ESC selection, profile plots are better suited for determining a proper threshold as shown in Fig.~\ref{fig:esc-andedx-slice};
+   For example, as shown in Fig.~\ref{fig:ans-dedx0-ppr-slice}, a cut at $200$ should be placed for the first node.
+   Similarly, the threshold values for the other nodes are $500$, $1000$, $900$, $840$ and $740$ respectively.
+   \begin{figure}[t]
+       \centering
+       \begin{subfigure}{\trfigwid\textwidth}
+            \includegraphics[width=\textwidth]{figures/sel/ans_dedx0_vs_p_pr_res_hist2d_al2_selpr_con_slice.eps}
+            \caption{dedx0}
+            \label{subfig:ans-dedx0-ppr-slice}
+       \end{subfigure}
+       \begin{subfigure}{\trfigwid\textwidth}
+            \includegraphics[width=\textwidth]{figures/sel/ans_dedx1_vs_p_pr_res_hist2d_al2_selpr_con_slice.eps}
+            \caption{dedx1}
+            \label{subfig:dedx1}
+       \end{subfigure}
+       \begin{subfigure}{\trfigwid\textwidth}
+            \includegraphics[width=\textwidth]{figures/sel/ans_dedx2_vs_p_pr_res_hist2d_al2_selpr_con_slice.eps}
+            \caption{dedx2}
+            \label{subfig:dedx2}
+       \end{subfigure}
+       \\
+       \begin{subfigure}{\trfigwid\textwidth}
+            \includegraphics[width=\textwidth]{figures/sel/ans_dedx3_vs_p_pr_res_hist2d_al2_selpr_con_slice.eps}
+            \caption{dedx3}
+            \label{subfig:dedx3}
+       \end{subfigure}
+       \begin{subfigure}{\trfigwid\textwidth}
+            \includegraphics[width=\textwidth]{figures/sel/ans_dedx4_vs_p_pr_res_hist2d_al2_selpr_con_slice.eps}
+            \caption{dedx4}
+            \label{subfig:dedx4}
+       \end{subfigure}
+       \begin{subfigure}{\trfigwid\textwidth}
+            \includegraphics[width=\textwidth]{figures/sel/ans_dedx5_vs_p_pr_res_hist2d_al2_selpr_con_slice.eps}
+            \caption{dedx5}
+            \label{subfig:dedx5}
+       \end{subfigure}
+       \caption{Determination of $\dedx$ thresholds.}
+       \label{fig:esc-andedx-slice}
+    \end{figure}
+
+    Furthermore, based on distributions of angle-normalized energy for the last 6 nodes, the average Bragg peak profile can be obtained by fitting the peaks of the distributions.
+    As shown in Fig.~\ref{fig:esc-andedx-peaks}, the Bragg peak value for each node is extracted with fitting with a Cauchy function.
+    From the last node backwards, the fitted Bragg peak values are $989.5$, $1080$, $1234$, $1131$, $990.0$ and $887.2$ respectively.
+
+     \begin{figure}[t]
+       \centering
+       \begin{subfigure}{\trfigwid\textwidth}
+            \includegraphics[width=\textwidth]{figures/sel/ans_dedx0_pdf_al2_selpr_con_test.eps}
+            \caption{dedx0 peak val}
+            \label{subfig:dedx0-peak}
+       \end{subfigure}
+       \begin{subfigure}{\trfigwid\textwidth}
+            \includegraphics[width=\textwidth]{figures/sel/ans_dedx1_pdf_al2_selpr_con_test.eps}
+            \caption{dedx1 peak val}
+            \label{subfig:dedx1-peak}
+       \end{subfigure}
+       \begin{subfigure}{\trfigwid\textwidth}
+            \includegraphics[width=\textwidth]{figures/sel/ans_dedx2_pdf_al2_selpr_con_test.eps}
+            \caption{dedx2 peak val}
+            \label{subfig:dedx2-peak}
+       \end{subfigure}
+       \\
+       \begin{subfigure}{\trfigwid\textwidth}
+            \includegraphics[width=\textwidth]{figures/sel/ans_dedx3_pdf_al2_selpr_con_test.eps}
+            \caption{dedx3 peak val}
+            \label{subfig:dedx3-peak}
+       \end{subfigure}
+       \begin{subfigure}{\trfigwid\textwidth}
+            \includegraphics[width=\textwidth]{figures/sel/ans_dedx4_pdf_al2_selpr_con_test.eps}
+            \caption{dedx4 peak val}
+            \label{subfig:dedx4-peak}
+       \end{subfigure}
+       \begin{subfigure}{\trfigwid\textwidth}
+            \includegraphics[width=\textwidth]{figures/sel/ans_dedx5_pdf_al2_selpr_con_test.eps}
+            \caption{dedx5 peak val}
+            \label{subfig:dedx5-peak}
+       \end{subfigure}
+       \caption{Determination of $\dedx$ Bragg peak values.}
+       \label{fig:esc-andedx-peaks}
+    \end{figure}
+
     The angle-normalized energy for the last 6 nodes for each track can then be compared with this average profile by a $\chi^2$,
     \begin{equation}
      \chi^2 = \Sum^6_1 \frac{(\dedx_i - \overline{\dedx_i})^2}{\overline{\dedx_i}}
     \end{equation}
     A proton coming to rest should have a similar profile, so an upper cut on $\chi^2$ could further select protons with good momentum resolution. 
     Similar to the determination of the threshold for the individual $\dedx$, the momenta fractional difference is plotted against $\chi^2$ as shown in Fig.~\ref{fig:esc-mom-res-chi2}.
-    FIG-ESC-MOM-RES-CHI2
-    The upper cut on $\chi^2$ is implemented as xxx.
+    \begin{figure}[h]
+       \centering
+       \includegraphics[width=\sgfidwid\textwidth]{figures/sel/brchi2_colnor_vs_p_pr_res_hist2d_al2_selpr_con_test.eps} 
+       \caption{ppr res vs chi2}
+       \label{fig:esc-mom-res-chi2}
+    \end{figure}
+    The upper cut on $\chi^2$ is implemented as $800$, above which considerably larger fluctuation is observed.
+
+    \subsection{Momentum reconstruction bias accessment}
+    In Ref.~\ref{Lu:2016mjf}, reconstruction bias in the transverse component of the momentum is observed after the ESC implementation.
+    Hence, such bias is also checked for the signal sample in SFGD.
+    However, unlike in Ref.~\ref{Lu:2016mjf}, no apparent bias in proton momentum reconstruction is present, while such bias is observed in muon momentum reconstruction as shown in Fig.~\ref{fig:esc-prmupt}.
+     \begin{figure}
+        \centering
+        \begin{subfigure}[b]{\dbfigwid\textwidth}
+             \centering
+             \includegraphics[width=\textwidth]{figures/sel/pr_pt_vs_pr_pt_bias_hist2d_al14.eps}
+             \caption{pr pt}
+             \label{subfig:esc-prpt}
+        \end{subfigure}
+        \begin{subfigure}[b]{\dbfigwid\textwidth}
+             \centering
+             \includegraphics[width=\textwidth]{figures/sel/mu_pt_vs_mu_pt_bias_hist2d_al14.eps}
+             \caption{mu pt}
+             \label{subfig:esc-mupt}
+        \end{subfigure}
+        \caption{$\dedx$ estimation.}
+        \label{fig:esc-prmupt}
+     \end{figure}
+     Further investigation shows that there is no bias in the muon angle as shown in Fig.~\ref{subfig:esc-mutheta}.
+     Additionally, such bias is shown to be present even before the implementation of the ESC step in Fig.~\ref{subfig:esc-mupt-bfesc}, while there is no appreciable bias in the full muon momentum reconstruction.
+     This could be due to a bias in the neutrino direction reconstruction.
+     However, such a direction bias should have affected the proton transverse momentum as well.
+     As the impact is not pronounced and the simulation software is not the final stable version yet, a correction is done solely on the muon transverse momentum for the calculations of TKI variables and further investigations on the root cause for this bias should be carried out after a stable simulation software version becomes available.
+      \begin{figure}
+        \centering
+        \begin{subfigure}[b]{\dbfigwid\textwidth}
+             \centering
+             \includegraphics[width=\textwidth]{figures/sel/theta_mu_vs_theta_mu_res_hist2d_al14.eps}
+             \caption{theta mu bias}
+             \label{subfig:esc-mutheta}
+        \end{subfigure}
+        \begin{subfigure}[b]{\dbfigwid\textwidth}
+             \centering
+             \includegraphics[width=\textwidth]{figures/sel/mu_pt_vs_mu_pt_bias_hist2d_al13.eps}
+             \caption{mu pt bf ESC}
+             \label{subfig:esc-mupt-bfesc}
+        \end{subfigure}
+        \caption{mu theta }
+        \label{fig:esc-muptcor}
+  \end{figure}
+     The muon correction is applied through the inverse of the linear fit of the bias region between $0.5~\gevc$ and $1.1~\gevc$.
+     The corrected muon transverse momentum is shown in Fig.~\ref{fig:esc-cormupt}, which demonstrates that the bias has been rectified.
+  
+    \begin{figure}[h]
+       \centering
+       \includegraphics[width=\sgfidwid\textwidth]{figures/sel/mu_pt_vs_cor_mu_pt_bias_hist2d_al14.eps} 
+       \caption{corrected mu pt}
+       \label{fig:esc-cormupt}
+    \end{figure}
+
+    \subsection{Impacts on SPK}
+    The ESC technique is completed with the transverse momentum bias correction.
+    The overall impact of the technique on proton kinematics are shown in Fig.~\ref{fig:}.
+    It has reduced off-diagonal entries significantly, which are badly reconstructed events.
+    Moreover, the conspicuous line with negative slope in the $\thetapr$ has mostly disappeared.
+    These could be due to a mis-reconstruction of the short proton tracks, which are excluded by the first requirement of the ESC step, the number of nodes have to be at least $6$. 
+
+     \begin{figure}
+        \centering
+        \begin{subfigure}[b]{\dbfigwid\textwidth}
+             \centering
+             \includegraphics[width=\textwidth]{figures/sel/p_pr_colnor_resmat_al13.eps}
+             \caption{ppr bf esc}
+             \label{subfig:esc-ppr-bfesc}
+        \end{subfigure}
+        \begin{subfigure}[b]{\dbfigwid\textwidth}
+             \centering
+             \includegraphics[width=\textwidth]{figures/sel/theta_pr_colnor_resmat_al13.eps}
+             \caption{theta pr bf esc}
+             \label{subfig:esc-tpr-bfesc}
+        \end{subfigure}
+        \\
+        \begin{subfigure}[b]{\dbfigwid\textwidth}
+             \centering
+             \includegraphics[width=\textwidth]{figures/sel/p_pr_colnor_resmat_al14.eps}
+             \caption{ppr af esc}
+             \label{subfig:esc-ppr-bfesc}
+        \end{subfigure}
+        \begin{subfigure}[b]{\dbfigwid\textwidth}
+             \centering
+             \includegraphics[width=\textwidth]{figures/sel/theta_pr_colnor_resmat_al14.eps}
+             \caption{theta pr af esc}
+             \label{subfig:esc-tpr-bfesc}
+        \end{subfigure}
+        \caption{mu theta }
+        \label{fig:esc-muptcor}
+  \end{figure}
+
 
     %------------------- pion TL ----------------%
     \section{Pion Trackless Reconstruction}
@@ -202,23 +383,23 @@ Additionally, to prepare for the data-MC comparisons and future cross section an
 
    \begin{figure}[t]
       \centering
-      \begin{subfigure}{0.45\textwidth}
+      \begin{subfigure}{\dbfigwid\textwidth}
            \includegraphics[width=\textwidth]{figures/sel/p_pr_res_pdf_al13_zoom.eps}
            \caption{Momentum resolution before ESC selection.}
            \label{fig:ppr-res-bfESC}
       \end{subfigure}
-      \begin{subfigure}{0.45\textwidth}
+      \begin{subfigure}{\dbfigwid\textwidth}
            \includegraphics[width=\textwidth]{figures/sel/p_pr_eff_al13.png}
            \caption{Selection efficiency before ESC selection.}
            \label{fig:ppr-eff-bfESC}
       \end{subfigure}
       \\
-      \begin{subfigure}{0.45\textwidth}
+      \begin{subfigure}{\dbfigwid\textwidth}
            \includegraphics[width=\textwidth]{figures/sel/p_pr_res_pdf_al14_zoom.eps}
            \caption{Momentum resolution after ESC selection.}
            \label{fig:ppr-res-afESC}
       \end{subfigure}
-      \begin{subfigure}{0.45\textwidth}
+      \begin{subfigure}{\dbfigwid\textwidth}
            \includegraphics[width=\textwidth]{figures/sel/p_pr_eff_al14.png}
            \caption{Selection efficiency after ESC selection.}
            \label{fig:ppr-eff-afESC}
@@ -246,17 +427,17 @@ Additionally, to prepare for the data-MC comparisons and future cross section an
 
            \begin{figure}[t]
                \centering
-               \begin{subfigure}{0.3\textwidth}
+               \begin{subfigure}{\trfigwid\textwidth}
                     \includegraphics[width=\textwidth]{figures/sel/ppi_stack.png}
                     \caption{Momentum distribution.}
                     \label{fig:ppi-stack}
                \end{subfigure}
-               \begin{subfigure}{0.3\textwidth}
+               \begin{subfigure}{\trfigwid\textwidth}
                     \includegraphics[width=\textwidth]{figures/sel/ppi_res.png}
                     \caption{Momentum resolution.}
                     \label{fig:ppi-res}
                \end{subfigure}
-               \begin{subfigure}{0.3\textwidth}
+               \begin{subfigure}{\trfigwid\textwidth}
                     \includegraphics[width=\textwidth]{figures/sel/INCL_p_pi_accum_eff_al11.png}
                     \caption{Accumulative efficiency.}
                     \label{fig:tl-accum-eff}
