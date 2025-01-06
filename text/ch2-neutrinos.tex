@@ -61,8 +61,159 @@ and was later extended to three flavors of neutrinos.
 \subsection{The Plans}
 
 \section{The Theory}
+The main goal of neutrino experiments is to measure all neutrino properties, including the mass, mixing angles, and the CP violation parameter, $\dcp$. 
+The mixing angles and $\dcp$ fully describes neutrino oscillation, while the mass is the reason why neutrino oscillation happens.
+Hence, these parameters will be better illustrated in the following Sec.~\ref{subsec:oscillation} in the context of the theoretical framework of neutrino oscillation.
+As only products from neutrino interaction are detected in experiments, to achieve the said goal, a good understanding of neutrino interaction is necessary.
+Hence, a brief overview of neutrino interaction is given in Sec.~\ref{subsec:interaction}.
+
 \subsection{Oscillation}
-\subsection{Cross section}
+\label{subsec:oscillation}
+Neutrinos come in three flavours: electron neutrino ($\nu_e$), muon neutrino ($\nu_\mu$), and tau neutrino ($\nu_\tau$).
+The different flavours of neutrinos will only produce the corresponding lepton in weak interaction, so they are eigenstates of the weak interaction.
+However, neutrinos propagate through space as mass eigenstates, $\nu_1$, $\nu_2$, and $\nu_3$.
+The reason for neutrino oscillation to occur is two-fold.
+One is beacuse the mass eigenstates do not have a simple one-to-one correspondence with the weak eigenstates. 
+They are a superposition of the weak eigenstates and vice versa.
+The other is beacuse these mass eigenstates have different masses.
+Neutrinos are created as flavour eigenstates in weak interaction, but they propagate as a linear combination of mass eigenstates, which propagate with different phase velocities due to their different masses.
+Hence, throughout the propagation, the linear combination of mass eigenstates is changing constantly, leading to a changing superposition of flavour eigenstates, and thus, neutrino oscillation.
+
+To be more specific, the matrix describing the mixing of mass eigenstates to flavour eigenstates is the PMNS matrix.
+It is conventionally parameterized as follows:
+
+\begin{equation}
+U_{\text{PMNS}} = 
+\begin{pmatrix}
+1 & 0 & 0 \\
+0 & c_{23} & s_{23} \\
+0 & -s_{23} & c_{23}
+\end{pmatrix}
+\begin{pmatrix}
+c_{13} & 0 & s_{13} e^{-i\dcp} \\
+0 & 1 & 0 \\
+-s_{13} e^{i\dcp} & 0 & c_{13}
+\end{pmatrix}
+\begin{pmatrix}
+c_{12} & s_{12} & 0 \\
+-s_{12} & c_{12} & 0 \\
+0 & 0 & 1
+\end{pmatrix}
+\end{equation}
+where $c_{ij} = \cos\theta_{ij}$ and $s_{ij} = \sin\theta_{ij}$, and $\dcp$ is the CP violation phase.
+The angles, $\theta_{ij}$, are the mixing angles. 
+Using the PMNS matrix, the flavour eigenstates can be expressed in terms of the mass eigenstates as follows:
+\begin{equation}
+\begin{pmatrix}
+\nu_e \\
+\nu_\mu \\
+\nu_\tau
+\end{pmatrix}
+=
+U_{\text{PMNS}}
+\begin{pmatrix}
+\nu_1 \\
+\nu_2 \\
+\nu_3
+\end{pmatrix}
+\end{equation}
+To keep a close focus on the development of the theoretical idea, detailed derivations are rendered to the Appendix~\ref{app:oscillation}, and only important results are included here for elaboration.
+Due to the small neutrino masses, the mass eigenstate, with mass $m_i$, acquires a phase approximately of
+\begin{equation}
+  \ket{\nu_i(L)} = e^{-i \frac{m_i^2L}{2E}} \ket{\nu_i(0)},
+\end{equation}
+after travelling a distance $L$ with energy $E$.
+Hence, the probability of a neutrino of flavour $\alpha$ at creation to be detected as a neutrino of flavour $\beta$ after travelling a distance of $L$ is given by
+\begin{array}{rl}
+  P_{(\alpha \to \beta)} &= \left|\braket{\nu_\beta | \nu_\alpha(L)} \right|^2 = \left| \sum_i U_{\alpha i} U^*_{\beta i} e^{-i \frac{m_i^2L}{2E}} \right|^2 \\
+  &= \delta_{\alpha\beta} - 4 \sum_{i>j} \text{Re} \left( U_{\alpha i} U^*_{\beta i} U^*_{\alpha j} U_{\beta j} \right) \sin^2 \left( \frac{\Delta m^2_{ij} L}{4E} \right) \\
+  &+ 2 \sum_{i>j} \text{Im} \left( U_{\alpha i} U^*_{\beta i} U^*_{\alpha j} U_{\beta j} \right) \sin \left( \frac{\Delta m^2_{ij} L}{2E} \right),
+\end{array}
+where $\delta{\alpha\beta}$ is the Kronecker delta, $U_{\alpha i}$ is the element of the PMNS matrix, and $\Delta m^2_{ij} = m_i^2 - m_j^2$.
+This result shows that the oscillation probability depends on the mixing angle through the PMNS matrix elements and on the mass difference and neutrino energy through the sine terms.
+For brevity, the dependence on the sine terms can be characterised by a phase angle,
+\begin{equation}
+  \label{eq:osc-phase}
+  \Delta_{ij} = \frac{\Delta m^2_{ij} L}{2E} \approx 1.27 \frac{\Delta m^2_{ij} \text{eV}^2 L \text{km}}{E \text{GeV}},
+\end{equation}
+where the oscillation is maximal when $\Delta_{ij} = \pi / 2$.
+These results can be used to better understand how the various parameters are measured in different types of neutrino experiments.
+The different sensitivies of these experiments are due to the relatively large difference in the mixing angles and the mass differences.
+The latest values for the neutrino parameters based on Ref.~\cite{Capozzi:2021fjo,ParticleDataGroup:2024cfk} are given in Table~\ref{tab:neutrino-parameters}, which shows that the magnitude of $\delta_{21}$ is much smaller than that of $\delta_{31}$.
+Unlike the CKM matrix, where all mixing angles are small, only $\theta_{13}$ is small while the other two angles are considerably larger, suggesting significant mixing.
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}{c|c}
+    Parameter & Value \\
+    \hline
+    \hline
+    $\Delta m^2_{21}~(\ev^2)$ & $7.36^{+0.16}_{-0.15} \times 10^{-5}$ \\
+    $|\Delta m^2_{31}|~(\ev^2)$ & $2.448^{+0.023}_{-0.031} \times 10^{-3}$ \\
+    $\theta_{12}$ ($\deg$) & $33.40^{+0.80}_{0.82}$ \\
+    $\theta_{23}$ ($\deg$)       & $42.4^{+1.0}_{0.9}$ \\
+    $\theta_{13}$ ($\deg$)       & $8.59^{+0.13}_{0.12}$ \\
+    $\dcp$ ($\deg$) & $223^{+32}_{-23}$   \\
+    \hline
+  \end{tabular}
+  \caption{The latest values for the neutrino parameters.}
+  \label{tab:neutrino-parameters}
+\end{table}
+
+
+
+\subsubsection{Atmospheric neutrinos}
+  Atmospheric neutrinos are mostly muon neutrinos produced from decays of mesons produced by cosmic rays interacting with the atmosphere.
+  The neutrino energy is typically of the order of $1~\gev$, while the distrance travelled has a range of $O(10^2)$ to $O(10^4)~\km$.
+  Substituting these numbers into \Eq.~\ref{eq:osc-phase}, $\Delta_{23}$ is of the order of $O(10^(-2))$ to $O(1)$, while $\Delta_{21}$ is of the order of $O(10^(-3))$ to $O(10^(-1))$.
+  Hence, oscillation is much more prominent in the $\nu_\mu \to \nu_\tau$ channel than in the $\nu_\mu \to \nu_e$ channel.
+  This is why atmospheric neutrino experiments are sensitive to $\theta_{23}$ and $\Delta m^2_{32}$, which are sometimes referred to as the atmospheric mixing angle and mass difference, respectively.
+
+\subsubsection{Reactor neutrinos}
+  Reactor neutrinos are mostly electron antineutrinos produced from nuclear fission in the power plants.
+  The neutrino energy is typically of the order of $1~\mev$.
+  Unlike the atmospheric neutrino measurement, detectors can be placed at various locations to measure different parameters.
+  Thus, it is easier to discuss reactor neutrino oscillation by introducing the oscillation length variable given as:
+  \begin{equation}
+    \label{eq:osc-length}
+    L_{\text{osc}} = \frac{4\pi E}{\Delta m^2} = 2.48 \frac{E \text{MeV}}{\Delta m^2 \text{eV}^2} \text{m},
+  \end{equation}
+  which corresponds to one complete period of neutrino oscillation.
+  Substituting the reactor neutrino energy into Eq.~\ref(eq:osc-length), one gets $L_{\text{osc}} = O(10^2)~\km$ for $\delmtwoo$ and $L_{\text{osc}} = O(1)~\km$ for $\delmthro$. 
+  Hence, by placing detectors kilometers away from the power plants, reactor neutrino experiments offer the unique opportunity to measure $\tothr$ and $\delmthro$, which are sometimes referred to as the reactor mixing angle and mass difference, respectively.
+  Additionally, placing detectors at around $O(100)~\km$ away from the power plants allows the measurement of $\delmtwoo$.
+
+  \subsubsection{Solar neutrinos}
+  Solar neutrinos are mostly electron neutrinos produced from nuclear fusion in the sun.
+  The majority of solar neutrinos have energies below $1~\mev$, except those from the $^8$B decay, which have energies up to $15~\mev$.
+  The distance travelled by solar neutrinos is of the order of $O(10^8)~\km$.
+  Substituting these values into Eq.~\ref{eq:osc-length}, one gets $L_{\text{osc}} = O(10^4)~\m$ for $\delmtwoo$ and $L_{\text{osc}} = O(10^3)~\m$ for $\delmthro$.
+  Both are much smaller than the average distance travelled, so to observe the clear oscillatory pattern like in other neutrino experiments, the exact distance travelled by the individual neutrino needs to be known with an incredibly high precision, which is beyond the current detection capability.
+  Fortunately, the average oscillation result can still be measured by the total survival rate of the electron neutrinos.
+  
+  On top of the usual neutrino oscillation, there is another important phenonemon at play in the solar neutrino measurements, which is the Mihheev-Smirnov-Wolfenstein (MSW) effect~\cite{Wolfenstein:1977ue,Mikheyev:1985zog}.
+  A full discussion on the MSW effect is beyond the scope of this thesis.
+  Simply put, the MSW effect is the modification of the mixing parameters due to the presence of electrons in matter. 
+  This modification can enhance or suppress the oscillation probability depending on the mass difference and the electron density.
+  Approximately, the required electron density is proportional to the mass difference squared and inversely proportional to the neutrino energy.
+  Hence, the lower the neutrino energy or the larger the mass difference, the higher the electron density is required to modify the oscillation probability.
+  Due to the considerably larger $\delmthro$, for almost the whole energy range of solar neutrinos, the electron density in the Sun is not sufficient to modify the mixing between $\nu_1$ and $\nu_3$.
+  As for the relatively smaller $\delmtwoo$, the electron density is high enough to significantly modify the mixing between $\nu_1$ and $\nu_2$ for the high energy neutrinos from the $^8$B decay.
+  The resultant impact on these high energy electron neutrinos is an alteration of its composition of the mass eigenstates such that when they leave the surface of the Sun, they are mainly composed of $\nu_2$, a considerably larger fraction than the unmodified composition.
+  The MSW effect is demonstrated when different experiments measure solar neutrinos with different energies and observe a different survival rate of electron neutrinos.
+  The absolute survival rates are sensitive to $\totwo$ and $\tothr$ for the low energy region and the high energy region, respectively.
+
+
+  
+
+
+
+
+
+
+
+\subsection{Interaction}
+\label{subsec:interaction}
 
 This document introduction won't serve as a complete primer on \LaTeX.  There are plenty of those online, and googling your questions will often get you answers, especially from \url{http://tex.stackexchange.com}.
 

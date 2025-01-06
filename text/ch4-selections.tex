@@ -6,6 +6,7 @@ There is no one who loves pain itself, who seeks after it and wants to have it, 
 \end{savequote}
 
 \chapter{\label{ch:4-sel}New Techniques in Selection Development} 
+\minitoc
 
 The upgrade new detector has enhanced measuring capabilities, which is especially important for hadrons,
 As hadrons tend to have much shorter tracks and are conventionally harder to reconstruct in scintillator detectors compared to muons, the explored hadronic kinematic phase space has been relatively restricted and the reconstructed hadronic variables have relatively large uncertainties.
@@ -23,7 +24,6 @@ These new techniques are applied in the development of two signal sample selecti
 Additionally, to prepare for the data-MC comparisons and future cross section analysis, I have also developed a stopping pion control sample selection.
 
 \section{$\numucczpiop$-ESC}
-\minitoc
      The $\numucczpiop$-ESC is adding an additional ESC selection step to the $\numucczpiop$ selection developed by a T2K colleauge.
      The details of the ESC step is elaborated below.
    %------------------- ESC ----------------%
@@ -229,11 +229,11 @@ Additionally, to prepare for the data-MC comparisons and future cross section an
 
     \subsection{Impacts on SPK}
     The ESC technique is completed with the transverse momentum bias correction.
-    The overall impact of the technique on proton kinematics are shown in Fig.~\ref{fig:}.
+    The overall impact of the technique on proton kinematics are shown in Fig.~\ref{fig:esc-spk}.
     It has reduced off-diagonal entries significantly, which are badly reconstructed events.
     Moreover, the conspicuous line with negative slope in the $\thetapr$ has mostly disappeared.
-    These could be due to a mis-reconstruction of the short proton tracks, which are excluded by the first requirement of the ESC step, the number of nodes have to be at least $6$. 
-
+    These could be due to a mis-reconstruction of the track direction for short protons, which are excluded by the first requirement of the ESC step, the number of nodes have to be at least $6$. 
+    
      \begin{figure}
         \centering
         \begin{subfigure}[b]{\dbfigwid\textwidth}
@@ -261,9 +261,41 @@ Additionally, to prepare for the data-MC comparisons and future cross section an
              \caption{theta pr af esc}
              \label{subfig:esc-tpr-bfesc}
         \end{subfigure}
-        \caption{mu theta }
-        \label{fig:esc-muptcor}
+        \caption{SPK before and after ESC.}
+        \label{fig:esc-spk}
   \end{figure}
+
+
+   The overall improvement in the SPK is best illustrated with a Cauchy fit to the proton momentum reconstruction resolution histogram as shown in Fig.~\ref{subfig:ppr-res-bfESC} and Fig.~\ref{subfig:ppr-res-afESC}, which shows an approximately $50\%$ reduction in the width of the distribution.
+   This improvement is achieved at the cost of a $2/3$ reduction in the efficiency, as shown in Fig.~\ref{subfig:ppr-eff-bfESC} and Fig.~\ref{subfig:ppr-eff-afESC} .
+   The drop of efficiency might seem drastic, but it proves to be necessary for the TKI analysis, as shown later in Sec.~\ref{sec:do-TKI}, which showcases the significant improvement to the TKI variables evaluation due to the ESC technique. 
+
+   \begin{figure}[t]
+      \centering
+      \begin{subfigure}{\dbfigwid\textwidth}
+           \includegraphics[width=\textwidth]{figures/sel/p_pr_res_pdf_al13_zoom.eps}
+           \caption{Momentum resolution before ESC selection.}
+           \label{subfig:ppr-res-bfESC}
+      \end{subfigure}
+      \begin{subfigure}{\dbfigwid\textwidth}
+           \includegraphics[width=\textwidth]{figures/sel/p_pr_eff_al13.png}
+           \caption{Selection efficiency before ESC selection.}
+           \label{subfig:ppr-eff-bfESC}
+      \end{subfigure}
+      \\
+      \begin{subfigure}{\dbfigwid\textwidth}
+           \includegraphics[width=\textwidth]{figures/sel/p_pr_res_pdf_al14_zoom.eps}
+           \caption{Momentum resolution after ESC selection.}
+           \label{subfig:ppr-res-afESC}
+      \end{subfigure}
+      \begin{subfigure}{\dbfigwid\textwidth}
+           \includegraphics[width=\textwidth]{figures/sel/p_pr_eff_al14.png}
+           \caption{Selection efficiency after ESC selection.}
+           \label{subfig:ppr-eff-afESC}
+      \end{subfigure}
+      \caption{Proton ESC selection results. The grey histograms are the true probability distribution, while the pink ones are those that get reconstructed. }
+      \label{fig:esc-ppr-reseff}
+   \end{figure}
 
 
     %------------------- pion TL ----------------%
@@ -272,8 +304,111 @@ Additionally, to prepare for the data-MC comparisons and future cross section an
        Hence, low-momentum particles, which travel only a short distance, could not be reconstructed at all. 
        When these low-momentum pions are not reconstructed, these $\ccopi$ events would then be misidentified as $\cczpi$ events, both decreasing the signal for the $\ccopi$ samples and increasing the background for the $\cczpi$ sample. 
        Thus, it would be highly beneficial if we could reconstruct these pions, and the pion trackless reconstruction technique I develop can address this gap perfectly. 
+     
+       \subsection{Motivation}
+         Before embarking on the development of the pion trackless reconstruction, one important check is to investigate the potential significance of such technique, because this technique can only reconstruct pions that decay at rest.
+         If there is a limited number of pions that decay at rest, the technique would not be applicable.
+         Hence, a preliminary study on pion fates relevant to T2K was performed.
 
-       \subsubsection{Working Principles}
+         The first step is to check the primary pion momentum distribution in SFGD produced by the T2K flux.
+         As only a rough estimation suffices, the first $100,000$ events in the T2K input flux file is passed through the T2K ND simulation, and the event with a primary pion is recorded.
+         The true pion momentum cumulative distribution is shown in Fig.~\ref{subfig:pi-mom-cum}, with the majority of pions having a momentum below $1000~\mevc$.
+
+          \begin{figure}[t]
+               \centering
+               \begin{subfigure}{\dbfigwid\textwidth}
+                    \includegraphics[width=\textwidth]{figures/sel/inclusive_pion_mom_CDF_0.5.png}
+                    \caption{Primary pion momentum cumulative distribution.}
+                    \label{subfig:pi-mom-cum}
+               \end{subfigure}
+               \begin{subfigure}{\dbfigwid\textwidth}
+                    \includegraphics[width=\textwidth]{figures/sel/inclusive_pion_theta_CDF_0.8.png}
+                    \caption{Primary pion angle cumulative distribution.}
+                    \label{subfig:pi-theta-cum}
+               \end{subfigure}
+          \end{figure}
+               
+          The median momentum is about $300~\mevc$, while about $30\%$ of the pions have a momentum below $200~\mevc$ and $80\%$ below $800~\mevc$.
+          Similarly, the pion angle distribution is shown in Fig.~\ref{subfig:pi-theta-cum}, with about $80\%$ of the pions having an angle below $87\deg$.
+          \begin{figure}[h]
+            \centering
+          \end{figure}
+
+          The second step is to simulate the pion propagation in SFGD with the relevant kinematics.
+          A total of $6$ samples, each with a sufficient (how many) number of events, with pions travlling with a momentum of $200~\mevc$, $300~\mevc$ and $800~\mevc$ and an angle of $0\deg$ and $70\deg$ are simulated.
+          As SFGD reconstruction should be largely independent of the pion direction, the $70\deg$ sample is for a consistency check.
+          For each sample, the fate of each pion is checked using the truth information.
+          A total of $10$ fate topologies are defined as follows:
+          \begin{enumerate}
+               \item \textbf{DK@rest(good)}
+               \item \textbf{DK@rest(dirty)}
+               \item \textbf{DK@flight}
+               \item \textbf{Elastic knock-out}
+               \item \textbf{Deflection}
+               \item \textbf{Absorption}
+               \item \textbf{Charge exchange}
+               \item \textbf{$\pim$}
+               \item \textbf{Escaped}
+               \item \textbf{Others}
+          \end{enumerate}
+          Fate 1 to 3 are all pions that decay before any secondary interactions, i.e., the pions decay via the chain, $\pi \rightarrow \mu \rightarrow e$.
+          Hence, these pions can be tagged by the presence of the ME.
+          However, as illusrated below in Sec.~\ref{sec:tl-wp}, the trackless technique relies on the extremely short distance travelled by the daughter muon.
+          Pions decaying in flight leads to a longer distance travelled by the daughter muon, which is not suitable for the trackless technique.
+          Fate 4 to 8 are pions that undergo secondary interactions, so the ME is not present, except those that have undergone deflection, for the trackless technique to work.
+          The range of the deflected pion does not correlate well with its momentum, so it is not suitable for the trackless technique either. 
+          In short, the trackless technique is most applicable to Fate $1$ and $2$.
+
+          The fate distributions are shown in Fig.~\ref{fig:pi-fate}.
+          For the $200~\mevc$ samples, for both $0\deg$ and $70\deg$, more than $70\%$ of the pions are in Fate $1$ and $2$.
+          As for the $300~\mevc$ samples, this fraction drops to $30\%$ for the $0\deg$ and about $12\%$ for the $70\deg$.
+          This is expected as the pion momentum increases, the pion decay length increases, and the probability of secondary interactions increases.
+          The further decrease for the $70\deg$ is due to the increase in the escape fraction.
+          The geometry of the SFGD, which is much shorter in the vertic direction, makes it easier for high-angle pions to escape.
+          For the $f800~\mevc$ pions, their decay length is too long for SFGD.
+          Hence, there is a significant increase in the escape fraction, about $30\%$ and $50\%$ for $0\deg$ and $70\deg$ .
+          For unescaped ones are all those that have undergone secondary interactions, so at this high momentum, these pions cannot be reconstructed by the trackless technique.
+          \begin{figure}[t]
+               \centering
+               \begin{subfigure}{\dbfigwid\textwidth}
+                    \includegraphics[width=\textwidth]{figures/sel/pion_fate_200_0.png}
+                    \caption{$\ppi=200\mevc$ and $\tpi=0\deg$.}
+                    \label{subfig:pi-fate-200-0}
+               \end{subfigure}
+               \begin{subfigure}{\dbfigwid\textwidth}
+                    \includegraphics[width=\textwidth]{figures/sel/pion_fate_300_0.png}
+                    \caption{$\ppi=300\mevc$ and $\tpi=0\deg$.}
+                    \label{subfig:pi-fate-300-0}
+               \end{subfigure}
+               \\
+               \begin{subfigure}{\dbfigwid\textwidth}
+                    \includegraphics[width=\textwidth]{figures/sel/pion_fate_800_0.png}
+                    \caption{$\ppi=800\mevc$ and $\tpi=0\deg$.}
+                    \label{subfig:pi-fate-800-0}
+               \end{subfigure}
+               \begin{subfigure}{\dbfigwid\textwidth}
+                    \includegraphics[width=\textwidth]{figures/sel/pion_fate_200_70.png}
+                    \caption{$\ppi=200\mevc$ and $\tpi=70\deg$.}
+                    \label{subfig:pi-fate-200-70}
+               \end{subfigure}
+               \\
+               \begin{subfigure}{\dbfigwid\textwidth}
+                    \includegraphics[width=\textwidth]{figures/sel/pion_fate_300_70.png}
+                    \caption{$\ppi=300\mevc$ and $\tpi=70\deg$.}
+                    \label{subfig:pi-fate-300-70}
+               \end{subfigure}
+               \begin{subfigure}{\dbfigwid\textwidth}
+                    \includegraphics[width=\textwidth]{figures/sel/pion_fate_800_70.png}
+                    \caption{$\ppi=800\mevc$ and $\tpi=70\deg$.}
+                    \label{subfig:pi-fate-800-70}
+               \end{subfigure}
+            \end{figure}
+
+
+
+
+       \subsection{Working Principles}
+       \label{sec:tl-wp}
          The trackless technique is an extension and sophistication of previous methods. 
          It was first tried in MINER$\nu$A\cite{MINERVAPOSTER} and in the Fine Grain Detectors of ND280\cite{T2KPOSTER}. 
          In the former, at least a reconstructed cluster is required to be identified as a pion candidate. 
@@ -376,38 +511,6 @@ Additionally, to prepare for the data-MC comparisons and future cross section an
      Improvement brought by the implementation of new techniques is best illustrated within the respective selection.
 
      \subsection{$\numucczpiop$-ESC}
-
-   The lower boundary cut on $\dedx$ and the $\chi^2$ cut are implemented as an extra step on the existing $\numuccopiop$ sample, where the $p$ stands for proton.
-   This selection leads to an improvement in proton momentum resolution of about $50\%$ while decreasing the efficiency by about $2/3$, as shown in Fig.~\ref{fig:pprESC-res}.   
-   The drop of efficiency might seem drastic, but it proves to be necessary for the TKI analysis, as shown later in Sec.~\ref{sec:do-TKI}. The ESC selection leads to significant improvement to the TKI variables evaluation. 
-
-   \begin{figure}[t]
-      \centering
-      \begin{subfigure}{\dbfigwid\textwidth}
-           \includegraphics[width=\textwidth]{figures/sel/p_pr_res_pdf_al13_zoom.eps}
-           \caption{Momentum resolution before ESC selection.}
-           \label{fig:ppr-res-bfESC}
-      \end{subfigure}
-      \begin{subfigure}{\dbfigwid\textwidth}
-           \includegraphics[width=\textwidth]{figures/sel/p_pr_eff_al13.png}
-           \caption{Selection efficiency before ESC selection.}
-           \label{fig:ppr-eff-bfESC}
-      \end{subfigure}
-      \\
-      \begin{subfigure}{\dbfigwid\textwidth}
-           \includegraphics[width=\textwidth]{figures/sel/p_pr_res_pdf_al14_zoom.eps}
-           \caption{Momentum resolution after ESC selection.}
-           \label{fig:ppr-res-afESC}
-      \end{subfigure}
-      \begin{subfigure}{\dbfigwid\textwidth}
-           \includegraphics[width=\textwidth]{figures/sel/p_pr_eff_al14.png}
-           \caption{Selection efficiency after ESC selection.}
-           \label{fig:ppr-eff-afESC}
-      \end{subfigure}
-      \caption{Proton ESC selection results. The grey histograms are the true probability distribution, while the pink ones are those that get reconstructed. }
-      \label{fig:pprESC-res}
-   \end{figure}
-
     
         \subsubsection{Results}
            The results of the $\numuccopi$ selection using the trackless pion technique are summarised in Fig.~\ref{fig:piTLres}.
