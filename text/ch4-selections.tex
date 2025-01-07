@@ -305,7 +305,8 @@ Additionally, to prepare for the data-MC comparisons and future cross section an
        When these low-momentum pions are not reconstructed, these $\ccopi$ events would then be misidentified as $\cczpi$ events, both decreasing the signal for the $\ccopi$ samples and increasing the background for the $\cczpi$ sample. 
        Thus, it would be highly beneficial if we could reconstruct these pions, and the pion trackless reconstruction technique I develop can address this gap perfectly. 
      
-       \subsection{Motivation}
+       \subsection{preliminary Study}
+       \label{sec:tl-ps}
          Before embarking on the development of the pion trackless reconstruction, one important check is to investigate the potential significance of such technique, because this technique can only reconstruct pions that decay at rest.
          If there is a limited number of pions that decay at rest, the technique would not be applicable.
          Hence, a preliminary study on pion fates relevant to T2K was performed.
@@ -335,21 +336,28 @@ Additionally, to prepare for the data-MC comparisons and future cross section an
           \end{figure}
 
           The second step is to simulate the pion propagation in SFGD with the relevant kinematics.
-          A total of $6$ samples, each with a sufficient (how many) number of events, with pions travlling with a momentum of $200~\mevc$, $300~\mevc$ and $800~\mevc$ and an angle of $0\deg$ and $70\deg$ are simulated.
+          A total of $6$ samples, each with $10,000$ events, with pions travlling with a momentum of $200~\mevc$, $300~\mevc$ and $800~\mevc$ and an angle of $0\deg$ and $70\deg$ are simulated.
           As SFGD reconstruction should be largely independent of the pion direction, the $70\deg$ sample is for a consistency check.
           For each sample, the fate of each pion is checked using the truth information.
           A total of $10$ fate topologies are defined as follows:
           \begin{enumerate}
-               \item \textbf{DK@rest(good)}
-               \item \textbf{DK@rest(dirty)}
-               \item \textbf{DK@flight}
-               \item \textbf{Elastic knock-out}
-               \item \textbf{Deflection}
-               \item \textbf{Absorption}
-               \item \textbf{Charge exchange}
-               \item \textbf{$\pim$}
-               \item \textbf{Escaped}
-               \item \textbf{Others}
+               \item \textbf{DK@rest(good)} - The pion decays at rest and the total number of true trajectories is three, corresponding to $\pip$, $\mu$ and the ME exactly. 
+               This is a clean pion decay at rest event. 
+               \item \textbf{DK@rest(dirty)} - This is similar to the previous fate, but the total number of true trajectories is more than three.
+               The additional trajectories are mostly electromagnetic showers due to the ME. 
+               \item \textbf{DK@flight} - The pion decays with non-zero momentum, leading to relatively large starting momentum for the daughter muon.
+               \item \textbf{Elastic knock-out} - The pion undergoes SI, leading to the liberation of an additional proton.
+               The pion continues to propagate and decay, but its range is no longer well correlated with its starting momentum.
+               \item \textbf{Deflection} - The pion undergoes SI. 
+               No additional particles are produced, but its direction is changed.
+               \item \textbf{Absorption} - Another type of SI, where the pion does not emerge from its interaction with the nucleus, so no ME is present.
+               \item \textbf{Charge exchange} - The $\pip$ is converted to a $\piz$ via a charge exchange interaction with the nucleus.
+               As $\piz$ decays much faster, no ME is present.
+               \item \textbf{$\pim$} - There is no single interaction that can convert a $\pip$ to a $\pim$, but this fate, a $\pim$ as one of the daughters of the $\pip$, is observed, albeit rare, due to complicated pion SI inside the nucleus.
+               \item \textbf{Escaped} - The pion escapes SFGD before decaying.
+               Regardless of its subsequent decay, the potential ME cannot be detected in SFGD.
+               \item \textbf{Others} - This fate collects all the uncategorized events, for example, where the pion produces delta electron or bremsstrahlung.
+               This category should be relatively rare and thus should not require special treatment.
           \end{enumerate}
           Fate 1 to 3 are all pions that decay before any secondary interactions, i.e., the pions decay via the chain, $\pi \rightarrow \mu \rightarrow e$.
           Hence, these pions can be tagged by the presence of the ME.
@@ -367,7 +375,7 @@ Additionally, to prepare for the data-MC comparisons and future cross section an
           The geometry of the SFGD, which is much shorter in the vertic direction, makes it easier for high-angle pions to escape.
           For the $f800~\mevc$ pions, their decay length is too long for SFGD.
           Hence, there is a significant increase in the escape fraction, about $30\%$ and $50\%$ for $0\deg$ and $70\deg$ .
-          For unescaped ones are all those that have undergone secondary interactions, so at this high momentum, these pions cannot be reconstructed by the trackless technique.
+          The unescaped ones are all those that have undergone secondary interactions, so at this high momentum, these pions cannot be reconstructed by the trackless technique.
           \begin{figure}[t]
                \centering
                \begin{subfigure}{\dbfigwid\textwidth}
@@ -404,8 +412,8 @@ Additionally, to prepare for the data-MC comparisons and future cross section an
                \end{subfigure}
             \end{figure}
 
-
-
+          This preliminary study demonstrates that a considerable fraction of the primary pions produced in SFGD have relatively low momentum ($<200\mevc$), and for these pions, the majority of them decays at rest to produce an ME that could be utilized in the trackless technique.
+          Thus, the trackless technique would be applicable to at least about $30\%$ of the pion events in SFGD, thereby making it an impactful reconstruction method to develop.
 
        \subsection{Working Principles}
        \label{sec:tl-wp}
@@ -433,7 +441,8 @@ Additionally, to prepare for the data-MC comparisons and future cross section an
               \label{fig:fit}
            \end{figure}
 
-        \subsubsection{Implementation}
+        \subsection{Implementation}
+        \label{sec:tl-imp}
             The pion trackless reconstruction is part of my $\numuccopi$ selection, which is based on the existing $\numucc$-inclusive selection. Hence, it is best to elaborate the trackless technique in the context of the $\numuccopi$ selection. 
         
             The $\numucc$-inclusive selection has identified the primary vertex position and the primary muon, which already provides the trackless reconstruction with a good approximation of the pion starting point. The following steps are implemented to identify the suitable ME and reconstruct the pion momentum in the $\numuccopi$ selection. 
@@ -479,8 +488,47 @@ Additionally, to prepare for the data-MC comparisons and future cross section an
         
             For the events passing all the selection steps, the presence of a primary pion is implied by the existence of a proper ME candidate, and its momentum is reconstructed by range. 
 
+     \subsection{Impacts on SPK}
+          One important advocated advantage of the trackless technique is the improved reconstruction in the low momentum phase space.
+          It is imperative to verify this claim by comparing to pion momentum reconstruction using the conventional method where the pion is identified by a reconstructed track with an ME attached to the end.
+          A preliminary selection based on the conventional method was developed for such comparison.
+          To distinguish the two pion selections for this comparison, the one using the trackless technique is refered to $\numuccopi$-TL while the one using the conventional method $\numuccopi$-TR.
+          The $\numuccopi$-TR selection is based on the $\numucc$-inclusive selection and the same background reduction steps as the $\numuccopi$-TL.
+          The difference lies in the reconstruction of the primary pion.
+          It is required to have a reconstructed primary track with an ME attached to the end.
+          No further optimization is done so that this selection has the maximally possible phase space.
+          The results of the comparison are shown in Fig.~\ref{fig:tltr-comp}\footnote{Note that the result for $\numuccopi$-TL in this figure does not include the implementation of the early energy deposit in choosing the suitable ME candidate as this comparison was done at the early stage of the development.
+          As the main purpose for this comparison is to demonstrate the limitation of the conventional method, the final reconstruction threshold for the $\numuccopi$-TL can be seen in results in the next section}.
 
-    \subsection{Development of stopping pion control sample}
+          \begin{figure}
+               \centering
+               \begin{subfigure}{\dbfigwid\textwidth}
+                    \includegraphics[width=\textwidth]{figures/sel/finhist_pi_mom_topology_TL.png}
+                    \caption{$\numuccopi$-TL: Topology decomposition.}
+                    \label{subfig:stack-topo-tl}
+               \end{subfigure}
+               \begin{subfigure}{\dbfigwid\textwidth}
+                    \includegraphics[width=\textwidth]{figures/sel/finhist_pi_mom_topology_TR.png}
+                    \caption{$\numuccopi$-TL: Topology decomposition.}
+                    \label{subfig:stack-topo-tr}
+               \end{subfigure}
+               \\
+               \begin{subfigure}{\dbfigwid\textwidth}
+                    \includegraphics[width=\textwidth]{figures/sel/p_pi_eff_al10_TL.eps}
+                    \caption{$\numuccopi$-TL: Reconstruction efficiency.}
+                    \label{subfig:ppi-eff-tl}
+               \end{subfigure}
+               \begin{subfigure}{\dbfigwid\textwidth}
+                    \includegraphics[width=\textwidth]{figures/sel/p_pi_eff_al9_TR.eps}
+                    \caption{$\numuccopi$-TR: Reconstruction efficiency.}
+                    \label{subfig:ppi-eff-tr}
+               \end{subfigure}
+              \caption{Pion trackless reconstruction results.}
+               \label{fig:tltr-comp}
+            \end{figure}
+          \end{figure}
+
+    \section{Development of stopping pion control sample}
           Conventionally, selections will be used for cross section analysis, which requires a sufficient portion of all detector systematics to be properly evaluated.
           However, due to time constraint, this is unlikely to happen within the time frame of my doctoral study. 
           Hence, only preliminary data-MC comparisons are possible.

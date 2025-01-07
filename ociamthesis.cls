@@ -449,11 +449,13 @@
 
 
 \usepackage{subcaption}
+\usepackage{braket}
 % ------ units --------
 \newcommand{\gevc}{\textrm{GeV}/c}
 \newcommand{\mevc}{\textrm{MeV}/c}
 \newcommand{\gev}{\textrm{GeV}}
 \newcommand{\mev}{\textrm{MeV}}
+\newcommand{\ev}{\textrm{eV}}
 
 
 % ------ particles ------
@@ -470,7 +472,7 @@
 \newcommand{\deltapp}{\Delta^{++}}
 
 % ------ Topologies -------
-\newcommand{\cczpi}{$\textrm{CC}0\pi$}
+\newcommand{\cczpi}{\textrm{CC}0\pi}
 \newcommand{\ccopi}{\textrm{CC}1\pi}
 \newcommand{\ccopiop}{\textrm{CC}1\pi1\textrm{p}}
 \newcommand{\numucczpi}{\nu_{\mu}\textrm{CC}0\pi}
@@ -552,6 +554,13 @@
 
 \newcommand{\srcfr}{R_\textrm{SRC}}
 \newcommand{\nurmec}{E_\textrm{RM}^\textrm{C}}
+
+% ------ PMNS ------------
+\newcommand{\totwo}{\theta_{12}}
+\newcommand{\tothr}{\theta_{13}}
+\newcommand{\ttt}{\theta_{23}}
+\newcommand{\delmtwoo}{\Delta m^2_{21}}
+\newcommand{\delmthro}{|\Delta m^2_{31}|}
 
 % ------ Tuning samples ------
 \newcommand{\ttkzpi}{T2K-$0\pi$\xspace}
