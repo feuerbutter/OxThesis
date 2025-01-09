@@ -488,7 +488,7 @@ Additionally, to prepare for the data-MC comparisons and future cross section an
         
             For the events passing all the selection steps, the presence of a primary pion is implied by the existence of a proper ME candidate, and its momentum is reconstructed by range. 
 
-     \subsection{Impacts on SPK}
+     \subsection{Comparison with conventional method}
           One important advocated advantage of the trackless technique is the improved reconstruction in the low momentum phase space.
           It is imperative to verify this claim by comparing to pion momentum reconstruction using the conventional method where the pion is identified by a reconstructed track with an ME attached to the end.
           A preliminary selection based on the conventional method was developed for such comparison.
@@ -499,7 +499,12 @@ Additionally, to prepare for the data-MC comparisons and future cross section an
           No further optimization is done so that this selection has the maximally possible phase space.
           The results of the comparison are shown in Fig.~\ref{fig:tltr-comp}\footnote{Note that the result for $\numuccopi$-TL in this figure does not include the implementation of the early energy deposit in choosing the suitable ME candidate as this comparison was done at the early stage of the development.
           As the main purpose for this comparison is to demonstrate the limitation of the conventional method, the final reconstruction threshold for the $\numuccopi$-TL can be seen in results in the next section}.
-
+          The efficiencies for pion with momentum higher than $100\mevc$ are similar for both methods.
+          Below $100\mevc$, the improvement brought by the trackless technique is two-fold.
+          Firstly, the efficiencies below $100\mevc$ are significantly higher for the trackless technique.
+          The efficiency for $\numuccopi$-TR drops drastically below $80\mevc$.
+          Secondly, the momentum threshold in $\numuccopi$-TL extends to below $50\mevc$, which is impossible for the conventional method.
+          More encourangingly, this improvement in low momentum efficiency and lower threhold does not compromise the selection purity as shown in Fig.~\ref{subfig:stack-topo-tl} and Fig.~\ref{subfig:stack-topo-tr}.
           \begin{figure}
                \centering
                \begin{subfigure}{\dbfigwid\textwidth}
@@ -514,12 +519,12 @@ Additionally, to prepare for the data-MC comparisons and future cross section an
                \end{subfigure}
                \\
                \begin{subfigure}{\dbfigwid\textwidth}
-                    \includegraphics[width=\textwidth]{figures/sel/p_pi_eff_al10_TL.eps}
+                    \includegraphics[width=\textwidth]{figures/sel/p_pi_eff_al10_TL.png}
                     \caption{$\numuccopi$-TL: Reconstruction efficiency.}
                     \label{subfig:ppi-eff-tl}
                \end{subfigure}
                \begin{subfigure}{\dbfigwid\textwidth}
-                    \includegraphics[width=\textwidth]{figures/sel/p_pi_eff_al9_TR.eps}
+                    \includegraphics[width=\textwidth]{figures/sel/p_pi_eff_al9_TR.png}
                     \caption{$\numuccopi$-TR: Reconstruction efficiency.}
                     \label{subfig:ppi-eff-tr}
                \end{subfigure}
@@ -528,7 +533,48 @@ Additionally, to prepare for the data-MC comparisons and future cross section an
             \end{figure}
           \end{figure}
 
+     \subsection{Impacts on SPK}
+          The results of the $\numuccopi$ selection using the trackless pion technique are summarised in Fig.~\ref{fig:piTLres}.
+          As shown in Fig,~\ref{fig:ppi-stack}, the trackless selection has achieved the set goal - reconstructing low momentum pions. 
+          There are a considerable number of events with a pion below $100~\mevc$, which correspond to a track of about $50~\textrm{mm}$. 
+          Moreover, pions below $80~\mevc$ have also been reconstructed, which travels about $30~\textrm{mm}$ and cannot be reconstructed as a track. 
+          Furthermore, the momentum-by-range calculation has achieved an excellent resolution at about $2\%$, as shown in $\ref{fig:ppi-res}$.
+          More encouragingly, the overall efficiencies are still relatively high. 
+          The step-by-step efficiencies with respect to each step is shown in Fig.~\ref{fig:tl-accum-eff}. 
+          The signal definition used in the calculation is to have one true muon that has travelled to the vertical TPC and one true pion that is contained in SFGD. 
+          Steps 1 to 7 are the $\numucc$-inclusive selection. 
+          The large drop in efficiency in Step 8 is expected as it requires exactly one pion reconstructed tracklessly. 
+          All pions undergoing secondary interactions except deflection cannot be reconstructed via this method. 
+          Hence, the relative efficiency of $0.37/0.66\approx56\%$ is considerably high. 
+          The further significant drop in efficiency comes with the next step, the kink cut, which is a reasonable as a considerable portion of pions undergo deflection. 
+          The subsequent drops are graduate cuts to remove backgrounds, which leads to a high purity of $\numuccopi$ as shown in Fig.~\ref{fig:ppi-stack}.
+
+          \begin{figure}[t]
+              \centering
+              \begin{subfigure}{\trfigwid\textwidth}
+                   \includegraphics[width=\textwidth]{figures/sel/ppi_stack.png}
+                   \caption{Momentum distribution.}
+                   \label{fig:ppi-stack}
+              \end{subfigure}
+              \begin{subfigure}{\trfigwid\textwidth}
+                   \includegraphics[width=\textwidth]{figures/sel/ppi_res.png}
+                   \caption{Momentum resolution.}
+                   \label{fig:ppi-res}
+              \end{subfigure}
+              \begin{subfigure}{\trfigwid\textwidth}
+                   \includegraphics[width=\textwidth]{figures/sel/INCL_p_pi_accum_eff_al11.png}
+                   \caption{Accumulative efficiency.}
+                   \label{fig:tl-accum-eff}
+              \end{subfigure}
+              \caption{Pion trackless reconstruction results.}
+              \label{fig:piTLres}
+           \end{figure}
+
+
     \section{Development of stopping pion control sample}
+
+          \subsection{Implementation}
+          \label{sec:sppi-imp}
           Conventionally, selections will be used for cross section analysis, which requires a sufficient portion of all detector systematics to be properly evaluated.
           However, due to time constraint, this is unlikely to happen within the time frame of my doctoral study. 
           Hence, only preliminary data-MC comparisons are possible.
@@ -544,65 +590,139 @@ Additionally, to prepare for the data-MC comparisons and future cross section an
           \end{enumerate}
           The preliminary result suggests that the control sample consists predorminantly of tracks passing HAT and stopping in SFGD.
           As the current PID in HAT is not fully developed, I investigated further the impact of the log likelihood on pion PID.
-          I discovered that the previous cuts need to be made more stringent to achieve a high purity.
+          The logarithms of the first and the fourth element of the pull vector are most relevant.
+          For conciseness, these logarithms are simply refered to as the first pull and the fourth pull respectively. 
+          For the existing TPC PID, the fourth pull was set to be larger than $0.3$ and the sum of the first and the fourth pull was set to be larger than $0.8$ for pion PID. 
+          Altough HAT is also a TPC, there are differences in design and thus the PID requirement could differ.
+          The distributions of the pulls at HAT for postively charged tracks before any cuts on the pulls are shown in Fig.~\ref{fig:pulls}, which suggests that a significant fraction of muon will remain after the TPC pull cuts.
 
           FIG- HAT LLH cuts
+
+          Hence, stricter cuts are required to obtain a pion sample with higher purity.  
+          New cut values are obatined by examining the pull distributions in the narrower range as shown in Fig.~\ref{fig:pulls-zoom}.
+
+          FIG- HAT PULL ZOOM.
 
           This leads to a sample with over $90\%$ purity as shown in Fig.~\ref{fig:sppi-pur}.
           FIG- SPPI PUR.
 
-           
-    
-    
+          As the HAT reconstruction is under development, the values implemented here might be subjected to further changes.
 
-\section{MC studies and Comparisons with Data}
-     Improvement brought by the implementation of new techniques is best illustrated within the respective selection.
+          \subsection{Systematics evaluation}
+          \label{sec:sppi-syst}
+          The control sample is developed with evaluation of the pion momentum by range reconstruction in mind.
+          Although the selection is not finalized as the HAT reconstruction and global track matching are still subjected to changes, it is still valuable to develop the systematics evaluation framework.
+          One is the to learn the method of performing systematics evaluattion, the other is to get a first glimpse of the performance of the pion momentum reconstruction in SFGD.
 
-     \subsection{$\numucczpiop$-ESC}
-    
-        \subsubsection{Results}
-           The results of the $\numuccopi$ selection using the trackless pion technique are summarised in Fig.~\ref{fig:piTLres}.
-           As shown in Fig,~\ref{fig:ppi-stack}, the trackless selection has achieved the set goal - reconstructing low momentum pions. 
-           There are a considerable number of events with a pion below $100~\mevc$, which correspond to a track of about $50~\textrm{mm}$. 
-           Moreover, pions below $80~\mevc$ have also been reconstructed, which travels about $30~\textrm{mm}$ and cannot be reconstructed as a track. 
-           Furthermore, the momentum-by-range calculation has achieved an excellent resolution at about $2\%$, as shown in $\ref{fig:ppi-res}$.
-           More encouragingly, the overall efficiencies are still relatively high. 
-           The step-by-step efficiencies with respect to each step is shown in Fig.~\ref{fig:tl-accum-eff}. 
-           The signal definition used in the calculation is to have one true muon that has travelled to the vertical TPC and one true pion that is contained in SFGD. 
-           Steps 1 to 7 are the $\numucc$-inclusive selection. 
-           The large drop in efficiency in Step 8 is expected as it requires exactly one pion reconstructed tracklessly. 
-           All pions undergoing secondary interactions except deflection cannot be reconstructed via this method. 
-           Hence, the relative efficiency of $0.37/0.66\approx56\%$ is considerably high. 
-           The further significant drop in efficiency comes with the next step, the kink cut, which is a reasonable as a considerable portion of pions undergo deflection. 
-           The subsequent drops are graduate cuts to remove backgrounds, which leads to a high purity of $\numuccopi$ as shown in Fig.~\ref{fig:ppi-stack}.
+          The systematics evaluation follows that in the FGD analysis as outlined in Ref.~\cite{Jenkins:2022ljx}.
+          While it is straightforward to examine the reconstruction resolution with MC studies, there is no truth information when analysing data.
+          As the momentum reconstruction in TPCs has good resolution and is well validated, i.e. there is good agreement between MC and data, instead of comparing the reconstructed momentum to the true momentum, it can be used as a good estimation of the true momentum.
+          Moreover, as the control sample selects pion tracks that travel from HAT into SFGD and the pion loses an inifinitesimal amount of energy in the HAT, the momentum obtained from the HAT reconstruction is a good approximation of the true enter momentum in SFGD.
+          The devaitions of the SFGD reconstructed moentum from the HAT reconstructed momentum can be computed for both MC and data.
+          On one hand, this deviation can be regarded as an approximation of the SFGD momentum resolution.
+          On the other hand, the difference between the deviations of MC and data can assess the difference in the reconstruction performance between MC and data in SFGD, i.e. the systematics related to the SFGD momentum by range reconstruction.
 
-           \begin{figure}[t]
+          The distributions of the deviations for MC and data are shown in Fig.~\ref{fig:sppi-res} and the fitting parameters are summarised in Table.~\ref{tab:sppi-res}.
+
+          \begin{table}[htbp]
+          \centering
+          \begin{tabular}{c|cccc}
+                       & MC - $x_0~(\mevc)$ & MC - HWHM~($\mevc$) & Data - $x_0~(\mevc)$ & Data HWHM~($\mevc$)\\
+          \hline
+          TPC-FGD & $-25.03 \pm 0.52$ & $85.38 \pm 1.20$ & $-19.43 \pm 1.41$ & $93.57 \pm 4.15$ \\
+          HAT-SFGD & $-5.29 \pm 0.73$  & $7.49 \pm 0.65$  & $-10.14 \pm 4.55$  & $16.34 \pm 5.21$ \\
+          \end{tabular}
+          \caption{Fit parameters for the momentum deviation distributions.}
+          \label{tab:sppi-res}
+          \end{table}
+
+          Both widths are significantly smaller than those, xxxx~\cite{Jenkins:2022ljx}, in the FGD study.
+          However, due to the limited amount of data, the difference between the two distributions is still relatively large that the magnitude of the systematic error, xxx, is similar to that in the FGD analysis, xxxx. 
+          \begin{figure}[h]
+          \centering
+          \begin{subfigure}[h]{\dbfigwid\textwidth}
+          \centering
+          \includegraphics[width=\textwidth]{figures/sel/sspi_TOP_pi_mombr_hatp_difhist_al6_mc.eps}
+          \caption{Momentum difference between SFGD and HAT for MC.(figs to be updated)}
+          \label{subfig:sfgp-hatp-dif-mc}
+          \end{subfigure}
+          \hfill
+          \begin{subfigure}[h]{\dbfigwid\textwidth}
+          \centering
+          \includegraphics[width=\textwidth]{figures/sel/sspi_TOP_pi_mombr_hatp_difhist_al4_CombHAT_data.eps}
+          \caption{Momentum difference between SFGD and HAT for data.}
+          \label{subfig:sfgp-hatp-dif-data}
+          \end{subfigure}
+          \caption{Momentum difference for stopping pion control sample.}
+          \label{fig:sppi-res}
+          \end{figure}
+
+          The systematic error paramters are then passed to the HighLAND framework to propagate the uncertainty through the $\numuccopi$-TL selection.
+          The result is shown in Fig.~\ref{fig:tlpi-relerr}.
+          \begin{figure}[h]
+          \centering
+          \begin{subfigure}[h]{\dbfigwid\textwidth}
+          \centering
+          \includegraphics[width=\textwidth]{figures/sel/relerr-tpcmu.png}
+          \caption{Relative error for the TPC-$\mu$ sub-sample.}
+          \label{subfig:relerr-tpcmu}
+          \end{subfigure}
+          \hfill
+          \begin{subfigure}[h]{\dbfigwid\textwidth}
+          \centering
+          \includegraphics[width=\textwidth]{figures/sel/relerr-sfgmu.png}
+          \caption{Relative error for the SFGD-$\mu$ sub-sample.}
+          \label{subfig:relerr-sfgmu}
+          \end{subfigure}
+          \caption{Relative error for the $\numuccopi$-TL selection.}
+          \label{fig:tlpi-relerr}  
+          \end{figure}
+          Due to the incompleteness of global reconstruction and the limited amount of data, this error propagation is performed with only $20$ toys, which can only serve as a proof of the succesful propagation of the systematics.
+          Even though no phyics conclusion can be drawn with this limited amount of data, it is promising to observe a considerable decrease in the error for the low momentum pion, comparing to the FGD analysis, which is approximately $9\%$ to $15\%$, showcasing the strength of SFGD.
+
+     \section{Data-MC comparisons}
+          With the development of the pion momentum by range reconstruction systematics, it is possible to take a first glimpse of data-MC comparisons for the $\numuccopi$-TL selection. 
+          As the global reconstruction is yet to be finalized and only one preliminary systematics is propagated, this data-MC comparison is merely a demonstration of how the data can be used in the future analysis, and no physics conclusion should be drawn.
+          The data-MC comparisons are shown in Fig.~\ref{fig:tlpi-datamc}.
+          It is reassuring to observe no significant discrepancy between data and MC in the $\numuccopi$-TL selection.
+          The data-MC comparison workflow is thus complete.
+          Official analysis results can be readily obtained once the various systematics are in place by putting both MC and data through the $\numuccopi$-TL selection.
+          \begin{figure}[h]
                \centering
-               \begin{subfigure}{\trfigwid\textwidth}
-                    \includegraphics[width=\textwidth]{figures/sel/ppi_stack.png}
-                    \caption{Momentum distribution.}
-                    \label{fig:ppi-stack}
+               \begin{subfigure}{\dbfigwid\textwidth}
+                    \includegraphics[width=\textwidth]{figures/sel/datamc-comp-ppi-tpcmu.png}
+                    \caption{The TPC-$\mu$ sub-sample: $\ppi$.}
+                    \label{subfig:datamc-tpcmu}
                \end{subfigure}
-               \begin{subfigure}{\trfigwid\textwidth}
-                    \includegraphics[width=\textwidth]{figures/sel/ppi_res.png}
-                    \caption{Momentum resolution.}
-                    \label{fig:ppi-res}
+               \begin{subfigure}{\dbfigwid\textwidth}
+                    \includegraphics[width=\textwidth]{figures/sel/datamc-comp-ppi-sfgmu.png}
+                    \caption{The SFGD-$\mu$ sub-sample: $\ppi$.}
+                    \label{subfig:datamc-sfgmu}
                \end{subfigure}
-               \begin{subfigure}{\trfigwid\textwidth}
-                    \includegraphics[width=\textwidth]{figures/sel/INCL_p_pi_accum_eff_al11.png}
-                    \caption{Accumulative efficiency.}
-                    \label{fig:tl-accum-eff}
+               \\
+               \begin{subfigure}{\dbfigwid\textwidth}
+                    \includegraphics[width=\textwidth]{figures/sel/datamc-comp-tpi-tpcmu.png}
+                    \caption{The TPC-$\mu$ sub-sample: $\theta$.}
+                    \label{subfig:datamc-theta-tpcmu}
                \end{subfigure}
-               \caption{Pion trackless reconstruction results.}
-               \label{fig:piTLres}
-            \end{figure}
+               \begin{subfigure}{\dbfigwid\textwidth}
+                    \includegraphics[width=\textwidth]{figures/sel/datamc-comp-tpi-sfgmu.png}
+                    \caption{The SFGD-$\mu$ sub-sample: $\theta$.}
+                    \label{subfig:datamc-theta-sfgmu}
+               \end{subfigure}
+               \caption{Data-MC comparisons for the $\numuccopi$-TL selection.}
+               \label{fig:tlpi-datamc}
+          \end{figure}
+
+     \section{Discussion}
+     \label{sec:technique-disc}
+          The two new techniques elaborated in this chapter, the ESC selection and the pion trackless reconstruction, have shown significant improvement in the reconstruction of hadrons in SFGD.
+          One leads to a $50\%$ improvement in the momentum resolution of protons, while the other significantly improves the low momentum pion reconstruction efficiency and extends the pion reconstruction threshold to $50\mevc$, which is impossible for the conventional method.
+          Both the $\numuccopi$ and ESC proton selections are finished for primary muons going into the vertical TPC and SFGD. 
+          The sub-sample for muons going into HAT is missing as the global reconstruction matching for tracks passing through HAT is still under development.
+          However, as the two new techniques in this chapter are developed for hadrons, the performance should not depend on the ending position of the muons.
+          Hence, reconstruction improvement showcased in this chapter should be applicable to the muons going into HAT as well.
+          With this improvement in the single particle kinematics, it is exciting to see the performance of the reconstruction of the higher level variables, such as the TKI variables, in the next chapter.
 
 
-            
-
-    \subsection{Discussion}
-        Both the pion and ESC proton selections are finished for muons going into the vertical TPC and SFGD. The High Angle TPC reconstruction is under development and will be expected to finish in the end of July 2024. Hence, the full selection will be done in the following months. The estimation of systematic uncertainties using control samples is being developed by colleagues and is expected to be done in the next few months. 
-
-
-     \subsection{systematics ovaluation}
           
