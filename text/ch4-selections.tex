@@ -24,10 +24,12 @@ These new techniques are applied in the development of two signal sample selecti
 Additionally, to prepare for the data-MC comparisons and future cross section analysis, I have also developed a stopping pion control sample selection.
 
 \section{$\numucczpiop$-ESC}
+\label{sec:sel-esc}
      The $\numucczpiop$-ESC is adding an additional ESC selection step to the $\numucczpiop$ selection developed by a T2K colleauge.
      The details of the ESC step is elaborated below.
    %------------------- ESC ----------------%
     \subsection{Working Principles}
+    \label{sec:sel-esc-wp}
     Protons stopping at rest would deposit a large amount of energy, the so-called Bragg Peak, just before it stops.
     These protons tend to have their momenta better constructed as its momentum is more strongly correlated with its range. 
     As shown in Fig.~\ref{fig:dedx-pprres-eg}, protons having energy deposit below $1000$ units has large variances in momentum reconstruction. 
@@ -40,6 +42,7 @@ Additionally, to prepare for the data-MC comparisons and future cross section an
     Hence, these protons can be selected by placing a lower boundary cut on the energy deposited at the nodes near the end of the reconstructed tracks to have a sample with a high proton momentum resolution.   
     
    \subsection{Implementation}
+   \label{sec:sel-esc-imp}
    As the ESC selection is based on $\dedx$ at the end of the proton track, a good reconstuction of $\dedx$ must be obtained first.
    To investigate the proper way of estimatiing $\dedx$, I have simulated multiple particle gun (PGUN) samples with the proton travelling in different directions in the SFGD.
    More specifically, three samples are travelling along the $x$-, $y$- and $z$-axis and five other samples are travelling at $15\deg$, $30\deg$, $45\deg$, $60\deg$ and $75\deg$ to the $x$-axis in the $x$-$z$ plane.
@@ -175,6 +178,7 @@ Additionally, to prepare for the data-MC comparisons and future cross section an
     The upper cut on $\chi^2$ is implemented as $800$, above which considerably larger fluctuation is observed.
 
     \subsection{Momentum reconstruction bias accessment}
+    \label{sec:sel-esc-bias}
     In Ref.~\ref{Lu:2016mjf}, reconstruction bias in the transverse component of the momentum is observed after the ESC implementation.
     Hence, such bias is also checked for the signal sample in SFGD.
     However, unlike in Ref.~\ref{Lu:2016mjf}, no apparent bias in proton momentum reconstruction is present, while such bias is observed in muon momentum reconstruction as shown in Fig.~\ref{fig:esc-prmupt}.
@@ -681,6 +685,12 @@ Additionally, to prepare for the data-MC comparisons and future cross section an
           Even though no phyics conclusion can be drawn with this limited amount of data, it is promising to observe a considerable decrease in the error for the low momentum pion, comparing to the FGD analysis, which is approximately $9\%$ to $15\%$, showcasing the strength of SFGD.
 
      \section{Data-MC comparisons}
+          Conventionally, kinematic distributions from these selections will be extracted and passed through the unfolding process which maps the reconstructed variables to the truth space. 
+          These unfolded distributions can then be used to compare directly with output from MC event generators.
+          However, the unfolding process needs to account for all major detector effects, and unfortunately, a full coverage of systematics for the new sub-detectors is not possible within my doctoral study timeline.
+          Hence, I have to resort to a reconstruction-level Data-MC comparisons instead.
+          Although the comparison result will only be valid for the specific configurations of interaction model used to produce the MC sample, it is the only possible way to utilize the collected data to produce physical results.
+     
           With the development of the pion momentum by range reconstruction systematics, it is possible to take a first glimpse of data-MC comparisons for the $\numuccopi$-TL selection. 
           As the global reconstruction is yet to be finalized and only one preliminary systematics is propagated, this data-MC comparison is merely a demonstration of how the data can be used in the future analysis, and no physics conclusion should be drawn.
           The data-MC comparisons are shown in Fig.~\ref{fig:tlpi-datamc}.

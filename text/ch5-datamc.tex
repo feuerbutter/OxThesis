@@ -5,101 +5,223 @@ There is no one who loves pain itself, who seeks after it and wants to have it, 
   \qauthor{--- Cicero's \textit{de Finibus Bonorum et Malorum}}
 \end{savequote}
 
-\chapter{\label{ch:5-mcdata}MC Studies and Data-MC Comparisons} 
-
+\chapter{\label{ch:5-mcdata}High level vairables} 
 \minitoc
 
+As elaborated in the previous chapter, the neutrino-nucleus interaction is a complex process involving multiple components, including the neutrino-nucleon interaction, the nucleon initial states (IS), and the final state interactions (FSI).
+Hadronic single particle kinematics (SPK) are easy to measure and interpret, but they are affected by all components of the neutrino-nucleus interaction. 
+Hence, changes in different components can lead to similar changes in the SPK, thereby making it difficult to use them to improve neutrino-nucleus interaction models.
+To match the statistical improvement of the next generation long-baseline neutrino experiments, it is imperative to refine neutrino interaction models to significantly reduce the systematic uncertainties.
+To address this issue, high-level variables are cleverly constructed to probe specific components of the neutrino-nucleus interaction.
+This chapter is dedicated to the potential improvemnt in measurement of these high-level variables with the upgraded ND280 detector.
+Besides the well-etablished Transverse Kinematic Imbalance (TKI) variables elaborated in Sec.~\ref{sec:nuint-tki}, the centre-of-momentum (COM) variables are introduced for the first time to probe FSI independent of IS.
+The first section provides a brief introdution to these constructed variables, while the following section presents the MC study results.
+Although it will be highly exciting to see the data-MC comparisons of these variables, the current state of the global simulation and reconstruction does not allow for such comparisons.
+Due to the immature state of global simulation and reconstruction, the ESC technique is not yet implemented in the most recent analysis chain, only based on which data-mc comparison can be made.
+As proton kinematics are required for the high level constructed variables, data-MC comparisons for these variables are not possible at this stage, and improvements for these variables will only be deomnstgrated with MC studies.
 
-The benefits of these techniques will be illustrated based on MC studies and further showcase in data-MC comparisons for both low level variables, such as the single particle kinematic variables and the high level variables, like the Transverse Kinematic Imbalance (TKI) variables and the Centre-of-Momentum (COM) variables. 
+\section{TKI}
+\label{sec:mc-tki}
+     With the improvement in hadronic SPK brought by the novel reconstruction techniques introduced in the previous chapter, the TKI variables are expected to be measured with higher precision.
+     Like the previous chapter, the impacts of the new techniques on the TKI variables will be illustrated separately for the $\numucczpiop$ and $\numuccopiop$ samples.
 
+     \subsection{$\numucczpiop$ selection}
+     \label{sec:mc-tki-0pi}
+          To demonstrate the strength of the ESC technique, the TKI reconstruction in two samples are compared, namely the $\numucczpiop$-ESC and the $\numuccczpiop$-ESC sample.
+          The $\numucczpiop$(-ESC) sample is selected by requiring the presence of exactly one contained SFGD (ESC) proton on top of the $\numucc$-inclusive selection.
+          As discussed in Sec.~\ref{sec:sel-esc}, the ESC technique is comprised of the proton ESC cut and the muon momentum bias correcction for TKI calculations.
+          Hence, the TKI reconstruction comparisons will also be presented stepwise.
 
-The previous chapter has described the development of two signal selections and one control sample selection. This chapter focuses on the prospective physics analysis using these selections.
-Conventionally, kinematic distributions from these selections will be extracted and passed through the unfolding process which maps the reconstructed variables to the truth space. 
-These unfolded distributions can then be used to compare directly with output from MC event generators.
-However, the unfolding process needs to account for all major detector effects, and unfortunately, a full coverage of systematics for the new sub-detectors is not possible within my doctoral study timeline.
-Hence, I have to resort to a reconstruction-level Data-MC comparisons instead.
-Although the comparison result will only be valid for the specific configurations of interaction model used to produce the MC sample, it is the only possible way to utilize the collected data to produce physical results.
-This chapter will contain data-MC comparisons for multiple kinematic variables. 
-Other than the straightforward single particle kinematics, such as proton momentumn and angle, comparisons of specially constructed variables, such as the TKI variables, are also presented. 
-Furthermore, a new set of variables, the centre-of-momentum (COM) variables, for the $\numuccopiop$ selection is devised for the first time to provide FSI probe independent of nucleon initial states.
-The first section provides a brief introdution to these constructed variables, while the following section presents the data-MC comparison results.
-
-\section{Constructed Variables}
-     \subsection{TKI}
-        \begin{figure}[!htb] 	
-            \centering 		
-            \includegraphics[width=0.35\textwidth]{figures/stki.eps}
-            \caption{\label{fig:stki} Schematic illustration of the TKI variables. Diagram taken from Ref.~\cite{Lu:2015tcr}.} 
-        \end{figure}
-    
-       The TKI variables are shown in Fig.~\ref{fig:stki}. They are cleverly constructed such that they are most sensitive to IS and FSI. 
-       In the simplest case, there are only two final particles after the neutrino-nucleon interaction, a muon and a proton. 
-       If the initial momentum of the struck nucleon has no component transverse to the neutrino's incoming direction, the products, i.e. the muon and the proton, should not have a net transverse component either, unless the struck nucleon has a non-zero initial transverse component or the final particles have undergone FSI.
-       Suppose there is no FSI, the net transverse component, $\dpt$, corresponds exactly to the magnitude of the transverse component of the struck nucleon, and the angle, $\dat$, represents the direction of the initial nucleon motion projected on the transverse plane. 
-       Assuming the nucleons are moving isotropically, the $\dat$ distribution should be flat. 
-       All current nuclear models do not have a preferential direction for initial nuclear motion, so it is only natural to assume the nucleons move in random directions. 
-       Thus, the deviation from flatness for $\dat$ can only be due to FSI, thereby making it an excellent probe for FSI. 
-       As for $\dpt$, it reflects the magnitude of the initial nucleon momentum transverse to the neutrino direction compounded by FSI. 
-       Furthermore, if the nucleus is assumed to be at rest and no other particles are knocked out other than the muon and the proton, the initial nucleon momentum, $\pn$, can also be derived following the steps outlined in \cite{pnpaper}. 
- 
-     \subsection{COM}
-          \label{sec:com-intro}
-          When a neutrino has sufficient energy, it can excite a nucleon into a resonance state, for example the $\deltapp$. 
-          This process is referred to as a resonance (RES) interaction.
-          Since $\deltapp$ is one of the most commonly observed resonances in neutrino experiments, this work focuses on it as an example.
-          Nevertheless, the concept presented here is equally applicable to other resonances, and the methodology can be easily generalized.
-
-          The resonance decays rapidly, before leaving the nucleus, via the process
-          \begin{equation}
-               \deltapp \rightarrow \pip + \p.
-          \end{equation}
-          In the $\deltapp$ rest frame, as illustrated on the top left in Fig.~\ref{fig:COM-diagram}, the kinematics of this two-body decay are well-defined and the proton and pion are emitted back-to-back.
-          The pion decay angle, $\thetapidel$, is defined as the angle between $\vecppirest$ and the $x$-axis, which is taken to align with $\vecpdel$, the momentum of $\deltapp$ in the lab frame. 
-          $\thetapidel$ is a resonance property that follows an underlying distribution defined by various models~\cite{Rein:1987cb,Kabirnezhad:2017jmf,Kabirnezhad:2020wtp,Kabirnezhad:2022znc}.
-
-          \begin{figure}[ht!]
+          The impact of the proton ESC cut on the four TKI variables is most clearly shown by response matrices in Fig.~\ref{fig:mc-tki-0pi-esc}.
+          All TKI variables show significant improvement in reconstruction after the ESC cut.
+          Most notably, the dense off-diagonal cluster in the lower right corner of the $\dphit$, $\dpt$ and $\pn$ response matrices are significantly reduced.
+          The $\dat$ response matrix entries also concentrate more along the diagonal after the ESC cut.
+          
+          \begin{figure}
           \centering
-          \includegraphics[width=\linewidth]{COM-diagram.pdf}
-          \caption{Schematic illustration of the COM angle. \blue{Without FSI, $\vecpsum=\vecpdel$ and the lab frame and the $\deltapp$ rest frame can be transformed into each other by $\vecpdel$. With FSI, $\vecpsum \neq \vecpdel$, the $\deltapp$ rest frame is not accessible, but the lab frame can be boosted into the COM frame using $\vecpsum$. Hence, the major difference of the COM frame from the $\deltapp$ rest frame is caused by FSI.} }
-          \label{fig:COM-diagram}
-          \end{figure}
+          \begin{subfigure}[b]{\dbfigwid\textwidth}
+               \centering
+               \includegraphics[width=\textwidth]{figures/perf/tki/dalphat_colnor_resmat_al13.eps}
+               \caption{$\dat$ before ESC}
+               \label{subfig:esc-dalpha-bfesc}
+          \end{subfigure}
+          \begin{subfigure}[b]{\dbfigwid\textwidth}
+               \centering
+               \includegraphics[width=\textwidth]{figures/perf/tki/dalphat_colnor_resmat_al14.eps}
+               \caption{$\dat$ after ESC}
+               \label{subfig:esc-dalpha-afesc}
+          \end{subfigure}
+          \\
+          \begin{subfigure}[b]{\dbfigwid\textwidth}
+               \centering
+               \includegraphics[width=\textwidth]{figures/perf/tki/dphitcolnor_resmat_al13.eps}
+               \caption{$\dphit$ before ESC}
+               \label{subfig:esc-dphit-bfesc}
+          \end{subfigure}
+          \begin{subfigure}[b]{\dbfigwid\textwidth}
+               \centering
+               \includegraphics[width=\textwidth]{figures/perf/tki/dphitcolnor_resmat_al14.eps}
+               \caption{$\dphit$ after ESC}
+               \label{subfig:esc-dphit-afesc}
+          \end{subfigure}
+          \\
+          \begin{subfigure}[b]{\dbfigwid\textwidth}
+               \centering
+               \includegraphics[width=\textwidth]{figures/perf/tki/dpt_colnor_resmat_al13.eps}
+               \caption{$\dpt$ before ESC}
+               \label{subfig:esc-dpt-bfesc}
+          \end{subfigure}
+          \begin{subfigure}[b]{\dbfigwid\textwidth}
+               \centering
+               \includegraphics[width=\textwidth]{figures/perf/tki/dpt_colnor_resmat_al14.eps}
+               \caption{$\dpt$ after ESC}
+               \label{subfig:esc-dpt-afesc}
+          \end{subfigure}
+          \\
+          \begin{subfigure}[b]{\dbfigwid\textwidth}
+               \centering
+               \includegraphics[width=\textwidth]{figures/perf/tki/pn_colnor_resmat_al13.eps}
+               \caption{$\pn$ before ESC}
+               \label{subfig:esc-pn-bfesc}
+          \end{subfigure}
+          \begin{subfigure}[b]{\dbfigwid\textwidth}
+               \centering
+               \includegraphics[width=\textwidth]{figures/perf/tki/pn_colnor_resmat_al14.eps}
+               \caption{$\pn$ after ESC}
+               \label{subfig:esc-pn-afesc}
+          \end{subfigure}
+          \caption{TKI variables before and after ESC for the $\numucczpiop$ selection.}
+          \label{fig:mc-tki-0pi-esc}
+     \end{figure}
 
-          The kinematics in the lab frame are related to those in the $\deltapp$ rest frame by a boost with $\vecpdel$, as depicted on the top right of Fig.~\ref{fig:COM-diagram}. 
-          Without FSI, $\vecpdel$ equals the sum of $\vecpp$ and $\vecppi$.
-          However, the target materials of modern day detectors are mainly comprised of nucleus with multiple nucleons and FSI alters the kinematics of the hadrons considerably, as illustrated by the dotted arrows in the bottom right of Fig.~\ref{fig:COM-diagram}.
+     The impact of the muon momentumn bias correction is better illurated with a resolution fit as shown in Fig.~\ref{fig:mc-tki-0pi-mubias}. 
+     This correction has negligible impact on the angular vairables, but it helps to reduce bias in the momentum variables.
+     As shown in Fig.~\ref{subfig:esc-dpt-bfmu} and Fig.~\ref{subfig:esc-dpt-afmu}, the $\dpt$ fitted mean improves from $0.92$ to $0.95$ after the muon bias correction.
+     Similarly shown in Fig.~\ref{subfig:esc-pn-bfmu} and Fig.~\ref{subfig:esc-pn-afmu}, the $\pn$ fitted mean improves from $0.94$ to $1.01$.
+     These reduction of bias can also be seen from the reduction of the over-estimated tails in the $\dpt$ and $\pn$ distributions.
+     \begin{figure}
+          \begin{subfigure}[b]{\dbfigwid\textwidth}
+               \centering
+               \includegraphics[width=\textwidth]{figures/perf/tki/dalphat_rat_hist_al14.eps}
+               \caption{$\dat$ before muon bias correction}
+               \label{subfig:esc-dalpha-bfmu}
+          \end{subfigure}         
+          \begin{subfigure}[b]{\dbfigwid\textwidth}
+               \centering
+               \includegraphics[width=\textwidth]{figures/perf/tki/cor_dalphat_rat_hist_al14.eps}
+               \caption{$\dat$ after muon bias correction}
+               \label{subfig:esc-dalpha-afmu}
+          \end{subfigure}         
+          \\
+          \begin{subfigure}[b]{\dbfigwid\textwidth}
+               \centering
+               \includegraphics[width=\textwidth]{figures/perf/tki/dphit_rat_hist_al14.eps}
+               \caption{$\dphit$ before muon bias correction (REPLOT NEEDED)}
+               \label{subfig:esc-dphit-bfmu}
+          \end{subfigure}
+          \begin{subfigure}[b]{\dbfigwid\textwidth}
+               \centering
+               \includegraphics[width=\textwidth]{figures/perf/tki/cor_dphit_rat_hist_al14.eps}
+               \caption{$\dphit$ after muon bias correction}
+               \label{subfig:esc-dphit-afmu}
+          \end{subfigure}
+          \\
+          \begin{subfigure}[b]{\dbfigwid\textwidth}
+               \centering
+               \includegraphics[width=\textwidth]{figures/perf/tki/dpt_rat_hist_al14.eps}
+               \caption{$\dpt$ before muon bias correction}
+               \label{subfig:esc-dpt-bfmu}
+          \end{subfigure}
+          \begin{subfigure}[b]{\dbfigwid\textwidth}
+               \centering
+               \includegraphics[width=\textwidth]{figures/perf/tki/cor_dpt_rat_hist_al14.eps}
+               \caption{$\dpt$ after muon bias correction}
+               \label{subfig:esc-dpt-afmu}
+          \end{subfigure}
+          \\
+          \begin{subfigure}[b]{\dbfigwid\textwidth}
+               \centering
+               \includegraphics[width=\textwidth]{figures/perf/tki/pn_rat_hist_al14.eps}
+               \caption{$\pn$ before muon bias correction}
+               \label{subfig:esc-pn-bfmu}
+          \end{subfigure}
+          \begin{subfigure}[b]{\dbfigwid\textwidth}
+               \centering
+               \includegraphics[width=\textwidth]{figures/perf/tki/cor_pn_rat_hist_al14.eps}
+               \caption{$\pn$ after muon bias correction}
+               \label{subfig:esc-pn-afmu}
+          \end{subfigure}
+          \caption{TKI variables before and after muon bias correction for the $\numucczpiop$ selection.}
+          \label{fig:mc-tki-0pi-mubias}
+     \end{figure}
 
-          The altered momenta, $\vecppp$ and $\vecppip$, are the ones measured by detectors. 
-          Their sum generally differs from $\vecpdel$.
-          Thus, the $\deltapp$ rest frame with its simple kinematic relations becomes inaccessible.
-          Nevertheless, the system can be boosted to the proton-pion COM frame using $\vecpsum$, as depicted in the bottom left of Fig.~\ref{fig:COM-diagram}, where the $x^{\prime}$-axis is taken to align with the $\vecpsum$ direction in the lab frame.
-          Similarly, a pion decay angle, $\thetacom$, can be defined between, $\vecppicom$, the pion momentum in the COM frame, and the $x^{\prime}$-axis.
-          Due to FSI, $\thetacom$ typically differs from $\thetapidel$. 
 
-          The COM frame coincides with the $\deltapp$ rest frame only in the absence of FSI.
-          Thus, the strength of FSI dictates the deviation of $\thetacom$ from $\thetapidel$. 
-          In practice, the measured $\thetacom$ serves as a probe for studying FSI. 
-          $\thetapidel$, being a rest-frame property of $\deltapp$, is independent of the resonance's momentum, neutrino energy, and IS.
-          In neutrino event generators, $\thetacom$ deviates from $\thetapidel$ only due to FSI, which is independent of neutrino energy and IS.
-          Therefore, $\thetacom$ retains these important independencies.
-          \blue{As different resonances could have different decay properties, $\thetaR$, the similarly defined pion decay angle of a higher resonance, $R$, generally differs from $\thetapidel$. 
-          Hence, $\thetacom$, a superposition of $\thetapidel$ and all possible $\thetaR$, will deviate from $\thetapidel$, when more resonances become energetically possible with an increase in neutrino energy. 
-          This deviation will be further elaborated in the Sec.~\ref{sec:dis}.}
 
-          Moreover, the total energy in the COM frame will be equal to the mass of the resonance in the absence of FSI.
-          Cutting on events with total energy far from the rest mass peak of the resonance will select events with minimal FSI effects, such as the $\nu$-H events. 
-          However, this work will focus on the COM angle only, and analysis on the total energy will be conducted in future works.
 
-          Up to this point, the discussion of resonance decay has been entirely general and can thus be applied to and validated by various experiments, including hadron scattering measurements. 
-          However, there are features specific to neutrino experiments. 
-          First, the resonance is generated through neutrino-nucleon interactions, which involve both vector and axial currents. 
-          Second, the interaction occurs within the nuclear medium. 
-          This work focuses on the latter, with the application of COM variables to the former reserved for future research.
+     For the SFG muon subsample, the improvement is similar and the figures are collected in Appendix~\ref{sec:app-tki-sfgd-mu}.
 
-          While the COM angle may appear conceptually similar to the reconstructed Adler angle, $\thetaadt$, in neutrino experiments~\cite{Sanchez:2015yvw}, there are significant differences. 
-          Notably, the COM frame is reconstructed exclusively from hadronic kinematics, whereas the reconstructed Adler frame relies on leptonic kinematics and assumes stationary nucleons. 
-          Consequently, the reconstruction of the Adler frame is implicitly influenced by IS effects, whereas the COM frame's hadronic variables are impacted by final state interactions (FSI). 
-          Therefore, $\thetaadt$, being a hadronic variable in the Adler frame, is influenced by both IS and FSI. 
-          Additionally, the necessity of reconstructing the neutrino energy renders $\thetaadt$ sensitive to neutrino flux uncertainties, which are among the largest systematic uncertainties in neutrino measurements~\cite{T2K:2019yqu,T2K:2021naz,MicroBooNECollaboration:2024gvg,NOvA:2023uxq,MINERvA:2022djk}.
+
+     \subsection{$\numuccopiop$ selection}
+     \label{sec:mc-tki-1pi}
+
+\section{COM}
+\label{sec:mc-com}
+When a neutrino has sufficient energy, it can excite a nucleon into a resonance state, for example the $\deltapp$. 
+This process is referred to as a resonance (RES) interaction.
+Since $\deltapp$ is one of the most commonly observed resonances in neutrino experiments, this work focuses on it as an example.
+Nevertheless, the concept presented here is equally applicable to other resonances, and the methodology can be easily generalized.
+
+The resonance decays rapidly, before leaving the nucleus, via the process
+\begin{equation}
+     \deltapp \rightarrow \pip + \p.
+\end{equation}
+In the $\deltapp$ rest frame, as illustrated on the top left in Fig.~\ref{fig:COM-diagram}, the kinematics of this two-body decay are well-defined and the proton and pion are emitted back-to-back.
+The pion decay angle, $\thetapidel$, is defined as the angle between $\vecppirest$ and the $x$-axis, which is taken to align with $\vecpdel$, the momentum of $\deltapp$ in the lab frame. 
+$\thetapidel$ is a resonance property that follows an underlying distribution defined by various models~\cite{Rein:1987cb,Kabirnezhad:2017jmf,Kabirnezhad:2020wtp,Kabirnezhad:2022znc}.
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=\linewidth]{COM-diagram.pdf}
+\caption{Schematic illustration of the COM angle. \blue{Without FSI, $\vecpsum=\vecpdel$ and the lab frame and the $\deltapp$ rest frame can be transformed into each other by $\vecpdel$. With FSI, $\vecpsum \neq \vecpdel$, the $\deltapp$ rest frame is not accessible, but the lab frame can be boosted into the COM frame using $\vecpsum$. Hence, the major difference of the COM frame from the $\deltapp$ rest frame is caused by FSI.} }
+\label{fig:COM-diagram}
+\end{figure}
+
+The kinematics in the lab frame are related to those in the $\deltapp$ rest frame by a boost with $\vecpdel$, as depicted on the top right of Fig.~\ref{fig:COM-diagram}. 
+Without FSI, $\vecpdel$ equals the sum of $\vecpp$ and $\vecppi$.
+However, the target materials of modern day detectors are mainly comprised of nucleus with multiple nucleons and FSI alters the kinematics of the hadrons considerably, as illustrated by the dotted arrows in the bottom right of Fig.~\ref{fig:COM-diagram}.
+
+The altered momenta, $\vecppp$ and $\vecppip$, are the ones measured by detectors. 
+Their sum generally differs from $\vecpdel$.
+Thus, the $\deltapp$ rest frame with its simple kinematic relations becomes inaccessible.
+Nevertheless, the system can be boosted to the proton-pion COM frame using $\vecpsum$, as depicted in the bottom left of Fig.~\ref{fig:COM-diagram}, where the $x^{\prime}$-axis is taken to align with the $\vecpsum$ direction in the lab frame.
+Similarly, a pion decay angle, $\thetacom$, can be defined between, $\vecppicom$, the pion momentum in the COM frame, and the $x^{\prime}$-axis.
+Due to FSI, $\thetacom$ typically differs from $\thetapidel$. 
+
+The COM frame coincides with the $\deltapp$ rest frame only in the absence of FSI.
+Thus, the strength of FSI dictates the deviation of $\thetacom$ from $\thetapidel$. 
+In practice, the measured $\thetacom$ serves as a probe for studying FSI. 
+$\thetapidel$, being a rest-frame property of $\deltapp$, is independent of the resonance's momentum, neutrino energy, and IS.
+In neutrino event generators, $\thetacom$ deviates from $\thetapidel$ only due to FSI, which is independent of neutrino energy and IS.
+Therefore, $\thetacom$ retains these important independencies.
+\blue{As different resonances could have different decay properties, $\thetaR$, the similarly defined pion decay angle of a higher resonance, $R$, generally differs from $\thetapidel$. 
+Hence, $\thetacom$, a superposition of $\thetapidel$ and all possible $\thetaR$, will deviate from $\thetapidel$, when more resonances become energetically possible with an increase in neutrino energy. 
+This deviation will be further elaborated in the Sec.~\ref{sec:dis}.}
+
+Moreover, the total energy in the COM frame will be equal to the mass of the resonance in the absence of FSI.
+Cutting on events with total energy far from the rest mass peak of the resonance will select events with minimal FSI effects, such as the $\nu$-H events. 
+However, this work will focus on the COM angle only, and analysis on the total energy will be conducted in future works.
+
+Up to this point, the discussion of resonance decay has been entirely general and can thus be applied to and validated by various experiments, including hadron scattering measurements. 
+However, there are features specific to neutrino experiments. 
+First, the resonance is generated through neutrino-nucleon interactions, which involve both vector and axial currents. 
+Second, the interaction occurs within the nuclear medium. 
+This work focuses on the latter, with the application of COM variables to the former reserved for future research.
+
+While the COM angle may appear conceptually similar to the reconstructed Adler angle, $\thetaadt$, in neutrino experiments~\cite{Sanchez:2015yvw}, there are significant differences. 
+Notably, the COM frame is reconstructed exclusively from hadronic kinematics, whereas the reconstructed Adler frame relies on leptonic kinematics and assumes stationary nucleons. 
+Consequently, the reconstruction of the Adler frame is implicitly influenced by IS effects, whereas the COM frame's hadronic variables are impacted by final state interactions (FSI). 
+Therefore, $\thetaadt$, being a hadronic variable in the Adler frame, is influenced by both IS and FSI. 
+Additionally, the necessity of reconstructing the neutrino energy renders $\thetaadt$ sensitive to neutrino flux uncertainties, which are among the largest systematic uncertainties in neutrino measurements~\cite{T2K:2019yqu,T2K:2021naz,MicroBooNECollaboration:2024gvg,NOvA:2023uxq,MINERvA:2022djk}.
 
 
           \subsubsection{Analysis result}
