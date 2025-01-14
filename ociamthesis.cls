@@ -505,6 +505,7 @@
 \newcommand{\esum}{E_{\textrm{sum}}}
 \newcommand{\vecppicom}{\vec{p}_{\pi}^{(\textrm{COM})}}
 \newcommand{\thetacom}{\theta_{\textrm{COM}}}
+\newcommand{\ecom}{E_{\textrm{COM}}}
 \newcommand{\thetaadt}{\theta_{\textrm{Adt}}}
 \newcommand{\thetapidel}{\theta_{\pi\Delta}}
 \newcommand{\thetaR}{\theta_{\pi\textrm{R}}}
