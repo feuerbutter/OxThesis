@@ -7,25 +7,166 @@ There is no one who loves pain itself, who seeks after it and wants to have it, 
 
 \chapter{\label{ch:35-nuint}Neutrino interactions} 
 \minitoc
+The underlying theory for neutrino oscillation is straightforward, and the parameters to be measured are clear, but the experimental determination of these parameters is challenging.
+Due to the weak interaction of neutrinos, they cannot be detected directly.A
+All neutrino measurements are based on the detection of the particles produced in the neutrino interaction.
+Therefore, to extract the desired neutrino oscillation parameters with a high precision, a good understanding of neutrino interactions is crucial.
+This chapter provides the basic understanding of neutrino interactions necessary for the interpretation of the analyses presented in the subsequent chapters.
 
 \section{nu-quark}
-From QFT, write down Fenynman's rule explicitly
+The most fundamental interaction between a neutrino and matter is the weak interactions between the neutrino and a quark, the Feynman diagrams for which are shown in Fig.~\ref{fig:nu-q-feyn}.
+
+\begin{figure}[h]
+  \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \begin{feynman}
+        \vertex (a) {\(\nu_\ell\)};
+        \vertex [right=of a] (b);
+        \vertex [right=of b] (c) {\(\ell\)};
+        \vertex [below=of b] (d);
+        \vertex [left=of d] (e) {\(q\)};
+        \vertex [right=of d] (f) {\(q'\)};
+        
+        \diagram* {
+          (a) -- [fermion] (b) -- [fermion] (c),
+          (b) -- [boson, edge label=\(W\)] (d),
+          (e) -- [fermion] (d) -- [fermion] (f),
+        };
+      \end{feynman}
+    \end{tikzpicture}
+    \caption{Charge current interaction.}
+    \label{fig:cc-interaction}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \begin{feynman}
+        \vertex (a) {\(\nu_\ell\)};
+        \vertex [right=of a] (b);
+        \vertex [right=of b] (c) {\(\nu_\ell\)};
+        \vertex [below=of b] (d);
+        \vertex [left=of d] (e) {\(q\)};
+        \vertex [right=of d] (f) {\(q\)};
+        
+        \diagram* {
+          (a) -- [fermion] (b) -- [fermion] (c),
+          (b) -- [boson, edge label=\(Z\)] (d),
+          (e) -- [fermion] (d) -- [fermion] (f),
+        };
+      \end{feynman}
+    \end{tikzpicture}
+    \caption{Neutral current interaction.}
+    \label{fig:nc-interaction}
+  \end{subfigure}
+  \caption{Feynman diagrams for neutrino interactions with a quark.}
+  \label{fig:nu-q-feyn}
+\end{figure}
+More specifically, Fig.~\ref{fig:cc-interaction} is mediated by the $W$ boson and the neutrino is converted to a charged lepton, while Fig.~\ref{fig:nc-interaction} is mediated by the $Z$ boson and the neutrino remains a neutrino.
+The former is the charged current (CC) interaction, while the latter is the neutral current (NC) interaction.
+Following the Feynman diagram, it is straightforward to write down the amplitude for the interaction.
+The amplitude for the CC interaction is given by:
+\begin{equation}
+  \mathcal{M}_{\text{CC}} = \frac{g^2}{2} \bar{u}_\ell(p') \gamma^\mu (1 - \gamma^5) u_\nu(p) \frac{-i g_{\mu\nu}}{q^2 - M_W^2} \bar{u}_q(k') \gamma^\nu (1 - \gamma^5) u_q(k),
+\end{equation}
+where $g$ is the weak coupling constant, $u_\ell$ and $u_\nu$ are the spinors for the outgoing lepton and incoming neutrino, respectively, $u_q$ are the spinors for the quarks, $q$ is the momentum transfer, and $M_W$ is the mass of the $W$ boson.
+This interaction takes place only when the neutrino possesses high enough energy <how high?> to probe inside the nucleon and interact with the quarks.
+The product quark will hadronize and produce a jet of particles.
+This type of interaction is refered to as deep inelastic scattering (DIS).
+DIS is highly complicated, but no so relevant for this thesis, so will not be discussed further.
+More details can be found in reviews, such as Ref.~\cite{}. <DIS review>
 
 \section{nu-nucleon}
-However, due to confinement and the relatively low energy, nu usually is interacting with the nucleon as a whole.
-require form factors to paramterize the interaction with a nucleon.
+At the T2K beam energy, the predominant fraction of the neutrinos do not possess the energy to probe inside the nucleon, but rather interact with the nucleon as a whole.
+Depending on the specific neutrino energy, the interaction can be classified as quasi-elastic (QE), resonance, or deep inelastic scattering (DIS).
+
+  \subsection{QE}
+  Although at the quark level, the interaction appears to the same as the $\nu$-quark interaction shown in Fig.~\ref{fig:nu-q-feyn}, the interacted quark cannot be treated as independent, but rather as part of a nucleon.
+  Hence, the effective $\nu$-nucleon interaction feynman diagram is shown in Fig.~\ref{fig:nu-n-feyn}.
+  \begin{figure}[h]
+    \centering
+    \begin{subfigure}[b]{0.45\textwidth}
+      \centering
+      \begin{tikzpicture}
+        \begin{feynman}
+          \vertex (a) {\(\nu_\ell\)};
+          \vertex [right=of a] (b);
+          \vertex [right=of b] (c) {\(\ell\)};
+          \vertex [below=of b] (d);
+          \vertex [left=of d] (e) {\(N\)};
+          \vertex [right=of d] (f) {\(N'\)};
+          
+          \diagram* {
+            (a) -- [fermion] (b) -- [fermion] (c),
+            (b) -- [boson, edge label=\(W\)] (d),
+            (e) -- [fermion] (d) -- [fermion] (f),
+          };
+        \end{feynman}
+      \end{tikzpicture}
+      \caption{Charge current interaction.}
+      \label{fig:cc-interaction-n}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.45\textwidth}
+      \centering
+      \begin{tikzpicture}
+        \begin{feynman}
+          \vertex (a) {\(\nu_\ell\)};
+          \vertex [right=of a] (b);
+          \vertex [right=of b] (c) {\(\nu_\ell\)};
+          \vertex [below=of b] (d);
+          \vertex [left=of d] (e) {\(N\)};
+          \vertex [right=of d] (f) {\(N\)};
+          
+          \diagram* {
+            (a) -- [fermion] (b) -- [fermion] (c),
+            (b) -- [boson, edge label=\(Z\)] (d),
+            (e) -- [fermion] (d) -- [fermion] (f),
+          };
+        \end{feynman}
+      \end{tikzpicture}
+      \caption{Neutral current interaction.}
+      \label{fig:nc-interaction-n}
+    \end{subfigure}
+    \caption{Feynman diagrams for neutrino interactions with a nucleon.}
+    \label{fig:nu-n-feyn}
+  \end{figure}
+  The leptonic current remains the same, but the hadronic current is now a nucleon current instead of a quark current.
+  Hence, the hadronic current is much more complicated and and comprises of several form factors, which paramterize our understanding of the nucleon structure.
+  For instance, the hadronic current for the CC interaction is given by:
+  \begin{equation}
+    \mathcal{M}_{\text{CC}} = \frac{G_F}{\sqrt{2}} \bar{u}_\ell(p') \gamma^\mu (1 - \gamma^5) u_\nu(p) \bar{u}_N(k') \left[ F_1(q^2) \gamma_\mu + F_2(q^2) \frac{i \sigma_{\mu\nu} q^\nu}{2M} + F_A(q^2) \gamma_\mu \gamma^5 + F_P(q^2) \frac{q_\mu \gamma^5}{m_\pi} \right] u_N(k),
+  \end{equation}
+  where $G_F$ is the Fermi constant, $F_1$, $F_2$, $F_A$, and $F_P$ are the form factors, $M$ is the nucleon mass, and $m_\pi$ is the pion mass.
+  The derivation is complicated and beyond the scope of this thesis. 
+  More details can be found in Ref.~\cite{LlewellynSmith:1978te}.
+  It is however important to note that $F_1$ and $F_2$ are the vector form factors, which can be extracted from the electron scattering measurements, and $F_P$ is the pseudoscalar form factor, which can be related to $F_A$, the axial form factor, through the Partially Conserved Axial Current Hypothesis (PCAC) .
+  Hence, the axial form factor is unique to neutrion experiments and can only be extracted from past measurements.
+
+  \subsection{Resonance}
+  When the neutrino energy is high enough to excite the nucleon to a higher energy state, e.g. $\Delta(1232)$ the interaction is classified as a resonance interaction.
+  The excited nucleon then decays to produce a pion. 
+  Hence, the resonance modelling is sometimes used interchangeably with the single pion production modelling.
+  One of the most common moodel used today is the Berger-Sehgal model, which improves from the earlier Rein-Sehgal model by taking into account the effect of the lepton mass. (CHECK)
+  The Rein-Sehgal model is based on the approximate relativistic quark model in Ref.~\cite{Feynman:1971wr}.
+  Subsequent developments such as the MK model~\cite{Kabirnezhad:2017jmf,Kabirnezhad:2020wtp,Kabirnezhad:2022znc}, provides more sophisticated calculations.
+
 
 \section{nu-nucleus}
-Nuclear effect. 
-The simplest case is for the relatively high energy nu, for wthich Impulse Approximation (IA) can be used.
-Nu sees the nucleon as independent from other nucleons.
-The interaction approaches the nu-nucleon interaction.
+Modern day neutrino experiments employ heavier elements, such as hydrocarbon and argon, to increase event rates.
+This further complicates the neutrino interaction.
+The simplest case is for the relatively high energy neutrino, for which the Impulse Approximation (IA) can be used.
+The neutrino sees the nucleon as independent from other nucleons, so the interaction approaches the $\nu$-N interaction.
+Even in this simplest case, the presence of the nuclear medium still affects the interaction in two ways, namely the intial state (IS) effect and the final state interaction (FSI).
 
-When the energy drops, IA is no longer valid and see the nucleus as a whole.
-RPA correction is needed, beyond the scope of this thesis, will not ellaborate but interest reader can refer to REFXXX for more details.
+When the neutrino energy drops, IA is no longer valid and can only resolve the nucleus as a whole.
+In this case, Random Phase Approximation (RPA) correction is needed, which is beyond the scope of this thesis and will not be ellaborated further. 
+Interest readers can refer to REFXXX for more details.
+Instead, the two nuclear effects will be elaborated further below.
 
   \subsection{Initial state}
-  In addition to the different modes that the neutrino ineteract with the nucleus, the presence of the nuclear medium also affects the interaction.
   The nuclear effects manifest in two ways.
   Firstly, the nucleon in the interaction is in a bound state, i.e. it cannot have arbitrary energy and momentum like a free nucleon.
   Instead, the energy distribution of the nucleon is parameterised by the so-called Spectral Function (SF).
@@ -84,10 +225,6 @@ RPA correction is needed, beyond the scope of this thesis, will not ellaborate b
 
 Neutrinos play a central role in advancing our understanding of physics and addressing fundamental inquiries in contemporary science. The Hyper-Kamiokande experiment~\cite{Hyper-Kamiokande:2018ofw} aims to conduct precise measurements of charge parity violation within the neutrino sector, a phenomenon believed to be closely linked to the observed matter-antimatter asymmetry in the universe. Similarly, the Deep Underground Neutrino Experiment (DUNE)~\cite{DUNE:2016hlj,DUNE:2015lol,DUNE:2016evb,DUNE:2016rla,DUNE:2021tad}  promises the same, in addition to elucidating the neutrino mass ordering. Whether seeking to ascertain Standard Model parameters or probing for exotic phenomena, significant enhancements in both theoretical frameworks and computational simulations of neutrino-nucleus interactions are imperative. As neutrinos interact mainly with nucleons inside the nucleus, the interaction is subject to nuclear effects, namely the nucleon initial state and final-state interactions (FSIs). These effects are difficult to calculate and can alter the final event topology by changing the number of final state pions with respect to the interactions on free nucleons. Notably, the neutrino flux at DUNE yields a comparable proportion of events with and without pions in the final state, highlighting the pressing need for a generator capable of accurately describing both event topologies.
 
-The large data samples and superb imaging capabilities of modern neutrino experiments offer us a detailed new look at neutrino interaction physics.
-Recently, the GENIE~\cite{Andreopoulos:2009rq, GENIE:2021npt} Collaboration has made substantial progress towards a global tuning using neutrino, charged lepton and hadron scattering data, in an attempt to integrate new experimental constraints with state-of-the-art theories and construct robust and comprehensive simulations of neutrino interactions with matter. 
-Cross-experiment and cross-topology analyses are challenging tasks as each measurement features its unique selection criteria and various other  aspects, such as the neutrino flux. \genie has built an advanced tuning framework that enables the validation and tuning of comprehensive interaction models using an extensive curated database of measurements of neutrino, charged lepton and hadron scattering off nucleus and nuclei. So far, the non-resonant backgrounds~\cite{GENIE:2021zuu}, hadronization~\cite{GENIE:2021wox} and the quasielastic (QE) and 2-particle-2-hole (2p2h)  components~\cite{GENIE:2022qrc} of the neutrino-nucleus interaction have been tuned with $\nu_\mu$ and $\bar{\nu}_\mu$ charged-current (CC) pionless (0$\pi$) data from MiniBooNE, T2K and MINERvA. A partial tune was performed for each experiment, highlighting the neutrino energy dependence on the QE and 2p2h tuned cross sections. Even though post-tune predictions enhanced the data description for each experiment, the added degrees of freedom were not sufficient to fully describe all CC0$\pi$ data and exhibited tensions with some proton observables~\cite{GENIE:2022qrc}. More exclusive measurements result in additional model constraints. In addition, observables that are sensitive to targeted aspects of the complex dynamics of neutrino interactions are invaluable for model tuning. The transverse kinematic imbalance (TKI)~\cite{Lu:2015hea, Lu:2015tcr}, a final-state correlation between the CC lepton and the handronic system, is a good example since it is sensitive to the initial-state nuclear environment and hadronic FSI. Our next step is to incorporate TKI data from experiments where various exclusive topologies at different energies are considered. This marks the first combined tuning on TKI data with and without pions in the final states and serves as the starting point of a more comprehensive tuning effort in the energy region most relevant for future accelerator-based neutrino experiments.  
-
 
 \section{TKI}
 \label{sec:nuint-tki}
@@ -111,7 +248,6 @@ Furthermore, if the nucleus is assumed to be at rest and no other particles are 
 
 \section{TKI measurements}\label{sec:tki}
 
-
 TKI is a methodology based on the conservation of momentum in neutrino interactions. In essence, it involves quantifying the imbalance between the observed transverse momentum of the final-state particles and the expected transverse momentum from neutrino interactions with free nucleons~\cite{Lu:2015hea, Lu:2015tcr}. This ``kinematic mismatch'' together with its longitudinal and three-dimensional variations~\cite{Furmanski:2016wqo, Lu:2019nmf}, and the derived asymmetry~\cite{Cai:2019jzk}, has been a crucial set of observables, establishing a pathway to extract valuable information about the participating particles and the underlying nuclear processes. Recent experimental results from neutrino experiments such as  T2K~\cite{T2K:2018rnz, T2K:2021naz}, MINERvA~\cite{MINERvA:2018hba, MINERvA:2019ope, MINERvA:2020anu, MINERvA:2021csy}, and MicroBooNE~\cite{MicroBooNE:2022emb, MicroBooNE:2023cmw, MicroBooNE:2023tzj, MicroBooNE:2023wzy, MicroBooNE:2024tmp}, as well as electron scattering experiments such as  CLAS~\cite{CLAS:2021neh}, highlight the efficacy of TKI. 
 
 \begin{figure}[!htb] 	
@@ -121,4 +257,4 @@ TKI is a methodology based on the conservation of momentum in neutrino interacti
 \end{figure}
 
 In neutrino scattering off a free nucleon, the sum of the transverse components of the final products is expected to be zero, visualized through a back-to-back configuration between the final-state lepton and hadronic system in the  plane transverse to the neutrino direction. Hence, in a neutrino interaction with a nucleus, the transverse momentum imbalance, $\dpt$~\cite{Lu:2015tcr}, results from intranuclear dynamics, including Fermi motion and FSIs  as shown in Fig.~\ref{fig:stki}. The deviation from being back-to-back is quantified by the  coplanarity angle $\dphit$~\cite{Lu:2015tcr}, while the transverse boosting angle, $\dat$~\cite{Lu:2015tcr}, represents the direction of $\dpt$ within the transverse plane. Furthermore, analyzing the energy and longitudinal momentum budget~\cite{Furmanski:2016wqo, Lu:2019nmf} enables the conversion of $\dpt$ to the emulated (initial) nucleon momentum, $\pn$,  providing further insight into the Fermi motion; this conversion amounts to a correction on the order of $\mathcal{O}(20\%)$~\cite{Yang:2023dxk}. 
-With one-body currents in the absence of FSIs, $\dat$ remains uniform (except for second-order effects, such as variations in the center-of-mass energy), given the isotropic nature of the initial nucleon motion. However, as the final products propagate through the nuclear medium, they experience FSIs, thereby disturbing the isotropy and the Fermi motion peak of the $\dat$ and $\pn$ ($\dpt$) distributions, respectively. Hence, $\dpt$ and $\pn$ elucidate the Fermi motion details, while $\dat$  characterizes the FSI strength---crucial for understanding medium effects in neutrino interactions. A notable advantage of these observables is their minimal dependence on neutrino energy~\cite{Lu:2015tcr}. Moreover, the double TKI variable, $\dptt$~\cite{Lu:2015hea}, is the projection of $\vecdpt$ along the axis perpendicular to the lepton scattering plane (hence ``double''). In addition to its use for extracting neutrino-hydrogen interactions~\cite{Lu:2015hea, Hamacher-Baumann:2020ogq}, it has also been applied to study nuclear effects in neutrino pion productions~\cite{MINERvA:2020anu, T2K:2021naz}. Its equivalent in pionless production, $\dptx$, has been proposed and studied together with its orthogonal companion, $\dpty$, in MINERvA~\cite{MINERvA:2019ope}. 
+With one-body currents in the absence of FSIs, $\dat$ remains uniform (except for second-order effects, such as variations in the center-of-mass energy), given the isotropic nature of the initial nucleon motion. However, as the final products propagate through the nuclear medium, they experience FSIs, thereby disturbing the isotropy and the Fermi motion peak of the $\dat$ and $\pn$ ($\dpt$) distributions, respectively. Hence, $\dpt$ and $\pn$ elucidate the Fermi motion details, while $\dat$  characterizes the FSI strength---crucial for understanding medium effects in neutrino interactions. A notable advantage of these observables is their minimal dependence on neutrino energy~\cite{Lu:2015tcr}. Moreover, the double TKI variable, $\dptt$~\cite{Lu:2015hea}, is the projection of $\vecdpt$ along the axis perpendicular to the lepton scattering plane (hence ``double''). In addition to its use for extracting neutrino-hydrogen interactions~\cite{Lu:2015hea, Hamacher-Baumann:2020ogq}, it has also been applied to study nuclear effects in neutrino pion productions~\cite{MINERvA:2020anu, T2K:2021naz}. Its equivalent in pionless production, $\dptx$, has been proposed and studied together with its orthogonal companion, $\dpty$, in MINERvA~\cite{MINERvA:2019ope}.
