@@ -221,40 +221,45 @@ Instead, the two nuclear effects will be elaborated further below.
   \end{enumerate}
 
 
-\section{\label{sec:1-intro}Introduction}
-
-Neutrinos play a central role in advancing our understanding of physics and addressing fundamental inquiries in contemporary science. The Hyper-Kamiokande experiment~\cite{Hyper-Kamiokande:2018ofw} aims to conduct precise measurements of charge parity violation within the neutrino sector, a phenomenon believed to be closely linked to the observed matter-antimatter asymmetry in the universe. Similarly, the Deep Underground Neutrino Experiment (DUNE)~\cite{DUNE:2016hlj,DUNE:2015lol,DUNE:2016evb,DUNE:2016rla,DUNE:2021tad}  promises the same, in addition to elucidating the neutrino mass ordering. Whether seeking to ascertain Standard Model parameters or probing for exotic phenomena, significant enhancements in both theoretical frameworks and computational simulations of neutrino-nucleus interactions are imperative. As neutrinos interact mainly with nucleons inside the nucleus, the interaction is subject to nuclear effects, namely the nucleon initial state and final-state interactions (FSIs). These effects are difficult to calculate and can alter the final event topology by changing the number of final state pions with respect to the interactions on free nucleons. Notably, the neutrino flux at DUNE yields a comparable proportion of events with and without pions in the final state, highlighting the pressing need for a generator capable of accurately describing both event topologies.
-
-
 \section{TKI}
 \label{sec:nuint-tki}
-
+Due to the heavy target nucleus in present neutrino experiments, nuclear effects are almost inextricable for conventional single particle kinematic measurement.
+This highly impeds model development, as nuclear effects can micmic different $\nu$-N processes.
+For instance, if the proton produced from a QE $\nu$-N interaction has high enough energy to produce an additional pion during FSI, which propagates out of the nucleus.
+This QE event will micmic the output of a resonance interaction, or in term of topology, this CC$0\pi$ event will micmic a CC$1\pi$ event.
+Hence, nuclear effects such as pion production can alter cross section measurements of different topologies differently, thereby impacting the modelling of the main underlying $\nu$-N interaction processes.
+Therefore, an accurate description of the nuclear effect is crucial for reducing model systematics.
+To gain insights on nuclear effects, observables that are particularly sensitive to these effects are indispensable. 
+The Transverse Kinematic Imbalance (TKI) varaibles are exactly one such set of observables~\cite{Lu:2015hea, Lu:2015tcr}.
+The TKI variables are shown in Fig.~\ref{fig:stki}.
 \begin{figure}[!htb] 	
     \centering 		
     \includegraphics[width=0.35\textwidth]{figures/stki.eps}
     \caption{\label{fig:stki} Schematic illustration of the TKI variables. Diagram taken from Ref.~\cite{Lu:2015tcr}.} 
 \end{figure}
-
-The TKI variables are shown in Fig.~\ref{fig:stki}. They are cleverly constructed such that they are most sensitive to IS and FSI. 
 In the simplest case, there are only two final particles after the neutrino-nucleon interaction, a muon and a proton. 
-If the initial momentum of the struck nucleon has no component transverse to the neutrino's incoming direction, the products, i.e. the muon and the proton, should not have a net transverse component either, unless the struck nucleon has a non-zero initial transverse component or the final particles have undergone FSI.
-Suppose there is no FSI, the net transverse component, $\dpt$, corresponds exactly to the magnitude of the transverse component of the struck nucleon, and the angle, $\dat$, represents the direction of the initial nucleon motion projected on the transverse plane. 
-Assuming the nucleons are moving isotropically, the $\dat$ distribution should be flat. 
-All current nuclear models do not have a preferential direction for initial nuclear motion, so it is only natural to assume the nucleons move in random directions. 
+In the absence of nuclear effects, the muon and the proton should be emitted with momenta of the same magnitude but opposite direction in the plane transverse to the neutrino direction.
+The TKI variables are constructed to quantify the deviation from this ideal scenario in measurements to access the nuclear effects. 
+The presence of IS will affect the initial nucleon momentum, so the sum of the muon and proton transverse momenta will deviate from zero, which is quantified by $\dpt$, and their direction will not be exactly opposite, which is quantified by $\dphit$.
+Furthermore, if the nucleus is assumed to be at rest and no other particles are knocked out other than the muon and the proton, the initial nucleon momentum, $\pn$, can also be estimated following the steps outlined in Ref.~\cite{Furmanski:2016wqo, Lu:2019nmf}. 
+This esimation amounts to an approxiate  $\mathcal{O}(20\%)$ correction~\cite{Yang:2023dxk}. 
+Hence, $\dpt$ and $\pn$ serve as good probes for IS models.
+FSI will smear these distributions, but the shape and the peak position is mostly due to IS modelling.
+All current IS models do not have a preferential direction for initial nuclear motion, so it is natural to assume the nucleons move in random directions isotropically, leading to a uniform $\dat$ distribution, which is the angle between the initial nucleon momentum and the proton momentum in the tranvserse plane. 
 Thus, the deviation from flatness for $\dat$ can only be due to FSI, thereby making it an excellent probe for FSI. 
-As for $\dpt$, it reflects the magnitude of the initial nucleon momentum transverse to the neutrino direction compounded by FSI. 
-Furthermore, if the nucleus is assumed to be at rest and no other particles are knocked out other than the muon and the proton, the initial nucleon momentum, $\pn$, can also be derived following the steps outlined in \cite{pnpaper}. 
  
-
-\section{TKI measurements}\label{sec:tki}
-
-TKI is a methodology based on the conservation of momentum in neutrino interactions. In essence, it involves quantifying the imbalance between the observed transverse momentum of the final-state particles and the expected transverse momentum from neutrino interactions with free nucleons~\cite{Lu:2015hea, Lu:2015tcr}. This ``kinematic mismatch'' together with its longitudinal and three-dimensional variations~\cite{Furmanski:2016wqo, Lu:2019nmf}, and the derived asymmetry~\cite{Cai:2019jzk}, has been a crucial set of observables, establishing a pathway to extract valuable information about the participating particles and the underlying nuclear processes. Recent experimental results from neutrino experiments such as  T2K~\cite{T2K:2018rnz, T2K:2021naz}, MINERvA~\cite{MINERvA:2018hba, MINERvA:2019ope, MINERvA:2020anu, MINERvA:2021csy}, and MicroBooNE~\cite{MicroBooNE:2022emb, MicroBooNE:2023cmw, MicroBooNE:2023tzj, MicroBooNE:2023wzy, MicroBooNE:2024tmp}, as well as electron scattering experiments such as  CLAS~\cite{CLAS:2021neh}, highlight the efficacy of TKI. 
-
-\begin{figure}[!htb] 	
-    \centering 		
-    \includegraphics[width=0.35\textwidth]{figures/stki.eps}
-    \caption{\label{fig:stki} Schematic illustration of the TKI variables. Diagram taken from Ref.~\cite{Lu:2015tcr}.} 
+In the case of pion production, an additional doouble transverse variable, $\dptt$, can be constructed by projecting $\vecdpt$ onto the direction perpendicular to the lepton scattering plane, which is defined as the plane containing $\vecpl$ and $\vecpnu$.
+The reconstruction is illustrated in Fig.~\ref{fig:dtki}.
+\begin{figure}
+    \centering
+    \includegraphics[width=0.35\textwidth]{figures/dptt.pdf}
+    \caption{\label{fig:dtki} Schematic illustration of the double TKI variable, $\dptt$. Diagram taken from Ref.~\cite{T2K:2021naz}.}
 \end{figure}
+In the absence of nuclear effects, $\dptt$ should be zero.
+The spread of the $\dptt$ distribution is sensitive to the nuclear effects in pion production~\cite{MINERvA:2020anu, T2K:2021naz}.
+Its equivalent in pionless production, $\dptx$, has been proposed and studied together with its orthogonal companion, $\dpty$, in MINERvA~\cite{MINERvA:2019ope}.
+Additionally, Ref.~\ref{Lu:2015tcr,Hamacher-Baumann:2020ogq} suggests the possibility of using $\dptt$ to select a $\nu$-H sample.
+Further details on a hydrogen sample selection will be discussed in Sec.~\ref{sec:tki-h}.
 
-In neutrino scattering off a free nucleon, the sum of the transverse components of the final products is expected to be zero, visualized through a back-to-back configuration between the final-state lepton and hadronic system in the  plane transverse to the neutrino direction. Hence, in a neutrino interaction with a nucleus, the transverse momentum imbalance, $\dpt$~\cite{Lu:2015tcr}, results from intranuclear dynamics, including Fermi motion and FSIs  as shown in Fig.~\ref{fig:stki}. The deviation from being back-to-back is quantified by the  coplanarity angle $\dphit$~\cite{Lu:2015tcr}, while the transverse boosting angle, $\dat$~\cite{Lu:2015tcr}, represents the direction of $\dpt$ within the transverse plane. Furthermore, analyzing the energy and longitudinal momentum budget~\cite{Furmanski:2016wqo, Lu:2019nmf} enables the conversion of $\dpt$ to the emulated (initial) nucleon momentum, $\pn$,  providing further insight into the Fermi motion; this conversion amounts to a correction on the order of $\mathcal{O}(20\%)$~\cite{Yang:2023dxk}. 
-With one-body currents in the absence of FSIs, $\dat$ remains uniform (except for second-order effects, such as variations in the center-of-mass energy), given the isotropic nature of the initial nucleon motion. However, as the final products propagate through the nuclear medium, they experience FSIs, thereby disturbing the isotropy and the Fermi motion peak of the $\dat$ and $\pn$ ($\dpt$) distributions, respectively. Hence, $\dpt$ and $\pn$ elucidate the Fermi motion details, while $\dat$  characterizes the FSI strength---crucial for understanding medium effects in neutrino interactions. A notable advantage of these observables is their minimal dependence on neutrino energy~\cite{Lu:2015tcr}. Moreover, the double TKI variable, $\dptt$~\cite{Lu:2015hea}, is the projection of $\vecdpt$ along the axis perpendicular to the lepton scattering plane (hence ``double''). In addition to its use for extracting neutrino-hydrogen interactions~\cite{Lu:2015hea, Hamacher-Baumann:2020ogq}, it has also been applied to study nuclear effects in neutrino pion productions~\cite{MINERvA:2020anu, T2K:2021naz}. Its equivalent in pionless production, $\dptx$, has been proposed and studied together with its orthogonal companion, $\dpty$, in MINERvA~\cite{MINERvA:2019ope}.
+There has been a wealth of measurements from various neutrino experiments such as  T2K~\cite{T2K:2018rnz, T2K:2021naz}, MINERvA~\cite{MINERvA:2018hba, MINERvA:2019ope, MINERvA:2020anu, MINERvA:2021csy}, and MicroBooNE~\cite{MicroBooNE:2022emb, MicroBooNE:2023cmw, MicroBooNE:2023tzj, MicroBooNE:2023wzy, MicroBooNE:2024tmp}.
+As the TKI idea is equally applicable to electron scattering, experiments such as CLAS~\cite{CLAS:2021neh} has also produced TKI measurments, showcasing the efficacy and wide applicability of TKI. 

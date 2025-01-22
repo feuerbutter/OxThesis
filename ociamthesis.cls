@@ -450,6 +450,8 @@
 
 \usepackage{subcaption}
 \usepackage{braket}
+\usepackage{tikz}
+\usepackage{tikz-feynman}
 % ------ units --------
 \newcommand{\gevc}{\textrm{GeV}/c}
 \newcommand{\mevc}{\textrm{MeV}/c}
@@ -559,7 +561,7 @@
 % ------ PMNS ------------
 \newcommand{\totwo}{\theta_{12}}
 \newcommand{\tothr}{\theta_{13}}
-\newcommand{\ttt}{\theta_{23}}
+\newcommand{\ttthr}{\theta_{23}}
 \newcommand{\delmtwoo}{\Delta m^2_{21}}
 \newcommand{\delmthro}{|\Delta m^2_{31}|}
 
