@@ -471,10 +471,50 @@ Additionally, the necessity of reconstructing the neutrino energy renders $\thet
      Furthermore, the analyses presented here are based on true information without any realistic fluctuations, meaning that challenges related to reconstruction—particularly those involving neutrino energy for the Adler angle—are not considered. 
      Therefore, the full potential of the COM angle will be better realized in a cross-section measurement that accounts for these complexities.
 
+     \subsection{Reconstruction quality}
+     \label{sec:com-reco}
+     The above discussion is based on true information where both the particle kinematics and the selection are ideal.
+     It is important to check the practicality of this idea by checking the uncertainties in the reconstruction of the COM variables.
+     Hence, I calculated the COM variables using the $\numuccopiop$ selection, same as the one used for the TKI calculation above, and the reconstruction results are shown in Fig.~\ref{fig:com-reco}.
+     \begin{figure}
+          \begin{subfigure}[b]{\dbfigwid\textwidth}
+               \centering
+               \includegraphics[width=\textwidth]{figures/COM/SFGpTPCmu_dang_colnor_resmat_al15.eps}
+               \caption{$\thetacom$ response matrix.}
+               \label{subfig:reco-com-t-resmat}
+          \end{subfigure}         
+          \begin{subfigure}[b]{\dbfigwid\textwidth}
+               \centering
+               \includegraphics[width=\textwidth]{figures/COM/SFGpTPCmu_edelta_colnor_resmat_al15.eps}
+               \caption{$\ecom$ response matrix.}
+               \label{subfig:reco-com-e-resmat}
+          \end{subfigure}
+          \\
+          \begin{subfigure}[b]{\dbfigwid\textwidth}
+               \centering
+               \includegraphics[width=\textwidth]{figures/COM/SFGpTPCmu_dang_res_hist_al15.eps}
+               \caption{$\thetacom$ resolution.}
+               \label{subfig:reco-com-t-res}
+          \end{subfigure}
+          \begin{subfigure}[b]{\dbfigwid\textwidth}
+               \centering
+               \includegraphics[width=\textwidth]{figures/COM/SFGpTPCmu_edelta_res_hist_al15.eps}
+               \caption{$\ecom$ resolution.}
+               \label{subfig:reco-com-e-res}
+          \end{subfigure}
+          \caption{COM variables for the $\numuccopiop$ selection.}
+          \label{fig:com-reco}
+     \end{figure}
+     The analysis done above in Sec.~\ref{sec:com-ana} has binning of $20\deg$ for $\thetacom$, while Fig.~\ref{subfig:reco-com-t-res} shows that the reconstruction has an excellent half width of $2.6\deg$, significantly smaller than the analysis binning.
+     This suggests that reconstruction will not impede the model differentiation capability presented in Sec.~\ref{sec:com-ana} and might have even larger potential owing to the superb reconstruction quality of the SFGD.
+     The fitted half width of $\ecom$ is about $6.0~\mev$, which is also exceedingly precise.
+     It will be more relevant for a hydrogen sample selection discussed in the next section. 
+ 
      \subsection{Conclusion}
      This study introduces a novel set of variables—the COM angle and total energy.
      These variables offer several advantageous properties, motivating their use in future cross-section measurements.
      These measurements have the potential to significantly improve our understanding and modeling of FSI processes in neutrino-nucleus interactions, thereby contributing to more accurate neutrino cross-section predictions.
+     The reconstruction quality of the COM variables is shown to be excellent, and it is promising that the actual measurement can out-perform the potential shown in the true MC study.
 
 \section{Hydrogen Sample Selection}
 \label{sec:mc-hydrogen}
@@ -586,8 +626,16 @@ Hence, the COM total energy cut is proposed as a complementary cut to $\dptt$, a
      \end{figure}
 
      \subsection{Discussion}
-     Due to the limited amount of MC events available and the relatively small fraction of resonance event in the T2K beam, the statistics of the selection is too small to be conclusion.
-     However, the results presented here are promising and suffice in demonstrating the efficacy of using $\ecom$ to remove carbon backgrounds that could not be removed with the transverse variables.
+     Both the transverse variables and $\ecom$ have limitations.
+     The true distributions of the transverse variables on hydrogen are delta functions, but the dependence on an accurate neutrino direction reconstruction limits the reconstruction resolution of the transverse variables.
+     The impact of the resolution is amplified as the cuts are placed to select events with small values when reconstruction uncertainties could relatively easily move the signal events out of the cut.
+     On the other hand, while $\ecom$ has an excellent reconstruction quality as it is independent of neutrino direction, its true distribution has a natural half width of about $60~\mev$~\cite{ParticleDataGroup:2024cfk}.
+     Hence, even if $\ecom$ can be reconstructed perfectly, it cannot separate hydrogen events from carbon events completely.
+     Due to the limited amount of MC events available and the relatively small fraction of resonance event in the T2K beam, the statistics of the selection is too small to be conclusive.
+     Nevertheless, the results are promising and suffice in demonstrating the complementarity of the transverse variables and $\ecom$.
+     Hence, it is hopeful that using the two kinds of variables together, the upgraded ND280 data can produce a hydrogen sample with high purity.
+     
+
 
    
 
