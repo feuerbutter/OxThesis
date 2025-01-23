@@ -5,7 +5,7 @@ There is no one who loves pain itself, who seeks after it and wants to have it, 
   \qauthor{--- Cicero's \textit{de Finibus Bonorum et Malorum}}
 \end{savequote}
 
-\chapter{\label{ch:4-sel}New Techniques in Selection Development} 
+\chapter{\label{ch:techniques}New Techniques in Selection Development} 
 \minitoc
 
 The upgrade new detector has enhanced measuring capabilities, which is especially important for hadrons,
@@ -83,7 +83,7 @@ Additionally, to prepare for the data-MC comparisons and future cross section an
 
    The multiple PGUN samples are combined into one large sample to determine the suitable threshold $\dedx$ values.
    While plots like Fig.~\ref{fig:dedx-pprres-eg} are clear in showing the underlying idea of the ESC selection, profile plots are better suited for determining a proper threshold as shown in Fig.~\ref{fig:esc-andedx-slice};
-   For example, as shown in Fig.~\ref{fig:ans-dedx0-ppr-slice}, a cut at $200$ should be placed for the first node.
+   For example, as shown in Fig.~\ref{subfig:ans-dedx0-ppr-slice}, a cut at $200$ should be placed for the first node.
    Similarly, the threshold values for the other nodes are $500$, $1000$, $900$, $840$ and $740$ respectively.
    \begin{figure}[t]
        \centering
@@ -272,7 +272,7 @@ Additionally, to prepare for the data-MC comparisons and future cross section an
 
    The overall improvement in the SPK is best illustrated with a Cauchy fit to the proton momentum reconstruction resolution histogram as shown in Fig.~\ref{subfig:ppr-res-bfESC} and Fig.~\ref{subfig:ppr-res-afESC}, which shows an approximately $50\%$ reduction in the width of the distribution.
    This improvement is achieved at the cost of a $2/3$ reduction in the efficiency, as shown in Fig.~\ref{subfig:ppr-eff-bfESC} and Fig.~\ref{subfig:ppr-eff-afESC} .
-   The drop of efficiency might seem drastic, but it proves to be necessary for the TKI analysis, as shown later in Sec.~\ref{sec:do-TKI}, which showcases the significant improvement to the TKI variables evaluation due to the ESC technique. 
+   The drop of efficiency might seem drastic, but it proves to be necessary for the TKI analysis, as shown later in Sec.~\ref{sec:mc-tki}, which showcases the significant improvement to the TKI variables evaluation due to the ESC technique. 
 
    \begin{figure}[t]
       \centering
@@ -378,7 +378,7 @@ Additionally, to prepare for the data-MC comparisons and future cross section an
           This is expected as the pion momentum increases, the pion decay length increases, and the probability of secondary interactions increases.
           The further decrease for the $70\deg$ is due to the increase in the escape fraction.
           The geometry of the SFGD, which is much shorter in the vertic direction, makes it easier for high-angle pions to escape.
-          For the $f800~\mevc$ pions, their decay length is too long for SFGD.
+          For the $800~\mevc$ pions, their decay length is too long for SFGD.
           Hence, there is a significant increase in the escape fraction, about $30\%$ and $50\%$ for $0\deg$ and $70\deg$ .
           The unescaped ones are all those that have undergone secondary interactions, so at this high momentum, these pions cannot be reconstructed by the trackless technique.
           \begin{figure}[t]
@@ -415,6 +415,7 @@ Additionally, to prepare for the data-MC comparisons and future cross section an
                     \caption{$\ppi=800\mevc$ and $\tpi=70\deg$.}
                     \label{subfig:pi-fate-800-70}
                \end{subfigure}
+               \caption{Pion fate in the SFGD for different combinations of pion kinematics}
             \end{figure}
 
           This preliminary study demonstrates that a considerable fraction of the primary pions produced in SFGD have relatively low momentum ($<200\mevc$), and for these pions, the majority of them decays at rest to produce an ME that could be utilized in the trackless technique.
@@ -442,8 +443,8 @@ Additionally, to prepare for the data-MC comparisons and future cross section an
            \begin{figure}[h]
               \centering
               \includegraphics[width=\sgfidwid\textwidth]{figures/sel/pi_len_pi_len_vs_pi_ke_hist2d_al0_true_nokink.eps} 
-              \caption{A degree 4 polynomial fit of $\log_{10}{T_\pi}$ against $\log_{10}{L_\pi}$, where $T_\pi$ and $L_\pi$ are the kinetic energy and the range of the pion respectively. The $p_i$'s are the corresponding coefficients of the term of order $i$. The fit is satisfactory considering the close to 1 (\mccorrect{NOT TRUE}) $\chi^2/ndf$ value. }
-              \label{fig:fit}
+              \caption{A degree 4 polynomial fit of $\log_{10}{T_\pi}$ against $\log_{10}{L_\pi}$, where $T_\pi$ and $L_\pi$ are the kinetic energy and the range of the pion respectively. The $p_i$'s are the corresponding coefficients of the term of order $i$. The fit is satisfactory considering the close to 1 (\mccorrect{NOT TRUE}) $\chi^2/\textrm{n.d.f.}$ value. }
+              \label{fig:pi-mombr-fit}
            \end{figure}
 
         \subsection{Implementation}
@@ -477,7 +478,9 @@ Additionally, to prepare for the data-MC comparisons and future cross section an
         
             \textbf{Background reduction} - Several background reduction steps are implemented, for example, an existing $\pi^0$ rejection developed by Colleagues at T2K.
             However, they are insufficient as shown by the considerable portion of CC-other backgrounds in Fig.~\ref{fig:tlpi-bf-trknumcut}.
-            FIG-TLPI-BF-trknumcut
+
+            \blue{FIG-TLPI-BF-trknumcut}
+
             Hence, based on logical understanding of different event topologies, I developed a series of track number cuts and a new idea, called the track family tree.
             
             An event topology resembles a family tree sideway. 
@@ -517,7 +520,7 @@ Additionally, to prepare for the data-MC comparisons and future cross section an
           Below $100\mevc$, the improvement brought by the trackless technique is two-fold.
           Firstly, the efficiencies below $100\mevc$ are significantly higher for the trackless technique.
           The efficiency for $\numuccopi$-TR drops drastically below $80\mevc$.
-          Secondly, the momentum threshold in $\numuccopi$-TL extends to below $50\mevc$, which is impossible for the conventional method.
+          Secondly, the momentum threshold in $\numuccopi$-TL extends to below $50~\mevc$, which is impossible for the conventional method.
           More encourangingly, this improvement in low momentum efficiency and lower threhold does not compromise the selection purity as shown in Fig.~\ref{subfig:stack-topo-tl} and Fig.~\ref{subfig:stack-topo-tr}.
           \begin{figure}
                \centering

@@ -5,7 +5,7 @@ There is no one who loves pain itself, who seeks after it and wants to have it, 
   \qauthor{--- Cicero's \textit{de Finibus Bonorum et Malorum}}
 \end{savequote}
 
-\chapter{\label{ch:5-mcdata}High level vairables} 
+\chapter{\label{ch:datamc}High level vairables} 
 \minitoc
 
 As elaborated in the previous chapter, the neutrino-nucleus interaction is a complex process involving multiple components, including the neutrino-nucleon interaction, the nucleon initial states (IS), and the final state interactions (FSI).
@@ -167,9 +167,9 @@ As proton kinematics are required for the high level constructed variables, data
 
      \subsection{$\numuccopiop$ selection}
      \label{sec:mc-tki-1pi}
-     The $numuccopiop$ selection uses the pion trackless reconstruction technique as elaborated in Sec.~\ref{sec:sel-tl} for the $\numuccopi$-TL selection.
+     The $\numuccopiop$ selection uses the pion trackless reconstruction technique as elaborated in Sec.~\ref{sec:sel-tl} for the $\numuccopi$-TL selection.
      Additionally, it requires the reconstruction of one ESC proton.
-     Hence, this sample uses both novel techniques in Chapter~\ref{ch:sel}, showcasing the potential of the upgraded ND280 detector in hadronic measurement.
+     Hence, this sample uses both novel techniques in Chapter~\ref{ch:techniques}, showcasing the potential of the upgraded ND280 detector in hadronic measurement.
 
      The TKI variables for the $\numuccopiop$ selection are shown in Fig.~\ref{fig:mc-tki-1pi}.
      \begin{figure}
@@ -203,11 +203,11 @@ As proton kinematics are required for the high level constructed variables, data
      \end{figure}
      
 
-     In comparison to the projected resolution of the $\dptt$ measurement using the pre-upgrade ND280 in Ref.~\cite{lu:2015hea}, Fig.~\ref{1pi-tki-dptt} shows a $60\%$ decrease in the $\dptt$ width, 
+     In comparison to the projected resolution of the $\dptt$ measurement using the pre-upgrade ND280 in Ref.~\cite{lu:2015hea}, Fig.~\ref{fig:1pi-tki-dptt} shows a $60\%$ decrease in the $\dptt$ width, 
 
      In additional to the single transverse variables presented above, the $\numuccopiop$ sample can also be used to measure the double transverse variable, $\dptt$, the net momentum transverse to both the neutrino momentum and the muon momentum,
      The $\dptt$ resolution is shown in Fig.~\ref{fig:1pi-tki-dptt}.
-     Without FSI, $\dptt$ should be $0$. This special property can be exploited to select $\nu$-H events amidst $\nu$-C events as suggested in Ref.~\cite{dpttpaper}. 
+     Without FSI, $\dptt$ should be $0$. This special property can be exploited to select $\nu$-H events amidst $\nu$-C events as suggested in Ref.~\cite{lu:2015hea}. 
      Hence, the main figure of merit for $\dptt$ measurement is the width of its distribution for $\nu$-H events, where the hydrogen events are picked by an additional check on the MC truth information.
      As shown in Fig.~\ref{fig:1pi-tki-dptt}, the fitted half width is about $12~\mevc$, which is significantly improved compared to $21~\mevc$, the pre-upgrade ND280 result~\cite{lu:2015hea}, suggesting a greater potential to apply it for a hydrogen sample selection, which will be discussed at the end of this chapter in Sec.~\ref{sec:mc-hydrogen}.
 
@@ -447,7 +447,7 @@ Additionally, the necessity of reconstructing the neutrino energy renders $\thet
      Even if the RES model were to change significantly, as explored in Fig.~\ref{fig:ma-comp}, the impact on the shape of $\thetacom$ remains minimal, particularly for the T2K flux.
      This suggests that FSI models tuned using $\thetacom$, e.g. following the methodology in Ref.~\cite{GENIE:2021zuu}, will continue to be applicable even if the RES model undergoes future updates, thereby enhancing the robustness of such FSI model tuning.
 
-     As noted in Sec.~\ref{sec:com}, the $\thetacom$ distribution is influenced by the production of higher resonances that decay through the same channels as $\deltapp$.
+     As noted in Sec.~\ref{sec:mc-com}, the $\thetacom$ distribution is influenced by the production of higher resonances that decay through the same channels as $\deltapp$.
      The impact is two-fold.
      Firstly, due to general difference of $\thetaR$ from $\thetapidel$, $\thetacom$ would start to deviate from $\thetapidel$ (smeared by FSI), as shown in Fig.~\ref{subfig:enu-comp-cc1pi1p}. 
      Although $\thetacom$ is inspired by $\thetapidel$, it is not restricted to the reconstruction or estimation of $\thetapidel$. 
@@ -466,7 +466,7 @@ Additionally, the necessity of reconstructing the neutrino energy renders $\thet
      Preliminary studies have shown that applying a cut on COM energy can remove events with minimal transverse momentum imbalance, which could be combined with cuts on $\dptt$ and $\dpt$ to create a high-purity $\nu$-H sample. 
      This approach will be explored further in future studies.
 
-     Although the COM angle shares a similar reconstruction target with the Adler angle, there are key differences, as discussed in Sec.~\ref{sec:ana}. 
+     Although the COM angle shares a similar reconstruction target with the Adler angle, there are key differences, as discussed in Sec.~\ref{sec:com-ana}. 
      While these differences may appear minor, the conceptual distinction makes tuning the FSI model using the COM angle more adaptable to future developments. 
      Furthermore, the analyses presented here are based on true information without any realistic fluctuations, meaning that challenges related to reconstruction—particularly those involving neutrino energy for the Adler angle—are not considered. 
      Therefore, the full potential of the COM angle will be better realized in a cross-section measurement that accounts for these complexities.
@@ -520,9 +520,9 @@ Additionally, the necessity of reconstructing the neutrino energy renders $\thet
 \label{sec:mc-hydrogen}
 The importance of a high-purity $\nu$-H sample has been discussed in Sec.~\ref{sec:dis} (check where exactly).
 There has been growing interest and efforts in developing techniques to select such a sample, as seen in Ref.~\cite{Lu:2015hea,MINERvA:2023avz,Baudis:2023tma}.
-While Ref.~\cite{MINERvA:2023avz} and Ref.~\ref{Baudis:2023tma} select $\nu$-H events in the antineutrino and neutrino pion-less samples respectively, Ref.~\cite{Lu:2015hea} applies to events with pions in the final state. 
+While Ref.~\cite{MINERvA:2023avz} and Ref.~\cite{Baudis:2023tma} select $\nu$-H events in the antineutrino and neutrino pion-less samples respectively, Ref.~\cite{Lu:2015hea} applies to events with pions in the final state. 
 They serve as good complements to each other.
-The proposition in Rec.~\cite{Lu:2015} is to use $\dptt$ to select $\nu$-H events.
+The proposition in Rec.~\cite{Lu:2015hea} is to use $\dptt$ to select $\nu$-H events.
 It is difficult to achieve optimal efficiency and purity with a one-dimensional cut. 
 Hence, the COM total energy cut is proposed as a complementary cut to $\dptt$, and this section shall demonstrate its effectiveness.
 
@@ -579,7 +579,7 @@ Hence, the COM total energy cut is proposed as a complementary cut to $\dptt$, a
      Similar to Fig.~\ref{fig:hsel-tki-decomp}, the decompositions for the COM variables are shown in Fig.~\ref{fig:hsel-com-decomp}.
      Although FSI alters the $\thetacom$ distributions, leading to distinct distributions between hydrogen and carbon, but as $\thetacom$ for hydrogen is expected to be uniform across the entire range, the cut on $\thetacom$ to select hyrodgen is not expected to be effective.
      Note that to show the wide range of $\thetacom$ for hydrogen, the colours for hydrogen and carbon are switched in Fig.~\ref{subfig:hsel-com-theta} respect to others.
-     In contrast, without FSI, $\ecom$ is expected to centre around the mass of the resonance, which is $1232\mev$ for $\deltapp$, while the carbon events are expected to have a much wider distribution as shown in Fig.~\ref{subfig:hsel-com-edelta}.
+     In contrast, without FSI, $\ecom$ is expected to centre around the mass of the resonance, which is $1232~\mev$ for $\deltapp$, while the carbon events are expected to have a much wider distribution as shown in Fig.~\ref{subfig:hsel-com-edelta}.
      \begin{figure}
      \begin{subfigure}[b]{\dbfigwid\textwidth}
           \centering
@@ -600,7 +600,7 @@ Hence, the COM total energy cut is proposed as a complementary cut to $\dptt$, a
 
      To demonstrate the effectiveness of these cuts, the $\dptt$ distributions are plotted step-wise in Fig.~\ref{fig:hsel-dptt-step}.
      Comparing the $\dptt$ distributions before and after each cut, namely the cuts on $\dpt$ and $\ecom$, it is evident that these cuts successfully remove carbon backgrounds in the low $\dptt$ region, which is impossible to remove based on $\dptt$ alone.
-     Furthermore, by comparing, Fig.~\ref{subfig:} and Fig.~\ref{subfig:}, it is demonstrated that the cut on $\ecom$ is capable of removing carbon backgrounds that cannot be removed by the transverse variables.
+     Furthermore, by comparing, Fig.~\ref{subfig:hsel-dang-dpt80} and Fig.~\ref{subfig:hsel-dang-dpt80-ecom}, it is demonstrated that the cut on $\ecom$ is capable of removing carbon backgrounds that cannot be removed by the transverse variables.
      Hence, all three variables are indispensable for achieving the optimal purity and efficiency.
      \begin{figure}
      \begin{subfigure}[b]{\trfigwid\textwidth}

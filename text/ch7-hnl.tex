@@ -39,13 +39,13 @@ There is no one who loves pain itself, who seeks after it and wants to have it, 
         The result is shown in Fig.~\ref{fig:hnl-fluxes}, which shows that the pink dash line ($\mn=1~\kev$) overlaps closely with the black solid line, which plotted directly from the T2K input flux.  
         \begin{figure}[!htb] 
             \centering 		
-            \includegraphics[width=0.45\textwidth]{figures/hnl_fluxes.png}
+            \includegraphics[width=\sgfigwid\textwidth]{figures/hnl_fluxes.png}
             \caption{\label{fig:hnl-fluxes} HNL fluxes produced by \code{BeamHNL} for different $M_N$. The solid lines are directly plotted from T2K input flux files, one with version ``13a'' and another with ``21b''. The dash lines are \code{BeamHNL} outputs for different $\mn$.} 
         \end{figure}
         After the validation, the HNL mass is then set to target values, e.g. $300~\mev$, to generate HNL events, which are then passed through the T2K simulation chain for selection development. 
         \begin{figure}[!htb] 
             \centering 		
-            \includegraphics[width=0.45\textwidth]{figures/HNLEveDIs.png}
+            \includegraphics[width=\sgfigwid\textwidth]{figures/HNLEveDIs.png}
             \caption{\label{fig:hnl-evedis} A $N\rightarrow\mu+\pi$ event display in the upgraded ND280.} 
         \end{figure}
 
@@ -80,6 +80,7 @@ There is no one who loves pain itself, who seeks after it and wants to have it, 
         \textbf{$\mu$-$\pi$ angle and invariant mass cut} - These are kinematic cuts exploiting the fact that the SM events with $1$ muon and $1$ pion are mostly resonance events that has one more proton than the HNL decay. 
         Due to the additional proton, the opening angle between the $\mu$ track and the $\pi$ track, $\tmupi$, can have large variations while that of an HNL decay would be more collimated. 
         Similarly, the invariant mass of the $\mu$-$\pi$ system, $\mmupi=(\pmu+\ppi)^2$ would have a larger range compared to the HNL, which centres around the input value, $300~\mev$ as shown in Fig.~\ref{fig:hnl-mmupi}.
+        \blue{CHECK:FIG---mmmupi!!!}
         The stark contrast is apparent in Fig.~\ref{fig:mmupi-mupiang}, and to preserve the most number of HNL events, the specific cuts are: $30\degree<\tmupi<90\degree$ and $270~\mev<\mmupi<320~\mev$. 
         \begin{figure}[!htb]
            \centering
@@ -127,7 +128,7 @@ There is no one who loves pain itself, who seeks after it and wants to have it, 
         \end{figure}    
         
     \subsubsection{Sensitivity extraction}
-        Sensitivity is extracted using the $CL_s$ method~\cite{Read_2002}.
+        Sensitivity is extracted using the $CL_s$ method~\cite{Read:2002hq}.
         $CL_x$ is defined as $\textrm{Prob}(N\leq N_{\textrm{obs}}| \mu = x)$, i.e. the probability of predicting a number of events smaller or equal to the number of observed events assuming model $x$. When $x=b$ or $x=s+b$, it is the background-only model or the the signal plus background model.
         Then, $CL_s$ is defined as 
         \begin{equation}

@@ -458,6 +458,7 @@
 \newcommand{\gev}{\textrm{GeV}}
 \newcommand{\mev}{\textrm{MeV}}
 \newcommand{\ev}{\textrm{eV}}
+\newcommand{\cm}{\textrm{cm}}
 
 
 % ------ particles ------
@@ -521,6 +522,7 @@
 \newcommand{\thetap}{\theta_\textrm{p}}
 \newcommand{\ep}{E_\textrm{p}}
 \newcommand{\ppi}{p_{\pi}}
+\newcommand{\tpi}{\theta_{\pi}}
 \newcommand{\epi}{E_{\pi}}
 \newcommand{\enu}{E_{\nu}}
 \newcommand{\vecpp}{\vec{p}_\textrm{p}}
@@ -534,6 +536,10 @@
 \newcommand{\vecpmu}{\vec{p}_{\mu}}
 \newcommand{\mdeldec}{m_{\Delta}^{(0)}}
 \newcommand{\mdel}{m_{\Delta}}
+
+
+\newcommand{\tmupi}{\theta_{\mu\pi}}
+\newcommand{\mmupi}{M_{\mu\pi}}
 
 \newcommand{\dedx}{\,\textrm{d}E/\,\textrm{d}x}
 
