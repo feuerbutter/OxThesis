@@ -25,16 +25,16 @@ This section surveyed four TKI data sets: T2K $0\pi$~\cite{T2K:2018rnz}, T2K $\p
 
 \begin{figure*} 
     \centering 		
-    \includegraphics[width=\dbfigwid\textwidth]{figures/0000-t2k_0pi_dalphat_reac_decomp.eps} 
-    \includegraphics[width=\dbfigwid\textwidth]{figures/0000-t2k_pip_dalphat_reac_decomp.eps} 
-    \includegraphics[width=\dbfigwid\textwidth]{figures/0000-min_0pi_dalphat_reac_decomp.eps} 
-    \includegraphics[width=\dbfigwid\textwidth]{figures/0000-min_pi0_dalphat_reac_decomp.eps}
+    \includegraphics[width=\dbfigwid\textwidth]{figures/tuning/0000-t2k_0pi_dalphat_reac_decomp.eps} 
+    \includegraphics[width=\dbfigwid\textwidth]{figures/tuning/0000-t2k_pip_dalphat_reac_decomp.eps} 
+    \includegraphics[width=\dbfigwid\textwidth]{figures/tuning/0000-min_0pi_dalphat_reac_decomp.eps} 
+    \includegraphics[width=\dbfigwid\textwidth]{figures/tuning/0000-min_pi0_dalphat_reac_decomp.eps}
     \caption{$\dat$ measurements decomposed in interaction types, compared to \gZero prediction.}   \label{fig:g24-0-dat-reac} 
     		
-    \includegraphics[width=\dbfigwid\textwidth]{figures/0000-t2k_0pi_dpt_reac_decomp.eps}
-    \includegraphics[width=\dbfigwid\textwidth]{figures/0000-t2k_pip_pn_reac_decomp.eps}
-    \includegraphics[width=\dbfigwid\textwidth]{figures/0000-min_0pi_pn_reac_decomp.eps}
-    \includegraphics[width=\dbfigwid\textwidth]{figures/0000-min_pi0_pn_reac_decomp.eps}
+    \includegraphics[width=\dbfigwid\textwidth]{figures/tuning/0000-t2k_0pi_dpt_reac_decomp.eps}
+    \includegraphics[width=\dbfigwid\textwidth]{figures/tuning/0000-t2k_pip_pn_reac_decomp.eps}
+    \includegraphics[width=\dbfigwid\textwidth]{figures/tuning/0000-min_0pi_pn_reac_decomp.eps}
+    \includegraphics[width=\dbfigwid\textwidth]{figures/tuning/0000-min_pi0_pn_reac_decomp.eps}
     \caption{\label{fig:g24-0-pn-reac} Similar to Fig.~\ref{fig:g24-0-dat-reac} but for the $\pn$ (\ttkpip, \minzpi and \minpiz) and $\dpt$ (\ttkzpi) measurements.
     } 
 \end{figure*}
@@ -140,7 +140,7 @@ Given that $N_\textrm{s}$ increases factorially, caution is essential when augme
 
 \begin{figure}[!htb] 	
     \centering 		
-    \includegraphics[width=\sgfigwid\textwidth]{figures/residual.eps}
+    \includegraphics[width=\sgfigwid\textwidth]{figures/tuning/residual.eps}
     \caption{\label{fig:residual} Fractional difference for the bin-by-bin cross sections between MC truth and the parameterized approximation with order-4 polynomials,  both in the Norm-Shape (NS)~\cite{DAgostini:1993arp,Hanson:2005mrg} space with \allpar. See Table~\ref{tab:hALFG-para} for the definition of \allpar. The residual has a mean of $0.003$ and a standard deviation of $0.073$.} 
 \end{figure}
 
@@ -153,28 +153,28 @@ The observables for the reported differential cross sections across the four TKI
 
 \begin{table}[!htb]
     \centering
-    \begin{tabular}{cp{1.1cm}p{1.5cm}p{1.5cm}p{1.5cm}}
+    \begin{tabular}{ccccc}
     \hline
     \hline
-    Observables & No. of \par bins & \texttt{Combi-} \par \texttt{Superset}  & \texttt{Combi-} \par \texttt{Best-} \par \allpar& \texttt{Combi-} \par \texttt{Best-} \par \redpar\\
+    Observables & No. of bins & \texttt{Combi-} \texttt{Superset}  & \texttt{Combi-} \texttt{Best-} \allpar& \texttt{Combi-} \texttt{Best-} \redpar\\
     \hline
     \multicolumn{5}{c}{\ttkzpi} \\
     \hline
-       $\dat$            & $8$                & $\tick$     &  & $\tick$  \\ 
-       $\dpt$            & $8$                & $\tick$     & $\tick$  & $\tick$ \\ 
-       $\dphit$          & $8$                & $\tick$     &  &  \\      
+       $\dat$            & $8$                & $\tick$     &          & $\tick$  \\ 
+       $\dpt$            & $8$                & $\tick$     &          & $\tick$ \\ 
+       $\dphit$          & $8$                & $\tick$     &          &  \\      
     \hline
     \multicolumn{5}{c}{\ttkpip} \\
     \hline
-      $\dat$            & $3$                & $\tick$      &  & $\tick$  \\
+      $\dat$            & $3$                & $\tick$      & $\tick$  & $\tick$  \\
       $\pn$             & $4$                & $\tick$      & $\tick$  & $\tick$ \\ 
-      $\dptt$           & $5$                & $\tick$      &  & $\tick$  \\ 
+      $\dptt$           & $5$                & $\tick$      & $\tick$  & $\tick$  \\ 
     \hline
     \multicolumn{5}{c}{\minzpi} \\
     \hline  
-      $\dat$            & $12$               & $\tick$      & & $\tick$  \\ 
-      $\pn$             & $24$               & $\tick$      & $\tick$  & $\tick$ \\
-      $\dpt$            & $24$               & $\tick$      & $\tick$ &  \\     
+      $\dat$            & $12$               & $\tick$      &          & $\tick$  \\ 
+      $\pn$             & $24$               & $\tick$      &          & $\tick$ \\
+      $\dpt$            & $24$               & $\tick$      &          &  \\     
       $\dphit$          & $23$               & $\tick$      &  &  \\     
       $\pp$             & $25$               &      &  &  \\     
       $\thetap$         & $26$               &      &  &  \\     
@@ -183,10 +183,9 @@ The observables for the reported differential cross sections across the four TKI
     \hline
     \multicolumn{5}{c}{\minpiz} \\
     \hline
-      $\dat$            & $9$               & $\tick$      & & $\tick$      \\  
+      $\dat$            & $9$               & $\tick$      & $\tick$   & $\tick$      \\  
       $\pn$             & $12$               & $\tick$     & $\tick$  & $\tick$ \\ 
-      $\dptt$           & $13$               & $\tick$     &  & $\tick$  \\
-    \hline
+      $\dptt$           & $13$               & $\tick$     & $\tick$  & $\tick$  \\   \hline
     \hline
     \end{tabular}
     \caption{\label{tab:data-sets}
@@ -198,8 +197,8 @@ The observables for the reported differential cross sections across the four TKI
 
 \begin{figure}[!htb] 
     \centering 		
-    \includegraphics[width=\sgfigwid\textwidth]{figures/chi2_hist_covfix.eps} 
-    \caption{\label{fig:allchi} Change of $\chi^2$ calculated for the full (i.e., tuned plus validation) observable set as a function of the tuned combination (cf. Table~\ref{tab:fit-var-combo} in Appendix~\ref{sec:appcombi}). The two model parameter sets (\allpar and \redpar, see Table~\ref{tab:hALFG-para} for definitions) are compared and it can be seen that the respective minima happen at \texttt{Combi-15} and 26. }   
+    \includegraphics[width=\sgfigwid\textwidth]{figures/tuning/chi2_hist_covfix.eps} 
+    \caption{\label{fig:allchi} Change of $\chi^2$ calculated for the full (i.e., tuned plus validation) observable set as a function of the tuned combination (cf. Table~\ref{tab:fit-var-combo} in Appendix~\ref{sec:appcombi}). The two model parameter sets (\allpar and \redpar, see Table~\ref{tab:hALFG-para} for definitions) are compared and it can be seen that the respective minima happen at \texttt{Combi-13} and 26. }   
 \end{figure}
 
 \subsection{\label{sec:tuning-para-choice} Model parameters}
@@ -207,10 +206,10 @@ As outlined in Sec.~\ref{sec:genie}, we focus exclusively on the currently tunab
 
 \begin{table}[!htb]
     \centering
-    \begin{tabular}{cp{1.5cm}p{1.5cm}p{1.2cm}p{1.2cm}}
+    \begin{tabular}{ccccc}
     \hline
     \hline
-    \textrm{Parameter} & \textrm{Nominal} (\gZero)     & \textrm{Range In} \par \textrm{Tuning} & \allpar \par (\gT)  & \redpar \par (\gC) \\ 
+    \textrm{Parameter} & \textrm{Nominal} (\gZero)     & \textrm{Range In} \textrm{Tuning} & \allpar (\gT)  & \redpar (\gC) \\ 
     \hline
     \multicolumn{5}{c}{\sfcfg} \\
     \hline
@@ -260,7 +259,7 @@ In our analysis of the \sfcfg model, the two most relevant parameters are $\srcf
 
     \begin{figure}[!htb]
         \centering
-        \includegraphics[width=\dbfigwid\textwidth]{figures/minerva_pi0_dalphat_FSI_pi0mfp.eps}
+        \includegraphics[width=\sgfigwid\textwidth]{figures/tuning/minerva_pi0_dalphat_FSI_pi0mfp.eps}
         \caption{Effect of varying $\pizmfp$ by $\pm2.5~\sigma$ compared to the MINERvA-$\pi^0$ measurement. Each band's width indicates the \genie prediction's statistical uncertainty from $10^5$ events.}
         \label{fig:minpiz-pn-pi0mfp}
     \end{figure}
@@ -298,43 +297,44 @@ In our analysis of the \sfcfg model, the two most relevant parameters are $\srcf
 \begin{figure}[!htb] 	
     \centering 		
 
-    \includegraphics[width=\dbfigwid\textwidth]{figures/result_test_comb_26_cor_allpar.eps}
-    \includegraphics[width=\dbfigwid\textwidth]{figures/result_test_comb_26_cor_redpar.eps}
+    \includegraphics[width=\dbfigwid\textwidth]{figures/tuning/result_test_comb_26_cor_allpar_covfix.eps}
+    \includegraphics[width=\dbfigwid\textwidth]{figures/tuning/result_test_comb_26_cor_redpar_covfix.eps}
     \caption{ Post-fit Correlation coefficient on \texttt{Combi-26}. } 
 \end{figure}
 
 \begin{figure*} 
     \centering 		
-    \includegraphics[width=\dbfigwid\textwidth]{figures/0026-t2k_0pi_dalphat_reac_decomp.eps}
-    \includegraphics[width=\dbfigwid\textwidth]{figures/0026-t2k_pip_dalphat_reac_decomp.eps}
-    \includegraphics[width=\dbfigwid\textwidth]{figures/0026-min_0pi_dalphat_reac_decomp.eps}
-    \includegraphics[width=\dbfigwid\textwidth]{figures/0026-min_pi0_dalphat_reac_decomp.eps}
+    \includegraphics[width=\dbfigwid\textwidth]{figures/tuning/0026-t2k_0pi_dalphat_reac_decomp_covfix.eps}
+    \includegraphics[width=\dbfigwid\textwidth]{figures/tuning/0026-t2k_pip_dalphat_reac_decomp_covfix.eps}
+    \includegraphics[width=\dbfigwid\textwidth]{figures/tuning/0026-min_0pi_dalphat_reac_decomp_covfix.eps}
+    \includegraphics[width=\dbfigwid\textwidth]{figures/tuning/0026-min_pi0_dalphat_reac_decomp_covfix.eps}
     \caption{\label{fig:g24-c-dat-reac} 
     Similar to Fig.~\ref{fig:g24-0-dat-reac} but with \gC.  The \gZero prediction is also plotted for comparison. 
     } 
 
-    \includegraphics[width=\dbfigwid\textwidth]{figures/0026-t2k_0pi_dpt_reac_decomp.eps}
-    \includegraphics[width=\dbfigwid\textwidth]{figures/0026-t2k_pip_pn_reac_decomp.eps}	
-    \includegraphics[width=\dbfigwid\textwidth]{figures/0026-min_0pi_pn_reac_decomp.eps}
-    \includegraphics[width=\dbfigwid\textwidth]{figures/0026-min_pi0_pn_reac_decomp.eps}
+    \includegraphics[width=\dbfigwid\textwidth]{figures/tuning/0026-t2k_0pi_dpt_reac_decomp_covfix.eps}
+    \includegraphics[width=\dbfigwid\textwidth]{figures/tuning/0026-t2k_pip_pn_reac_decomp_covfix.eps}	
+    \includegraphics[width=\dbfigwid\textwidth]{figures/tuning/0026-min_0pi_pn_reac_decomp_covfix.eps}
+    \includegraphics[width=\dbfigwid\textwidth]{figures/tuning/0026-min_pi0_pn_reac_decomp_covfix.eps}
     \caption{\label{fig:g24-c-pn-reac}  
     Similar to Fig.~\ref{fig:g24-c-dat-reac} but for the $\pn$ (\ttkpip, \minzpi and \minpiz) and $\dpt$ (\ttkzpi) measurements. 
     } 
 \end{figure*}
 
-Given the intricate correlations among model parameters, determining which ones are most sensitive to the data proves challenging. Considerable correlation and anti-correlation are observed between different FSI fates for the same particle, e.g. $\cpiabs$ and $\picex$, as shown in Figs.~\ref{fig:comb_26_cor_allpar} and~\ref{fig:comb_26_cor_redpar}. 
-Our tuning began with the \allpar parameter set, achieving the best result with \texttt{Combi-15}, which is denoted as \cbAllPar in Table~\ref{tab:data-sets} (cf. Fig.~\ref{fig:allchi} for the $\chi^2$ distribution of all combinations).
+Given the intricate correlations among model parameters, determining which ones are most sensitive to the data proves challenging. Considerable correlation and anti-correlation are observed between different FSI fates for the same particle, e.g. $\cpiabs$ and $\pipiprod$, as shown in Figs.~\ref{fig:comb_26_cor_allpar} and~\ref{fig:comb_26_cor_redpar}. 
+Our tuning began with the \allpar parameter set, achieving the best result with \texttt{Combi-13}, which is denoted as \cbAllPar in Table~\ref{tab:data-sets} (cf. Fig.~\ref{fig:allchi} for the $\chi^2$ distribution of all combinations).
 Observations showed that for most combinations, certain parameters remained close to their default values, within $1$ $\sigma$ of the imposed priors, such as $\pipiprod$ since none of the data sets has a significant contribution from PIPD of pions---Removing these parameters from the tuning process does not significantly affect the outcome.
 Therefore, we then constructed a reduced set comprising only $\srcfr$, $\pizmfp$, $\picex$, $\ncex$, $\nabs$, and $\npiprod$ (denoted as \redpar in Table~\ref{tab:hALFG-para}) and ran the tuning on the 26 combinations with it. Note that the parameters most correlated with $\picex$ and $\pizmfp$ are not present in \redpar. The \redpar tuning proved more stable, with nearly all combinations showing a more negative $\chi^2$ change than the \allpar tuning, as shown in Fig.~\ref{fig:allchi}. Moreover, the single-observable (\texttt{Combi-}1 to 5), single-measurement (\texttt{Combi-}6 to 9), single-experiment (\texttt{Combi-}10 and 11), and single-topology (\texttt{Combi-}12 and 13) combinations all systematically yielded no or limited overall (tuned plus validation) improvement post-tuning. The best tuning then occurred with \texttt{Combi-26} (\cbRedPar in Table~\ref{tab:data-sets}), that is, all TKI variables excluding $\dphit$ and $\dpt$ (unless no $\pn$ is available)---$\dat$, $\pn$ (or $\dpt$ if $\pn$ is unavailable), and $\dptt$---from pionless and pion-production measurements in both T2K and MINERvA. 
 
-Table~\ref{tab:restunes} summarizes the primary results of our tuning process. The tuned \redpar, \restunefull (\gC), is derived from the observable set \cbRedPar, and the tuned \allpar, $\alttune$~(\gT), is from \cbAllPar. The upper part of Table~\ref{tab:restunes} contains the parameter values. For the  \gC tune, changes to the \sfcfg model were moderately sized ($\srcfr$ increases from $0.12$ to $0.15$), while in the hA model, $\pizmfp$ and $\picex$ are highly suppressed and the nucleon FSI has larger CEX and PIPD and lower ABS.  The tune \gT differs most significantly from \gC in $\srcfr$ and $\picex$. The table's lower section illustrates $\chi^2$ improvements for selected observables and their corresponding validation sets. Crucially, tuning should also enhance the accuracy of validation set descriptions. Overall, both tunes have substantial reduction in the total $\chi^2$. In the following, we will discuss the two tunes.
+Table~\ref{tab:restunes} summarizes the primary results of our tuning process. The tuned \redpar, \restunefull (\gC), is derived from the observable set \cbRedPar, and the tuned \allpar, $\alttune$~(\gT), is from \cbAllPar. The upper part of Table~\ref{tab:restunes} contains the parameter values. 
+For the  \gC tune, changes to the \sfcfg model were moderately sized ($\srcfr$ decreases from $0.12$ to $0.09$), while in the hA model, $\pizmfp$ and $\picex$ are highly suppressed and the nucleon FSI has larger CEX and PIPD and lower ABS.  The tune \gT differs most significantly from \gC in $\pizmfp$ and $\picex$. The table's lower section illustrates $\chi^2$ improvements for selected observables and their corresponding validation sets. Crucially, tuning should not reduce the accuracy of validation set descriptions. Overall, \gC has a more substantial reduction in the total $\chi^2$. In the following, we will discuss the two tunes.
 
 \begin{table}[!htb]
     \centering
-    \begin{tabular}{p{1.5cm}p{1.5cm}p{2.1cm}p{2.3cm}}
+    \begin{tabular}{cccc}
     \hline
     \hline
-    Parameter              & Nominal \par (\gZero) &  \redpar \par (\gC)     & \allpar \par (\gT)   \\
+    Parameter              & Nominal (\gZero) &  \redpar (\gC)     & \allpar (\gT)   \\
     \hline
     \multicolumn{4}{c}{\sfcfg} \\
     \hline
@@ -382,7 +382,7 @@ Table~\ref{tab:restunes} summarizes the primary results of our tuning process. T
     \hline
 \end{tabular}
 \caption{\label{tab:restunes}
-	Parameters in \gZero, \gC, and \gT. Those without errors are not tuned. Lower section: \texttt{combi} indicates that the following $\chi^2$ sums are calculated for the tuned measurements (i.e. \cbRedPar (98 bins) and \cbAllPar (72 bins) for \gC and \gT, respectively), while \texttt{vald} indicates that the respective validation sets are used; \texttt{untuned} means that the $\chi^2$ calculation uses the nominal values of the parameters, while \texttt{tuned} denotes the tuned ones. \texttt{diff} displays the improvement achieved by the respective tuning.  
+	Parameters in \gZero, \gC, and \gT. Those without errors are not tuned. Lower section: \texttt{combi} indicates that the following $\chi^2$ sums are calculated for the tuned measurements (i.e. \cbRedPar (98 bins) and \cbAllPar (46 bins) for \gC and \gT, respectively), while \texttt{vald} indicates that the respective validation sets are used; \texttt{untuned} means that the $\chi^2$ calculation uses the nominal values of the parameters, while \texttt{tuned} denotes the tuned ones. \texttt{diff} displays the improvement achieved by the respective tuning.  
 }
 \end{table}
 
@@ -395,8 +395,8 @@ Examining individual datasets closely helps to understand the origin of the impr
 
 \begin{figure}[!htb] 	
     \centering 		
-    \includegraphics[width=\dbfigwid\textwidth]{figures/0000-min_pi0_dalphat_pi0_decomp_cex.eps}
-    \includegraphics[width=\dbfigwid\textwidth]{figures/0026-min_pi0_dalphat_pi0_decomp.eps}	
+    \includegraphics[width=\dbfigwid\textwidth]{figures/tuning/0000-min_pi0_dalphat_pi0_decomp_cex.eps}
+    \includegraphics[width=\dbfigwid\textwidth]{figures/tuning/0026-min_pi0_dalphat_pi0_decomp_covfix.eps}	
     \caption{\label{fig:CEX-minpiz-dat-pi0} \minpiz $\dat$ measurement compared to \genie predictions decomposed in $\piz$ FSI fates with (a) \gZero and (b) \gC.} 
 \end{figure}
 
@@ -410,29 +410,28 @@ Another impact of the larger $\npiprod$ manifests in the appearance of 2p2h ($1\
 
 \begin{figure}[!htb] 	
     \centering 		
-    \includegraphics[width=\dbfigwid\textwidth]{figures/0000-min_pi0_pn_pr_decomp_cex.eps}
-    \includegraphics[width=\dbfigwid\textwidth]{figures/0026-min_pi0_pn_pr_decomp.eps}	
+    \includegraphics[width=\dbfigwid\textwidth]{figures/tuning/0000-min_pi0_pn_pr_decomp_cex.eps}
+    \includegraphics[width=\dbfigwid\textwidth]{figures/tuning/0026-min_pi0_pn_pr_decomp_covfix.eps}	
     \caption{\label{fig:minpiz-pn-pr} Similar to Fig.~\ref{fig:CEX-minpiz-dat-pi0} but for $\pn$ with proton FSI fate decomposition. Note that the ``Absorption'' of the proton is referring to the absorption of the $\pip$ from the decay of $\deltapp$, which could lead to emission of nucleons as discussed in Sec.~\ref{sec:tuning-para-choice}.     
     } 
 \end{figure}
 
 Although the interaction models, e.g. 2p2h, are not directly tuned, the respective fractions have undergone small changes in Fig.~\ref{fig:g24-c-dat-reac} and Fig.~\ref{fig:g24-c-pn-reac}, compared to Fig.~\ref{fig:g24-0-dat-reac} and Fig.~\ref{fig:g24-0-pn-reac}. 
 This is a result of the increased $\srcfr$ which leads to more events with higher initial nucleon momenta such that interactions requiring higher initial state energy, such as RES and DIS, will be more frequent. 
-This is reflected by the increase in the ratios of these interactions: For example, RES increases from $19\%$ (Fig.~\ref{fig:g24-0-pn-reac}c) to $25\%$ (Fig.~\ref{fig:g24-c-pn-reac}c) for \minzpi. 
-Hence, the other interactions, although not directly tuned, will experience a decrease in the fraction of total cross section: For example, 2p2h drops from $34\%$ (Fig.~\ref{fig:g24-0-pn-reac}c) to $30\%$ (Fig.~\ref{fig:g24-c-pn-reac}c) for \minzpi.
+This is reflected by the increase in the ratios of these interactions: For example, RES increases from $19\%$ (Fig.~\ref{fig:g24-0-pn-reac}c) to $24\%$ (Fig.~\ref{fig:g24-c-pn-reac}c) for \minzpi. 
+Hence, the other interactions, although not directly tuned, will experience a decrease in the fraction of total cross section: For example, 2p2h drops from $31\%$ (Fig.~\ref{fig:g24-0-pn-reac}c) to $30\%$ (Fig.~\ref{fig:g24-c-pn-reac}c) for \minzpi.
 
 
 
 \subsection{Alternative tune: \gT}
 
-A similar improvement is achieved by the intermediate tune, \gT, illustrated in Fig.~\ref{fig:minpiz-alttune}. Instead of significantly increasing proton PIPD to elevate the $\pn$ tail, this tune notably enhances $\srcfr$---more-energetic nucleons are present and therefore the RES $\pn$ peak is shifted to the right in Fig.~\ref{fig:minpiz-alttune}a with respect to Fig.~\ref{fig:g24-c-pn-reac}d. Rather than suppressing $\picex$ (cf. Fig.~\ref{fig:g24-c-pn-pi0}d in Appendix~\ref{sec:appfate}), this tune significantly increases it (Fig.~\ref{fig:minpiz-alttune}b) to offset the further reduction of ``No Interaction'' $\piz$ events (smaller $\pizmfp$ in \allpar, cf. Table~\ref{tab:restunes}).  Overall, this leads to a reduction of $75.31$ in $\chi^2$ (Table~\ref{tab:restunes}), similar to \gC, as well as a good data-MC agreement across all data sets. 
-
+A considerably smaller improvement is achieved by the intermediate tune, \gT, illustrated in Fig.~\ref{fig:minpiz-alttune}. Instead of significantly increasing proton PIPD to elevate the $\pn$ tail, this tune notably enhances $\srcfr$---more-energetic nucleons are present and therefore the RES $\pn$ peak is shifted to the right in Fig.~\ref{fig:minpiz-alttune}a with respect to Fig.~\ref{fig:g24-c-pn-reac}d. Rather than suppressing $\picex$ and $\pizmfp$ heavily (cf. Fig.~\ref{fig:g24-c-pn-pi0}d in Appendix~\ref{sec:appfate}), this tune slightly decreases them. Overall, this leads to a moderate reduction of $25.39$ in $\chi^2$ (Table~\ref{tab:restunes}), as well as a relatively improved data-MC agreement across all data sets. 
 
 \begin{figure}[!htb] 	
     \centering 		
-    \includegraphics[width=\dbfigwid\textwidth]{figures/0015-min_pi0_pn_reac_decomp_comp.eps}
-    \includegraphics[width=\dbfigwid\textwidth]{figures/0015-min_pi0_pn_pi0_decomp_comp.eps}
-    \includegraphics[width=\dbfigwid\textwidth]{figures/0015-min_pi0_pn_pr_decomp_comp.eps}
+    \includegraphics[width=\trfigwid\textwidth]{figures/tuning/0013-min_pi0_pn_reac_decomp.eps}
+    \includegraphics[width=\trfigwid\textwidth]{figures/tuning/0013-min_pi0_pn_pi0_decomp.eps}
+    \includegraphics[width=\trfigwid\textwidth]{figures/tuning/0013-min_pi0_pn_pr_decomp.eps}
     \caption{\label{fig:minpiz-alttune} \minpiz $\pn$ measurement compared to \genie predictions decomposed in  (a) $\nu$-N interaction, (b) $\piz$ FSI, and (c) proton FSI for the alternative tune, \gT.} 
 \end{figure}
 
@@ -441,12 +440,12 @@ A similar improvement is achieved by the intermediate tune, \gT, illustrated in 
 For both \gC and \gT the fit results suggest extreme values, but the effect of the parameter change is less effective than the change in the parameter suggests. 
 For the individual FSI fate cross section, due to the re-normalization step after scaling, the effective change for one particular fate is smaller than the scaling parameter magnitude as explained in Sec.~\ref{sec:tuning-para-choice}. 
 As for the total FSI cross sections, only that of $\piz$ is changed. The total $\piz$-C scattering cross section for pion kinetic energy is plotted in Fig.~\ref{fig:pizmfp_change} to assess the overall impact. 
-The shape remains similar and consistent with Fig. 2.23 ($\pip$-C reactions) in Ref.~\cite{Andreopoulos:2015wxa} while the peak magnitude increases from $380$ to $538$ mb, a $48\%$ increase, considerably less than the scaling factor, $\pizmfp=0.22$, seemingly suggests. 
+The shape remains similar and consistent with Fig. 2.23 ($\pip$-C reactions) in Ref.~\cite{Andreopoulos:2015wxa} while the peak magnitude increases from $380$ to $489$ mb, a $29\%$ increase, considerably less than the scaling factor, $\pizmfp=0.34$, seemingly suggests. 
 Moreover, the default $\piz$ parameter values are calculated from charged pion data assuming isospin symmetry rather than extracted directly from experimental data. 
 Hence, this modification does not violate any existing agreement with hadron scattering data.
 \begin{figure}[!htb] 	
     \centering 		
-    \includegraphics[width=\dbfigwid\textwidth]{figures/pi0mfp_change.eps}
+    \includegraphics[width=\sgfigwid\textwidth]{figures/tuning/pi0mfp_change_covfix.eps}
     \caption{\label{fig:pizmfp_change} Change in MC prediction for $\piz$ cross section between \gZero and \gC . } 
 \end{figure}
 In addition, agreement of this tune with most of the non-TKI neutrino datasets available is unchanged before and after the tune,  thereby demonstrating the physicality of the tune.
