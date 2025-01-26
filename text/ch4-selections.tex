@@ -179,9 +179,9 @@ Additionally, to prepare for the data-MC comparisons and future cross section an
 
     \subsection{Momentum reconstruction bias accessment}
     \label{sec:sel-esc-bias}
-    In Ref.~\ref{Lu:2016mjf}, reconstruction bias in the transverse component of the momentum is observed after the ESC implementation.
+    In Ref.~\cite{Lu:2016mjf}, reconstruction bias in the transverse component of the momentum is observed after the ESC implementation.
     Hence, such bias is also checked for the signal sample in SFGD.
-    However, unlike in Ref.~\ref{Lu:2016mjf}, no apparent bias in proton momentum reconstruction is present, while such bias is observed in muon momentum reconstruction as shown in Fig.~\ref{fig:esc-prmupt}.
+    However, unlike in Ref.~\cite{Lu:2016mjf}, no apparent bias in proton momentum reconstruction is present, while such bias is observed in muon momentum reconstruction as shown in Fig.~\ref{fig:esc-prmupt}.
      \begin{figure}
         \centering
         \begin{subfigure}[b]{\dbfigwid\textwidth}
@@ -477,10 +477,7 @@ Additionally, to prepare for the data-MC comparisons and future cross section an
             Hence, events with an ME connected to any non-primary tracks would be rejected.
         
             \textbf{Background reduction} - Several background reduction steps are implemented, for example, an existing $\pi^0$ rejection developed by Colleagues at T2K.
-            However, they are insufficient as shown by the considerable portion of CC-other backgrounds in Fig.~\ref{fig:tlpi-bf-trknumcut}.
-
-            \blue{FIG-TLPI-BF-trknumcut}
-
+            However, they are insufficient as shown by the considerable portion of CC-other backgrounds in Figs.~\ref{subfig:tlpi-ppi-bf-trknumcut-tpc}, \ref{subfig:tlpi-tpi-bf-trknumcut-tpc}, \ref{subfig:tlpi-ppi-bf-trknumcut-sfg} and \ref{subfig:tlpi-tpi-bf-trknumcut-sfg}.
             Hence, based on logical understanding of different event topologies, I developed a series of track number cuts and a new idea, called the track family tree.
             
             An event topology resembles a family tree sideway. 
@@ -492,21 +489,76 @@ Additionally, to prepare for the data-MC comparisons and future cross section an
             Hence, the number of generation is required to be smaller than $3$.
             Another associated variable is the number of lone tracks, which are not connected to any tracks in the family tree. 
             A clean $\numuccopi$ event should have a limited number of lone tracks, which could be due to noise, or low energy scattering of the ME, which leads to clusters isolated from the ME track. 
-            More details of the other track number cuts are provided in Appendix.~\ref{sec:app-tlpi-trknumcut}
+            More details of the other track number cuts are provided in Appendix.~\ref{sec:app-tlpi-trknumcut}.
+            The overall impact of the track number cuts is shown by the topological decomposition of the pion kinematic distributions in Fig.~\ref{fig:tl-trknum-cut-res}.
+          
+            \begin{figure}
+               \centering
+               \begin{subfigure}{\dbfigwid\textwidth}
+                    \includegraphics[width=\textwidth]{figures/sel/TPCmu_p_pi_stack_al8.eps}
+                    \caption{TPC-$\mu$: $\ppi$ before track number cut.}
+                    \label{subfig:tlpi-ppi-bf-trknumcut-tpc}
+               \end{subfigure}
+               \begin{subfigure}{\dbfigwid\textwidth}
+                    \includegraphics[width=\textwidth]{figures/sel/TPCmu_theta_pi_stack_al8.eps}
+                    \caption{TPC-$\mu$: $\tpi$ before track number cut.}
+                    \label{subfig:tlpi-tpi-bf-trknumcut-tpc}
+               \end{subfigure}
+               \\
+               \begin{subfigure}{\dbfigwid\textwidth}
+                    \includegraphics[width=\textwidth]{figures/sel/TPCmu_p_pi_stack_al9.eps}
+                    \caption{TPC-$\mu$: $\ppi$ after track number cut.}
+                    \label{subfig:tlpi-ppi-af-trknumcut-tpc}
+               \end{subfigure}
+               \begin{subfigure}{\dbfigwid\textwidth}
+                    \includegraphics[width=\textwidth]{figures/sel/TPCmu_theta_pi_stack_al9.eps}
+                    \caption{TPC-$\mu$: $\tpi$ after track number cut.}
+                    \label{subfig:tlpi-tpi-af-trknumcut-tpc}
+               \end{subfigure}
+               \\
+               \begin{subfigure}{\dbfigwid\textwidth}
+                    \includegraphics[width=\textwidth]{figures/sel/SFGmu_p_pi_stack_al8.eps}
+                    \caption{SFGD-$\mu$: $\ppi$ before track number cut.}
+                    \label{subfig:tlpi-ppi-bf-trknumcut-sfg}
+               \end{subfigure}
+               \begin{subfigure}{\dbfigwid\textwidth}
+                    \includegraphics[width=\textwidth]{figures/sel/SFGmu_theta_pi_stack_al8.eps}
+                    \caption{SFGD-$\mu$: $\tpi$ before track number cut.}
+                    \label{subfig:tlpi-tpi-bf-trknumcut-sfg}
+               \end{subfigure}
+               \\
+               \begin{subfigure}{\dbfigwid\textwidth}
+                    \includegraphics[width=\textwidth]{figures/sel/SFGmu_p_pi_stack_al9.eps}
+                    \caption{SFGD-$\mu$: $\ppi$ after track number cut.}
+                    \label{subfig:tlpi-ppi-af-trknumcut-sfg}
+               \end{subfigure}
+               \begin{subfigure}{\dbfigwid\textwidth}
+                    \includegraphics[width=\textwidth]{figures/sel/SFGmu_theta_pi_stack_al9.eps}
+                    \caption{SFGD-$\mu$: $\tpi$ after track number cut.}
+                    \label{subfig:tlpi-tpi-af-trknumcut-sfg}
+               \end{subfigure}
+               \caption{Pion kinematics before and after track number cuts.}
+               \label{fig:tl-trknum-cut-res}
+          \end{figure}
+
+          As shown in Fig.~\ref{subfig:tlpi-ppi-bf-trknumcut-tpc} and Fig.~\ref{subfig:tlpi-ppi-af-trknumcut-tpc}, the purity of the $\numuccopi$ selection has improved from $74.1\%$ to $87.5\%$ after making the track number cuts for the TPC-$\mu$ sub-sample.
+          Similarly, Fig.~\ref{subfig:tlpi-ppi-bf-trknumcut-sfg} and Fig.~\ref{subfig:tlpi-ppi-af-trknumcut-sfg} shows an improvement of selection purity from $65.9\%$ to $80.7\%$.
+          Although the cut leads to about $18\%$ and $14\%$ decrease in the number of signal events, these results demonstrate that the track number cuts are effective in removing backgrounds.
+          As the HAT-$\mu$ sub-sample still suffers from a global matching problem, the result is not included here.
         
-            For the events passing all the selection steps, the presence of a primary pion is implied by the existence of a proper ME candidate, and its momentum is reconstructed by range. 
-            One quick consistency check is to plot the distribution of the time difference between the ME and the primary vertex, which should be the pion travel time plus the muon decay time.
-            As the pion travel time i s on the order of nanosecond, the resultant distribution should still closely reproduce the muon exponential decay.
-            The distributions of the ME time delay for the TPC-$\mu$ and SFGD-$\mu$ sub-samples are plotted in Fig.~\ref{tlpi-me-td}.
+          For the events passing all the selection steps, the presence of a primary pion is implied by the existence of a proper ME candidate, and its momentum is reconstructed by range. 
+          One quick consistency check is to plot the distribution of the time difference between the ME and the primary vertex, which should be the pion travel time plus the muon decay time.
+          As the pion travel time i s on the order of nanosecond, the resultant distribution should still closely reproduce the muon exponential decay.
+          The distributions of the ME time delay for the TPC-$\mu$ and SFGD-$\mu$ sub-samples are plotted in Fig.~\ref{tlpi-me-td}.
           \begin{figure}
                \centering
                \begin{subfigure}{\dbfigwid\textwidth}
-                    \includegraphics[width=\textwidth]{figures/sel/SFGmu_ME_td_hist_al9_fit.png}
+                    \includegraphics[width=\textwidth]{figures/sel/SFGmu_ME_td_hist_al9_fit.eps}
                     \caption{SFGD-$\mu$.}
                     \label{subfig:tlpi-me-td-sfgmu}
                \end{subfigure}
                \begin{subfigure}{\dbfigwid\textwidth}
-                    \includegraphics[width=\textwidth]{figures/sel/TPCmu_ME_td_hist_al9_fit.png}
+                    \includegraphics[width=\textwidth]{figures/sel/TPCmu_ME_td_hist_al9_fit.eps}
                     \caption{TPC-$\mu$.}
                     \label{subfig:tlpi-me-td-tpcmu}
                \end{subfigure}
@@ -632,30 +684,120 @@ Additionally, to prepare for the data-MC comparisons and future cross section an
           For the existing TPC PID, the fourth pull was set to be larger than $0.3$ and the sum of the first and the fourth pull was set to be larger than $0.8$ for pion PID. 
           Altough HAT is also a TPC, there are differences in design and thus the PID requirement could differ.
           The distributions of the pulls at HAT for postively charged tracks before any cuts on the pulls are shown in Fig.~\ref{fig:pulls}, which suggests that a significant fraction of muon will remain after the TPC pull cuts.
-
-          FIG- HAT LLH cuts
+          \begin{figure}
+               \centering
+               \begin{subfigure}{\dbfigwid\textwidth}
+                    \includegraphics[width=\textwidth]{figures/sel/sspi_TOP_hat_pid0_stack_al5.eps}
+                    \caption{The first pull.}
+                    \label{subfig:sppi-pulls-1}
+               \end{subfigure}
+               \begin{subfigure}{\dbfigwid\textwidth}
+                    \includegraphics[width=\textwidth]{figures/sel/sspi_TOP_hat_pid1_stack_al5.eps}
+                    \caption{The second pull.}
+                    \label{subfig:sppi-pulls-2}
+               \end{subfigure}
+               \\
+               \begin{subfigure}{\dbfigwid\textwidth}
+                    \includegraphics[width=\textwidth]{figures/sel/sspi_TOP_hat_pid2_stack_al5.eps}
+                    \caption{The third pull.}
+                    \label{subfig:sppi-pulls-3}
+               \end{subfigure}
+               \begin{subfigure}{\dbfigwid\textwidth}
+                    \includegraphics[width=\textwidth]{figures/sel/sspi_TOP_hat_pid3_stack_al5.eps}
+                    \caption{The fourth pull.}
+                    \label{subfig:sppi-pulls-4}
+               \end{subfigure}
+              \caption{Pull distributions at HAT.}
+               \label{fig:pulls}
+            \end{figure}
 
           Hence, stricter cuts are required to obtain a pion sample with higher purity.  
-          New cut values are obatined by examining the pull distributions in the narrower range as shown in Fig.~\ref{fig:pulls-zoom}.
+          Based on Fig.~\ref{fig:pulls}, a cut on the first, second and the fourth pull can potentially improve the pion purity.
+          A further zoom on the first pull is shown in Fig.~\ref{fig:pull0-zoom}, which suggests a cut to exclude events with the first pull larger than $0.04$.
+          \begin{figure}
+               \centering
+               \includegraphics[width=\sgfigwid\textwidth]{figures/sel/sspi_TOP_hat_pid0_stack_al5_zoom.eps}
+               \caption{Zoom on the first pull distribution at HAT.}
+               \label{fig:pull0-zoom}
+          \end{figure}
+          However, after the cut on the first pull, the other pull distributions do not have a good separation between the muon background and the pion signal anymore as shown in Fig.~\ref{fig:pulls-pid0}.
+          \begin{figure}
+               \centering
+               \begin{subfigure}{\dbfigwid\textwidth}
+                    \includegraphics[width=\textwidth]{figures/sel/sspi_TOP_hat_pid0_stack_al5_pid0.eps}
+                    \caption{The first pull.}
+                    \label{subfig:sppi-pulls-1-pid0}
+               \end{subfigure}
+               \begin{subfigure}{\dbfigwid\textwidth}
+                    \includegraphics[width=\textwidth]{figures/sel/sspi_TOP_hat_pid1_stack_al5_pid0.eps}
+                    \caption{The second pull.}
+                    \label{subfig:sppi-pulls-2-pid0}
+               \end{subfigure}
+               \\
+               \begin{subfigure}{\dbfigwid\textwidth}
+                    \includegraphics[width=\textwidth]{figures/sel/sspi_TOP_hat_pid3_stack_al5_pid0.eps}
+                    \caption{The fourth pull.}
+                    \label{subfig:sppi-pulls-4-pid0}
+               \end{subfigure}
+               \begin{subfigure}{\dbfigwid\textwidth}
+                    \includegraphics[width=\textwidth]{figures/sel/sspi_TOP_trk_heavylen_stack_al5_pid0.eps}
+                    \caption{Heavy length.}
+                    \label{subfig:sppi-heavylen-pid0}
+               \end{subfigure}
+              \caption{Pull distributions and a distrution of heavy length at HAT with a cut on the first pull.}
+               \label{fig:pulls-pid0}
+            \end{figure}
+          Instead, I incorporated an idea from a colleague, Xingyu Zhao, from his FGD analysis, where he defined a variable called the heavy length, which is the portion of the particle inside a dense detector, e.g. the SFGD.
+          This length can distinguish between leptons and hadrons as hadrons are much more likely to interact with dense material than leptons, thereby having shorter lengths in these detectors.
+          For the stopping pion sample, the heavy length is dominated by the length in the SFGD as the ECAL and the TOF could only contribute a small portion.
+          As shown in Fig.~\ref{fig:sppi-heavylen-pid0}, a cut on the heavy length to keep events below $150~\mm$ can remove the a considerable portion of the muon background remained after the cut on the first pull.
 
-          FIG- HAT PULL ZOOM.
-
-          This leads to a sample with over $90\%$ purity as shown in Fig.~\ref{fig:sppi-pur}.
-          FIG- SPPI PUR.
+          The pull distributions shown are based on the sub-sample where the pion passes through the Top HAT.
+          The Bottom HAT has a similar performance and the same cuts are applied.
+          For conciseness, the pull distributions for the Bottom HAT are collected in Sec.~\ref{sec:app-bot-pulls} in Apppendix.
+          The final selection results for the two sub-samples are shown in Fig.~\ref{fig:sppi-kin}.
+          The top HAT sub-sample has achieved a purity of $96\%$ as shown in Fig.~\ref{fig:sppi-top-ppi} and Fig.~\ref{fig:sspi-top-tpi}, which has $91$ $\pip$ signal events and $3$ $\mu^-$ and $2$ $\mu^+$ background events.
+          Similarly, the bottom HAT sub-sample has achieved a purity of $87\%$ as shown in Fig.~\ref{fig:sppi-bot-ppi} and Fig.~\ref{fig:sspi-bot-tpi}, which has $293$ $\pip$ signal events and $15$ $\mu^-$, $26$ $\mu^+$ and $1$ $\pim$ background events.
+          \begin{figure}
+               \centering
+               \begin{subfigure}{\dbfigwid\textwidth}
+                    \includegraphics[width=\textwidth]{figures/sel/sspi_TOP_pi_mombr_stack_al6_zoom.eps}
+                    \caption{Top HAT $\ppi$.}
+                    \label{subfig:sppi-top-ppi}
+               \end{subfigure}
+               \begin{subfigure}{\dbfigwid\textwidth}
+                    \includegraphics[width=\textwidth]{figures/sel/sspi_TOP_theta_trk_stack_al6_zoom.eps}
+                    \caption{Top HAT $\tpi$.}
+                    \label{subfig:sppi-top-tpi}
+               \end{subfigure}
+               \\
+               \begin{subfigure}{\dbfigwid\textwidth}
+                    \includegraphics[width=\textwidth]{figures/sel/sspi_BOT_pi_mombr_stack_al6_zoom.eps}
+                    \caption{Bottom HAT $\ppi$.}
+                    \label{subfig:sppi-bot-ppi}
+               \end{subfigure}
+               \begin{subfigure}{\dbfigwid\textwidth}
+                    \includegraphics[width=\textwidth]{figures/sel/sspi_BOT_theta_trk_stack_al6_zoom.eps}
+                    \caption{Bottom HAT $\tpi$.}
+                    \label{subfig:sppi-bot-tpi}
+               \end{subfigure}
+               \caption{Stopping pion kinematic distributions decomposition according to true particle type.}
+               \label{fig:sppi-kin}
+          \end{figure}
 
           As the HAT reconstruction is under development, the values implemented here might be subjected to further changes.
-          A good consistentcy check that indeed the pion is selected is to check the time difference between the ME and the end point of the stopping track. 
+          A good consistentcy check of using the ME method to select the stopping pion is to check the time difference between the ME and the end point of the stopping track. 
           This distribution should reproduce the muon exponential decay curve closely.
           The result is shown in Fig.~\ref{fig:sppi-me-td}.
           \begin{figure}
                \centering
                \begin{subfigure}{\dbfigwid\textwidth}
-                    \includegraphics[width=\textwidth]{figures/sel/sspi_TOP_ME_td_hist_al6_sfgfinposfit_comb.png}
+                    \includegraphics[width=\textwidth]{figures/sel/sspi_TOP_ME_td_hist_al6_sfgfinposfit_comb.eps}
                     \caption{MC.}
                     \label{subfig:sppi-me-td-mc}
                \end{subfigure}
                \begin{subfigure}{\dbfigwid\textwidth}
-                    \includegraphics[width=\textwidth]{figures/sel/sspi_TOP_ME_td_hist_al6_sfgfinpos_fit.png}
+                    \includegraphics[width=\textwidth]{figures/sel/sspi_TOP_ME_td_hist_al6_sfgfinpos_fit.eps}
                     \caption{Data.}
                     \label{subfig:sppi-me-data}
                \end{subfigure}
