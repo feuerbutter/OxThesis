@@ -8,23 +8,21 @@ There is no one who loves pain itself, who seeks after it and wants to have it, 
 \chapter{\label{ch:t2k}The T2K Experiment} 
 
 \minitoc
-The T2K experiment is a long-baseline neutrino experiment, aiming to measure CP violation in the lepton sector through neutrino oscillation measurements.
-This chapter will first describe the experimental setup and provide a brief overview of the software, which forms the foundation for understanding and discussing the subsequent analyses.
-
+The T2K experiment is a long-baseline neutrino experiment with the aim of measuring CP violation in the lepton sector through neutrino oscillation measurements.  
+This chapter begins by describing the experimental setup and then provides a concise overview of the software, thereby laying the groundwork for the subsequent analyses.
 
 \section{Hardware}
-As a long-baseline experiment, T2K comprises a near detector, ND280, and a far detector, Super-Kamiokande (Super-K).
-To measure neutrino oscillation, both detectors need to discriminate between \(\numu\) and \(\nue\).  
-Of course, no detector can detect neutrinos directly.
-In practice, both detectors should possess the capability to distinguish the different products arising from neutrino interactions with the detector’s active material.
-The most common products of neutrino–nucleus interactions are the corresponding leptons (i.e.\ electrons and muons) and several hadrons, including protons, neutrons, and light mesons like pions.
+As a long-baseline experiment, T2K encompasses a near detector (ND280) and a far detector (Super-Kamiokande, often referred to as Super-K).  
+Both detectors must discriminate between \(\numu\) and \(\nue\) to measure neutrino oscillations.  
+Naturally, detecting neutrinos directly is impossible.  
+Instead, each detector must be able to identify the different particles produced when neutrinos interact with its active material.  
+Most commonly, such neutrino–nucleus interactions generate the corresponding leptons (i.e., electrons or muons) and various hadrons, including protons, neutrons, and light mesons such as pions.
 
-The far detector, SK, is a large water Cherenkov detector.
-It detects particles by capturing the Cherenkov light emitted when they travel faster than the speed of light in water.
-Hadrons produced in neutrino interactions are typically not energetic enough to emit Cherenkov radiation, whereas leptons often travel fast enough.
-Hence, SK primarily measures electrons and muons.
-The Cherenkov radiation from these leptons typically forms ring-like patterns perpendicular to their direction of motion.
-Due to the lighter mass of the electron, its propagation is more susceptible to scattering, making its Cherenkov ring more diffuse compared to the muon’s, as shown in Fig.~\ref{fig:sk-e-mu}.
+The far detector, SK, is a large water Cherenkov detector.  
+It detects particles by collecting the Cherenkov light emitted when they travel faster than the speed of light in water.  
+Hadrons resulting from neutrino interactions typically lack sufficient energy to emit Cherenkov radiation, whereas leptons often exceed this threshold.  
+Consequently, SK primarily observes electrons and muons, whose Cherenkov radiation forms ring-like patterns transverse to their direction of flight.  
+Because the electron is lighter than the muon, its path is more prone to scattering, causing the electron’s Cherenkov ring to appear more diffuse than the muon’s, as illustrated in Fig.~\ref{fig:sk-e-mu}.
 
 \begin{figure}
     \centering
@@ -44,10 +42,10 @@ Due to the lighter mass of the electron, its propagation is more susceptible to 
     \label{fig:sk-e-mu}
 \end{figure}
 
-In contrast, the near detector, ND280, consists of multiple advanced subdetectors capable of detecting hadrons.
-The classic ND280 is shown in Fig.~\ref{subfig:nd280-classic}.
-The main detector assembly contains a \(\piz\)-detector (P0D), three vertical Time Projection Chambers (TPCs), and two Fine Grained Detectors (FGDs) sandwiched between the TPCs.
-These detectors are surrounded by several electromagnetic calorimeters (ECALs)—the P0D ECAL, the Barrel ECAL, the Upstream ECAL, and the Downstream ECAL—which are in turn enclosed by the UA1 magnet composed of the solenoid coil and the yoke.
+In contrast, the near detector, ND280, consists of multiple specialized subdetectors designed to measure hadrons.  
+The classic ND280 configuration is shown in Fig.~\ref{subfig:nd280-classic}.  
+Its central detector assembly contains a \(\piz\)-detector (P0D), three vertical Time Projection Chambers (TPCs), and two Fine Grained Detectors (FGDs) positioned between the TPCs.  
+Surrounding these devices are various electromagnetic calorimeters (ECALs)—the P0D ECAL, the Barrel ECAL, the Upstream ECAL, and the Downstream ECAL—all enclosed by the UA1 magnet comprising a solenoid coil and a yoke.
 
 \begin{figure}
     \centering
@@ -67,36 +65,36 @@ These detectors are surrounded by several electromagnetic calorimeters (ECALs)�
     \label{fig:nd280-diagram}
 \end{figure}
 
-The neutrino beam traverses the P0D, TPCs, and FGDs.
-The FGDs are made of scintillator bars with a cross section of \(1.0~\mathrm{cm} \times 1.0~\mathrm{cm}\).
-Each layer of bars is oriented orthogonally to the previous layer.
-As a particle passes through these layers, it excites photons in the scintillator, which are collected by wave-length shifting fibres running through each bar and ultimately read by end electronics.
-Hence, track position information transverse to the neutrino beam is determined by the bar that recorded the signal, and the longitudinal information is given by the layer number at which the excitation occurs.
+The neutrino beam passes through the P0D, TPCs, and FGDs.  
+Each FGD consists of scintillator bars with a cross section of \(1.0~\mathrm{cm} \times 1.0~\mathrm{cm}\).  
+Every layer of bars is oriented orthogonally to the layer above it.  
+As a particle traverses these layers, it excites photons in the scintillator; these photons are collected by wavelength-shifting fibers embedded in each bar and ultimately read out by end electronics.  
+Hence, the bar recording the signal determines the track position transverse to the neutrino beam, while the layer index specifies the longitudinal position of the energy deposition.
 
-Before the upgrade, FGDs served as the active target for neutrino interactions.
-However, the bar geometry yields a low acceptance for particles traveling at large angles to the beam direction (i.e.\ along the bar’s long axis), as they cross only a few bars and are thus difficult to reconstruct.
-This mismatch in phase space between the near and far detector leads to extra uncertainties in oscillation analyses.
-Additionally, having only a few signals along the particle trajectory degrades reconstruction resolution.
-These drawbacks drove the ND280 upgrade.
+Originally, FGDs served as the active target for neutrino interactions.  
+However, their bar geometry offers limited acceptance for particles traveling at large angles to the beam direction—i.e., along the bar’s long axis—because such particles intersect only a few bars, making them difficult to reconstruct.  
+This mismatch in phase space between the near and far detectors increases uncertainties in oscillation analyses.  
+Moreover, having sparse signals along the particle trajectory degrades reconstruction resolution.  
+These limitations motivated the ND280 upgrade.
 
-In the upgraded ND280, the \(\piz\)-detector is replaced by a set of new subdetectors (Fig.~\ref{subfig:nd280-up}): the Time-of-Flight detector (TOF), two High-Angle TPCs (HATs), and the Super Fine Grained Detector (SFGD).
-The TOF comprises six planes of scintillator bars, providing excellent sub-nanosecond timing resolution and effectively vetoing crossing particles, which enhances sample purity.
-The HATs feature a redesigned field cage and new Micromegas, expanding the tracking volume and boosting resolution compared to the original vertical TPCs.
-The SFGD, acting as the new active target, consists of about two million \(1\,\mathrm{cm}^3\) scintillator cubes.
-Its finer granularity significantly improves acceptance for high-angle tracks and thus better matches the isotropic acceptance at the far detector.
-Moreover, the enhanced tracking via improved energy deposition measurements lowers detection thresholds and boosts resolution, enabling novel reconstruction methods (e.g.\ trackless pion reconstruction) and creative variables (e.g.\ COM variables), to be introduced in the next chapter.
-The upgrade was completed in April 2024, and the upgraded ND280 began taking data in June 2024.
+In the upgraded ND280, the \(\piz\)-detector is replaced by several new subsystems (Fig.~\ref{subfig:nd280-up}): the Time-of-Flight detector (TOF), two High-Angle TPCs (HATs), and the Super Fine Grained Detector (SFGD).  
+The TOF comprises six layers of scintillator bars with sub-nanosecond timing resolution, which help veto crossing particles and enhance sample purity.  
+The HATs incorporate a redesigned field cage and new Micromegas detectors, expanding the tracking volume and improving resolution relative to the original vertical TPCs.  
+Serving as the new active target, the SFGD consists of about two million \(1\,\mathrm{cm}^3\) scintillator cubes.  
+Its finer segmentation markedly increases acceptance for high-angle tracks, better aligning with the near-isotropic acceptance at the far detector.  
+Additionally, the improved tracking, enabled by enhanced energy deposition measurements, lowers detection thresholds and sharpens resolution, facilitating new reconstruction strategies (e.g., trackless pion reconstruction) and innovative variables (e.g., center-of-mass variables), which will be introduced in the next chapter.  
+Construction for the upgrade was completed in April 2024, and data taking with the upgraded ND280 commenced in June 2024.
 
 \section{Software}
 \label{sec:t2k-sw}
-Much of this thesis focuses on improving reconstruction performance; thus, a broad overview of the reconstruction framework used for the ND280 upgrade is provided here to aid understanding.
+This thesis focuses primarily on improving reconstruction performance; thus, the following overview of the software used for ND280’s upgraded system aims to clarify and contextualize the methodologies employed in later chapters.
 
-Each scintillator cube in the SFGD holds an optical fibre, constituting an electronic signal channel.
-As a particle passes through these cubes, scintillation photons are collected by readout boards on three orthogonal faces of the SFGD.
-These signals are digitised after calibration, combining the three two-dimensional board outputs into a set of three-dimensional “Hits,” each corresponding to a cube position and carrying a measure of deposited charge.
-The reconstruction software then groups these Hits into clusters or tracks via clustering and track-fitting algorithms.
-Clusters are small collections of fewer than three Hits, while tracks contain many more.
-Additionally, due to imperfect optical isolation between cubes, some photons may leak into adjacent cubes that the particle did not actually traverse.
-Hence, the reconstruction merges nearby Hits into “Nodes,” more accurately reflecting the particle’s path.
-Energy deposition at each Node is then estimated from the included Hits and smoothed according to the physical expectation of continuous energy loss along the track.
-Next, a Boosted Decision Tree (BDT) trained on Particle Gun (PGUN) simulations uses these smoothed energies and other measured quantities to perform particle identification and momentum estimation.
+Each scintillator cube in the SFGD contains an optical fiber, forming an electronic signal channel.  
+As a charged particle traverses these cubes, scintillation photons are collected by readout boards located on three orthogonal faces of the SFGD.  
+After calibration, these signals are digitized and assembled into three-dimensional “Hits,” each corresponding to a specific cube position and including a measure of deposited charge.  
+The reconstruction software then sorts these Hits into either clusters or tracks using clustering and track-fitting algorithms.  
+Clusters consist of fewer than three Hits, whereas tracks typically contain many more.  
+Additionally, due to imperfect optical isolation between cubes, light may leak into neighboring cubes not actually traversed by the particle.  
+To account for this, the reconstruction merges nearby Hits into “Nodes,” which more accurately capture the particle’s trajectory.  
+Energy deposition at each Node is then estimated from the associated Hits and refined according to the expected continuous energy loss along the path.  
+Finally, a Boosted Decision Tree (BDT), trained on Particle Gun simulations, uses these smoothed energy values and other measured parameters for particle identification and momentum estimation.  

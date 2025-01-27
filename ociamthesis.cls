@@ -522,6 +522,8 @@
 
 % --- SPK
 \newcommand{\pp}{p_\textrm{p}}
+\newcommand{\ppr}{p_\textrm{p}}
+\newcommand{\tpr}{\theta_\textrm{p}}
 \newcommand{\thetap}{\theta_\textrm{p}}
 \newcommand{\ep}{E_\textrm{p}}
 \newcommand{\ppi}{p_{\pi}}
@@ -599,10 +601,11 @@
 
 % ------ Latex utils --------
 \newcommand{\blue}[1]{\textcolor{blue}{#1}}
-\newcommand{\deg}{\circ}
+% \newcommand{\deg}{\ensuremath{^\circ}}
+\newcommand{\deg}{\textdegree}
 \newcommand{\tick}{\checkmark}
 
-\newcommand{\sgfigwid}{0.8}
+\newcommand{\sgfigwid}{0.6}
 \newcommand{\dbfigwid}{0.45}
 \newcommand{\trfigwid}{0.3}
 
