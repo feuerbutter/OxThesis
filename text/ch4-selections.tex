@@ -682,26 +682,27 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
 
           \subsection{Implementation}
           \label{sec:sppi-imp}
-          Conventionally, selections will be used for cross section analysis, which requires a sufficient portion of all detector systematics to be properly evaluated.
-          However, due to time constraint, this is unlikely to happen within the time frame of my doctoral study. 
-          Hence, only preliminary data-MC comparisons are possible.
-          Nontheless, as systematics evaluation is an important ingredient of cross section analysis, which is crucial for improving our understanding of neutrino-nucleus interactions, I implemented the propagation of the systematics of the momentum-by-range reconstruction for pions tagged by ME.
-          To evaluate this systematic, I developed the stopping pion control sample with the following steps:
+          Conventionally, selections are used for cross-section analysis, which requires a sufficient portion of all detector systematics to be correctly evaluated.
+          However, due to time constraints, this is unlikely to happen within the timeframe of my doctoral study.
+          Therefore, only preliminary data–MC comparisons are feasible.
+          Nonetheless, because systematic evaluation is an important aspect of cross-section analysis—crucial for improving our understanding of neutrino–nucleus interactions—I implemented the propagation of the momentum-by-range reconstruction systematics for pions tagged by ME.
+          To evaluate this systematic, I developed the stopping-pion control sample with the following steps:
           \begin{enumerate}
           \item Find all tracks that contain an SFGD segment and segments in the other sub-detectors.
           \item Check that one end of this track is stopped in SFGD.
-          \item Check the PID of this track provided by the other sub-detectors, i.e. HAT or TPC.
+          \item Check the PID of this track provided by the other sub-detectors, i.e., HAT or TPC.
           \item Check that there are no other (except ME) near the track end in SFGD.
           \item A final cut requiring the presence of an ME near the track end in SFGD.
-          \item Keep only the event with a single stopping pion candidate.
+          \item Keep only the event with a single stopping-pion candidate.
           \end{enumerate}
-          The preliminary result suggests that the control sample consists predorminantly of tracks passing HAT and stopping in SFGD.
-          As the current PID in HAT is not fully developed, I investigated further the impact of the log likelihood on pion PID.
-          The logarithms of the first and the fourth element of the pull vector are most relevant.
-          For conciseness, these logarithms are simply refered to as the first pull and the fourth pull respectively. 
-          For the existing TPC PID, the fourth pull was set to be larger than $0.3$ and the sum of the first and the fourth pull was set to be larger than $0.8$ for pion PID. 
-          Altough HAT is also a TPC, there are differences in design and thus the PID requirement could differ.
-          The distributions of the pulls at HAT for postively charged tracks before any cuts on the pulls are shown in Fig.~\ref{fig:pulls}, which suggests that a significant fraction of muon will remain after the TPC pull cuts.
+          The preliminary result suggests that the control sample consists predominantly of tracks passing HAT and stopping in SFGD.
+          Because the current PID in HAT is not fully developed, I investigated further the impact of the log likelihood on pion PID.
+          The logarithms of the first and the fourth elements of the pull vector are most relevant.
+          For conciseness, these logarithms are simply referred to as the first pull and the fourth pull, respectively.
+          For the existing TPC PID, the fourth pull was set to be larger than $0.3$ and the sum of the first and the fourth pull was set to be larger than $0.8$ for pion PID.
+          Although HAT is also a TPC, there are design differences, so the PID requirement may differ.
+          The distributions of the pulls at HAT for positively charged tracks before any cuts are shown in Fig.~\ref{fig:pulls}, which indicates that a significant fraction of muons will remain after the TPC pull cuts.
+
           \begin{figure}
                \centering
                \begin{subfigure}{\dbfigwid\textwidth}
@@ -725,20 +726,21 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
                     \caption{The fourth pull.}
                     \label{subfig:sppi-pulls-4}
                \end{subfigure}
-              \caption{Pull distributions at HAT.}
+               \caption{Pull distributions at HAT.}
                \label{fig:pulls}
-            \end{figure}
+          \end{figure}
 
-          Hence, stricter cuts are required to obtain a pion sample with higher purity.  
-          Based on Fig.~\ref{fig:pulls}, a cut on the first, second and the fourth pull can potentially improve the pion purity.
-          A further zoom on the first pull is shown in Fig.~\ref{fig:pull0-zoom}, which suggests a cut to exclude events with the first pull larger than $0.04$.
+          Hence, stricter cuts are required to obtain a pion sample with higher purity.
+          Based on Fig.~\ref{fig:pulls}, a cut on the first, second, and the fourth pull can potentially improve the pion purity.
+          A further zoom of the first pull is shown in Fig.~\ref{fig:pull0-zoom}, suggesting a cut to exclude events with the first pull larger than $0.04$.
           \begin{figure}
                \centering
-               \includegraphics[width=\sgfigwid\textwidth]{figures/sel/sspi_TOP_hat_pid0_stack_al5_zoom.eps}
+               \includegraphics[width=\textwidth]{figures/sel/sspi_TOP_hat_pid0_stack_al5_zoom.eps}
                \caption{Zoom on the first pull distribution at HAT.}
                \label{fig:pull0-zoom}
           \end{figure}
-          However, after the cut on the first pull, the other pull distributions do not have a good separation between the muon background and the pion signal anymore as shown in Fig.~\ref{fig:pulls-pid0}.
+
+          However, after the cut on the first pull, the other pull distributions do not show a clear separation between the muon background and the pion signal, as illustrated in Fig.~\ref{fig:pulls-pid0}.
           \begin{figure}
                \centering
                \begin{subfigure}{\dbfigwid\textwidth}
@@ -762,20 +764,22 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
                     \caption{Heavy length.}
                     \label{subfig:sppi-heavylen-pid0}
                \end{subfigure}
-              \caption{Pull distributions and a distrution of heavy length at HAT with a cut on the first pull.}
+               \caption{Pull distributions and a distribution of heavy length at HAT with a cut on the first pull.}
                \label{fig:pulls-pid0}
-            \end{figure}
-          Instead, I incorporated an idea from a colleague, Xingyu Zhao, from his FGD analysis, where he defined a variable called the heavy length, which is the portion of the particle inside a dense detector, e.g. the SFGD.
-          This length can distinguish between leptons and hadrons as hadrons are much more likely to interact with dense material than leptons, thereby having shorter lengths in these detectors.
-          For the stopping pion sample, the heavy length is dominated by the length in the SFGD as the ECAL and the TOF could only contribute a small portion.
-          As shown in Fig.~\ref{fig:sppi-heavylen-pid0}, a cut on the heavy length to keep events below $150~\mm$ can remove the a considerable portion of the muon background remained after the cut on the first pull.
+          \end{figure}
 
-          The pull distributions shown are based on the sub-sample where the pion passes through the Top HAT.
-          The Bottom HAT has a similar performance and the same cuts are applied.
-          For conciseness, the pull distributions for the Bottom HAT are collected in Sec.~\ref{sec:app-bot-pulls} in Apppendix.
-          The final selection results for the two sub-samples are shown in Fig.~\ref{fig:sppi-kin}.
-          The top HAT sub-sample has achieved a purity of $96\%$ as shown in Fig.~\ref{fig:sppi-top-ppi} and Fig.~\ref{fig:sspi-top-tpi}, which has $91$ $\pip$ signal events and $3$ $\mu^-$ and $2$ $\mu^+$ background events.
-          Similarly, the bottom HAT sub-sample has achieved a purity of $87\%$ as shown in Fig.~\ref{fig:sppi-bot-ppi} and Fig.~\ref{fig:sspi-bot-tpi}, which has $293$ $\pip$ signal events and $15$ $\mu^-$, $26$ $\mu^+$ and $1$ $\pim$ background events.
+          Instead, I used a concept suggested by my colleague, Xingyu Zhao, from his FGD analysis, where he defined a variable called the heavy length—the portion of the particle inside a dense detector (e.g., SFGD).
+          This length can distinguish between leptons and hadrons because hadrons are much more likely to interact with dense material, thereby having shorter lengths within such detectors.
+          For the stopping-pion sample, the heavy length is dominated by the portion in the SFGD, as the ECAL and TOF contribute only marginally.
+          As shown in Fig.~\ref{fig:sppi-heavylen-pid0}, a cut on the heavy length to keep events below $150~\mm$ can remove a considerable portion of the muon background remaining after the first-pull cut.
+
+          The pull distributions shown are based on the subsample where the pion passes through the Top HAT.
+          The Bottom HAT has similar performance, and the same cuts are applied.
+          For brevity, the pull distributions for the Bottom HAT are collected in Sec.~\ref{sec:app-bot-pulls} in the Appendix.
+          The final selection results for the two subsamples are shown in Fig.~\ref{fig:sppi-kin}.
+          The Top HAT subsample has achieved a purity of $96\%$ as shown in Fig.~\ref{fig:sppi-top-ppi} and Fig.~\ref{fig:sspi-top-tpi}, which has $91$ $\pip$ signal events, $3$ $\mu^-$, and $2$ $\mu^+$ background events.
+          Similarly, the Bottom HAT subsample has achieved a purity of $87\%$ as shown in Fig.~\ref{fig:sppi-bot-ppi} and Fig.~\ref{fig:sspi-bot-tpi}, which has $293$ $\pip$ signal events, $15$ $\mu^-$, $26$ $\mu^+$, and $1$ $\pim$ background event.
+
           \begin{figure}
                \centering
                \begin{subfigure}{\dbfigwid\textwidth}
@@ -799,14 +803,15 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
                     \caption{Bottom HAT $\tpi$.}
                     \label{subfig:sppi-bot-tpi}
                \end{subfigure}
-               \caption{Stopping pion kinematic distributions decomposition according to true particle type.}
+               \caption{Stopping-pion kinematic distributions decomposed according to true particle type.}
                \label{fig:sppi-kin}
           \end{figure}
 
-          As the HAT reconstruction is under development, the values implemented here might be subjected to further changes.
-          A good consistentcy check of using the ME method to select the stopping pion is to check the time difference between the ME and the end point of the stopping track. 
-          This distribution should reproduce the muon exponential decay curve closely.
+          Because the HAT reconstruction is still under development, the values implemented here may be subject to further updates.
+          A good consistency check of using the ME method to select the stopping pion is to check the time difference between the ME and the end point of the stopping track.
+          This distribution should closely follow the muon exponential decay curve.
           The result is shown in Fig.~\ref{fig:sppi-me-td}.
+
           \begin{figure}
                \centering
                \begin{subfigure}{\dbfigwid\textwidth}
@@ -819,11 +824,9 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
                     \caption{Data.}
                     \label{subfig:sppi-me-data}
                \end{subfigure}
-              \caption{Time difference between ME and the end point of the stopping pion track.}
+               \caption{Time difference between ME and the end point of the stopping-pion track.}
                \label{fig:sppi-me-td}
-            \end{figure}
           \end{figure}
-          
 
           \subsection{Systematics evaluation}
           \label{sec:sppi-syst}
@@ -946,6 +949,3 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
           However, as the two new techniques in this chapter are developed for hadrons, the performance should not depend on the ending position of the muons.
           Hence, reconstruction improvement showcased in this chapter should be applicable to the muons going into HAT as well.
           With this improvement in the single particle kinematics, it is exciting to see the performance of the reconstruction of the higher level variables, such as the TKI variables, in the next chapter.
-
-
-          
