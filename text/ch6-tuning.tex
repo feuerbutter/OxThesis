@@ -89,7 +89,7 @@ The definitions of the kinematic cuts for these samples are summarized in Table~
     }
 \end{table}
 
-\section{\genie model selection}\label{sec:genie}
+\section{\genie Model Selection and Configuration}\label{sec:genie}
 \genie uses formatted strings to uniquely define configurations, which are usually called tunes. 
 Regardless of the name, they can refer to configurations either before or after an actual tuning procedure. 
 
@@ -144,11 +144,19 @@ Comparing the \genie predictions for \gZero against TKI datasets, Figs.~\ref{fig
 
 \section{\label{sec:Tuning}Tuning initial-state and FSI models on TKI data}
 
-This study adopts the tuning procedure outlined in Ref.~\cite{GENIE:2022qrc}, utilizing $N_{\textrm{par}}$ model parameters. The objective is to identify the best fit---that is, the optimal set of parameter values---within the parameter space that minimizes the $\chi^2$ between model predictions and data. Given the high dimensionality of the parameter space, conducting a brute-force, point-by-point scan on a grid is infeasible. Therefore, a sufficient number of points is randomly sampled. Each point is used to run a full simulation. The simulation output for each data observable bin is then parameterized using Professor~\cite{Buckley:2009bj} with a polynomial of the model parameters of a chosen order, $N_{\textrm{ord}}$. The minimal number of points ($N_{\textrm{s}}$) required for tuning $N_{\textrm{par}}$ parameters with an order $N_{\textrm{ord}}$ polynomial is determined by the combination formula,
+This study adopts the tuning procedure outlined in Ref.~\cite{GENIE:2022qrc}, utilizing $N_{\textrm{par}}$ model parameters. 
+The objective is to identify the best fit---that is, the optimal set of parameter values---within the parameter space that minimizes the $\chi^2$ between model predictions and data. 
+Given the high dimensionality of the parameter space, conducting a brute-force, point-by-point scan on a grid is infeasible. 
+Therefore, a sufficient number of points is randomly sampled. 
+Each point is used to run a full simulation. 
+The simulation output for each data observable bin is then parameterized using Professor~\cite{Buckley:2009bj} with a polynomial of the model parameters of a chosen order, $N_{\textrm{ord}}$. 
+The minimal number of points ($N_{\textrm{s}}$) required for tuning $N_{\textrm{par}}$ parameters with an order $N_{\textrm{ord}}$ polynomial is determined by the combination formula,
 \begin{equation}
     N_{\textrm{s}} = \binom{N_{\textrm{par}}+N_{\textrm{ord}}}{N_{\textrm{ord}}}.
 \end{equation}
-Given that $N_\textrm{s}$ increases factorially, caution is essential when augmenting the number of parameters or the polynomial degree. Given that our tuning incorporates all $2$ \sfcfg and $12$ hA parameters (see Sec.~\ref{sec:tuning-para-choice}), a degree-$4$ parameterization  necessitates over 6,000 generations. Hence, only up to order $4$ polynomials are explored, and it has shown to reproduce the MC predictions well, as shown in Fig.~\ref{fig:residual}. 
+Given that $N_\textrm{s}$ increases factorially, caution is essential when augmenting the number of parameters or the polynomial degree. 
+Given that our tuning incorporates all $2$ \sfcfg and $12$ hA parameters (see Sec.~\ref{sec:tuning-para-choice}), a degree-$4$ parameterization  necessitates over 6,000 generations. 
+Hence, only up to order $4$ polynomials are explored, and it has shown to reproduce the MC predictions well, as shown in Fig.~\ref{fig:residual}. 
 
 \begin{figure}[!htb] 	
     \centering 		
@@ -156,11 +164,19 @@ Given that $N_\textrm{s}$ increases factorially, caution is essential when augme
     \caption{\label{fig:residual} Fractional difference for the bin-by-bin cross sections between MC truth and the parameterized approximation with order-4 polynomials,  both in the Norm-Shape (NS)~\cite{DAgostini:1993arp,Hanson:2005mrg} space with \allpar. See Table~\ref{tab:hALFG-para} for the definition of \allpar. The residual has a mean of $0.003$ and a standard deviation of $0.073$.} 
 \end{figure}
 
-Furthermore, to circumvent Peelle's Pertinent Puzzle~\cite{PPP_FNL,Chakrani:2023htw}, the Norm-Shape (NS) transformation prescription~\cite{DAgostini:1993arp,Hanson:2005mrg} is applied. The extremal point is then found from a minimization of $\chi^2$ between this NS-transformed polynomial approximation and NS-transformed data. In minimization, priors, usually based on systematic uncertainty, can be imposed on each parameter to penalize it from getting too far from its default value. The following subsections elaborate on the specific choice of measurement observables and model parameters in this work.
+Furthermore, to circumvent Peelle's Pertinent Puzzle~\cite{PPP_FNL,Chakrani:2023htw}, the Norm-Shape (NS) transformation prescription~\cite{DAgostini:1993arp,Hanson:2005mrg} is applied. 
+The extremal point is then found from a minimization of $\chi^2$ between this NS-transformed polynomial approximation and NS-transformed data. 
+In minimization, priors, usually based on systematic uncertainty, can be imposed on each parameter to penalize it from getting too far from its default value. 
+The following subsections elaborate on the specific choice of measurement observables and model parameters in this work.
 
 \subsection{\label{sec:tuning-obs-choice} Data points}
-
-The observables for the reported differential cross sections across the four TKI measurements---\ttkzpi, \ttkpip, \minzpi, and \minpiz---are detailed in Table~\ref{tab:data-sets}. To identify the most sensitive variables, various combinations were evaluated  for tuning purposes. A total of 26 combinations were assessed,  with the superset comprising $\dat$, $\dpt$, $\dphit$, $\pn$, and $\dptt$ (see Table~\ref{tab:fit-var-combo} in Appendix~\ref{sec:appcombi} for all combinations). Each combination was evaluated such that non-selected variables---including proton momentum and angle ($p_\text{p}$ and $\theta_\text{p}$)~\cite{MINERvA:2018hba}, as well as $\dptx$ and $\dpty$~\cite{MINERvA:2019ope} in \minzpi---were used solely for validation; the model is expected to accurately predict these variables post-tuning. When constructing the combinations, it was observed that $\dphit$ is strongly dependent  on neutrino beam energy~\cite{Lu:2015tcr}, which suppresses its sensitivity to nuclear effects. Additionally, correlations exist between various observables, notably between $\dpt$ and $\pn$. Therefore, determining the optimal combination is not straightforward; this study employs a criterion based on  the $\chi^2$ with the complete (tuned plus validation) observable set (Fig.~\ref{fig:allchi}).
+The observables for the reported differential cross sections across the four TKI measurements---\ttkzpi, \ttkpip, \minzpi, and \minpiz---are detailed in Table~\ref{tab:data-sets}. 
+To identify the most sensitive variables, various combinations were evaluated  for tuning purposes. 
+A total of 26 combinations were assessed,  with the superset comprising $\dat$, $\dpt$, $\dphit$, $\pn$, and $\dptt$ (see Table~\ref{tab:fit-var-combo} in Appendix~\ref{sec:appcombi} for all combinations). 
+Each combination was evaluated such that non-selected variables---including proton momentum and angle ($p_\text{p}$ and $\theta_\text{p}$)~\cite{MINERvA:2018hba}, as well as $\dptx$ and $\dpty$~\cite{MINERvA:2019ope} in \minzpi---were used solely for validation; the model is expected to accurately predict these variables post-tuning. 
+When constructing the combinations, it was observed that $\dphit$ is strongly dependent  on neutrino beam energy~\cite{Lu:2015tcr}, which suppresses its sensitivity to nuclear effects. 
+Additionally, correlations exist between various observables, notably between $\dpt$ and $\pn$. 
+Therefore, determining the optimal combination is not straightforward; this study employs a criterion based on  the $\chi^2$ with the complete (tuned plus validation) observable set (Fig.~\ref{fig:allchi}).
 
 
 \begin{table}[!htb]
@@ -214,7 +230,9 @@ The observables for the reported differential cross sections across the four TKI
 \end{figure}
 
 \subsection{\label{sec:tuning-para-choice} Model parameters}
-As outlined in Sec.~\ref{sec:genie}, we focus exclusively on the currently tunable parameters within the \sfcfg and hA models. Therefore, $14$ parameters (collectively referred to as the \allpar set) are utilized for tuning, as detailed in Table~\ref{tab:hALFG-para}. Nominal values and associated uncertainties for the hA model are taken from Table 17.3 in Ref.~\cite{Andreopoulos:2015wxa}. 
+As outlined in Sec.~\ref{sec:genie}, we focus exclusively on the currently tunable parameters within the \sfcfg and hA models. 
+Therefore, $14$ parameters (collectively referred to as the \allpar set) are utilized for tuning, as detailed in Table~\ref{tab:hALFG-para}. 
+Nominal values and associated uncertainties for the hA model are taken from Table 17.3 in Ref.~\cite{Andreopoulos:2015wxa}. 
 
 \begin{table}[!htb]
     \centering
@@ -254,9 +272,13 @@ As outlined in Sec.~\ref{sec:genie}, we focus exclusively on the currently tunab
     }
 \end{table}
 
-In our analysis of the \sfcfg model, the two most relevant parameters are $\srcfr$, representing the fraction of the high-momentum tail from SRC, notably above the Fermi surface, and $\nurmec$, marking the commencement of the nuclear removal energy distribution for carbon. A larger $\srcfr$ indicates the presence of more energetic initial nucleons, while an increased $\nurmec$ implies that greater energy is necessary to liberate a nucleon from the carbon nucleus, so the product particles will possess lower energy. Given the novelty and limited constraints of the spectral-function-like implementation, this study employs relatively relaxed priors for $\srcfr$ and $\nurmec$, at 0.12$\pm$0.12 and 0.01$\pm$0.005 \gev, respectively.
+In our analysis of the \sfcfg model, the two most relevant parameters are $\srcfr$, representing the fraction of the high-momentum tail from SRC, notably above the Fermi surface, and $\nurmec$, marking the commencement of the nuclear removal energy distribution for carbon. 
+A larger $\srcfr$ indicates the presence of more energetic initial nucleons, while an increased $\nurmec$ implies that greater energy is necessary to liberate a nucleon from the carbon nucleus, so the product particles will possess lower energy. 
+Given the novelty and limited constraints of the spectral-function-like implementation, this study employs relatively relaxed priors for $\srcfr$ and $\nurmec$, at 0.12$\pm$0.12 and 0.01$\pm$0.005 \gev, respectively.
 
-\genie users employ the hA model~\cite{Andreopoulos:2015wxa} for the majority of neutrino analysis, owing to its straightforward reweighting capability. Unlike cascade models such as the hN model~\cite{Andreopoulos:2015wxa}, this model determines the FSI type for each hadron exactly once, without considering further propagation of rescattered hadrons within the nucleus. Its model parameters are explained as follows.
+\genie users employ the hA model~\cite{Andreopoulos:2015wxa} for the majority of neutrino analysis, owing to its straightforward reweighting capability. 
+Unlike cascade models such as the hN model~\cite{Andreopoulos:2015wxa}, this model determines the FSI type for each hadron exactly once, without considering further propagation of rescattered hadrons within the nucleus. 
+Its model parameters are explained as follows.
 
 \begin{enumerate}
     \item 
