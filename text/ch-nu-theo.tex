@@ -28,7 +28,6 @@ Hence, throughout the propagation, the linear combination of mass eigenstates co
 
 To be more specific, the matrix describing the mixing of mass eigenstates into flavour eigenstates is the PMNS matrix.
 It is conventionally parameterised as follows:
-
 \begin{equation}
 U_{\text{PMNS}} = 
 \begin{pmatrix}
@@ -71,11 +70,11 @@ Due to the small neutrino masses, a mass eigenstate with mass $m_i$ acquires the
 \end{equation}
 after travelling a distance $L$ with energy $E$.
 Hence, the probability that a neutrino of flavour $\alpha$ created at the source is detected as a neutrino of flavour $\beta$ after travelling a distance $L$ is given by
-\begin{array}{rl}
+\begin{eqnarray}{rl}
   P_{(\alpha \to \beta)} &= \left|\braket{\nu_\beta | \nu_\alpha(L)} \right|^2 = \left| \sum_i U_{\alpha i} U^*_{\beta i} e^{-i \frac{m_i^2 L}{2E}} \right|^2 \\
   &= \delta_{\alpha\beta} - 4 \sum_{i>j} \text{Re} \bigl( U_{\alpha i} U^*_{\beta i} U^*{\alpha j} U_{\beta j} \bigr) \,\sin^2 \!\Bigl( \frac{\Delta m^2_{ij} L}{4E} \Bigr) \\
   &\quad + 2 \sum_{i>j} \text{Im} \bigl( U_{\alpha i} U^*{\beta i} U^*{\alpha j} U_{\beta j} \bigr) \,\sin \!\Bigl( \frac{\Delta m^2_{ij} L}{2E} \Bigr),
-\end{array}
+\end{eqnarray}
 where $\delta_{\alpha\beta}$ is the Kronecker delta, $U_{\alpha i}$ is the element of the PMNS matrix, and $\Delta m^2_{ij} = m_i^2 - m_j^2$.
 This result shows that the oscillation probability depends on the mixing angle through the PMNS matrix elements and on the mass difference and neutrino energy through the sine terms.
 For brevity, the dependence on the sine terms can be characterised by a phase angle,
@@ -110,7 +109,7 @@ Unlike the CKM matrix, where all mixing angles are small, only $\theta_{13}$ is 
 \subsection{Atmospheric neutrinos}
 Atmospheric neutrinos are mostly muon neutrinos produced from the decay of mesons created by cosmic rays interacting with the atmosphere.
 The neutrino energy is typically of the order of $1~\gev$, while the distance travelled ranges from $O(10^2)$ to $O(10^4)~\km$.
-Substituting these numbers into \Eq.~\ref{eq:osc-phase}, $\Delta_{23}$ is of the order of $O(10^{-2})$ to $O(1)$, whereas $\Delta_{21}$ is of the order of $O(10^{-3})$ to $O(10^{-1})$.
+Substituting these numbers into Eq.~\ref{eq:osc-phase}, $\Delta_{23}$ is of the order of $O(10^{-2})$ to $O(1)$, whereas $\Delta_{21}$ is of the order of $O(10^{-3})$ to $O(10^{-1})$.
 Hence, oscillation is much more prominent in the $\nu_\mu \to \nu_\tau$ channel than in the $\nu_\mu \to \nu_e$ channel.
 This is why atmospheric neutrino experiments are sensitive to $\theta_{23}$ and $\Delta m^2_{32}$, sometimes referred to as the atmospheric mixing angle and mass difference, respectively.
 
@@ -125,7 +124,7 @@ Thus, it is more convenient to discuss reactor neutrino oscillation by introduci
 \end{equation}
 which corresponds to one complete period of neutrino oscillation.
 Substituting the reactor neutrino energy into Eq.~\ref{eq:osc-length}, one obtains $L_{\text{osc}} = O(10^2)~\km$ for $\delmtwoo$ and $L_{\text{osc}} = O(1)~\km$ for $\delmthro$. 
-Hence, by placing detectors kilometres away from the power plants, reactor neutrino experiments offer the unique opportunity to measure $\theta_{13}$ and $\Delta m^2_{31}$, sometimes referred to as the reactor mixing angle and mass difference, respectively.
+Hence, by placing detectors kilometres away from the power plants, reactor neutrino experiments offer the unique opportunity to measure $\theta_{13}$ and $\delmthro$, sometimes referred to as the reactor mixing angle and mass difference, respectively.
 Additionally, placing detectors at about $O(100)~\km$ from the power plants allows measurements of $\delmtwoo$.
 
 \subsubsection{Solar neutrinos}
@@ -160,7 +159,7 @@ For instance, positive (negative) pions can be focused if a beam of muon (anti)n
 It is this control over the neutrino source that enables accelerator experiments to measure $\delta_{CP}$.
 Since the neutrino energy from meson decay depends on the emission angle, varying the angle between the detector and the beam direction yields different energy distributions.
 T2K places its detectors $2.5^\circ$ off-axis to obtain a neutrino beam with a narrow energy peak at about $0.6~\gev$.
-According to Eq.~\ref{eq:osc-phase}, for maximal oscillation with the larger mass difference (i.e.\ $\Delta m^2_{31} \approx 2.5 \times 10^{-3}~\ev^2$), the far detector should be placed around $300$~km from the source.
+According to Eq.~\ref{eq:osc-phase}, for maximal oscillation with the larger mass difference (i.e.\ $\delmthro \approx 2.5 \times 10^{-3}~\ev^2$), the far detector should be placed around $300$~km from the source.
 Hence, accelerator measurements are sensitive to $\theta_{13}$.
 By analysing oscillations in neutrino and antineutrino modes, T2K can extract a best-fit value of $\delta_{CP}$ that describes the observed data~\cite{T2K:2019bcf}.
 However, the current measurement is severely limited by statistics and thus suffers large uncertainties.
@@ -234,11 +233,12 @@ The amplitude for the CC interaction is given by:
   \mathcal{M}_{\text{CC}} = \frac{g^2}{2} \bar{u}_\ell(p') \gamma^\mu (1 - \gamma^5) u_\nu(p) \frac{-i g_{\mu\nu}}{q^2 - M_W^2} \bar{u}_q(k') \gamma^\nu (1 - \gamma^5) u_q(k),
 \end{equation}
 where $g$ is the weak coupling constant, $u_\ell$ and $u_\nu$ are the spinors for the outgoing lepton and incoming neutrino respectively, $u_q$ are the spinors for the quarks, $q$ is the momentum transfer, and $M_W$ is the mass of the $W$ boson.
-This interaction occurs only when the neutrino has sufficiently high energy to probe inside the nucleon and interact with the quarks.
+Due to confinement, this interaction does not occur freely in nautre.
+Instead, this interaction occurs only when the neutrino has sufficiently high energy to probe inside the nucleon and interact with the quarks.
 The product quark will hadronise, producing a jet of particles.
 This type of interaction is referred to as deep inelastic scattering (DIS).
 DIS is highly complicated and not so relevant for this thesis, so it will not be discussed further.
-More details can be found in reviews such as Ref.~\cite{}.
+More details can be found in reviews such as Ref.~\cite{SajjadAthar:2022pjt}.
 
 \subsection{$\nu$-nucleon}
 At the T2K beam energy, most neutrinos do not have enough energy to probe within the nucleon but rather interact with the nucleon as a whole.
@@ -299,10 +299,10 @@ Hence, the effective $\nu$-nucleon interaction Feynman diagram is shown in Fig.~
 The leptonic current remains the same, but the hadronic current is now a nucleon current instead of a quark current.
 Hence, the hadronic current is much more complicated, comprising several form factors that parameterise our understanding of the nucleon structure.
 For instance, the hadronic current for the CC interaction is given by:
-\begin{array}{r}
+\begin{eqnarray}{r}
   \mathcal{M}_{\text{CC}} = \frac{G_F}{\sqrt{2}} \,\bar{u}_\ell(p')\,\gamma^\mu (1 - \gamma^5)\,u_\nu(p) \\
   \times \,\bar{u}_N(k')\,\left[ F_1(q^2)\,\gamma_\mu + F_2(q^2)\,\frac{i\,\sigma_{\mu\nu}\,q^\nu}{2M} + F_A(q^2)\,\gamma_\mu\,\gamma^5 + F_P(q^2)\,\frac{q_\mu\,\gamma^5}{m_\pi} \right]\,u_N(k),
-\end{array}
+\end{eqnarray}
 where $G_F$ is the Fermi constant, $F_1$, $F_2$, $F_A$, and $F_P$ are the form factors, $M$ is the nucleon mass, and $m_\pi$ is the pion mass.
 The derivation is complicated and beyond the scope of this thesis. 
 More details can be found in Ref.~\cite{LlewellynSmith:1978te}.
@@ -341,7 +341,7 @@ Even in this simplest case, the presence of the nuclear medium still affects the
 
 As the neutrino energy decreases, IA is no longer valid, and the nucleus can only be resolved as a whole.
 In this case, Random Phase Approximation (RPA) corrections are needed, which are beyond the scope of this thesis and will not be elaborated further. 
-Interested readers can refer to Ref.~[XXX] for more details.
+Interested readers can refer to Ref.~[SajjadAthar:2022pjt] for more details.
 Instead, the two nuclear effects are elaborated below.
 
 \subsubsection{Initial state}
@@ -416,11 +416,18 @@ Since most IS models assume no preferred direction for nucleon motion, one expec
 Any deviation from flatness in $\dat$ is thus attributed to FSI, making it an excellent probe of FSI. 
 
 In pion-production events, a double-transverse variable, $\dptt$, can be constructed by projecting $\vecdpt$ onto the axis perpendicular to the lepton scattering plane, defined by $\vecpl$ and $\vecpnu$ (see Fig.~\ref{fig:dtki}).
+\begin{figure}[!htb] 	
+    \centering 		
+    \includegraphics[width=0.35\textwidth]{figures/dptt.pdf}
+    \caption{\label{fig:dtki} Schematic illustration of the double TKI variable. Diagram taken from Ref.~\cite{T2K:2021naz}.} 
+\end{figure}
+
+begin{figure}
 In the absence of nuclear effects, $\dptt$ should be zero.
 Its distribution width reveals the role of nuclear effects in pion production~\cite{MINERvA:2020anu, T2K:2021naz}.
 Analogous variables, $\dptx$ and $\dpty$, have been proposed and studied in MINERvA~\cite{MINERvA:2019ope} for pionless channels.
 Additionally, Refs.~\cite{Lu:2015tcr,Hamacher-Baumann:2020ogq} suggest using $\dptt$ to isolate a hydrogen sample.  
-More details on hydrogen selections will be given in Sec.~\ref{sec:mc-hyrdrogen}.
+More details on hydrogen selections will be given in Sec.~\ref{sec:mc-hydrogen}.
 
 There has been a wealth of TKI-based measurements from multiple neutrino experiments, including T2K~\cite{T2K:2018rnz, T2K:2021naz}, MINERvA~\cite{MINERvA:2018hba, MINERvA:2019ope, MINERvA:2020anu, MINERvA:2021csy}, and MicroBooNE~\cite{MicroBooNE:2022emb, MicroBooNE:2023cmw, MicroBooNE:2023tzj, MicroBooNE:2023wzy, MicroBooNE:2024tmp}.
 Because the TKI concept applies equally to electron scattering, experiments such as CLAS~\cite{CLAS:2021neh} have also produced TKI measurements, demonstrating the wide applicability of TKI.

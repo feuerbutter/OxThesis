@@ -278,7 +278,9 @@ Given the novelty and limited constraints of the spectral-function-like implemen
 
 \genie users employ the hA model~\cite{Andreopoulos:2015wxa} for the majority of neutrino analysis, owing to its straightforward reweighting capability. 
 Unlike cascade models such as the hN model~\cite{Andreopoulos:2015wxa}, this model determines the FSI type for each hadron exactly once, without considering further propagation of rescattered hadrons within the nucleus. 
-Its model parameters are explained as follows.
+Understanding each rescattering type is crucial for interpreting tuning results.
+A detailed elaboration of the four tunable FSI types has been given in Sec.~\ref{sec:nuint-fsi}. 
+The hA model parameters are explained as follows.
 
 \begin{enumerate}
     \item 
@@ -298,19 +300,14 @@ Its model parameters are explained as follows.
         \label{fig:minpiz-pn-pi0mfp}
     \end{figure}
 
-
     \item 
     The relative probability of each rescattering type can be adjusted by a scale factor. There are four rescattering types for both nucleons and pions available for tuning. They are charge exchange (CEX), inelastic scattering (INEL), absorption (ABS), and pion production (PIPD). The default energy-dependent probability distributions come from hadron data tuning~\cite{LADS:1999dyv,Navon:1983xj,Carroll:1976hj,Clough:1974qt,BAUHOFF1986429} and can be adjusted by respective scaling factors, like $\picex$ for CEX of all pions, listed in Table~\ref{tab:hALFG-para}. The relative probabilities of all four rescattering types will be normalized such that they sum up to one. Scaling factors directly multiply  the probability of each type, with new relative probabilities subsequently renormalized. More specifically, suppose the initial fraction of absorption, $f_\textrm{ABS}$, is $0.5$, which means that the sum of the other fractions is  $f_\textrm{other}=f_\textrm{INEL}+f_\textrm{CEX}+f_\textrm{PIPD}=1-0.5=0.5$. If $f_\textrm{ABS}$ is scaled up with $S_\textrm{ABS}=2$, the new absorption fraction is 
     \begin{equation}
         f^\prime_\textrm{ABS} = \frac{f_\textrm{ABS}*S_\textrm{ABS}}{f_\textrm{ABS}*S_\textrm{ABS}+f_\textrm{oth}} = 2/3,
     \end{equation}
     which is not equal to simply multiplying $f_\textrm{ABS}$ by $S_\textrm{ABS}$ due to the presence of the other rescattering types. Hence, it is unavoidable that a change of the scaling factor for one type would affect others. Nonetheless, when the cross section is plotted with a breakdown according to rescattering type, the interpretation will be clear regarding the increase or decrease of a particular FSI type. This correlation implies that the scaling parameters' effective impact on FSI fate is often less pronounced than what the raw numbers suggest. As illustrated in the above example, $f_\textrm{ABS}$ is only scaled up by $ f^\prime_\textrm{ABS}/f_\textrm{ABS}=4/3=1.3$ instead of $S_\textrm{ABS}=2$. Hence, a relatively more relaxed Gaussian prior, with a $\sigma$ of $0.5$, is placed on the FSI fate scales, slightly larger than the systematic uncertainties shown in Table~\ref{tab:hALFG-para}. 
-
-    Understanding each rescattering type is crucial for interpreting tuning results
-    .
-    A detailed elaboration of the four tunable FSI types has been given in Sec.~\ref{sec:nuint-fsi}. 
-
 \end{enumerate}
+
 
 \section{\label{sec:results}The first TKI-driven \genie tunes}
 

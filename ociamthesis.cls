@@ -459,6 +459,9 @@
 \newcommand{\mev}{\textrm{MeV}}
 \newcommand{\ev}{\textrm{eV}}
 \newcommand{\cm}{\textrm{cm}}
+\newcommand{\m}{\textrm{m}}
+\newcommand{\km}{\textrm{km}}
+\newcommand{\mm}{\textrm{mm}}
 
 
 % ------ particles ------
@@ -533,6 +536,7 @@
 \newcommand{\pnu}{p_{\nu}}
 \newcommand{\pmu}{p_{\mu}}
 \newcommand{\vecpnu}{\vec{p}_{\nu}}
+\newcommand{\vecpl}{\vec{p}_{l}}
 \newcommand{\vecpmu}{\vec{p}_{\mu}}
 \newcommand{\mdeldec}{m_{\Delta}^{(0)}}
 \newcommand{\mdel}{m_{\Delta}}
