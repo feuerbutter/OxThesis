@@ -470,65 +470,57 @@ Additionally, the necessity of reconstructing the neutrino energy renders $\thet
      Furthermore, the analyses presented here are based on true information without any realistic fluctuations, meaning that challenges related to reconstruction—particularly those involving neutrino energy for the Adler angle—are not considered. 
      Therefore, the full potential of the COM angle will be better realized in a cross-section measurement that accounts for these complexities.
 
-     \subsection{Reconstruction quality}
+     \subsection{Reconstruction Quality}
      \label{sec:com-reco}
-     The above discussion is based on true information where both the particle kinematics and the selection are ideal.
-     It is important to check the practicality of this idea by checking the uncertainties in the reconstruction of the COM variables.
-     Hence, I calculated the COM variables using the $\numuccopiop$ selection, same as the one used for the TKI calculation above, and the reconstruction results are shown in Fig.~\ref{fig:com-reco}.
+     The above discussion assumes true information, with ideal particle kinematics and selection criteria. It is important to assess the practicality of this approach by evaluating the uncertainties in reconstructing the COM variables. Therefore, I calculated the COM variables using the $\numuccopiop$ selection, identical to that used for the TKI calculation above. The reconstruction results are presented in Fig.~\ref{fig:com-reco}.
      \begin{figure}
           \begin{subfigure}[b]{\dbfigwid\textwidth}
                \centering
                \includegraphics[width=\textwidth]{figures/COM/SFGpTPCmu_dang_colnor_resmat_al15.eps}
-               \caption{$\thetacom$ response matrix.}
+               \caption{$\thetacom$ Response Matrix}
                \label{subfig:reco-com-t-resmat}
           \end{subfigure}         
           \begin{subfigure}[b]{\dbfigwid\textwidth}
                \centering
                \includegraphics[width=\textwidth]{figures/COM/SFGpTPCmu_edelta_colnor_resmat_al15.eps}
-               \caption{$\ecom$ response matrix.}
+               \caption{$\ecom$ Response Matrix}
                \label{subfig:reco-com-e-resmat}
           \end{subfigure}
           \\
           \begin{subfigure}[b]{\dbfigwid\textwidth}
                \centering
                \includegraphics[width=\textwidth]{figures/COM/SFGpTPCmu_dang_res_hist_al15.eps}
-               \caption{$\thetacom$ resolution.}
+               \caption{$\thetacom$ Resolution}
                \label{subfig:reco-com-t-res}
           \end{subfigure}
           \begin{subfigure}[b]{\dbfigwid\textwidth}
                \centering
                \includegraphics[width=\textwidth]{figures/COM/SFGpTPCmu_edelta_res_hist_al15.eps}
-               \caption{$\ecom$ resolution.}
+               \caption{$\ecom$ Resolution}
                \label{subfig:reco-com-e-res}
           \end{subfigure}
           \caption{COM variables for the $\numuccopiop$ selection.}
           \label{fig:com-reco}
      \end{figure}
-     The analysis done above in Sec.~\ref{sec:com-ana} has binning of $20\deg$ for $\thetacom$, while Fig.~\ref{subfig:reco-com-t-res} shows that the reconstruction has an excellent half width of $2.6\deg$, significantly smaller than the analysis binning.
-     This suggests that reconstruction will not impede the model differentiation capability presented in Sec.~\ref{sec:com-ana} and might have even larger potential owing to the superb reconstruction quality of the SFGD.
-     The fitted half width of $\ecom$ is about $6.0~\mev$, which is also exceedingly precise.
-     It will be more relevant for a hydrogen sample selection discussed in the next section. 
- 
+     The analysis presented in Sec.~\ref{sec:com-ana} uses a binning of $20\deg$ for $\thetacom$. In contrast, Fig.~\ref{subfig:reco-com-t-res} demonstrates that the reconstruction has an excellent half-width of $2.6\deg$, significantly smaller than the analysis binning. This suggests that reconstruction will not impede the model differentiation capability discussed in Sec.~\ref{sec:com-ana} and may even enhance it due to the superb reconstruction quality of the SFGD. The fitted half-width of $\ecom$ is approximately $6.0~\mev$, which is also exceedingly precise. It will be more relevant for hydrogen sample selection, as discussed in the next section. 
+
      \subsection{Conclusion}
-     This study introduces a novel set of variables—the COM angle and total energy.
-     These variables offer several advantageous properties, motivating their use in future cross-section measurements.
-     These measurements have the potential to significantly improve our understanding and modeling of FSI processes in neutrino-nucleus interactions, thereby contributing to more accurate neutrino cross-section predictions.
-     The reconstruction quality of the COM variables is shown to be excellent, and it is promising that the actual measurement can out-perform the potential shown in the true MC study.
+     This study introduces a novel set of variables—the COM angle and total energy. These variables possess several advantageous properties, which motivate their use in future cross-section measurements. Such measurements have the potential to significantly enhance our understanding and modeling of Final State Interaction (FSI) processes in neutrino-nucleus interactions, thereby contributing to more accurate neutrino cross-section predictions. The reconstruction quality of the COM variables has been shown to be excellent, and it is promising that actual measurements can outperform the potential demonstrated in the true MC study.
 
 \section{Hydrogen Sample Selection}
 \label{sec:mc-hydrogen}
-The importance of a high-purity $\nu$-H sample has been discussed in Sec.~\ref{sec:dis} (check where exactly).
-There has been growing interest and efforts in developing techniques to select such a sample, as seen in Ref.~\cite{Lu:2015hea,MINERvA:2023avz,Baudis:2023tma}.
-While Ref.~\cite{MINERvA:2023avz} and Ref.~\cite{Baudis:2023tma} select $\nu$-H events in the antineutrino and neutrino pion-less samples respectively, Ref.~\cite{Lu:2015hea} applies to events with pions in the final state. 
-They serve as good complements to each other.
-The proposition in Rec.~\cite{Lu:2015hea} is to use $\dptt$ to select $\nu$-H events.
-It is difficult to achieve optimal efficiency and purity with a one-dimensional cut. 
-Hence, the COM total energy cut is proposed as a complementary cut to $\dptt$, and this section shall demonstrate its effectiveness.
+The importance of a high-purity $\nu$-H sample has been discussed in Sec.~\ref{sec:dis} (please verify the exact location).
+There has been growing interest and effort in developing techniques to select such a sample, as discussed in Ref.~\cite{Lu:2015hea,MINERvA:2023avz,Baudis:2023tma}.
+While Ref.~\cite{MINERvA:2023avz} and Ref.~\cite{Baudis:2023tma} focus on $\nu$-H events in antineutrino and neutrino pion-less samples, respectively, Ref.~\cite{Lu:2015hea} applies to events with pions in the final state. 
+They complement each other well.
+The proposal in Ref.~\cite{Lu:2015hea} is to use $\dptt$ to select $\nu$-H events.
+It is challenging to achieve high efficiency and purity with a one-dimensional cut. 
+Therefore, a COM total energy cut is proposed to complement $\dptt$, and this section demonstrates its effectiveness.
 
 \subsection{MC Study}
 \label{sec:mc-hydrogen-ana}
-     The key to remove carbon backgrounds from the hydrogen events is to identify the variables that can effectively distinguish between the two.
-     Hence, distributions decomposed according to the type of the target nucleus are shown in Fig.~\ref{fig:hsel-tki-decomp} for the proposed variables.
+     The key to removing carbon backgrounds from hydrogen events is to identify variables that effectively differentiate between the two.
+     Therefore, distributions decomposed by target nucleus type are shown in Fig.~\ref{fig:hsel-tki-decomp} for the proposed variables.
 
      As shown in Fig.~\ref{subfig:hsel-dptt-stack}
      \begin{figure}
@@ -547,15 +539,15 @@ Hence, the COM total energy cut is proposed as a complementary cut to $\dptt$, a
      \caption{Decomposed distributions for $\dptt$ and $\dpt$ for hydrogen and carbon events.}
      \label{fig:hsel-tki-decomp}
      \end{figure}
-     Based on $\dptt$ alone, the most effective cut will be to have $-10\mevc \leq \dptt \leq 30\mevc$.
-     This cut leads to a sample of $16$ hydrogen events and $16$ carbon events, with a purity of $50\%$.
-     In comparison, Ref.~\cite{MINERvA:2023avz} observed ``5,580(180) signal events over the estimated background of 12,500 events'', the purity of which is considerably lower than the $50\%$ achieved here, but the total number of events is much higher.
-     Hence, for the T2K sample to be most useful, the purity needs to be as high as possible so as to reduce the systematic uncertainties for any parameter measurements.
+     Based on $\dptt$ alone, the most effective cut is $-10\mevc \leq \dptt \leq 30\mevc$.
+     This cut yields 16 hydrogen events and 16 carbon events, for a purity of $50\%$.
+     In comparison, Ref.~\cite{MINERvA:2023avz} reported ``5,580(180) signal events over an estimated background of 12,500 events,'' which corresponds to a lower purity than $50\%$ but a much larger total number of events.
+     Hence, for the T2K sample to be most useful, maximizing purity is essential to minimize systematic uncertainties in parameter measurements.
 
-     As SFGD is excellent in 3D tracking, a cut on $\dpt$ might further help reduce carbon backgrounds.
+     Because SFGD excels in 3D tracking, a cut on $\dpt$ may further reduce carbon backgrounds.
      A similar decomposition is shown in Fig.~\ref{subfig:hsel-dpt-stack} for $\dpt$.
-     It is observed that both the $\dpt$ and $\dptt$ for hydrogen events centre around $0$, while the carbon events are much more spread out.
-     As the two variables are not completely independent, as $\abs{\dptt} \leq \dpt$, it is easier to identify the appropriate two dimensional cut by plotting the two variables together, as shown in Fig.~\ref{fig:hsel-dpt-dptt} for hydrogen and carbon separately.
+     It is observed that $\dpt$ and $\dptt$ for hydrogen events cluster near $0$, while carbon events exhibit more spread.
+     Since the variables are not entirely independent (because $\abs{\dptt} \leq \dpt$), identifying a suitable two-dimensional cut is simpler by plotting them together, as shown in Fig.~\ref{fig:hsel-dpt-dptt} for hydrogen and carbon separately.
      \begin{figure}
           \begin{subfigure}[b]{\dbfigwid\textwidth}
                \centering
@@ -572,13 +564,14 @@ Hence, the COM total energy cut is proposed as a complementary cut to $\dptt$, a
           \caption{Two-dimensional distributions of $\dpt$ and $\dptt$ for hydrogen and carbon events.}
           \label{fig:hsel-dpt-dptt}
      \end{figure}
-     Fig.~\ref{fig:hsel-dpt-dptt} suggests the cuts, $\dpt < 80\mevc$ and $-40\mevc \leq \dptt \leq 30\mevc$, which leads to a sample of $19$ hydrogen events and $10$ carbon event, with a purity of $65.5\%$.
+
+     Fig.~\ref{fig:hsel-dpt-dptt} suggests the cuts, $\dpt < 80\mevc$ and $-40\mevc \leq \dptt \leq 30\mevc$, which lead to a sample of $19$ hydrogen events and $10$ carbon events, with a purity of $65.5\%$.
      This is the optimal purity and efficiency achievable by using TKI variables only.
-     To further improve the purity, additional cut on the COM variables is proposed.
+     To further improve the purity, an additional cut on the COM variables is proposed.
      Similar to Fig.~\ref{fig:hsel-tki-decomp}, the decompositions for the COM variables are shown in Fig.~\ref{fig:hsel-com-decomp}.
-     Although FSI alters the $\thetacom$ distributions, leading to distinct distributions between hydrogen and carbon, but as $\thetacom$ for hydrogen is expected to be uniform across the entire range, the cut on $\thetacom$ to select hyrodgen is not expected to be effective.
-     Note that to show the wide range of $\thetacom$ for hydrogen, the colours for hydrogen and carbon are switched in Fig.~\ref{subfig:hsel-com-theta} respect to others.
-     In contrast, without FSI, $\ecom$ is expected to centre around the mass of the resonance, which is $1232~\mev$ for $\deltapp$, while the carbon events are expected to have a much wider distribution as shown in Fig.~\ref{subfig:hsel-com-edelta}.
+     Although FSI alters the $\thetacom$ distributions, leading to distinct distributions between hydrogen and carbon, $\thetacom$ for hydrogen is expected to be uniform across the entire range; therefore, the cut on $\thetacom$ to select hydrogen is not expected to be effective.
+     Note that to show the wide range of $\thetacom$ for hydrogen, the colours for hydrogen and carbon are switched in Fig.~\ref{subfig:hsel-com-theta} respectively.
+     In contrast, without FSI, $\ecom$ is expected to center around the mass of the resonance, which is $1232~\mev$ for $\deltapp$, while the carbon events are expected to have a much wider distribution, as shown in Fig.~\ref{subfig:hsel-com-edelta}.
      \begin{figure}
      \begin{subfigure}[b]{\dbfigwid\textwidth}
           \centering
@@ -599,7 +592,7 @@ Hence, the COM total energy cut is proposed as a complementary cut to $\dptt$, a
 
      To demonstrate the effectiveness of these cuts, the $\dptt$ distributions are plotted step-wise in Fig.~\ref{fig:hsel-dptt-step}.
      Comparing the $\dptt$ distributions before and after each cut, namely the cuts on $\dpt$ and $\ecom$, it is evident that these cuts successfully remove carbon backgrounds in the low $\dptt$ region, which is impossible to remove based on $\dptt$ alone.
-     Furthermore, by comparing, Fig.~\ref{subfig:hsel-dang-dpt80} and Fig.~\ref{subfig:hsel-dang-dpt80-ecom}, it is demonstrated that the cut on $\ecom$ is capable of removing carbon backgrounds that cannot be removed by the transverse variables.
+     Furthermore, by comparing Fig.~\ref{subfig:hsel-dang-dpt80} and Fig.~\ref{subfig:hsel-dang-dpt80-ecom}, it is demonstrated that the cut on $\ecom$ is capable of removing carbon backgrounds that cannot be removed by the transverse variables.
      Hence, all three variables are indispensable for achieving the optimal purity and efficiency.
      \begin{figure}
      \begin{subfigure}[b]{\trfigwid\textwidth}
@@ -628,8 +621,8 @@ Hence, the COM total energy cut is proposed as a complementary cut to $\dptt$, a
      Both the transverse variables and $\ecom$ have limitations.
      The true distributions of the transverse variables on hydrogen are delta functions, but the dependence on an accurate neutrino direction reconstruction limits the reconstruction resolution of the transverse variables.
      The impact of the resolution is amplified as the cuts are placed to select events with small values when reconstruction uncertainties could relatively easily move the signal events out of the cut.
-     On the other hand, while $\ecom$ has an excellent reconstruction quality as it is independent of neutrino direction, its true distribution has a natural half width of about $60~\mev$~\cite{ParticleDataGroup:2024cfk}.
+     On the other hand, while $\ecom$ has excellent reconstruction quality as it is independent of neutrino direction, its true distribution has a natural half-width of about $60~\mev$~\cite{ParticleDataGroup:2024cfk}.
      Hence, even if $\ecom$ can be reconstructed perfectly, it cannot separate hydrogen events from carbon events completely.
-     Due to the limited amount of MC events available and the relatively small fraction of resonance event in the T2K beam, the statistics of the selection is too small to be conclusive.
+     Due to the limited amount of MC events available and the relatively small fraction of resonance events in the T2K beam, the statistics of the selection are too small to be conclusive.
      Nevertheless, the results are promising and suffice in demonstrating the complementarity of the transverse variables and $\ecom$.
      Hence, it is hopeful that using the two kinds of variables together, the upgraded ND280 data can produce a hydrogen sample with high purity.
