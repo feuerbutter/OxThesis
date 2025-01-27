@@ -8,53 +8,53 @@ There is no one who loves pain itself, who seeks after it and wants to have it, 
 \chapter{\label{ch:techniques}New Techniques in Selection Development} 
 \minitoc
 
-The upgrade new detector has enhanced measuring capabilities, which is especially important for hadrons,
-As hadrons tend to have much shorter tracks and are conventionally harder to reconstruct in scintillator detectors compared to muons, the explored hadronic kinematic phase space has been relatively restricted and the reconstructed hadronic variables have relatively large uncertainties.
-Since more exclusive event topology such as $\numuccopiop$ allows the measurement of high-level variables like the Transverse Kinematic Imbalance (TKI) variables, which provide invaluable insights on neutrino-nucleus interactions, it is highly desirable to reconstruct hadrons, to measure their kinematic properties as precisely as possible and to explore their phase space as large as possible.
+The upgraded detector has enhanced measuring capabilities, which is especially important for hadrons,
+As hadrons tend to have much shorter tracks and are conventionally harder to reconstruct in scintillator detectors compared to muons, the explored hadronic kinematic phase space has been relatively restricted, and the reconstructed hadronic variables have relatively large uncertainties.
+Since more exclusive event topologies, such as $\numuccopiop$, allow the measurement of high-level variables like the Transverse Kinematic Imbalance (TKI) variables, which provide invaluable insights on neutrino-nucleus interactions, it is highly desirable to reconstruct hadrons, measure their kinematic properties as precisely as possible, and explore their phase space as extensively as possible.
 
-Two of the most common product hadrons from neutrino-nucleus interaction are protons and pions. 
+Two of the most common product hadrons from neutrino-nucleus interactions are protons and pions. 
 The default particle identification and momentum reconstruction have been developed by colleagues at T2K using the Boosted Decision Tree (BDT) algorithm. The BDT algorithm has good performance, but it is still lacking in some aspects.
 For instance, as it uses only single-track information, it cannot effectively distinguish between pions and muons. 
-It could reconstruct proton momentum with an excellent resolution of about $3.5\%$, but it is insufficient for TKI analysis, which is highly sensitive to hadron kinematics. 
+It can reconstruct proton momentum with an excellent resolution of about $3.5\%$, but it is insufficient for TKI analysis, which is highly sensitive to hadron kinematics. 
 
-To address these gaps, I have developed and implemented new techniques for both hadrons exploiting the precise position and $\dedx$ measurements and timeing resolution.
+To address these gaps, I have developed and implemented new techniques for both hadrons, exploiting the precise position and $\dedx$ measurements and timing resolution.
 For pions, I have invented the pion trackless reconstruction, a novel technique to reconstruct pions without requiring the presence of a reconstructed track, thereby lowering the detection threshold and significantly increasing reconstruction efficiency for low-momentum pions. 
-As for protons, I have adapted the Elastically Scattered and Contained (ESC) protons technique~\cite{Lu:2016mjf} first implemented in MINERvA to demonstrate significant improvement in proton momentum reconstruction resolution, to SFGD. 
+As for protons, I have adapted the Elastically Scattered and Contained (ESC) protons technique~\cite{Lu:2016mjf}, first implemented in MINERvA, to demonstrate significant improvement in proton momentum reconstruction resolution, to SFGD. 
 These new techniques are applied in the development of two signal sample selections, namely the $\numucczpiop$-ESC selection and the $\numuccopi$-TL selection, where the ``TL'' refers to the use of the trackless reconstruction technique.
-Additionally, to prepare for the data-MC comparisons and future cross section analysis, I have also developed a stopping pion control sample selection.
+Additionally, to prepare for the data-MC comparisons and future cross-section analysis, I have also developed a stopping pion control sample selection.
 
 \section{$\numucczpiop$-ESC}
 \label{sec:sel-esc}
-     The $\numucczpiop$-ESC is adding an additional ESC selection step to the $\numucczpiop$ selection developed by a T2K colleauge.
-     The details of the ESC step is elaborated below.
+     The $\numucczpiop$-ESC adds an additional ESC selection step to the $\numucczpiop$ selection developed by a T2K colleague.
+     The details of the ESC step are elaborated below.
    %------------------- ESC ----------------%
     \subsection{Working Principles}
     \label{sec:sel-esc-wp}
-    Protons stopping at rest would deposit a large amount of energy, the so-called Bragg Peak, just before it stops.
-    These protons tend to have their momenta better constructed as its momentum is more strongly correlated with its range. 
-    As shown in Fig.~\ref{fig:dedx-pprres-eg}, protons having energy deposit below $1000$ units has large variances in momentum reconstruction. 
+     Protons stopping at rest deposit a large amount of energy—the so-called Bragg Peak—just before stopping.
+     These protons tend to have their momenta better reconstructed as their momentum is more strongly correlated with their range. 
+     As shown in Fig.~\ref{fig:dedx-pprres-eg}, protons having energy deposits below $1000$ units show large variances in momentum reconstruction. 
+
     \begin{figure}[h]
         \centering
         \includegraphics[width=0.5\linewidth]{figures/sel/an_dedx2_colnor_vs_p_pr_res_hist2d_al12_zoom.png}
         \caption{Proton momentum fractional difference against energy deposited at the third last node.}
         \label{fig:dedx-pprres-eg}
     \end{figure}
-    Hence, these protons can be selected by placing a lower boundary cut on the energy deposited at the nodes near the end of the reconstructed tracks to have a sample with a high proton momentum resolution.   
+     Hence, these protons can be selected by placing a lower boundary cut on the energy deposited at the nodes near the end of the reconstructed tracks to obtain a sample with high proton momentum resolution.   
     
    \subsection{Implementation}
    \label{sec:sel-esc-imp}
-   As the ESC selection is based on $\dedx$ at the end of the proton track, a good reconstuction of $\dedx$ must be obtained first.
-   To investigate the proper way of estimatiing $\dedx$, I have simulated multiple particle gun (PGUN) samples with the proton travelling in different directions in the SFGD.
-   More specifically, three samples are travelling along the $x$-, $y$- and $z$-axis and five other samples are travelling at $15\deg$, $30\deg$, $45\deg$, $60\deg$ and $75\deg$ to the $x$-axis in the $x$-$z$ plane.
-   As the proton direction should not affect its energy deposition, distinct characteristics of $\dedx$ along the proton trajectory can be utilized to validate the quality of the reconstructed $\dedx$.
-   Other than the Bragg peak, another distinct feature of $\dedx$ is the minimal ionizing particle (MIP) region, where the particle at high momentum traverses the scintillator despositing the minimal amount of energy. 
-   Hence, the $\dedx$ remains at a relatively constant value for all such particles.
-   When the $\dedx$ at the end of the proton tracks are plotted, besides the Bragg peak at large $\dedx$, corresponding to protons stopping to rest, there should be another peak at smaller $\dedx$, corresponding protons that undergo secondary interactions and thus are stopped prematurely when it still possesses high momentum.
+	As the ESC selection is based on $\dedx$ at the end of the proton track, accurate reconstruction of $\dedx$ must first be obtained.
+	To investigate the proper way of estimating $\dedx$, I have simulated multiple particle gun (PGUN) samples with protons traveling in different directions in the SFGD.
+	More specifically, three samples travel along the $x$-, $y$-, and $z$-axes, and five other samples travel at $15\deg$, $30\deg$, $45\deg$, $60\deg$, and $75\deg$ to the $x$-axis in the $x$-$z$ plane.
+	As the proton direction should not affect its energy deposition, distinct characteristics of $\dedx$ along the proton trajectory can be utilized to validate the quality of the reconstructed $\dedx$.
+	Besides the Bragg peak, another distinct feature of $\dedx$ is the minimal ionizing particle (MIP) region, where particles at high momentum traverse the scintillator depositing the minimal amount of energy. 
+	Hence, the $\dedx$ remains at a relatively constant value for all such particles.
+	When the $\dedx$ at the end of the proton tracks is plotted, besides the Bragg peak at large $\dedx$ corresponding to protons stopping at rest, there should be another peak at smaller $\dedx$ corresponding to protons that undergo secondary interactions and thus stop prematurely while still possessing high momentum.
 
-   The first attempt is to use the smoothed energy directly. 
-   Fig.~\ref{subfig:esc-smooth-e} plots energy deposit for the last third to sixth nodes for all PGUN samples travelling at non-orthogonal angles.
-   It is reassuring to indeed observe the two peaks, the MIP peak and the Bragg peak, as hypothesized. 
-
+	The first attempt is to use the smoothed energy directly. 
+	Fig.~\ref{subfig:esc-smooth-e} plots energy deposits for the third to sixth nodes from the end for all PGUN samples traveling at non-orthogonal angles.
+	It is reassuring to indeed observe the two peaks, the MIP peak and the Bragg peak, as hypothesized. 
   \begin{figure}
         \centering
         \begin{subfigure}[b]{\dbfigwid\textwidth}
@@ -72,172 +72,177 @@ Additionally, to prepare for the data-MC comparisons and future cross section an
         \caption{$\dedx$ estimation.}
         \label{fig:esc-angnorm}
   \end{figure}
+     However, there are still some discrepancies.
+     The MIP peaks are close to each other, but their positions differ noticeably.
+     This is due to the different grouping of hits into nodes for protons traveling in different directions.
+     The different numbers of hits in a node lead to different distances between nodes, so using the energy deposited per node as an estimation of $\dedx$ is not strictly valid.
+     To account for the different propagation directions, I divided the energy by the sine of the angle between the trajectory and the $z$-axis.
+     The angle-normalized energy is plotted in Fig.~\ref{subfig:esc-an-smooth-e}, which demonstrates that the angle-normalization step has achieved its goal—all MIP peaks have the same position.
+     Hence, the angle-normalized energy can serve as a good reconstruction of $\dedx$ for the ESC selection.
 
-   However, there are still some discrepancies. 
-   The MIP peaks are close to each other, but their positions differ noticeably from each other.
-   This is due to the different grouping of Hits into Nodes for protons travelling in different directions.
-   The different number of Hits in a Nodes lead to different distances between nodes, so using the energy deposited per Node as an estimation of $\dedx$ is not strictly valid anymore.
-   To account for the different propagation directions, I divided the energy by the sine of the angle of the trajectory made with the $z$-axis.
-   The angle-normalized energy is plotted in Fig.~\ref{subfig:esc-an-smooth-e}, which demonstrates that the angle-normalization step has achieved its goal - all MIP peaks have the same position.
-   Hence, the angle-normalized energy can serve as a good reconstruction of $\dedx$ for the ESC selection.
+     The multiple PGUN samples are combined into one large sample to determine suitable threshold $\dedx$ values.
+     While plots like Fig.~\ref{fig:dedx-pprres-eg} clearly show the underlying idea of the ESC selection, profile plots are better suited for determining proper thresholds, as shown in Fig.~\ref{fig:esc-andedx-slice}.
+     For example, as shown in Fig.~\ref{subfig:ans-dedx0-ppr-slice}, a cut at $200$ should be placed for the first node.
+     Similarly, the threshold values for the other nodes are $500$, $1000$, $900$, $840$, and $740$ respectively.
 
-   The multiple PGUN samples are combined into one large sample to determine the suitable threshold $\dedx$ values.
-   While plots like Fig.~\ref{fig:dedx-pprres-eg} are clear in showing the underlying idea of the ESC selection, profile plots are better suited for determining a proper threshold as shown in Fig.~\ref{fig:esc-andedx-slice};
-   For example, as shown in Fig.~\ref{subfig:ans-dedx0-ppr-slice}, a cut at $200$ should be placed for the first node.
-   Similarly, the threshold values for the other nodes are $500$, $1000$, $900$, $840$ and $740$ respectively.
-   \begin{figure}[t]
-       \centering
-       \begin{subfigure}{\trfigwid\textwidth}
-            \includegraphics[width=\textwidth]{figures/sel/ans_dedx0_vs_p_pr_res_hist2d_al2_selpr_con_slice.eps}
-            \caption{dedx0}
-            \label{subfig:ans-dedx0-ppr-slice}
-       \end{subfigure}
-       \begin{subfigure}{\trfigwid\textwidth}
-            \includegraphics[width=\textwidth]{figures/sel/ans_dedx1_vs_p_pr_res_hist2d_al2_selpr_con_slice.eps}
-            \caption{dedx1}
-            \label{subfig:dedx1}
-       \end{subfigure}
-       \begin{subfigure}{\trfigwid\textwidth}
-            \includegraphics[width=\textwidth]{figures/sel/ans_dedx2_vs_p_pr_res_hist2d_al2_selpr_con_slice.eps}
-            \caption{dedx2}
-            \label{subfig:dedx2}
-       \end{subfigure}
-       \\
-       \begin{subfigure}{\trfigwid\textwidth}
-            \includegraphics[width=\textwidth]{figures/sel/ans_dedx3_vs_p_pr_res_hist2d_al2_selpr_con_slice.eps}
-            \caption{dedx3}
-            \label{subfig:dedx3}
-       \end{subfigure}
-       \begin{subfigure}{\trfigwid\textwidth}
-            \includegraphics[width=\textwidth]{figures/sel/ans_dedx4_vs_p_pr_res_hist2d_al2_selpr_con_slice.eps}
-            \caption{dedx4}
-            \label{subfig:dedx4}
-       \end{subfigure}
-       \begin{subfigure}{\trfigwid\textwidth}
-            \includegraphics[width=\textwidth]{figures/sel/ans_dedx5_vs_p_pr_res_hist2d_al2_selpr_con_slice.eps}
-            \caption{dedx5}
-            \label{subfig:dedx5}
-       \end{subfigure}
-       \caption{Determination of $\dedx$ thresholds.}
-       \label{fig:esc-andedx-slice}
-    \end{figure}
+  \begin{figure}[t]
+      \centering
+      \begin{subfigure}{\trfigwid\textwidth}
+           \includegraphics[width=\textwidth]{figures/sel/ans_dedx0_vs_p_pr_res_hist2d_al2_selpr_con_slice.eps}
+           \caption{dedx0}
+           \label{subfig:ans-dedx0-ppr-slice}
+      \end{subfigure}
+      \begin{subfigure}{\trfigwid\textwidth}
+           \includegraphics[width=\textwidth]{figures/sel/ans_dedx1_vs_p_pr_res_hist2d_al2_selpr_con_slice.eps}
+           \caption{dedx1}
+           \label{subfig:dedx1}
+      \end{subfigure}
+      \begin{subfigure}{\trfigwid\textwidth}
+           \includegraphics[width=\textwidth]{figures/sel/ans_dedx2_vs_p_pr_res_hist2d_al2_selpr_con_slice.eps}
+           \caption{dedx2}
+           \label{subfig:dedx2}
+      \end{subfigure}
+      \\
+      \begin{subfigure}{\trfigwid\textwidth}
+           \includegraphics[width=\textwidth]{figures/sel/ans_dedx3_vs_p_pr_res_hist2d_al2_selpr_con_slice.eps}
+           \caption{dedx3}
+           \label{subfig:dedx3}
+      \end{subfigure}
+      \begin{subfigure}{\trfigwid\textwidth}
+           \includegraphics[width=\textwidth]{figures/sel/ans_dedx4_vs_p_pr_res_hist2d_al2_selpr_con_slice.eps}
+           \caption{dedx4}
+           \label{subfig:dedx4}
+      \end{subfigure}
+      \begin{subfigure}{\trfigwid\textwidth}
+           \includegraphics[width=\textwidth]{figures/sel/ans_dedx5_vs_p_pr_res_hist2d_al2_selpr_con_slice.eps}
+           \caption{dedx5}
+           \label{subfig:dedx5}
+      \end{subfigure}
+      \caption{Determination of $\dedx$ thresholds.}
+      \label{fig:esc-andedx-slice}
+  \end{figure}
 
-    Furthermore, based on distributions of angle-normalized energy for the last 6 nodes, the average Bragg peak profile can be obtained by fitting the peaks of the distributions.
-    As shown in Fig.~\ref{fig:esc-andedx-peaks}, the Bragg peak value for each node is extracted with fitting with a Cauchy function.
-    From the last node backwards, the fitted Bragg peak values are $989.5$, $1080$, $1234$, $1131$, $990.0$ and $887.2$ respectively.
+     Furthermore, based on distributions of angle-normalized energy for the last six nodes, the average Bragg peak profile can be obtained by fitting the peaks of the distributions.
+     As shown in Fig.~\ref{fig:esc-andedx-peaks}, the Bragg peak value for each node is extracted by fitting with a Cauchy function.
+     From the last node backwards, the fitted Bragg peak values are $989.5$, $1080$, $1234$, $1131$, $990.0$, and $887.2$, respectively.
 
-     \begin{figure}[t]
-       \centering
-       \begin{subfigure}{\trfigwid\textwidth}
-            \includegraphics[width=\textwidth]{figures/sel/ans_dedx0_pdf_al2_selpr_con_test.eps}
-            \caption{dedx0 peak val}
-            \label{subfig:dedx0-peak}
-       \end{subfigure}
-       \begin{subfigure}{\trfigwid\textwidth}
-            \includegraphics[width=\textwidth]{figures/sel/ans_dedx1_pdf_al2_selpr_con_test.eps}
-            \caption{dedx1 peak val}
-            \label{subfig:dedx1-peak}
-       \end{subfigure}
-       \begin{subfigure}{\trfigwid\textwidth}
-            \includegraphics[width=\textwidth]{figures/sel/ans_dedx2_pdf_al2_selpr_con_test.eps}
-            \caption{dedx2 peak val}
-            \label{subfig:dedx2-peak}
-       \end{subfigure}
-       \\
-       \begin{subfigure}{\trfigwid\textwidth}
-            \includegraphics[width=\textwidth]{figures/sel/ans_dedx3_pdf_al2_selpr_con_test.eps}
-            \caption{dedx3 peak val}
-            \label{subfig:dedx3-peak}
-       \end{subfigure}
-       \begin{subfigure}{\trfigwid\textwidth}
-            \includegraphics[width=\textwidth]{figures/sel/ans_dedx4_pdf_al2_selpr_con_test.eps}
-            \caption{dedx4 peak val}
-            \label{subfig:dedx4-peak}
-       \end{subfigure}
-       \begin{subfigure}{\trfigwid\textwidth}
-            \includegraphics[width=\textwidth]{figures/sel/ans_dedx5_pdf_al2_selpr_con_test.eps}
-            \caption{dedx5 peak val}
-            \label{subfig:dedx5-peak}
-       \end{subfigure}
-       \caption{Determination of $\dedx$ Bragg peak values.}
-       \label{fig:esc-andedx-peaks}
-    \end{figure}
 
-    The angle-normalized energy for the last 6 nodes for each track can then be compared with this average profile by a $\chi^2$,
+  \begin{figure}[t]
+    \centering
+    \begin{subfigure}{\trfigwid\textwidth}
+         \includegraphics[width=\textwidth]{figures/sel/ans_dedx0_pdf_al2_selpr_con_test.eps}
+         \caption{dedx0 peak val}
+         \label{subfig:dedx0-peak}
+    \end{subfigure}
+    \begin{subfigure}{\trfigwid\textwidth}
+         \includegraphics[width=\textwidth]{figures/sel/ans_dedx1_pdf_al2_selpr_con_test.eps}
+         \caption{dedx1 peak val}
+         \label{subfig:dedx1-peak}
+    \end{subfigure}
+    \begin{subfigure}{\trfigwid\textwidth}
+         \includegraphics[width=\textwidth]{figures/sel/ans_dedx2_pdf_al2_selpr_con_test.eps}
+         \caption{dedx2 peak val}
+         \label{subfig:dedx2-peak}
+    \end{subfigure}
+    \\
+    \begin{subfigure}{\trfigwid\textwidth}
+         \includegraphics[width=\textwidth]{figures/sel/ans_dedx3_pdf_al2_selpr_con_test.eps}
+         \caption{dedx3 peak val}
+         \label{subfig:dedx3-peak}
+    \end{subfigure}
+    \begin{subfigure}{\trfigwid\textwidth}
+         \includegraphics[width=\textwidth]{figures/sel/ans_dedx4_pdf_al2_selpr_con_test.eps}
+         \caption{dedx4 peak val}
+         \label{subfig:dedx4-peak}
+    \end{subfigure}
+    \begin{subfigure}{\trfigwid\textwidth}
+         \includegraphics[width=\textwidth]{figures/sel/ans_dedx5_pdf_al2_selpr_con_test.eps}
+         \caption{dedx5 peak val}
+         \label{subfig:dedx5-peak}
+    \end{subfigure}
+    \caption{Determination of $\dedx$ Bragg peak values.}
+    \label{fig:esc-andedx-peaks}
+  \end{figure}
+
+     The angle-normalized energy for the last six nodes for each track can then be compared with this average profile using a $\chi^2$,
     \begin{equation}
-     \chi^2 = \Sum^6_1 \frac{(\dedx_i - \overline{\dedx_i})^2}{\overline{\dedx_i}}
+    \chi^2 = \sum_{i=1}^{6} \frac{(\dedx_i - \overline{\dedx_i})^2}{\overline{\dedx_i}}
     \end{equation}
     A proton coming to rest should have a similar profile, so an upper cut on $\chi^2$ could further select protons with good momentum resolution. 
-    Similar to the determination of the threshold for the individual $\dedx$, the momenta fractional difference is plotted against $\chi^2$ as shown in Fig.~\ref{fig:esc-mom-res-chi2}.
+    Similar to the determination of the threshold for the individual $\dedx$, the momentum fractional difference is plotted against $\chi^2$, as shown in Fig.~\ref{fig:esc-mom-res-chi2}.
     \begin{figure}[h]
        \centering
        \includegraphics[width=\sgfidwid\textwidth]{figures/sel/brchi2_colnor_vs_p_pr_res_hist2d_al2_selpr_con_test.eps} 
        \caption{ppr res vs chi2}
        \label{fig:esc-mom-res-chi2}
     \end{figure}
-    The upper cut on $\chi^2$ is implemented as $800$, above which considerably larger fluctuation is observed.
+    The upper cut on $\chi^2$ is implemented at $800$, above which considerably larger fluctuations are observed.
 
     \subsection{Momentum reconstruction bias accessment}
     \label{sec:sel-esc-bias}
-    In Ref.~\cite{Lu:2016mjf}, reconstruction bias in the transverse component of the momentum is observed after the ESC implementation.
-    Hence, such bias is also checked for the signal sample in SFGD.
-    However, unlike in Ref.~\cite{Lu:2016mjf}, no apparent bias in proton momentum reconstruction is present, while such bias is observed in muon momentum reconstruction as shown in Fig.~\ref{fig:esc-prmupt}.
+     In Ref.~\cite{Lu:2016mjf}, reconstruction bias in the transverse component of the momentum is observed after the ESC implementation.
+     Hence, such bias is also checked for the signal sample in SFGD.
+     However, unlike in Ref.~\cite{Lu:2016mjf}, no apparent bias in proton momentum reconstruction is present, while such bias is observed in muon momentum reconstruction as shown in Fig.~\ref{fig:esc-prmupt}.
+
      \begin{figure}
-        \centering
-        \begin{subfigure}[b]{\dbfigwid\textwidth}
-             \centering
-             \includegraphics[width=\textwidth]{figures/sel/pr_pt_vs_pr_pt_bias_hist2d_al14.eps}
-             \caption{pr pt}
-             \label{subfig:esc-prpt}
-        \end{subfigure}
-        \begin{subfigure}[b]{\dbfigwid\textwidth}
-             \centering
-             \includegraphics[width=\textwidth]{figures/sel/mu_pt_vs_mu_pt_bias_hist2d_al14.eps}
-             \caption{mu pt}
-             \label{subfig:esc-mupt}
-        \end{subfigure}
-        \caption{$\dedx$ estimation.}
-        \label{fig:esc-prmupt}
+     \centering
+     \begin{subfigure}[b]{\dbfigwid\textwidth}
+          \centering
+          \includegraphics[width=\textwidth]{figures/sel/pr_pt_vs_pr_pt_bias_hist2d_al14.eps}
+          \caption{Proton $p_T$}
+          \label{subfig:esc-prpt}
+     \end{subfigure}
+     \begin{subfigure}[b]{\dbfigwid\textwidth}
+          \centering
+          \includegraphics[width=\textwidth]{figures/sel/mu_pt_vs_mu_pt_bias_hist2d_al14.eps}
+          \caption{Muon $p_T$}
+          \label{subfig:esc-mupt}
+     \end{subfigure}
+     \caption{Momentum Reconstruction Bias Assessment}
+     \label{fig:esc-prmupt}
      \end{figure}
-     Further investigation shows that there is no bias in the muon angle as shown in Fig.~\ref{subfig:esc-mutheta}.
+
+     Further investigation shows that there is no bias in the muon angle, as shown in Fig.~\ref{subfig:esc-mutheta}.
      Additionally, such bias is shown to be present even before the implementation of the ESC step in Fig.~\ref{subfig:esc-mupt-bfesc}, while there is no appreciable bias in the full muon momentum reconstruction.
      This could be due to a bias in the neutrino direction reconstruction.
      However, such a direction bias should have affected the proton transverse momentum as well.
-     As the impact is not pronounced and the simulation software is not the final stable version yet, a correction is done solely on the muon transverse momentum for the calculations of TKI variables and further investigations on the root cause for this bias should be carried out after a stable simulation software version becomes available.
-      \begin{figure}
-        \centering
-        \begin{subfigure}[b]{\dbfigwid\textwidth}
-             \centering
-             \includegraphics[width=\textwidth]{figures/sel/theta_mu_vs_theta_mu_res_hist2d_al14.eps}
-             \caption{theta mu bias}
-             \label{subfig:esc-mutheta}
-        \end{subfigure}
-        \begin{subfigure}[b]{\dbfigwid\textwidth}
-             \centering
-             \includegraphics[width=\textwidth]{figures/sel/mu_pt_vs_mu_pt_bias_hist2d_al13.eps}
-             \caption{mu pt bf ESC}
-             \label{subfig:esc-mupt-bfesc}
-        \end{subfigure}
-        \caption{mu theta }
-        \label{fig:esc-muptcor}
-  \end{figure}
+     As the impact is not pronounced and the simulation software is not the final stable version yet, a correction is done solely on the muon transverse momentum for the calculations of TKI variables, and further investigations on the root cause for this bias should be carried out after a stable simulation software version becomes available.
+
+     \begin{figure}
+     \centering
+     \begin{subfigure}[b]{\dbfigwid\textwidth}
+          \centering
+          \includegraphics[width=\textwidth]{figures/sel/theta_mu_vs_theta_mu_res_hist2d_al14.eps}
+          \caption{Muon Angle Bias}
+          \label{subfig:esc-mutheta}
+     \end{subfigure}
+     \begin{subfigure}[b]{\dbfigwid\textwidth}
+          \centering
+          \includegraphics[width=\textwidth]{figures/sel/mu_pt_vs_mu_pt_bias_hist2d_al13.eps}
+          \caption{Muon $p_T$ Before ESC}
+          \label{subfig:esc-mupt-bfesc}
+     \end{subfigure}
+     \caption{Muon Momentum Reconstruction Bias Assessment}
+     \label{fig:esc-muptcor}
+     \end{figure}
+
      The muon correction is applied through the inverse of the linear fit of the bias region between $0.5~\gevc$ and $1.1~\gevc$.
      The corrected muon transverse momentum is shown in Fig.~\ref{fig:esc-cormupt}, which demonstrates that the bias has been rectified.
-  
-    \begin{figure}[h]
-       \centering
-       \includegraphics[width=\sgfidwid\textwidth]{figures/sel/mu_pt_vs_cor_mu_pt_bias_hist2d_al14.eps} 
-       \caption{corrected mu pt}
-       \label{fig:esc-cormupt}
-    \end{figure}
+
+     \begin{figure}[h]
+     \centering
+     \includegraphics[width=\sgfidwid\textwidth]{figures/sel/mu_pt_vs_cor_mu_pt_bias_hist2d_al14.eps} 
+     \caption{Corrected Muon $p_T$}
+     \label{fig:esc-cormupt}
+     \end{figure}
 
     \subsection{Impacts on SPK}
-    The ESC technique is completed with the transverse momentum bias correction.
-    The overall impact of the technique on proton kinematics are shown in Fig.~\ref{fig:esc-spk}.
-    It has reduced off-diagonal entries significantly, which are badly reconstructed events.
-    Moreover, the conspicuous line with negative slope in the $\thetapr$ has mostly disappeared.
-    These could be due to a mis-reconstruction of the track direction for short protons, which are excluded by the first requirement of the ESC step, the number of nodes have to be at least $6$. 
-    
+     The ESC technique is completed with the transverse momentum bias correction.
+     The overall impact of the technique on proton kinematics is shown in Fig.~\ref{fig:esc-spk}.
+     It has significantly reduced off-diagonal entries, which represent badly reconstructed events.
+     Moreover, the conspicuous line with a negative slope in the $\thetapr$ has mostly disappeared.
+     These could be due to a mis-reconstruction of the track direction for short protons, which are excluded by the first requirement of the ESC step: the number of nodes has to be at least $6$.
+     
      \begin{figure}
         \centering
         \begin{subfigure}[b]{\dbfigwid\textwidth}
@@ -269,10 +274,9 @@ Additionally, to prepare for the data-MC comparisons and future cross section an
         \label{fig:esc-spk}
   \end{figure}
 
-
-   The overall improvement in the SPK is best illustrated with a Cauchy fit to the proton momentum reconstruction resolution histogram as shown in Fig.~\ref{subfig:ppr-res-bfESC} and Fig.~\ref{subfig:ppr-res-afESC}, which shows an approximately $50\%$ reduction in the width of the distribution.
-   This improvement is achieved at the cost of a $2/3$ reduction in the efficiency, as shown in Fig.~\ref{subfig:ppr-eff-bfESC} and Fig.~\ref{subfig:ppr-eff-afESC} .
-   The drop of efficiency might seem drastic, but it proves to be necessary for the TKI analysis, as shown later in Sec.~\ref{sec:mc-tki}, which showcases the significant improvement to the TKI variables evaluation due to the ESC technique. 
+     The overall improvement in the SPK is best illustrated with a Cauchy fit to the proton momentum reconstruction resolution histogram, as shown in Fig.~\ref{subfig:ppr-res-bfESC} and Fig.~\ref{subfig:ppr-res-afESC}, which shows an approximately $50\%$ reduction in the width of the distribution.
+     This improvement is achieved at the cost of a two-thirds reduction in efficiency, as shown in Fig.~\ref{subfig:ppr-eff-bfESC} and Fig.~\ref{subfig:ppr-eff-afESC}.
+     The drop in efficiency might seem drastic, but it proves to be necessary for the TKI analysis, as shown later in Sec.~\ref{sec:mc-tki}, which showcases the significant improvement in the evaluation of TKI variables due to the ESC technique.
 
    \begin{figure}[t]
       \centering
@@ -305,20 +309,22 @@ Additionally, to prepare for the data-MC comparisons and future cross section an
     %------------------- pion TL ----------------%
     \section{Pion Trackless Reconstruction}
        \label{sec:sel-tl}
-       As briefly elaborated in Sec.~\ref{sec:t2k-sw}, in SFGD, particle identification and momentum reconstruction are only performed on reconstructed tracks, which has a minimum length of about $30.0$~mm. 
-       Hence, low-momentum particles, which travel only a short distance, could not be reconstructed at all. 
-       When these low-momentum pions are not reconstructed, these $\ccopi$ events would then be misidentified as $\cczpi$ events, both decreasing the signal for the $\ccopi$ samples and increasing the background for the $\cczpi$ sample. 
-       Thus, it would be highly beneficial if we could reconstruct these pions, and the pion trackless reconstruction technique I develop can address this gap perfectly. 
+          As briefly elaborated in Sec.~\ref{sec:t2k-sw}, in SFGD, particle identification and momentum reconstruction are only performed on reconstructed tracks, which have a minimum length of about $30$~mm. 
+          Hence, low-momentum particles, which travel only a short distance, could not be reconstructed at all. 
+          When these low-momentum pions are not reconstructed, these $\ccopi$ events are misidentified as $\cczpi$ events, both decreasing the signal for the $\ccopi$ samples and increasing the background for the $\cczpi$ sample. 
+          Thus, it would be highly beneficial if we could reconstruct these pions. 
+          The pion trackless reconstruction technique I have developed can address this gap perfectly.
+
      
        \subsection{preliminary Study}
        \label{sec:tl-ps}
-         Before embarking on the development of the pion trackless reconstruction, one important check is to investigate the potential significance of such technique, because this technique can only reconstruct pions that decay at rest.
-         If there is a limited number of pions that decay at rest, the technique would not be applicable.
-         Hence, a preliminary study on pion fates relevant to T2K was performed.
+          Before developing the pion trackless reconstruction technique, it is essential to assess its potential significance, as this technique can only reconstruct pions that decay at rest. 
+          If only a limited number of pions decay in this manner, the technique would be inapplicable. 
+          Therefore, a preliminary study on pion fates relevant to T2K was conducted.
 
-         The first step is to check the primary pion momentum distribution in SFGD produced by the T2K flux.
-         As only a rough estimation suffices, the first $100,000$ events in the T2K input flux file is passed through the T2K ND simulation, and the event with a primary pion is recorded.
-         The true pion momentum cumulative distribution is shown in Fig.~\ref{subfig:pi-mom-cum}, with the majority of pions having a momentum below $1000~\mevc$.
+          The first step involved examining the primary pion momentum distribution in SFGD as produced by the T2K flux. 
+          For a rough estimation, the first 100,000 events in the T2K input flux file were processed through the T2K ND simulation, and events containing a primary pion were recorded. 
+          The true pion momentum cumulative distribution is shown in Fig.~\ref{subfig:pi-mom-cum}, indicating that the majority of pions have momentum below $1000~\mevc$.
 
           \begin{figure}[t]
                \centering
@@ -334,53 +340,53 @@ Additionally, to prepare for the data-MC comparisons and future cross section an
                \end{subfigure}
           \end{figure}
                
-          The median momentum is about $300~\mevc$, while about $30\%$ of the pions have a momentum below $200~\mevc$ and $80\%$ below $800~\mevc$.
-          Similarly, the pion angle distribution is shown in Fig.~\ref{subfig:pi-theta-cum}, with about $80\%$ of the pions having an angle below $87\deg$.
-          \begin{figure}[h]
-            \centering
-          \end{figure}
+          The median momentum is approximately $300~\mevc$, with about $30\%$ of pions having momentum below $200~\mevc$ and $80\%$ below $800~\mevc$. 
+          Similarly, the pion angle distribution, depicted in Fig.~\ref{subfig:pi-theta-cum}, shows that approximately $80\%$ of pions have an angle below $87\deg$.
 
-          The second step is to simulate the pion propagation in SFGD with the relevant kinematics.
-          A total of $6$ samples, each with $10,000$ events, with pions travlling with a momentum of $200~\mevc$, $300~\mevc$ and $800~\mevc$ and an angle of $0\deg$ and $70\deg$ are simulated.
-          As SFGD reconstruction should be largely independent of the pion direction, the $70\deg$ sample is for a consistency check.
-          For each sample, the fate of each pion is checked using the truth information.
-          A total of $10$ fate topologies are defined as follows:
+          The second step is to simulate pion propagation in SFGD with the relevant kinematics. 
+          A total of six samples, each containing 10,000 events, were simulated with pions traveling at momenta of $200~\mevc$, $300~\mevc$, and $800~\mevc$, and angles of $0\deg$ and $70\deg$. 
+          Since SFGD reconstruction is largely independent of pion direction, the $70\deg$ samples serve as consistency checks. 
+          For each sample, the fate of each pion was determined using the truth information.
+
+          A total of ten fate topologies are defined as follows:
           \begin{enumerate}
-               \item \textbf{DK@rest(good)} - The pion decays at rest and the total number of true trajectories is three, corresponding to $\pip$, $\mu$ and the ME exactly. 
-               This is a clean pion decay at rest event. 
-               \item \textbf{DK@rest(dirty)} - This is similar to the previous fate, but the total number of true trajectories is more than three.
-               The additional trajectories are mostly electromagnetic showers due to the ME. 
-               \item \textbf{DK@flight} - The pion decays with non-zero momentum, leading to relatively large starting momentum for the daughter muon.
-               \item \textbf{Elastic knock-out} - The pion undergoes SI, leading to the liberation of an additional proton.
-               The pion continues to propagate and decay, but its range is no longer well correlated with its starting momentum.
-               \item \textbf{Deflection} - The pion undergoes SI. 
-               No additional particles are produced, but its direction is changed.
-               \item \textbf{Absorption} - Another type of SI, where the pion does not emerge from its interaction with the nucleus, so no ME is present.
-               \item \textbf{Charge exchange} - The $\pip$ is converted to a $\piz$ via a charge exchange interaction with the nucleus.
-               As $\piz$ decays much faster, no ME is present.
-               \item \textbf{$\pim$} - There is no single interaction that can convert a $\pip$ to a $\pim$, but this fate, a $\pim$ as one of the daughters of the $\pip$, is observed, albeit rare, due to complicated pion SI inside the nucleus.
-               \item \textbf{Escaped} - The pion escapes SFGD before decaying.
-               Regardless of its subsequent decay, the potential ME cannot be detected in SFGD.
-               \item \textbf{Others} - This fate collects all the uncategorized events, for example, where the pion produces delta electron or bremsstrahlung.
-               This category should be relatively rare and thus should not require special treatment.
+          \item \textbf{DK@rest (Good)} – The pion decays at rest, and the total number of true trajectories is three, corresponding to $\pip$, $\mu$, and the ME exactly. 
+          This represents a clean pion decay-at-rest event.
+          \item \textbf{DK@rest (Dirty)} – Similar to the previous fate, but the total number of true trajectories exceeds three. 
+          The additional trajectories are mostly electromagnetic showers due to the ME.
+          \item \textbf{DK@flight} – The pion decays with non-zero momentum, resulting in a relatively large starting momentum for the daughter muon.
+          \item \textbf{Elastic Knock-out} – The pion undergoes secondary interactions (SI), leading to the liberation of an additional proton. 
+          The pion continues to propagate and decay, but its range is no longer well correlated with its starting momentum.
+          \item \textbf{Deflection} – The pion undergoes SI. 
+          No additional particles are produced, but its direction changes.
+          \item \textbf{Absorption} – Another type of SI where the pion does not emerge from its interaction with the nucleus, so no ME is present.
+          \item \textbf{Charge Exchange} – The $\pip$ is converted to a $\piz$ via a charge exchange interaction with the nucleus. 
+          Since $\piz$ decays much faster, no ME is present.
+          \item \textbf{$\pim$} – While there is no single interaction that can convert a $\pip$ to a $\pim$, this fate—where a $\pim$ appears as one of the daughters of the $\pip$—is observed, albeit rarely, due to complex pion SI within the nucleus.
+          \item \textbf{Escaped} – The pion escapes SFGD before decaying. 
+          Regardless of its subsequent decay, the potential ME cannot be detected in SFGD.
+          \item \textbf{Others} – This category includes all uncategorized events, such as cases where the pion produces delta electrons or undergoes bremsstrahlung. 
+          These events are relatively rare and do not require special treatment.
           \end{enumerate}
-          Fate 1 to 3 are all pions that decay before any secondary interactions, i.e., the pions decay via the chain, $\pi \rightarrow \mu \rightarrow e$.
-          Hence, these pions can be tagged by the presence of the ME.
-          However, as illusrated below in Sec.~\ref{sec:tl-wp}, the trackless technique relies on the extremely short distance travelled by the daughter muon.
-          Pions decaying in flight leads to a longer distance travelled by the daughter muon, which is not suitable for the trackless technique.
-          Fate 4 to 8 are pions that undergo secondary interactions, so the ME is not present, except those that have undergone deflection, for the trackless technique to work.
-          The range of the deflected pion does not correlate well with its momentum, so it is not suitable for the trackless technique either. 
-          In short, the trackless technique is most applicable to Fate $1$ and $2$.
 
-          The fate distributions are shown in Fig.~\ref{fig:pi-fate}.
-          For the $200~\mevc$ samples, for both $0\deg$ and $70\deg$, more than $70\%$ of the pions are in Fate $1$ and $2$.
-          As for the $300~\mevc$ samples, this fraction drops to $30\%$ for the $0\deg$ and about $12\%$ for the $70\deg$.
-          This is expected as the pion momentum increases, the pion decay length increases, and the probability of secondary interactions increases.
-          The further decrease for the $70\deg$ is due to the increase in the escape fraction.
-          The geometry of the SFGD, which is much shorter in the vertic direction, makes it easier for high-angle pions to escape.
-          For the $800~\mevc$ pions, their decay length is too long for SFGD.
-          Hence, there is a significant increase in the escape fraction, about $30\%$ and $50\%$ for $0\deg$ and $70\deg$ .
-          The unescaped ones are all those that have undergone secondary interactions, so at this high momentum, these pions cannot be reconstructed by the trackless technique.
+          Fates 1 through 3 involve pions that decay before any secondary interactions, i.e., pions decay via the chain $\pi \rightarrow \mu \rightarrow e$. 
+          Thus, these pions can be tagged by the presence of the ME. 
+          However, as illustrated in Sec.~\ref{sec:tl-wp}, the trackless technique relies on the extremely short distance traveled by the daughter muon. 
+          Pions decaying in flight result in a longer distance traveled by the daughter muon, making them unsuitable for the trackless technique.
+
+          Fates 4 through 8 involve pions that undergo secondary interactions, resulting in the absence of the ME, except for those that experience deflection, which also renders them unsuitable for the trackless technique. 
+          The range of a deflected pion does not correlate well with its momentum, further disqualifying it from being reconstructed by the trackless technique. 
+          In summary, the trackless technique is most applicable to Fates 1 and 2.
+
+          The fate distributions are shown in Fig.~\ref{fig:pi-fate}. 
+          For the $200~\mevc$ samples, both at $0\deg$ and $70\deg$, more than $70\%$ of the pions fall into Fates 1 and 2. 
+          In the $300~\mevc$ samples, this fraction drops to $30\%$ for the $0\deg$ angle and about $12\%$ for the $70\deg$ angle. 
+          This trend is expected because as pion momentum increases, the decay length increases, and the probability of secondary interactions rises. 
+          The further decrease observed at $70\deg$ is attributed to an increased escape fraction. 
+          The geometry of SFGD, being much shorter in the vertical direction, facilitates the escape of high-angle pions. 
+          For $800~\mevc$ pions, the decay length is too long for SFGD, resulting in a significant increase in the escape fraction—approximately $30\%$ at $0\deg$ and $50\%$ at $70\deg$. 
+          The unescaped pions are those that have undergone secondary interactions, rendering them unreconstructable by the trackless technique at this high momentum.
+
           \begin{figure}[t]
                \centering
                \begin{subfigure}{\dbfigwid\textwidth}
@@ -417,81 +423,89 @@ Additionally, to prepare for the data-MC comparisons and future cross section an
                \end{subfigure}
                \caption{Pion fate in the SFGD for different combinations of pion kinematics}
             \end{figure}
+       
+          This preliminary study demonstrates that a considerable fraction of the primary pions produced in SFGD have relatively low momentum ($<200~\mevc$). 
+          For these pions, the majority decay at rest, producing an ME that can be utilized in the trackless technique. 
+          Thus, the trackless technique is applicable to approximately $30\%$ of the pion events in SFGD, making it a significant reconstruction method to develop.
 
-          This preliminary study demonstrates that a considerable fraction of the primary pions produced in SFGD have relatively low momentum ($<200\mevc$), and for these pions, the majority of them decays at rest to produce an ME that could be utilized in the trackless technique.
-          Thus, the trackless technique would be applicable to at least about $30\%$ of the pion events in SFGD, thereby making it an impactful reconstruction method to develop.
+     \subsection{Working Principles}
+     \label{sec:tl-wp}
+          The trackless technique is an advancement of previous methods. 
+          It was first attempted in MINER$\nu$A~\cite{MINERVAPOSTER} and in the Fine Grain Detectors of ND280~\cite{T2KPOSTER}. 
+          In MINER$\nu$A, a reconstructed cluster must be identified as a pion candidate. 
+          In contrast, ND280 includes a prototype of the trackless reconstruction; however, it is integrated with other pion reconstruction methods, and its full potential has not yet been explored.
 
-       \subsection{Working Principles}
-       \label{sec:tl-wp}
-         The trackless technique is an extension and sophistication of previous methods. 
-         It was first tried in MINER$\nu$A\cite{MINERVAPOSTER} and in the Fine Grain Detectors of ND280\cite{T2KPOSTER}. 
-         In the former, at least a reconstructed cluster is required to be identified as a pion candidate. 
-         The latter indeed contains a prototype of the trackless reconstruction, but it is mixed with other pion reconstruction methods and its potential is not fully explored. 
-    
-         There are two key points of this reconstruction technique based on the pion decay chain, $\pi \rightarrow \mu \rightarrow e$.
-         Firstly, the delayed signal of the grandchild, the Michel Electron (ME), is much longer than the time scale of other processes, such as $\piz$ decay.
-         Hence, the presence of the primary pion can be inferred by the presence of a delayed signal in the SFGD.
-         Secondly, the pion decay, $\pi \rightarrow \mu + \nu$, is a two-body process, the kinematics of the daughters can be completely determined by energy-momentum conservation, 
-         When a pion decays at rest, the daughter muon will only move about $0.12~\textrm{cm}$. Hence, the starting point of the ME is a good estimation of the ending point of the pion.
-         The pion momentum can then be reconstructed by range based on the distance between the primary neutrino interaction vertex and the ME starting point. 
-         A relation between the pion momentum, via its kinetic energy, and its range is obtained from an empirical fit using a PGUN sample, as shown in shown in \figref{fig:fit}.
-          The PGUN sample starts from the centre of SFGD and progates isotropically.
-          It has a sample size of $500,000$ with a kinetic energy uniformly distributed between $20~\mev$ and $200~\mev$.
-          The $\log10$ of the true kinetic energy is plotted against the true pion length as shown in Fig.~\ref{fig:pi-mombr-fit}.
-          A fourth order polynomial is fitted to the central region of the plots, where the fitted line matches the data point well.
+          This reconstruction technique is based on two key aspects of the pion decay chain, $\pi \rightarrow \mu \rightarrow e$:
 
-           \begin{figure}[h]
-              \centering
-              \includegraphics[width=\sgfidwid\textwidth]{figures/sel/pi_len_pi_len_vs_pi_ke_hist2d_al0_true_nokink.eps} 
-              \caption{A degree 4 polynomial fit of $\log_{10}{T_\pi}$ against $\log_{10}{L_\pi}$, where $T_\pi$ and $L_\pi$ are the kinetic energy and the range of the pion respectively. The $p_i$'s are the corresponding coefficients of the term of order $i$. The fit is satisfactory considering the close to 1 (\mccorrect{NOT TRUE}) $\chi^2/\textrm{n.d.f.}$ value. }
-              \label{fig:pi-mombr-fit}
-           \end{figure}
-
-        \subsection{Implementation}
-        \label{sec:tl-imp}
-            The pion trackless reconstruction is part of my $\numuccopi$ selection, which is based on the existing $\numucc$-inclusive selection. Hence, it is best to elaborate the trackless technique in the context of the $\numuccopi$ selection. 
-        
-            The $\numucc$-inclusive selection has identified the primary vertex position and the primary muon, which already provides the trackless reconstruction with a good approximation of the pion starting point. The following steps are implemented to identify the suitable ME and reconstruct the pion momentum in the $\numuccopi$ selection. 
-
-            \begin{itemize}
-                \item Step 0 - \textbf{$\numucc$-inclusive selection.}
-                \item Step 1 - \textbf{Find suitable ME candidates.} 
-                \item Step 2 - \textbf{One trackless pion cut.}
-                \item Step 3 - \textbf{Kink cut.}
-                \item Step 4 - \textbf{Background reduction.}
-            \end{itemize}
-        
-            \textbf{Find suitable ME candidates.} - Loop through all delayed reconstructed objects that have more than 1 hit, if it is $30.0~\textrm{ns}$ after the primary vertex time, save it as a potential ME candidate. 
-            However, it is common that the ME could trigger a shower, leading to more delayed reconstructed objects. 
-            To distinguish the ME from these secondary delayed objects, a technique called the "prompt energy" was used by MINERvA~\cite{Zhang2016}. 
-            Prompt energy is the energy deposited by the short muon and the short pion. 
-            Even though these particles might have too low energy to leave a reconstruct-able track, they would still deposit energy, which is much early than the onset of ME. 
-            Hence, looping through the cubes $30.0~\textrm{mm}$ around the two ends of an ME candidate to observe if there is energy deposited $30.0~\textrm{ns}$ before identifying the proper ME candidate. 
-            Moreover, if the primary muon is contained in SFGD, it would also decay to give an ME, which is indistinguishable from a pion ME by just looking at the time delay. 
-            Hence, an additional check is added to exclude ME candidates near the end of the identified primary muon. 
-        
-            \textbf{One trackless pion cut} - Select events that have one and only one proper ME candidate.
-        
-            \textbf{Kink cut} - As the trackless reconstruction does not require the ME to be near a primary track, it cannot distinguish pions travelling straight from the primary interaction until decaying at rest from those that have undergone a deflection and then decayed at rest. 
-            Events with a deflected pion should be rejected as the momentum-by-range reconstruction works only for particles without secondary interaction. 
-            Hence, events with an ME connected to any non-primary tracks would be rejected.
-        
-            \textbf{Background reduction} - Several background reduction steps are implemented, for example, an existing $\pi^0$ rejection developed by Colleagues at T2K.
-            However, they are insufficient as shown by the considerable portion of CC-other backgrounds in Figs.~\ref{subfig:tlpi-ppi-bf-trknumcut-tpc}, \ref{subfig:tlpi-tpi-bf-trknumcut-tpc}, \ref{subfig:tlpi-ppi-bf-trknumcut-sfg} and \ref{subfig:tlpi-tpi-bf-trknumcut-sfg}.
-            Hence, based on logical understanding of different event topologies, I developed a series of track number cuts and a new idea, called the track family tree.
-            
-            An event topology resembles a family tree sideway. 
-            The first generation contains the primary tracks.
-            The second generation are tracks connecting to the end of the primary tracks.
-            The family tree tracing step loops through all reconstructed tracks to form the family tree starting from the primary vertex.
-            One useful variable is the number of generations.
-            A $\numuccopi$ event should not contain a large number of generations as the primary pion can have an ME attached to its end, but there is no shower or multiple scattering.
-            Hence, the number of generation is required to be smaller than $3$.
-            Another associated variable is the number of lone tracks, which are not connected to any tracks in the family tree. 
-            A clean $\numuccopi$ event should have a limited number of lone tracks, which could be due to noise, or low energy scattering of the ME, which leads to clusters isolated from the ME track. 
-            More details of the other track number cuts are provided in Appendix.~\ref{sec:app-tlpi-trknumcut}.
-            The overall impact of the track number cuts is shown by the topological decomposition of the pion kinematic distributions in Fig.~\ref{fig:tl-trknum-cut-res}.
+          \begin{enumerate}
+          \item \textbf{Delayed Michel Electron (ME) Signal:} The ME, as the grandchild in the decay chain, produces a delayed signal that occurs on a much longer timescale compared to other processes, such as $\piz$ decay. 
+          Consequently, the presence of the primary pion can be inferred from the delayed ME signal in the SFGD.
           
+          \item \textbf{Kinematic Determination via Energy-Momentum Conservation:} The pion decay, $\pi \rightarrow \mu + \nu$, is a two-body process. 
+          The kinematics of the daughter particles are entirely determined by energy-momentum conservation. 
+          When a pion decays at rest, the daughter muon moves only about $0.12~\textrm{cm}$. 
+          Therefore, the starting point of the ME provides a reliable estimate of the pion's endpoint.
+          \end{enumerate}
+
+          Using the distance between the primary neutrino interaction vertex and the ME starting point, the pion momentum can be reconstructed by range. 
+          An empirical relationship between the pion's kinetic energy and its range was established using a PGUN sample, as shown in \figref{fig:fit}. 
+          The PGUN sample initiates pions from the center of SFGD and propagates them isotropically. 
+          It comprises $500,000$ events with kinetic energies uniformly distributed between $20~\mev$ and $200~\mev$. 
+          The $\log_{10}$ of the true kinetic energy is plotted against the true pion length in Fig.~\ref{fig:pi-mombr-fit}. 
+          A fourth-order polynomial fits the central region of the plots well, accurately capturing the relationship between kinetic energy and range.
+
+          \begin{figure}[h]
+          \centering
+          \includegraphics[width=\sgfidwid\textwidth]{figures/sel/pi_len_pi_len_vs_pi_ke_hist2d_al0_true_nokink.eps} 
+          \caption{A degree 4 polynomial fit of $\log_{10}{T_\pi}$ against $\log_{10}{L_\pi}$, where $T_\pi$ and $L_\pi$ are the kinetic energy and the range of the pion, respectively. The $p_i$'s are the corresponding coefficients of the term of order $i$. The fit is satisfactory, with a $\chi^2/\textrm{n.d.f.}$ value close to 1.}
+          \label{fig:pi-mombr-fit}
+          \end{figure}
+
+     \subsection{Implementation}
+     \label{sec:tl-imp}
+          The pion trackless reconstruction is integrated into my $\numuccopi$ selection, which builds upon the existing $\numucc$-inclusive selection. 
+          Therefore, it is appropriate to discuss the trackless technique within the context of the $\numuccopi$ selection.
+
+          The $\numucc$-inclusive selection identifies the primary vertex position and the primary muon, providing the trackless reconstruction with a reliable approximation of the pion's starting point. 
+          The following steps are implemented to identify suitable ME candidates and reconstruct the pion momentum in the $\numuccopi$ selection:
+          \begin{itemize}
+          \item \textbf{Step 0 - $\numucc$-inclusive Selection}
+          \item \textbf{Step 1 - Find Suitable ME Candidates}
+          \item \textbf{Step 2 - One Trackless Pion Cut}
+          \item \textbf{Step 3 - Kink Cut}
+          \item \textbf{Step 4 - Background Reduction}
+          \end{itemize}
+          \textbf{Find Suitable ME Candidates} – Iterate through all delayed reconstructed objects with more than one hit. 
+          If an object occurs $30.0~\textrm{ns}$ after the primary vertex time, it is saved as a potential ME candidate. 
+          However, ME candidates may trigger showers, resulting in additional delayed reconstructed objects. 
+          To distinguish the true ME from these secondary objects, the "prompt energy" technique used by MINERvA~\cite{Zhang2016} is employed. 
+          Prompt energy refers to the energy deposited by the short muon and pion. 
+          Although these particles may have insufficient energy to form a reconstructable track, they still deposit energy much earlier than the ME onset. 
+          Therefore, by examining the energy deposition within $30~\textrm{mm}$ around both ends of an ME candidate, it can be determined if energy was deposited $30~\textrm{ns}$ prior, confirming the suitability of the ME candidate. 
+          Additionally, if the primary muon is contained within SFGD, it may also decay and produce an indistinguishable ME based solely on time delay. 
+          To address this, an additional check excludes ME candidates near the end of the identified primary muon.
+
+          \textbf{One Trackless Pion Cut} – Select events that have exactly one proper ME candidate.
+
+          \textbf{Kink Cut} – Since the trackless reconstruction does not require the ME to be adjacent to a primary track, it cannot differentiate pions traveling directly from the primary interaction to decay at rest from those that have been deflected before decaying at rest. 
+          To ensure accurate momentum-by-range reconstruction, events with deflected pions are rejected. 
+          Specifically, any event with an ME connected to non-primary tracks is excluded.
+
+          \textbf{Background Reduction} – Multiple background reduction steps are implemented, including an existing $\pi^0$ rejection developed by colleagues at T2K. 
+          However, these measures are insufficient, as evidenced by the significant portion of CC-other backgrounds in Figs.~\ref{subfig:tlpi-ppi-bf-trknumcut-tpc}, \ref{subfig:tlpi-tpi-bf-trknumcut-tpc}, \ref{subfig:tlpi-ppi-bf-trknumcut-sfg}, and \ref{subfig:tlpi-tpi-bf-trknumcut-sfg}. 
+          Therefore, based on a logical understanding of different event topologies, I developed a series of track number cuts and introduced a new concept called the "track family tree."
+
+          An event topology resembles a family tree sideways. 
+          The first generation consists of the primary tracks, while the second generation includes tracks connected to the ends of the primary tracks. 
+          The family tree tracing step involves looping through all reconstructed tracks to build the family tree starting from the primary vertex. 
+          One useful variable is the number of generations. 
+          A $\numuccopi$ event should not have a large number of generations, as the primary pion can have an ME attached to its end without producing showers or multiple scatterings. 
+          Therefore, the number of generations is required to be fewer than three. 
+          Another associated variable is the number of lone tracks, which are not connected to any tracks in the family tree. 
+          A clean $\numuccopi$ event should have a limited number of lone tracks, which could result from noise or low-energy scattering of the ME, leading to clusters isolated from the ME track. 
+          Further details on the other track number cuts are provided in Appendix.~\ref{sec:app-tlpi-trknumcut}. 
+          The overall impact of the track number cuts is illustrated by the topological decomposition of the pion kinematic distributions in Fig.~\ref{fig:tl-trknum-cut-res}.
+
             \begin{figure}
                \centering
                \begin{subfigure}{\dbfigwid\textwidth}
@@ -541,15 +555,15 @@ Additionally, to prepare for the data-MC comparisons and future cross section an
                \label{fig:tl-trknum-cut-res}
           \end{figure}
 
-          As shown in Fig.~\ref{subfig:tlpi-ppi-bf-trknumcut-tpc} and Fig.~\ref{subfig:tlpi-ppi-af-trknumcut-tpc}, the purity of the $\numuccopi$ selection has improved from $74.1\%$ to $87.5\%$ after making the track number cuts for the TPC-$\mu$ sub-sample.
-          Similarly, Fig.~\ref{subfig:tlpi-ppi-bf-trknumcut-sfg} and Fig.~\ref{subfig:tlpi-ppi-af-trknumcut-sfg} shows an improvement of selection purity from $65.9\%$ to $80.7\%$.
-          Although the cut leads to about $18\%$ and $14\%$ decrease in the number of signal events, these results demonstrate that the track number cuts are effective in removing backgrounds.
-          As the HAT-$\mu$ sub-sample still suffers from a global matching problem, the result is not included here.
-        
-          For the events passing all the selection steps, the presence of a primary pion is implied by the existence of a proper ME candidate, and its momentum is reconstructed by range. 
-          One quick consistency check is to plot the distribution of the time difference between the ME and the primary vertex, which should be the pion travel time plus the muon decay time.
-          As the pion travel time i s on the order of nanosecond, the resultant distribution should still closely reproduce the muon exponential decay.
-          The distributions of the ME time delay for the TPC-$\mu$ and SFGD-$\mu$ sub-samples are plotted in Fig.~\ref{tlpi-me-td}.
+          As shown in Figs.~\ref{subfig:tlpi-ppi-bf-trknumcut-tpc} and \ref{subfig:tlpi-ppi-af-trknumcut-tpc}, the purity of the $\numuccopi$ selection improved from $74.1\%$ to $87.5\%$ after applying the track number cuts for the TPC-$\mu$ sub-sample. 
+          Similarly, Figs.~\ref{subfig:tlpi-ppi-bf-trknumcut-sfg} and \ref{subfig:tlpi-ppi-af-trknumcut-sfg} show an improvement in selection purity from $65.9\%$ to $80.7\%$. 
+          Although the cuts result in an $18\%$ and $14\%$ decrease in the number of signal events, these results demonstrate that the track number cuts effectively remove backgrounds. 
+          Since the HAT-$\mu$ sub-sample still suffers from a global matching problem, its results are not included here.
+
+          For events passing all selection steps, the presence of a primary pion is inferred from the existence of a proper ME candidate, and its momentum is reconstructed by range. 
+          A quick consistency check involves plotting the distribution of the time difference between the ME and the primary vertex, which should equal the pion travel time plus the muon decay time. 
+          Since the pion travel time is on the order of nanoseconds, the resulting distribution should closely follow the muon exponential decay. 
+          The distributions of the ME time delay for the TPC-$\mu$ and SFGD-$\mu$ sub-samples are shown in Fig.~\ref{tlpi-me-td}.
           \begin{figure}
                \centering
                \begin{subfigure}{\dbfigwid\textwidth}
@@ -567,33 +581,37 @@ Additionally, to prepare for the data-MC comparisons and future cross section an
             \end{figure}
           \end{figure}
 
-          Fig.~\ref{fig:cc1pi-tl} shows an event display of a candidate $\ccopi$ event passing the $\numuccopi$-TL selection, in the upgraded ND280 during the beam run in Jun. 2024.
-          The second longest track is actually the ME, whose starting point is very close to the starting point of the primary muon, suggesting the extremely short distance travelled by the primary pion, which would be impossible to reconstruct using a track-based method.
           \begin{figure}[!htb] 	
                \centering 		
                \includegraphics[width=\sgfigwid\textwidth]{figures/shortPion.png}
                \caption{\label{fig:cc1pi-tl} A $\ccopi$-TL candidate event in upgraded ND280, where the long track is the primary muon and the other track is a delayed ME, which implies the exisitence of a very low momentum primary pion.} 
           \end{figure}
 
+          Fig.~\ref{fig:cc1pi-tl} displays a candidate $\ccopi$ event passing the $\numuccopi$-TL selection in the upgraded ND280 during the beam run in June 2024. 
+          The second-longest track is the ME, whose starting point is very close to that of the primary muon, indicating the extremely short distance traveled by the primary pion. 
+          This short distance makes reconstruction using a track-based method impossible.
 
+     \subsection{Comparison with Conventional Method}
+     \label{sec:comparison-conventional}
 
-     \subsection{Comparison with conventional method}
-          One important advocated advantage of the trackless technique is the improved reconstruction in the low momentum phase space.
-          It is imperative to verify this claim by comparing to pion momentum reconstruction using the conventional method where the pion is identified by a reconstructed track with an ME attached to the end.
-          A preliminary selection based on the conventional method was developed for such comparison.
-          To distinguish the two pion selections for this comparison, the one using the trackless technique is refered to $\numuccopi$-TL while the one using the conventional method $\numuccopi$-TR.
-          The $\numuccopi$-TR selection is based on the $\numucc$-inclusive selection and the same background reduction steps as the $\numuccopi$-TL.
+          One key advantage of the trackless technique is its improved reconstruction in the low-momentum phase space. 
+          To verify this claim, I compared pion momentum reconstruction using the conventional method, where the pion is identified by a reconstructed track with an attached ME. 
+          A preliminary selection based on the conventional method was developed for this comparison. 
+          To differentiate between the two pion selections, the trackless technique selection is referred to as $\numuccopi$-TL, while the conventional method selection is referred to as $\numuccopi$-TR.
+
+          The $\numuccopi$-TR selection is based on the $\numucc$-inclusive selection and employs the same background reduction steps as the $\numuccopi$-TL.
           The difference lies in the reconstruction of the primary pion.
-          It is required to have a reconstructed primary track with an ME attached to the end.
-          No further optimization is done so that this selection has the maximally possible phase space.
-          The results of the comparison are shown in Fig.~\ref{fig:tltr-comp}\footnote{Note that the result for $\numuccopi$-TL in this figure does not include the implementation of the early energy deposit in choosing the suitable ME candidate as this comparison was done at the early stage of the development.
-          As the main purpose for this comparison is to demonstrate the limitation of the conventional method, the final reconstruction threshold for the $\numuccopi$-TL can be seen in results in the next section}.
-          The efficiencies for pion with momentum higher than $100\mevc$ are similar for both methods.
-          Below $100\mevc$, the improvement brought by the trackless technique is two-fold.
-          Firstly, the efficiencies below $100\mevc$ are significantly higher for the trackless technique.
-          The efficiency for $\numuccopi$-TR drops drastically below $80\mevc$.
-          Secondly, the momentum threshold in $\numuccopi$-TL extends to below $50~\mevc$, which is impossible for the conventional method.
-          More encourangingly, this improvement in low momentum efficiency and lower threhold does not compromise the selection purity as shown in Fig.~\ref{subfig:stack-topo-tl} and Fig.~\ref{subfig:stack-topo-tr}.
+          A reconstructed primary track with an attached ME is required.
+          No further optimization is performed, ensuring that this selection encompasses the maximally possible phase space.
+          The results of the comparison are shown in Fig.~\ref{fig:tltr-comp}\footnote{Note that the result for $\numuccopi$-TL in this figure does not include the implementation of the early energy deposit in choosing the suitable ME candidate, as this comparison was conducted during the early stage of development. 
+          Since the main purpose of this comparison is to demonstrate the limitations of the conventional method, the final reconstruction threshold for the $\numuccopi$-TL is presented in the results section.}.
+          The efficiencies for pions with momentum higher than $100~\mevc$ are similar for both methods.
+          Below $100~\mevc$, the improvement brought by the trackless technique is twofold.
+          Firstly, the efficiencies below $100~\mevc$ are significantly higher for the trackless technique.
+          The efficiency for $\numuccopi$-TR drops drastically below $80~\mevc$.
+          Secondly, the momentum threshold in $\numuccopi$-TL extends below $50~\mevc$, which is impossible for the conventional method.
+          More encouragingly, this improvement in low momentum efficiency and lower threshold does not compromise selection purity, as shown in Figs.~\ref{subfig:stack-topo-tl} and \ref{subfig:stack-topo-tr}.
+
           \begin{figure}
                \centering
                \begin{subfigure}{\dbfigwid\textwidth}
@@ -623,20 +641,20 @@ Additionally, to prepare for the data-MC comparisons and future cross section an
           \end{figure}
 
      \subsection{Impacts on SPK}
-          The results of the $\numuccopi$ selection using the trackless pion technique are summarised in Fig.~\ref{fig:piTLres}.
-          As shown in Fig,~\ref{fig:ppi-stack}, the trackless selection has achieved the set goal - reconstructing low momentum pions. 
-          There are a considerable number of events with a pion below $100~\mevc$, which correspond to a track of about $50~\textrm{mm}$. 
-          Moreover, pions below $80~\mevc$ have also been reconstructed, which travels about $30~\textrm{mm}$ and cannot be reconstructed as a track. 
-          Furthermore, the momentum-by-range calculation has achieved an excellent resolution at about $2\%$, as shown in $\ref{fig:ppi-res}$.
-          More encouragingly, the overall efficiencies are still relatively high. 
-          The step-by-step efficiencies with respect to each step is shown in Fig.~\ref{fig:tl-accum-eff}. 
-          The signal definition used in the calculation is to have one true muon that has travelled to the vertical TPC and one true pion that is contained in SFGD. 
-          Steps 1 to 7 are the $\numucc$-inclusive selection. 
-          The large drop in efficiency in Step 8 is expected as it requires exactly one pion reconstructed tracklessly. 
-          All pions undergoing secondary interactions except deflection cannot be reconstructed via this method. 
-          Hence, the relative efficiency of $0.37/0.66\approx56\%$ is considerably high. 
-          The further significant drop in efficiency comes with the next step, the kink cut, which is a reasonable as a considerable portion of pions undergo deflection. 
-          The subsequent drops are graduate cuts to remove backgrounds, which leads to a high purity of $\numuccopi$ as shown in Fig.~\ref{fig:ppi-stack}.
+          The results of the $\numuccopi$ selection using the trackless pion technique are summarized in Fig.~\ref{fig:piTLres}.
+          As shown in Fig.~\ref{fig:ppi-stack}, the trackless selection has achieved its goal of reconstructing low-momentum pions.
+          A considerable number of events contain pions with momentum below $100~\mevc$, corresponding to a track length of approximately $50~\textrm{mm}$.
+          Moreover, pions with momentum below $80~\mevc$ have also been reconstructed; these pions travel about $30~\textrm{mm}$ and cannot be reconstructed as tracks.
+          Furthermore, the momentum-by-range calculation has achieved an excellent resolution of approximately $2\%$, as shown in Fig.~\ref{fig:ppi-res}.
+          More encouragingly, the overall efficiencies remain relatively high.
+          The step-by-step efficiencies for each selection step are shown in Fig.~\ref{fig:tl-accum-eff}.
+          The signal definition used in the calculation requires one true muon that has traveled to the vertical TPC and one true pion that is contained in SFGD.
+          Steps 1 to 7 correspond to the $\numucc$-inclusive selection.
+          The large drop in efficiency at Step 8 is expected, as it requires exactly one pion to be reconstructed tracklessly.
+          All pions undergoing secondary interactions, except for deflection, cannot be reconstructed via this method.
+          Hence, the relative efficiency of $0.37/0.66\approx56\%$ is considerably high.
+          A further significant drop in efficiency occurs in the next step, the kink cut, which is reasonable as a considerable portion of pions undergo deflection.
+          Subsequent drops are graduate cuts to remove backgrounds, resulting in a high purity of $\numuccopi$, as shown in Fig.~\ref{fig:ppi-stack}.
 
           \begin{figure}[t]
               \centering
