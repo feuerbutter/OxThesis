@@ -5,39 +5,38 @@ There is no one who loves pain itself, who seeks after it and wants to have it, 
   \qauthor{--- Cicero's \textit{de Finibus Bonorum et Malorum}}
 \end{savequote}
 
-\chapter{\label{ch:datamc}High level vairables} 
+\chapter{\label{ch:datamc}High-Level Variables} 
 \minitoc
 
-As elaborated in the previous chapter, the neutrino-nucleus interaction is a complex process involving multiple components, including the neutrino-nucleon interaction, the nucleon initial states (IS), and the final state interactions (FSI).
+As elaborated in the previous chapter, the neutrino-nucleus interaction is a complex process involving multiple components, including the neutrino-nucleon interaction, the nucleon initial states (IS), and final state interactions (FSI).
 Hadronic single particle kinematics (SPK) are easy to measure and interpret, but they are affected by all components of the neutrino-nucleus interaction. 
-Hence, changes in different components can lead to similar changes in the SPK, thereby making it difficult to use them to improve neutrino-nucleus interaction models.
+Hence, changes in different components can lead to similar changes in the SPK, thereby making it difficult to use them to improve neutrino–nucleus interaction models.
 To match the statistical improvement of the next generation long-baseline neutrino experiments, it is imperative to refine neutrino interaction models to significantly reduce the systematic uncertainties.
-To address this issue, high-level variables are cleverly constructed to probe specific components of the neutrino-nucleus interaction.
-This chapter is dedicated to the potential improvemnt in measurement of these high-level variables with the upgraded ND280 detector.
-Besides the well-etablished Transverse Kinematic Imbalance (TKI) variables elaborated in Sec.~\ref{sec:nuint-tki}, the centre-of-momentum (COM) variables are introduced for the first time to probe FSI independent of IS.
-The first section provides a brief introdution to these constructed variables, while the following section presents the MC study results.
-Although it will be highly exciting to see the data-MC comparisons of these variables, the current state of the global simulation and reconstruction does not allow for such comparisons.
-Due to the immature state of global simulation and reconstruction, the ESC technique is not yet implemented in the most recent analysis chain, only based on which data-mc comparison can be made.
-As proton kinematics are required for the high level constructed variables, data-MC comparisons for these variables are not possible at this stage, and improvements for these variables will only be deomnstgrated with MC studies.
+To address this issue, high-level variables are cleverly constructed to probe specific components of the neutrino–nucleus interaction.
+This chapter focuses on the potential improvements in measuring these high-level variables with the upgraded ND280 detector.
+Besides the well-established Transverse Kinematic Imbalance (TKI) variables elaborated in Sec.~\ref{sec:nuint-tki}, the centre-of-momentum (COM) variables are introduced for the first time to probe FSI independent of IS.
+The first section provides a brief introduction to these constructed variables, while the following section presents the MC study results.
+Although it would be highly valuable to perform data–MC comparisons of these variables, the current state of the global simulation and reconstruction does not permit them.
+Because the global simulation and reconstruction are still under development, the ESC technique is not yet implemented in the latest analysis chain; thus, data–MC comparisons are not currently feasible.
+As proton kinematics are required for these high-level constructed variables, data–MC comparisons for these variables are not possible at this stage, and improvements for these variables will only be demonstrated with MC studies.
 
 \section{TKI}
 \label{sec:mc-tki}
-     With the improvement in hadronic SPK brought by the novel reconstruction techniques introduced in the previous chapter, the TKI variables are expected to be measured with higher precision.
-     Like the previous chapter, the impacts of the new techniques on the TKI variables will be illustrated separately for the $\numucczpiop$ and $\numuccopiop$ samples.
+     With the improved hadronic SPK offered by the novel reconstruction techniques introduced in the previous chapter, the TKI variables are expected to be measured with higher precision. As in the previous chapter, the impacts of the new techniques on the TKI variables will be illustrated separately for the $\numucczpiop$ and $\numuccopiop$ samples.
 
      \subsection{$\numucczpiop$ selection}
      \label{sec:mc-tki-0pi}
-          To demonstrate the strength of the ESC technique, the TKI reconstruction in two samples are compared, namely the $\numucczpiop$-ESC and the $\numuccczpiop$-ESC sample.
-          The $\numucczpiop$(-ESC) sample is selected by requiring the presence of exactly one contained SFGD (ESC) proton on top of the $\numucc$-inclusive selection.
-          As discussed in Sec.~\ref{sec:sel-esc}, the ESC technique is comprised of the proton ESC cut and the muon momentum bias correcction for TKI calculations.
-          Hence, the TKI reconstruction comparisons will also be presented stepwise.
+          To demonstrate the benefits of the ESC technique, the TKI reconstruction in two samples is compared: the $\numucczpiop$-ESC and the $\numuccczpiop$-ESC sample.
+          The $\numucczpiop$(-ESC) sample is selected by requiring the presence of exactly one contained SFGD (ESC) proton, in addition to the $\numucc$-inclusive selection.
+          As discussed in Sec.~\ref{sec:sel-esc}, the ESC technique comprises the proton ESC cut and the muon momentum bias correction for TKI calculations.
+          Hence, TKI reconstruction comparisons are presented step by step.
           Note that the result shown in this section for each selection is the sub-sample where the primary muon escapes SFGD and passes through the vertical TPC. 
-          For the SFG muon subsample, the improvement is similar and the figures are collected in Appendix~\ref{sec:app-tki-sfgd-mu}.
+          For the SFG muon subsample, the improvement is similar, and the figures are collected in Appendix~\ref{sec:app-tki-sfgd-mu}.
 
-          The impact of the proton ESC cut on the four TKI variables is most clearly shown by response matrices in Fig.~\ref{fig:mc-tki-0pi-esc}.
-          All TKI variables show significant improvement in reconstruction after the ESC cut.
-          Most notably, the dense off-diagonal cluster in the lower right corner of the $\dphit$, $\dpt$ and $\pn$ response matrices are significantly reduced.
-          The $\dat$ response matrix entries also concentrate more along the diagonal after the ESC cut.
+          The impact of the proton ESC cut on the four TKI variables is best illustrated by the response matrices in Fig.~\ref{fig:mc-tki-0pi-esc}.
+          All TKI variables exhibit significant improvements in reconstruction after the ESC cut.
+          Most notably, the dense off-diagonal cluster in the lower-right corner of the $\dphit$, $\dpt$, and $\pn$ response matrices is appreciably reduced.
+          The $\dat$ response matrix entries also align more closely along the diagonal following the ESC cut.
           
           \begin{figure}
           \centering
@@ -96,11 +95,11 @@ As proton kinematics are required for the high level constructed variables, data
           \label{fig:mc-tki-0pi-esc}
      \end{figure}
 
-     The impact of the muon momentumn bias correction is better illurated with a resolution fit as shown in Fig.~\ref{fig:mc-tki-0pi-mubias}. 
-     This correction has negligible impact on the angular vairables, but it helps to reduce bias in the momentum variables.
+     The impact of the muon momentum bias correction is best illustrated with a resolution fit in Fig.~\ref{fig:mc-tki-0pi-mubias}.
+     This correction has a negligible impact on the angular variables, but it helps reduce bias in the momentum variables.
      As shown in Fig.~\ref{subfig:esc-dpt-bfmu} and Fig.~\ref{subfig:esc-dpt-afmu}, the $\dpt$ fitted mean improves from $0.92$ to $0.95$ after the muon bias correction.
-     Similarly shown in Fig.~\ref{subfig:esc-pn-bfmu} and Fig.~\ref{subfig:esc-pn-afmu}, the $\pn$ fitted mean improves from $0.94$ to $1.01$.
-     These reduction of bias can also be seen from the reduction of the over-estimated tails in the $\dpt$ and $\pn$ distributions.
+     Similarly, in Fig.~\ref{subfig:esc-pn-bfmu} and Fig.~\ref{subfig:esc-pn-afmu}, the $\pn$ fitted mean improves from $0.94$ to $1.01$.
+     This reduction in bias can also be observed in the decreased overestimated tails in the $\dpt$ and $\pn$ distributions.
      \begin{figure}
           \begin{subfigure}[b]{\dbfigwid\textwidth}
                \centering
@@ -157,19 +156,19 @@ As proton kinematics are required for the high level constructed variables, data
           \label{fig:mc-tki-0pi-mubias}
      \end{figure}
 
-     In Sec.~\ref{sec:sel-esc}, it has been shown that the ESC technique has improved the proton momentum reconstruction resolution while reducing the efficiency by about $60~\%$.
-     The result shown in this section further demonstrates the necessity of the ESC technique for the TKI measurements.
-     With the ESC technique, the T2K upgraded ND possess the potential of high resolution TKI measurements with minimal bias.
-     Recently, there has been an update on the TKI measurement at the pre-upgrade ND280 data using an improved reconstruction algorithm.
-     This leads to a standard deviation of approximately $27\%$ for the $\pn$ reconstruction resolution. 
-     The resolution of $30\%$ for the TPC-$\mu$ sub-sample is comparable to this improvement, while the resolution of about $17\%$ for the SFGD-$\mu$ sub-sample is significantly better.
-     There is still room for improvement for the upgrade measurement as the global reconstruction matures.    
+     In Sec.~\ref{sec:sel-esc}, it was shown that the ESC technique improves proton momentum reconstruction resolution but diminishes efficiency by about $60\%$.
+     The results in this section further highlight the necessity of the ESC technique for precise TKI measurements.
+     With the ESC technique, the upgraded T2K ND can achieve high-resolution TKI measurements with minimal bias.
+     Recently, an improved reconstruction algorithm enabled an updated TKI measurement at the pre-upgrade ND280.
+     This yields a standard deviation of about $27\%$ for the $\pn$ reconstruction resolution.
+     The resolution of $30\%$ for the TPC-$\mu$ sub-sample is comparable to this improvement, whereas the resolution of about $17\%$ for the SFGD-$\mu$ sub-sample is noticeably better.
+     There remains room for additional improvement in the upgraded measurement as the global reconstruction matures.
 
      \subsection{$\numuccopiop$ selection}
      \label{sec:mc-tki-1pi}
      The $\numuccopiop$ selection uses the pion trackless reconstruction technique as elaborated in Sec.~\ref{sec:sel-tl} for the $\numuccopi$-TL selection.
      Additionally, it requires the reconstruction of one ESC proton.
-     Hence, this sample uses both novel techniques in Chapter~\ref{ch:techniques}, showcasing the potential of the upgraded ND280 detector in hadronic measurement.
+     Hence, this sample uses both novel techniques in Chapter~\ref{ch:techniques}, showcasing the potential of the upgraded ND280 detector in hadronic measurements.
 
      The TKI variables for the $\numuccopiop$ selection are shown in Fig.~\ref{fig:mc-tki-1pi}.
      \begin{figure}
@@ -203,9 +202,9 @@ As proton kinematics are required for the high level constructed variables, data
      \end{figure}
      
 
-     In comparison to the projected resolution of the $\dptt$ measurement using the pre-upgrade ND280 in Ref.~\cite{lu:2015hea}, Fig.~\ref{fig:1pi-tki-dptt} shows a $60\%$ decrease in the $\dptt$ width, 
+     In comparison to the projected resolution of the $\dptt$ measurement using the pre-upgrade ND280 in Ref.~\cite{lu:2015hea}, Fig.~\ref{fig:1pi-tki-dptt} shows a $60\%$ decrease in the $\dptt$ width.
 
-     In additional to the single transverse variables presented above, the $\numuccopiop$ sample can also be used to measure the double transverse variable, $\dptt$, the net momentum transverse to both the neutrino momentum and the muon momentum,
+     In addition to the single transverse variables presented above, the $\numuccopiop$ sample can also be used to measure the double transverse variable, $\dptt$, the net momentum transverse to both the neutrino momentum and the muon momentum.
      The $\dptt$ resolution is shown in Fig.~\ref{fig:1pi-tki-dptt}.
      Without FSI, $\dptt$ should be $0$. This special property can be exploited to select $\nu$-H events amidst $\nu$-C events as suggested in Ref.~\cite{lu:2015hea}. 
      Hence, the main figure of merit for $\dptt$ measurement is the width of its distribution for $\nu$-H events, where the hydrogen events are picked by an additional check on the MC truth information.
@@ -220,7 +219,7 @@ As proton kinematics are required for the high level constructed variables, data
 
 \section{COM}
 \label{sec:mc-com}
-When a neutrino has sufficient energy, it can excite a nucleon into a resonance state, for example the $\deltapp$. 
+When a neutrino has sufficient energy, it can excite a nucleon into a resonance state, for example, the $\deltapp$. 
 This process is referred to as a resonance (RES) interaction.
 Since $\deltapp$ is one of the most commonly observed resonances in neutrino experiments, this work focuses on it as an example.
 Nevertheless, the concept presented here is equally applicable to other resonances, and the methodology can be easily generalized.
@@ -229,7 +228,7 @@ The resonance decays rapidly, before leaving the nucleus, via the process
 \begin{equation}
      \deltapp \rightarrow \pip + \p.
 \end{equation}
-In the $\deltapp$ rest frame, as illustrated on the top left in Fig.~\ref{fig:COM-diagram}, the kinematics of this two-body decay are well-defined and the proton and pion are emitted back-to-back.
+In the $\deltapp$ rest frame, as illustrated in the top left of Fig.~\ref{fig:COM-diagram}, the kinematics of this two-body decay are well-defined, and the proton and pion are emitted back-to-back.
 The pion decay angle, $\thetapidel$, is defined as the angle between $\vecppirest$ and the $x$-axis, which is taken to align with $\vecpdel$, the momentum of $\deltapp$ in the lab frame. 
 $\thetapidel$ is a resonance property that follows an underlying distribution defined by various models~\cite{Rein:1987cb,Kabirnezhad:2017jmf,Kabirnezhad:2020wtp,Kabirnezhad:2022znc}.
 
@@ -240,29 +239,29 @@ $\thetapidel$ is a resonance property that follows an underlying distribution de
 \label{fig:COM-diagram}
 \end{figure}
 
-The kinematics in the lab frame are related to those in the $\deltapp$ rest frame by a boost with $\vecpdel$, as depicted on the top right of Fig.~\ref{fig:COM-diagram}. 
+The kinematics in the lab frame are related to those in the $\deltapp$ rest frame by a boost with $\vecpdel$, as depicted in the top right of Fig.~\ref{fig:COM-diagram}. 
 Without FSI, $\vecpdel$ equals the sum of $\vecpp$ and $\vecppi$.
-However, the target materials of modern day detectors are mainly comprised of nucleus with multiple nucleons and FSI alters the kinematics of the hadrons considerably, as illustrated by the dotted arrows in the bottom right of Fig.~\ref{fig:COM-diagram}.
+However, the target materials of modern-day detectors are mainly comprised of nuclei with multiple nucleons, and FSI alters the kinematics of the hadrons considerably, as illustrated by the dotted arrows in the bottom right of Fig.~\ref{fig:COM-diagram}.
 
 The altered momenta, $\vecppp$ and $\vecppip$, are the ones measured by detectors. 
 Their sum generally differs from $\vecpdel$.
-Thus, the $\deltapp$ rest frame with its simple kinematic relations becomes inaccessible.
-Nevertheless, the system can be boosted to the proton-pion COM frame using $\vecpsum$, as depicted in the bottom left of Fig.~\ref{fig:COM-diagram}, where the $x^{\prime}$-axis is taken to align with the $\vecpsum$ direction in the lab frame.
-Similarly, a pion decay angle, $\thetacom$, can be defined between, $\vecppicom$, the pion momentum in the COM frame, and the $x^{\prime}$-axis.
+Thus, the $\deltapp$ rest frame, with its simple kinematic relations, becomes inaccessible.
+Nevertheless, the system can be boosted to the proton-pion COM frame using $\vecpsum$, as depicted in the bottom left of Fig.~\ref{fig:COM-diagram}, where the $x^{\prime}$-axis is aligned with the $\vecpsum$ direction in the lab frame.
+Similarly, a pion decay angle, $\thetacom$, can be defined between $\vecppicom$, the pion momentum in the COM frame, and the $x^{\prime}$-axis.
 Due to FSI, $\thetacom$ typically differs from $\thetapidel$. 
 
 The COM frame coincides with the $\deltapp$ rest frame only in the absence of FSI.
 Thus, the strength of FSI dictates the deviation of $\thetacom$ from $\thetapidel$. 
 In practice, the measured $\thetacom$ serves as a probe for studying FSI. 
-$\thetapidel$, being a rest-frame property of $\deltapp$, is independent of the resonance's momentum, neutrino energy, and IS.
+$\thetapidel$, being a rest-frame property of $\deltapp$, is independent of the resonance's momentum, neutrino energy, and initial state (IS).
 In neutrino event generators, $\thetacom$ deviates from $\thetapidel$ only due to FSI, which is independent of neutrino energy and IS.
 Therefore, $\thetacom$ retains these important independencies.
-As different resonances could have different decay properties, $\thetaR$, the similarly defined pion decay angle of a higher resonance, $R$, generally differs from $\thetapidel$. 
-Hence, $\thetacom$, a superposition of $\thetapidel$ and all possible $\thetaR$, will deviate from $\thetapidel$, when more resonances become energetically possible with an increase in neutrino energy. 
-This deviation will be further elaborated in the Sec.~\ref{sec:dis}.
+As different resonances could have different decay properties, $\thetaR$, the similarly defined pion decay angle of a higher resonance $R$, generally differs from $\thetapidel$. 
+Hence, $\thetacom$, a superposition of $\thetapidel$ and all possible $\thetaR$, will deviate from $\thetapidel$ when more resonances become energetically possible with an increase in neutrino energy. 
+This deviation will be further elaborated in Sec.~\ref{sec:dis}.
 
 Moreover, the total energy in the COM frame, $\ecom$, will be equal to the mass of the resonance in the absence of FSI.
-Cutting on events with total energy far from the rest mass peak of the resonance will select events with minimal FSI effects, such as the $\nu$-H events. 
+Cutting on events with total energy far from the rest mass peak of the resonance will select events with minimal FSI effects, such as $\nu$-H events. 
 The application of $\ecom$ for hydrogen event selection will be discussed in Sec.~\ref{sec:mc-hydrogen}.
 
 Up to this point, the discussion of resonance decay has been entirely general and can thus be applied to and validated by various experiments, including hadron scattering measurements. 
@@ -634,10 +633,3 @@ Hence, the COM total energy cut is proposed as a complementary cut to $\dptt$, a
      Due to the limited amount of MC events available and the relatively small fraction of resonance event in the T2K beam, the statistics of the selection is too small to be conclusive.
      Nevertheless, the results are promising and suffice in demonstrating the complementarity of the transverse variables and $\ecom$.
      Hence, it is hopeful that using the two kinds of variables together, the upgraded ND280 data can produce a hydrogen sample with high purity.
-     
-
-
-   
-
-     
-     
