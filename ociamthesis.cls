@@ -555,7 +555,7 @@
 % ------ Parameters -------
 \newcommand{\MA}{M_{\textrm{A}}}
 \newcommand{\dcp}{\delta_\textrm{CP}}
-\newcommand{\umas}{U_{\textrm{\alpha s}}}
+% \newcommand{\umas}{U_{\textrm{\alpha s}}}
 
 
 \newcommand{\cpimfp}{S_\lambda^{\pi^{\pm}}}
@@ -604,10 +604,11 @@
 \newcommand{\gT}{\texttt{G24-t}\xspace}
 
 % ------ Latex utils --------
-\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+% \newcommand{\blue}[1]{\textcolor{blue}{#1}}
 % \newcommand{\deg}{\ensuremath{^\circ}}
-\newcommand{\deg}{\textdegree}
+% \newcommand{\deg}{\textdegree}
 \newcommand{\tick}{\checkmark}
+\newcommand{\code}[1]{\texttt{#1}}
 
 \newcommand{\sgfigwid}{0.6}
 \newcommand{\dbfigwid}{0.45}
