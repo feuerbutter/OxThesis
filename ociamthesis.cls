@@ -505,6 +505,7 @@
 \newcommand{\dptt}{\delta p_\textrm{TT}}
 \newcommand{\pt}{p_\textrm{T}}
 \newcommand{\pmut}{p_{\mu}^T}
+\newcommand{\dptmupi}{\delta p_{\textrm{T},\,\mu\&\pi}}
 
 % --- COM
 \newcommand{\psum}{p_{\textrm{sum}}}
@@ -555,7 +556,7 @@
 % ------ Parameters -------
 \newcommand{\MA}{M_{\textrm{A}}}
 \newcommand{\dcp}{\delta_\textrm{CP}}
-% \newcommand{\umas}{U_{\textrm{\alpha s}}}
+\newcommand{\umas}{U_{\textrm{\alpha s}}}
 
 
 \newcommand{\cpimfp}{S_\lambda^{\pi^{\pm}}}
@@ -607,7 +608,7 @@
 \newcommand{\blue}[1]{\textcolor{blue}{#1}}
 \newcommand{\code}[1]{\texttt{#1}}
 % \newcommand{\deg}{\ensuremath{^\circ}}
-% \newcommand{\deg}{\textdegree}
+\newcommand{\deg}{\textdegree}
 \newcommand{\tick}{\checkmark}
 
 \newcommand{\sgfigwid}{0.6}
