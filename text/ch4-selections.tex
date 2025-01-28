@@ -132,34 +132,34 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
     \centering
     \begin{subfigure}{\dbfigwid\textwidth}
          \includegraphics[width=\textwidth]{figures/sel/ans_dedx0_pdf_al2_selpr_con_test.eps}
-         \caption{dedx0 peak val}
+         \caption{dedx0 peak fit}
          \label{subfig:dedx0-peak}
     \end{subfigure}
     \begin{subfigure}{\dbfigwid\textwidth}
          \includegraphics[width=\textwidth]{figures/sel/ans_dedx1_pdf_al2_selpr_con_test.eps}
-         \caption{dedx1 peak val}
+         \caption{dedx1 peak fit}
          \label{subfig:dedx1-peak}
     \end{subfigure}
     \\
     \begin{subfigure}{\dbfigwid\textwidth}
          \includegraphics[width=\textwidth]{figures/sel/ans_dedx2_pdf_al2_selpr_con_test.eps}
-         \caption{dedx2 peak val}
+         \caption{dedx2 peak fit}
          \label{subfig:dedx2-peak}
     \end{subfigure}
     \begin{subfigure}{\dbfigwid\textwidth}
          \includegraphics[width=\textwidth]{figures/sel/ans_dedx3_pdf_al2_selpr_con_test.eps}
-         \caption{dedx3 peak val}
+         \caption{dedx3 peak fit}
          \label{subfig:dedx3-peak}
     \end{subfigure}
     \\
     \begin{subfigure}{\dbfigwid\textwidth}
          \includegraphics[width=\textwidth]{figures/sel/ans_dedx4_pdf_al2_selpr_con_test.eps}
-         \caption{dedx4 peak val}
+         \caption{dedx4 peak fit}
          \label{subfig:dedx4-peak}
     \end{subfigure}
     \begin{subfigure}{\dbfigwid\textwidth}
          \includegraphics[width=\textwidth]{figures/sel/ans_dedx5_pdf_al2_selpr_con_test.eps}
-         \caption{dedx5 peak val}
+         \caption{dedx5 peak fit}
          \label{subfig:dedx5-peak}
     \end{subfigure}
     \caption{Cauchy fits to extract the peak values of $\dedx$ at each node to estimate the average Bragg peak values.}
@@ -780,7 +780,7 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
           For brevity, the pull distributions for the Bottom HAT are collected in Sec.~\ref{sec:app-bot-pulls} in the Appendix.
           The final selection results for the two subsamples are shown in Fig.~\ref{fig:sppi-kin}.
           The Top HAT subsample has achieved a purity of $96\%$ as shown in Fig.~\ref{subfig:sppi-top-ppi} and Fig.~\ref{subfig:sppi-top-tpi}, which has $91$ $\pip$ signal events, $3$ $\mu^-$, and $2$ $\mu^+$ background events.
-          Similarly, the Bottom HAT subsample has achieved a purity of $87\%$ as shown in Fig.~\ref{subfig:sppi-bot-ppi} and Fig.~\ref{subfig:pppi-bot-tpi}, which has $293$ $\pip$ signal events, $15$ $\mu^-$, $26$ $\mu^+$, and $1$ $\pim$ background event.
+          Similarly, the Bottom HAT subsample has achieved a purity of $87\%$ as shown in Fig.~\ref{subfig:sppi-bot-ppi} and Fig.~\ref{subfig:sppi-bot-tpi}, which has $293$ $\pip$ signal events, $15$ $\mu^-$, $26$ $\mu^+$, and $1$ $\pim$ background event.
 
           \begin{figure}
                \centering
@@ -844,15 +844,15 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
           On one hand, this deviation can be regarded as an approximation of the SFGD momentum resolution.
           On the other hand, the difference between the deviations of MC and data can assess the difference in the reconstruction performance between MC and data in SFGD, i.e. the systematics related to the SFGD momentum by range reconstruction.
 
-          The distributions of the deviations for MC and data are shown in Fig.~\ref{fig:sppi-res} and the fitting parameters, the mean ($\x_0$) and the half width half maximum ($\gamma$), are summarised in Table.~\ref{tab:sppi-res}.
+          The distributions of the deviations for MC and data are shown in Fig.~\ref{fig:sppi-res} and the fitting parameters, the mean ($x_0$) and the half width half maximum ($\gamma$), are summarised in Table.~\ref{tab:sppi-res}.
 
           \begin{table}[htbp]
           \centering
           \begin{tabular}{c|cccc}
                        & MC-$x_0~(\mevc)$ & MC-$\gamma$~($\mevc$) & Data-$x_0~(\mevc)$ & Data-$\gamma$~($\mevc$)\\
           \hline
-          TPC-FGD & $-25.03 \pm 0.52$ & $85.38 \pm 1.20$ & $-19.43 \pm 1.41$ & $93.57 \pm 4.15$ \\
-          HAT-SFGD & $-5.29 \pm 0.73$  & $7.49 \pm 0.65$  & $-10.14 \pm 4.55$  & $16.34 \pm 5.21$ \\
+          FGD & $-25.03 \pm 0.52$ & $85.38 \pm 1.20$ & $-19.43 \pm 1.41$ & $93.57 \pm 4.15$ \\
+          SFGD & $-5.29 \pm 0.73$  & $7.49 \pm 0.65$  & $-10.14 \pm 4.55$  & $16.34 \pm 5.21$ \\
           \end{tabular}
           \caption{Fit parameters for the momentum deviation distributions.}
           \label{tab:sppi-res}
@@ -860,7 +860,7 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
 
           Both widths are significantly smaller than those in the FGD analysis presented in Ref.~\cite{Jenkins:2022ljx}, in the FGD study.
           However, due to the limited amount of data, the difference between the two distributions is still relatively large that the magnitude of the average systematic error, about $3\%$ to $5\%$, is slightly larger than that in the FGD analysis, about $2\%$. 
-          However, the relative error in the first bin, i.e., for the low-momentum pions ($\ppi<100\mevc$), about $6\%$ to $9\%$, is considerably smaller than the FGD analysis, about $10\% to 14\%$.
+          However, the relative error in the first bin, i.e., for the low-momentum pions ($\ppi<100~\mevc$), about $6\%$ to $9\%$, is considerably smaller than the FGD analysis, about $10\%$ to $14\%$.
           \begin{figure}[h]
           \centering
           \begin{subfigure}[h]{\dbfigwid\textwidth}

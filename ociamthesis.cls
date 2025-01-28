@@ -463,6 +463,7 @@
 \newcommand{\m}{\textrm{m}}
 \newcommand{\km}{\textrm{km}}
 \newcommand{\mm}{\textrm{mm}}
+\newcommand{\ns}{\textrm{ns}}
 
 
 % ------ particles ------
@@ -556,7 +557,7 @@
 % ------ Parameters -------
 \newcommand{\MA}{M_{\textrm{A}}}
 \newcommand{\dcp}{\delta_\textrm{CP}}
-\newcommand{\umas}{U_{\textrm{\alpha s}}}
+\newcommand{\umas}{U_{\alpha}}
 
 
 \newcommand{\cpimfp}{S_\lambda^{\pi^{\pm}}}
