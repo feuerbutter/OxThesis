@@ -457,6 +457,7 @@
 \newcommand{\mevc}{\textrm{MeV}/c}
 \newcommand{\gev}{\textrm{GeV}}
 \newcommand{\mev}{\textrm{MeV}}
+\newcommand{\kev}{\textrm{keV}}
 \newcommand{\ev}{\textrm{eV}}
 \newcommand{\cm}{\textrm{cm}}
 \newcommand{\m}{\textrm{m}}
@@ -520,6 +521,8 @@
 
 \newcommand{\plong}{p_{\textrm{long}}}
 
+\newcommand{\mn}{M_{\textrm{N}}}
+
 % --- SPK
 \newcommand{\pp}{p_\textrm{p}}
 \newcommand{\ppr}{p_\textrm{p}}
@@ -552,6 +555,7 @@
 % ------ Parameters -------
 \newcommand{\MA}{M_{\textrm{A}}}
 \newcommand{\dcp}{\delta_\textrm{CP}}
+\newcommand{\umas}{U_{\textrm{\alpha s}}}
 
 
 \newcommand{\cpimfp}{S_\lambda^{\pi^{\pm}}}

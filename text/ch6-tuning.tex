@@ -5,7 +5,7 @@ There is no one who loves pain itself, who seeks after it and wants to have it, 
   \qauthor{--- Cicero's \textit{de Finibus Bonorum et Malorum}}
 \end{savequote}
 
-\chapter{\label{ch:tuning}TKI tuning} 
+\chapter{\label{ch:tuning}TKI tuning\footnote{This chapter is based on the work published in Ref.~\cite{GENIE:2024ufm}.}} 
 
 \minitoc
 
@@ -27,10 +27,9 @@ Our next step is to incorporate TKI data from experiments where various exclusiv
 This marks the first combined tuning on TKI data with and without pions in the final states and serves as the starting point of a more comprehensive tuning effort in the energy region most relevant for future accelerator-based neutrino experiments.  
 
 This chapter is structured as follows: 
-In Sec.~\ref{sec:genie}, we review the \genie models respectively. 
-In Sec.~\ref{sec:Tuning}, we detail the tuning considerations and procedures. 
+Sec.~\ref{sec:genie} reviews the \genie models, and Sec.~\ref{sec:Tuning} details the tuning considerations and procedures. 
 Results are summarized in Sec.~\ref{sec:results}, highlighting how the data-MC discrepancy in the \minpiz\ TKI measurement~\cite{MINERvA:2020anu} is resolved while maintaining good data-MC agreement elsewhere. 
-We conclude in Sec.~\ref{sec:summary}. 
+The last section summarises the chapter and outlines future work.
 
 This section surveyed four TKI data sets: T2K $0\pi$~\cite{T2K:2018rnz}, T2K $\pi^+$~\cite{T2K:2021naz}, MINERvA $0\pi$~\cite{MINERvA:2018hba, MINERvA:2019ope}, and MINERvA $\pi^0$~\cite{MINERvA:2020anu} measurements. 
 All four measurements require the presence of one CC muon and at least one proton in the final state. 
@@ -97,12 +96,12 @@ Free nucleon tuning effort in Ref.~\cite{GENIE:2021zuu} has produced a tune, $\g
 This is the starting point of the model we want to tune. 
 The first effect to apply to this model is adding the proper initial state. 
 Among the available \genie initial state models, the best choice is the spectral-function-like Correlated Fermi Gas model (\sfcfg)~\cite{sfcfg-talk,sfcfg-GitHubCommit,GENIE:2021npt}. 
-\sfcfg is essentially based on the previously implemented Local Fermi Gas (LFG) model in \genie with a larger number of adjustable degrees of freedom for tuning and improved physics. 
+\sfcfg\ is essentially based on the previously implemented Local Fermi Gas (LFG) model in \genie with a larger number of adjustable degrees of freedom for tuning and improved physics. 
 It differs from the previous implementation of LFG in two aspects. 
 ``Spectral-function-like'' refers to the implementation of removal energy as a varying function rather than a fixed value, while ``Correlated'' highlights the incorporation of the high-momentum tail above the Fermi momentum due to nucleon-nucleon short-range correlations (SRC), as evidenced by electron-scattering data~\cite{PhysRevLett.96.082501}.
 These two improvements are considered and modeled in the Valencia Model in Ref.~\cite{Nieves:2004wx}.
-Hence, \sfcfg resembles closer the initial state of the Valencia model than previous LFG implementations.
-More details on the \sfcfg can be found in Ref.~\cite{GENIE:2021npt}. 
+Hence, \sfcfg\ resembles closer the initial state of the Valencia model than previous LFG implementations.
+More details on the \sfcfg\ can be found in Ref.~\cite{GENIE:2021npt}. 
 Note that the original Valencia Model in Ref.~\cite{Nieves:2004wx} has its own method of modeling FSI. 
 However, since FSI is factorized from other models in implementation in \genie, this method is not used.
 Instead, GENIE develops the INTRANUKE hA FSI model (hA for short) for its simplicity and interpretability, which is the FSI candidate for the model to be tuned in this work.
@@ -111,10 +110,10 @@ Further improvements to the configuration to be tuned include: 1) using $z$-expa
 
 %\sout{Given its simplicity and interpretability, the INTRANUKE hA FSI model (hA for short) emerges as the FSI candidate for the model to be tuned.}
 The complete list of the model components are given in Table ~\ref{tab:default-gen-list}. 
-In the \genie code, this configuration is identified as \newtune and it is currently the default \genie configuration for a number of LAr based experiments. 
-As \newtune is widely used in the paper, we will call it \gZero for simplicity. 
+In the \genie code, this configuration is identified as \newtune\ and it is currently the default \genie configuration for a number of LAr based experiments. 
+As \newtune\ is widely used in the paper, we will call it \gZero\ for simplicity. 
 
-Comparing the \genie predictions for \gZero against TKI datasets, Figs.~\ref{fig:g24-0-dat-reac} and~\ref{fig:g24-0-pn-reac},  shows that the model fails to  accurately describe the MINERvA $\pi^0$~\cite{MINERvA:2020anu} TKI measurement. 
+Comparing the \genie predictions for \gZero\ against TKI datasets, Figs.~\ref{fig:g24-0-dat-reac} and~\ref{fig:g24-0-pn-reac},  shows that the model fails to accurately describe the MINERvA $\pi^0$ TKI measurement~\cite{MINERvA:2020anu}. 
 
 \begin{table}[!htb]
     \centering
@@ -138,7 +137,7 @@ Comparing the \genie predictions for \gZero against TKI datasets, Figs.~\ref{fig
     \hline
     \hline
     \end{tabular}
-    \caption{\label{tab:default-gen-list} Model components of \gZero. Processes with non-trivial $\Delta S$ and $\Delta C$ are those with strangeness and charm production, respectively.}
+    \caption{\label{tab:default-gen-list} Model components of \gZero\. Processes with non-trivial $\Delta S$ and $\Delta C$ are those with strangeness and charm production, respectively.}
 \end{table}
 
 
@@ -155,7 +154,7 @@ The minimal number of points ($N_{\textrm{s}}$) required for tuning $N_{\textrm{
     N_{\textrm{s}} = \binom{N_{\textrm{par}}+N_{\textrm{ord}}}{N_{\textrm{ord}}}.
 \end{equation}
 Given that $N_\textrm{s}$ increases factorially, caution is essential when augmenting the number of parameters or the polynomial degree. 
-Given that our tuning incorporates all $2$ \sfcfg and $12$ hA parameters (see Sec.~\ref{sec:tuning-para-choice}), a degree-$4$ parameterization  necessitates over 6,000 generations. 
+Given that our tuning incorporates all $2$ \sfcfg\ and $12$ hA parameters (see Sec.~\ref{sec:tuning-para-choice}), a degree-$4$ parameterization  necessitates over 6,000 generations. 
 Hence, only up to order $4$ polynomials are explored, and it has shown to reproduce the MC predictions well, as shown in Fig.~\ref{fig:residual}. 
 
 \begin{figure}[!htb] 	
@@ -230,8 +229,8 @@ Therefore, determining the optimal combination is not straightforward; this stud
 \end{figure}
 
 \subsection{\label{sec:tuning-para-choice} Model parameters}
-As outlined in Sec.~\ref{sec:genie}, we focus exclusively on the currently tunable parameters within the \sfcfg and hA models. 
-Therefore, $14$ parameters (collectively referred to as the \allpar set) are utilized for tuning, as detailed in Table~\ref{tab:hALFG-para}. 
+As outlined in Sec.~\ref{sec:genie}, we focus exclusively on the currently tunable parameters within the \sfcfg\ and hA models. 
+Therefore, $14$ parameters (collectively referred to as the \allpar\ set) are utilized for tuning, as detailed in Table~\ref{tab:hALFG-para}. 
 Nominal values and associated uncertainties for the hA model are taken from Table 17.3 in Ref.~\cite{Andreopoulos:2015wxa}. 
 
 \begin{table}[!htb]
@@ -268,18 +267,17 @@ Nominal values and associated uncertainties for the hA model are taken from Tabl
     \hline
     \end{tabular}
     \caption{\label{tab:hALFG-para}
-    Tuneable parameters and their ranges in the  \sfcfg (\textit{uppermost} group) and hA (\textit{lower} groups, uncertainties from Ref.~\cite{Andreopoulos:2015wxa}) models. Parameters to be tuned in the two sets are marked with ``\tick'''s. See later text for definitions of \gT and \gC.
+    Tuneable parameters and their ranges in the  \sfcfg\ (\textit{uppermost} group) and hA (\textit{lower} groups, uncertainties from Ref.~\cite{Andreopoulos:2015wxa}) models. Parameters to be tuned in the two sets are marked with ``\tick'''s. See later text for definitions of \gT and \gC.
     }
 \end{table}
 
-In our analysis of the \sfcfg model, the two most relevant parameters are $\srcfr$, representing the fraction of the high-momentum tail from SRC, notably above the Fermi surface, and $\nurmec$, marking the commencement of the nuclear removal energy distribution for carbon. 
+In our analysis of the \sfcfg\ model, the two most relevant parameters are $\srcfr$, representing the fraction of the high-momentum tail from SRC, notably above the Fermi surface, and $\nurmec$, marking the commencement of the nuclear removal energy distribution for carbon. 
 A larger $\srcfr$ indicates the presence of more energetic initial nucleons, while an increased $\nurmec$ implies that greater energy is necessary to liberate a nucleon from the carbon nucleus, so the product particles will possess lower energy. 
-Given the novelty and limited constraints of the spectral-function-like implementation, this study employs relatively relaxed priors for $\srcfr$ and $\nurmec$, at 0.12$\pm$0.12 and 0.01$\pm$0.005 \gev, respectively.
+Given the novelty and limited constraints of the spectral-function-like implementation, this study employs relatively relaxed priors for $\srcfr$ and $\nurmec$, at 0.12$\pm$0.12 and 0.01$\pm$0.005~\gev, respectively.
 
 \genie users employ the hA model~\cite{Andreopoulos:2015wxa} for the majority of neutrino analysis, owing to its straightforward reweighting capability. 
 Unlike cascade models such as the hN model~\cite{Andreopoulos:2015wxa}, this model determines the FSI type for each hadron exactly once, without considering further propagation of rescattered hadrons within the nucleus. 
 Understanding each rescattering type is crucial for interpreting tuning results.
-A detailed elaboration of the four tunable FSI types has been given in Sec.~\ref{sec:nuint-fsi}. 
 The hA model parameters are explained as follows.
 
 \begin{enumerate}
@@ -288,10 +286,23 @@ The hA model parameters are explained as follows.
     \begin{equation}
         \lambda(E,r) = \frac{1}{\sigma_\textrm{hN,tot}(E)\rho(r)},
     \end{equation}
-    where $\sigma_\textrm{hN,tot}$ is the total hadron-nucleon cross section and $\rho$ is the number density of the nucleons inside the nucleus. Once a hadron is generated inside the nucleus, it travels a distance $\lambda$ before a probabilistic determination of rescattering occurs, inversely related to  $\lambda$. If no rescattering happens, the hadron will be propagated for another $\lambda$ and the dice will be thrown again. The cycle repeats until a rescattering happens or the hadron is propagated far enough to escape the nucleus without any interactions. If a rescattering happens, the type of rescattering is evaluated according to their cross section. The relative probabilities of each type are extracted from stored hadron scattering data~\cite{LADS:1999dyv,Navon:1983xj,Carroll:1976hj,Clough:1974qt,BAUHOFF1986429,Mashnik:2000up,Ishibashi:1997gbe}. After a specific rescattering type is chosen, the rescattered product will be generated. These rescattered products will not undergo further rescattering and will be considered out of the nucleus as final state particles.  
-    The MFP values for pions and nucleons can be modified using scaling factors  ($\cpimfp$, $\pizmfp$,  and $\nmfp$) detailed in Table~\ref{tab:hALFG-para}. Both changed pions, $\pip$ and $\pim$, are scaled by the same factor, $\cpimfp$, due to isospin symmetry. The $\lambda$ for $\piz$ is calculated from those of charged pions based on isospin symmetry as well and can be adjusted separately by $\pizmfp$. If the factor is larger than $1$, $\lambda$ will increase and hence the total number of steps required for the hadron to escape the nucleus reduces, thereby reducing the average probability of rescattering. 
-    Given the high precision with which total hadron-nucleus cross sections are determined~\cite{LADS:1999dyv,Navon:1983xj,Carroll:1976hj,Clough:1974qt,BAUHOFF1986429}, strict Gaussian priors (error---$\sigma$, not to be confused with the various cross sections---of $0.2$, same as the systematic uncertainties shown in Table~\ref{tab:hALFG-para}) are applied to the MFP scaling factors. 
-    Varying $\pizmfp$ by $\pm2.5~\sigma$ significantly affects the \minpiz $\textrm{d}\sigma/\textrm{d}\pn$, as depicted in Fig.~\ref{fig:minpiz-pn-pi0mfp}. Decreasing MFP naturally leads to increased rescattering. Hence, fewer $\piz$s can escape the nucleus and fewer events will have $\piz$ in the final states, thereby reducing the cross section. 
+    where $\sigma_\textrm{hN,tot}$ is the total hadron-nucleon cross section and $\rho$ is the number density of the nucleons inside the nucleus. 
+    Once a hadron is generated inside the nucleus, it travels a distance $\lambda$ before a probabilistic determination of rescattering occurs, inversely related to  $\lambda$. 
+    If no rescattering happens, the hadron will be propagated for another $\lambda$ and the dice will be thrown again. 
+    The cycle repeats until a rescattering happens or the hadron is propagated far enough to escape the nucleus without any interactions. 
+    If a rescattering happens, the type of rescattering is evaluated according to their cross section. 
+    The relative probabilities of each type are extracted from stored hadron scattering data~\cite{LADS:1999dyv,Navon:1983xj,Carroll:1976hj,Clough:1974qt,BAUHOFF1986429,Mashnik:2000up,Ishibashi:1997gbe}. 
+    After a specific rescattering type is chosen, the rescattered product will be generated. 
+    These rescattered products will not undergo further rescattering and will be considered out of the nucleus as final state particles.  
+    The MFP values for pions and nucleons can be modified using scaling factors ($\cpimfp$, $\pizmfp$,  and $\nmfp$) detailed in Table~\ref{tab:hALFG-para}. 
+    Both changed pions, $\pip$ and $\pim$, are scaled by the same factor, $\cpimfp$, due to isospin symmetry.
+    The $\lambda$ for $\piz$ is calculated from those of charged pions based on isospin symmetry as well and can be adjusted separately by $\pizmfp$. 
+    If the factor is larger than $1$, $\lambda$ will increase and hence the total number of steps required for the hadron to escape the nucleus reduces, thereby reducing the average probability of rescattering. 
+    Given the high precision with which total hadron-nucleus cross sections are determined~\cite{LADS:1999dyv,Navon:1983xj,Carroll:1976hj,Clough:1974qt,BAUHOFF1986429}, strict Gaussian priors (error---$\sigma$, not to be confused with the various cross sections---of $0.2$, same as the systematic uncertainties shown in 
+    Table~\ref{tab:hALFG-para}) are applied to the MFP scaling factors. 
+    Varying $\pizmfp$ by $\pm2.5~\sigma$ significantly affects the \minpiz\ $\textrm{d}\sigma/\textrm{d}\pn$, as depicted in Fig.~\ref{fig:minpiz-pn-pi0mfp}. 
+    Decreasing MFP naturally leads to increased rescattering. 
+    Hence, fewer $\piz$s can escape the nucleus and fewer events will have $\piz$ in the final states, thereby reducing the cross section. 
 
     \begin{figure}[!htb]
         \centering
@@ -301,37 +312,50 @@ The hA model parameters are explained as follows.
     \end{figure}
 
     \item 
-    The relative probability of each rescattering type can be adjusted by a scale factor. There are four rescattering types for both nucleons and pions available for tuning. They are charge exchange (CEX), inelastic scattering (INEL), absorption (ABS), and pion production (PIPD). The default energy-dependent probability distributions come from hadron data tuning~\cite{LADS:1999dyv,Navon:1983xj,Carroll:1976hj,Clough:1974qt,BAUHOFF1986429} and can be adjusted by respective scaling factors, like $\picex$ for CEX of all pions, listed in Table~\ref{tab:hALFG-para}. The relative probabilities of all four rescattering types will be normalized such that they sum up to one. Scaling factors directly multiply  the probability of each type, with new relative probabilities subsequently renormalized. More specifically, suppose the initial fraction of absorption, $f_\textrm{ABS}$, is $0.5$, which means that the sum of the other fractions is  $f_\textrm{other}=f_\textrm{INEL}+f_\textrm{CEX}+f_\textrm{PIPD}=1-0.5=0.5$. If $f_\textrm{ABS}$ is scaled up with $S_\textrm{ABS}=2$, the new absorption fraction is 
+    The relative probability of each rescattering type can be adjusted by a scale factor. 
+    There are four rescattering types for both nucleons and pions available for tuning. 
+    They are charge exchange (CEX), inelastic scattering (INEL), absorption (ABS), and pion production (PIPD). 
+    A detailed elaboration of the four tunable FSI types has been given in Sec.~\ref{sec:nuint-fsi}. 
+    The default energy-dependent probability distributions come from hadron data tuning~\cite{LADS:1999dyv,Navon:1983xj,Carroll:1976hj,Clough:1974qt,BAUHOFF1986429} and can be adjusted by respective scaling factors, like $\picex$ for CEX of all pions, listed in Table~\ref{tab:hALFG-para}. 
+    The relative probabilities of all four rescattering types will be normalized such that they sum up to one. 
+    Scaling factors directly multiply the probability of each type, with new relative probabilities subsequently renormalized. 
+    More specifically, suppose the initial fraction of absorption, $f_\textrm{ABS}$, is $0.5$, which means that the sum of the other fractions is  $f_\textrm{other}=f_\textrm{INEL}+f_\textrm{CEX}+f_\textrm{PIPD}=1-0.5=0.5$. 
+    If $f_\textrm{ABS}$ is scaled up with $S_\textrm{ABS}=2$, the new absorption fraction is 
     \begin{equation}
         f^\prime_\textrm{ABS} = \frac{f_\textrm{ABS}*S_\textrm{ABS}}{f_\textrm{ABS}*S_\textrm{ABS}+f_\textrm{oth}} = 2/3,
     \end{equation}
-    which is not equal to simply multiplying $f_\textrm{ABS}$ by $S_\textrm{ABS}$ due to the presence of the other rescattering types. Hence, it is unavoidable that a change of the scaling factor for one type would affect others. Nonetheless, when the cross section is plotted with a breakdown according to rescattering type, the interpretation will be clear regarding the increase or decrease of a particular FSI type. This correlation implies that the scaling parameters' effective impact on FSI fate is often less pronounced than what the raw numbers suggest. As illustrated in the above example, $f_\textrm{ABS}$ is only scaled up by $ f^\prime_\textrm{ABS}/f_\textrm{ABS}=4/3=1.3$ instead of $S_\textrm{ABS}=2$. Hence, a relatively more relaxed Gaussian prior, with a $\sigma$ of $0.5$, is placed on the FSI fate scales, slightly larger than the systematic uncertainties shown in Table~\ref{tab:hALFG-para}. 
+    which is not equal to simply multiplying $f_\textrm{ABS}$ by $S_\textrm{ABS}$ due to the presence of the other rescattering types. 
+    Hence, it is unavoidable that a change of the scaling factor for one type would affect others. 
+    Nonetheless, when the cross section is plotted with a breakdown according to rescattering type, the interpretation will be clear regarding the increase or decrease of a particular FSI type. 
+    This correlation implies that the scaling parameters' effective impact on FSI fate is often less pronounced than what the raw numbers suggest. 
+    As illustrated in the above example, $f_\textrm{ABS}$ is only scaled up by $ f^\prime_\textrm{ABS}/f_\textrm{ABS}=4/3=1.3$ instead of $S_\textrm{ABS}=2$. 
+    Hence, a relatively more relaxed Gaussian prior, with a $\sigma$ of $0.5$, is placed on the FSI fate scales, slightly larger than the systematic uncertainties shown in Table~\ref{tab:hALFG-para}. 
 \end{enumerate}
 
 
 \section{\label{sec:results}The first TKI-driven \genie tunes}
 
-% \begin{figure}[!htb] 	
-%     \centering 		
-%     \setkeys{Gin}{width=\linewidth}
-%     \begin{subfigure}{width=\dbfigwid\textwidth}
-%     \includegraphics{figures/result_test_comb_26_cor_allpar.eps}
-%     \subcaption{\label{fig:comb_26_cor_allpar}\allpar}
-%     \end{subfigure}
-%     \begin{subfigure}{width=\dbfigwid\textwidth}
-%     \includegraphics{figures/result_test_comb_26_cor_redpar.eps}
-%     \subcaption{\label{fig:comb_26_cor_redpar}\redpar}
-%     \end{subfigure}
-%     \caption{ Post-fit Correlation coefficient on \texttt{Combi-26}. } 
-% \end{figure}
-
 \begin{figure}[!htb] 	
     \centering 		
-
-    \includegraphics[width=\dbfigwid\textwidth]{figures/tuning/result_test_comb_26_cor_allpar_covfix.eps}
-    \includegraphics[width=\dbfigwid\textwidth]{figures/tuning/result_test_comb_26_cor_redpar_covfix.eps}
+    \setkeys{Gin}{width=\linewidth}
+    \begin{subfigure}{width=\dbfigwid\textwidth}
+    \includegraphics{figures/tuning/result_test_comb_26_cor_allpar_covfix.eps}
+    \subcaption{\label{fig:comb_26_cor_allpar}\allpar}
+    \end{subfigure}
+    \begin{subfigure}{width=\dbfigwid\textwidth}
+    \includegraphics{figures/tuning/result_test_comb_26_cor_redpar_covfix.eps}
+    \subcaption{\label{fig:comb_26_cor_redpar}\redpar}
+    \end{subfigure}
     \caption{ Post-fit Correlation coefficient on \texttt{Combi-26}. } 
 \end{figure}
+
+% \begin{figure}[!htb] 	
+%     \centering 		
+
+%     \includegraphics[width=\dbfigwid\textwidth]{figures/tuning/result_test_comb_26_cor_allpar_covfix.eps}
+%     \includegraphics[width=\dbfigwid\textwidth]{figures/tuning/result_test_comb_26_cor_redpar_covfix.eps}
+%     \caption{ Post-fit Correlation coefficient on \texttt{Combi-26}. } 
+% \end{figure}
 
 \begin{figure*} 
     \centering 		
@@ -353,12 +377,12 @@ The hA model parameters are explained as follows.
 \end{figure*}
 
 Given the intricate correlations among model parameters, determining which ones are most sensitive to the data proves challenging. Considerable correlation and anti-correlation are observed between different FSI fates for the same particle, e.g. $\cpiabs$ and $\pipiprod$, as shown in Figs.~\ref{fig:comb_26_cor_allpar} and~\ref{fig:comb_26_cor_redpar}. 
-Our tuning began with the \allpar parameter set, achieving the best result with \texttt{Combi-13}, which is denoted as \cbAllPar in Table~\ref{tab:data-sets} (cf. Fig.~\ref{fig:allchi} for the $\chi^2$ distribution of all combinations).
+Our tuning began with the \allpar\ parameter set, achieving the best result with \texttt{Combi-13}, which is denoted as \cbAllPar\ in Table~\ref{tab:data-sets} (cf. Fig.~\ref{fig:allchi} for the $\chi^2$ distribution of all combinations).
 Observations showed that for most combinations, certain parameters remained close to their default values, within $1$ $\sigma$ of the imposed priors, such as $\pipiprod$ since none of the data sets has a significant contribution from PIPD of pions---Removing these parameters from the tuning process does not significantly affect the outcome.
-Therefore, we then constructed a reduced set comprising only $\srcfr$, $\pizmfp$, $\picex$, $\ncex$, $\nabs$, and $\npiprod$ (denoted as \redpar in Table~\ref{tab:hALFG-para}) and ran the tuning on the 26 combinations with it. Note that the parameters most correlated with $\picex$ and $\pizmfp$ are not present in \redpar. The \redpar tuning proved more stable, with nearly all combinations showing a more negative $\chi^2$ change than the \allpar tuning, as shown in Fig.~\ref{fig:allchi}. Moreover, the single-observable (\texttt{Combi-}1 to 5), single-measurement (\texttt{Combi-}6 to 9), single-experiment (\texttt{Combi-}10 and 11), and single-topology (\texttt{Combi-}12 and 13) combinations all systematically yielded no or limited overall (tuned plus validation) improvement post-tuning. The best tuning then occurred with \texttt{Combi-26} (\cbRedPar in Table~\ref{tab:data-sets}), that is, all TKI variables excluding $\dphit$ and $\dpt$ (unless no $\pn$ is available)---$\dat$, $\pn$ (or $\dpt$ if $\pn$ is unavailable), and $\dptt$---from pionless and pion-production measurements in both T2K and MINERvA. 
+Therefore, we then constructed a reduced set comprising only $\srcfr$, $\pizmfp$, $\picex$, $\ncex$, $\nabs$, and $\npiprod$ (denoted as \redpar\ in Table~\ref{tab:hALFG-para}) and ran the tuning on the 26 combinations with it. Note that the parameters most correlated with $\picex$ and $\pizmfp$ are not present in \redpar\. The \redpar\ tuning proved more stable, with nearly all combinations showing a more negative $\chi^2$ change than the \allpar\ tuning, as shown in Fig.~\ref{fig:allchi}. Moreover, the single-observable (\texttt{Combi-}1 to 5), single-measurement (\texttt{Combi-}6 to 9), single-experiment (\texttt{Combi-}10 and 11), and single-topology (\texttt{Combi-}12 and 13) combinations all systematically yielded no or limited overall (tuned plus validation) improvement post-tuning. The best tuning then occurred with \texttt{Combi-26} (\cbRedPar\ in Table~\ref{tab:data-sets}), that is, all TKI variables excluding $\dphit$ and $\dpt$ (unless no $\pn$ is available)---$\dat$, $\pn$ (or $\dpt$ if $\pn$ is unavailable), and $\dptt$---from pionless and pion-production measurements in both T2K and MINERvA. 
 
-Table~\ref{tab:restunes} summarizes the primary results of our tuning process. The tuned \redpar, \restunefull (\gC), is derived from the observable set \cbRedPar, and the tuned \allpar, $\alttune$~(\gT), is from \cbAllPar. The upper part of Table~\ref{tab:restunes} contains the parameter values. 
-For the  \gC tune, changes to the \sfcfg model were moderately sized ($\srcfr$ decreases from $0.12$ to $0.09$), while in the hA model, $\pizmfp$ and $\picex$ are highly suppressed and the nucleon FSI has larger CEX and PIPD and lower ABS.  The tune \gT differs most significantly from \gC in $\pizmfp$ and $\picex$. The table's lower section illustrates $\chi^2$ improvements for selected observables and their corresponding validation sets. Crucially, tuning should not reduce the accuracy of validation set descriptions. Overall, \gC has a more substantial reduction in the total $\chi^2$. In the following, we will discuss the two tunes.
+Table~\ref{tab:restunes} summarizes the primary results of our tuning process. The tuned \redpar\, \restunefull (\gC), is derived from the observable set \cbRedPar\, and the tuned \allpar\, $\alttune$~(\gT), is from \cbAllPar\. The upper part of Table~\ref{tab:restunes} contains the parameter values. 
+For the  \gC\ tune, changes to the \sfcfg\ model were moderately sized ($\srcfr$ decreases from $0.12$ to $0.09$), while in the hA model, $\pizmfp$ and $\picex$ are highly suppressed and the nucleon FSI has larger CEX and PIPD and lower ABS.  The tune \gT\ differs most significantly from \gC\ in $\pizmfp$ and $\picex$. The table's lower section illustrates $\chi^2$ improvements for selected observables and their corresponding validation sets. Crucially, tuning should not reduce the accuracy of validation set descriptions. Overall, \gC\ has a more substantial reduction in the total $\chi^2$. In the following, we will discuss the two tunes.
 
 \begin{table}[!htb]
     \centering
@@ -420,7 +444,7 @@ For the  \gC tune, changes to the \sfcfg model were moderately sized ($\srcfr$ d
 
 \subsection{Reduced tune: \gC}
 
-To assess the tune's quality, we plot predictions using \gC for $\dat$ and $\pn$ in Figs.~\ref{fig:g24-c-dat-reac} and~\ref{fig:g24-c-pn-reac},  respectively. For \ttkzpi, \ttkpip and \minzpi, the new $\chi^2$ values are comparable to those obtained with \gZero, changing less than the number of bins. For \minpiz, \gC is distinctly better than \gZero, thereby demonstrating the possibility of simultaneous good descriptions of both pionless and pion production samples with constrained parameters from cross-topology TKI tuning. Note that in the region of $\pn\sim0.3~\gevc$, the model deficit previously reported in Ref.~\cite{MINERvA:2018hba} (and also shown in Fig.~\ref{fig:g24-0-pn-reac}c) persists even after the fit. The physical origin of this deficit might be attributed to the strength of the 2p2h contribution~\cite{MINERvA:2018hba}, but it is still a topic of significant discussion within the community.
+To assess the tune's quality, we plot predictions using \gC\ for $\dat$ and $\pn$ in Figs.~\ref{fig:g24-c-dat-reac} and~\ref{fig:g24-c-pn-reac},  respectively. For \ttkzpi\, \ttkpip\ and \minzpi\, the new $\chi^2$ values are comparable to those obtained with \gZero, changing less than the number of bins. For \minpiz\, \gC\ is distinctly better than \gZero, thereby demonstrating the possibility of simultaneous good descriptions of both pionless and pion production samples with constrained parameters from cross-topology TKI tuning. Note that in the region of $\pn\sim0.3~\gevc$, the model deficit previously reported in Ref.~\cite{MINERvA:2018hba} (and also shown in Fig.~\ref{fig:g24-0-pn-reac}c) persists even after the fit. The physical origin of this deficit might be attributed to the strength of the 2p2h contribution~\cite{MINERvA:2018hba}, but it is still a topic of significant discussion within the community.
 
 Examining individual datasets closely helps to understand the origin of the improvement. The decomposition of the cross section for $\dat$ according to the FSI fates of the $\piz$ is presented in Fig.~\ref{fig:CEX-minpiz-dat-pi0}. The hA model rescatters primary interaction products only once, and records this event with a rescattering code for these particles. The rescattered products, which are the final outputs, are stored as daughters of the primary interaction products. Hence, the FSI fate that produces the final products can be checked by the rescattering code of their first parent. More specifically, we loop through all final-state particles to look for the leading $\piz$ and check the rescattering code of its first parent. 
 
@@ -428,16 +452,16 @@ Examining individual datasets closely helps to understand the origin of the impr
     \centering 		
     \includegraphics[width=\dbfigwid\textwidth]{figures/tuning/0000-min_pi0_dalphat_pi0_decomp_cex.eps}
     \includegraphics[width=\dbfigwid\textwidth]{figures/tuning/0026-min_pi0_dalphat_pi0_decomp_covfix.eps}	
-    \caption{\label{fig:CEX-minpiz-dat-pi0} \minpiz $\dat$ measurement compared to \genie predictions decomposed in $\piz$ FSI fates with (a) \gZero and (b) \gC.} 
+    \caption{\label{fig:CEX-minpiz-dat-pi0} \minpiz\ $\dat$ measurement compared to \genie predictions decomposed in $\piz$ FSI fates with (a) \gZero\ and (b) \gC.} 
 \end{figure}
 
-In \minpiz, the number of $\piz$s undergoing no FSI (``No Interaction'', as shown in the figures) is adjustable via the $\pizmfp$ parameter. A decrease in $\pizmfp$ reduces the size of the ``No Interaction'' events,  as is shown in Fig.~\ref{fig:CEX-minpiz-dat-pi0}b when compared to Fig.~\ref{fig:CEX-minpiz-dat-pi0}a. Meanwhile, an increase in $\piz$ rescattering only manifests in pionless measurements through ABS. There is indeed an increase of ABS for $\piz$ in \ttkzpi and \minzpi, but the fraction is small to begin with, so the impact is small. The increase of $\piz$ rescattering can increase \ttkpip via CEX as discussed below. However, due to the significant suppression of CEX, its impact on \ttkpip is also minimal (for detailed breakdown, see Figs.~\ref{fig:g24-0-dat-pi0}-\ref{fig:g24-c-pn-pi0} in Appendix~\ref{sec:appfate}). 
+In \minpiz\, the number of $\piz$s undergoing no FSI (``No Interaction'', as shown in the figures) is adjustable via the $\pizmfp$ parameter. A decrease in $\pizmfp$ reduces the size of the ``No Interaction'' events,  as is shown in Fig.~\ref{fig:CEX-minpiz-dat-pi0}b when compared to Fig.~\ref{fig:CEX-minpiz-dat-pi0}a. Meanwhile, an increase in $\piz$ rescattering only manifests in pionless measurements through ABS. There is indeed an increase of ABS for $\piz$ in \ttkzpi\ and \minzpi\, but the fraction is small to begin with, so the impact is small. The increase of $\piz$ rescattering can increase \ttkpip\ via CEX as discussed below. However, due to the significant suppression of CEX, its impact on \ttkpip\ is also minimal (for detailed breakdown, see Figs.~\ref{fig:g24-0-dat-pi0}-\ref{fig:g24-c-pn-pi0} in Appendix~\ref{sec:appfate}). 
 
-As shown in Fig.~\ref{fig:CEX-minpiz-dat-pi0}a, the \minpiz prediction from the nominal tune has considerable contributions from CEX controlled by $\picex$. It does not impact \ttkzpi and \minzpi as CEX only changes the pion type without removing them. Hence, events with pions in the final state would be rejected in these two data sets regardless of the pion charge. In principle, CEX will also migrate events between the signal and background definitions for \ttkpip when a $\piz$ is converted to a $\pip$ and vice verse. However, \ttkpip does not have a considerable CEX fraction to begin with, so changing CEX will have a minimal impact on its prediction. Hence, this is one of the most effective paths to decrease the \minpiz cross section prediction without affecting other measurements, and indeed the $\picex$ is heavily suppressed as shown in Table~\ref{tab:restunes} and illustrated in Fig.~\ref{fig:CEX-minpiz-dat-pi0}b compared to Fig.~\ref{fig:CEX-minpiz-dat-pi0}a. However, due to the intricate correlation between the FSI fates in the hA implementation discussed in Sec.~\ref{sec:tuning-para-choice}, although $\piinel$ and $\pipiprod$ are not modified explicitly, a considerable increase is observed in both INEL and PIPD for \minpiz. 
+As shown in Fig.~\ref{fig:CEX-minpiz-dat-pi0}a, the \minpiz\ prediction from the nominal tune has considerable contributions from CEX controlled by $\picex$. It does not impact \ttkzpi\ and \minzpi\ as CEX only changes the pion type without removing them. Hence, events with pions in the final state would be rejected in these two data sets regardless of the pion charge. In principle, CEX will also migrate events between the signal and background definitions for \ttkpip\ when a $\piz$ is converted to a $\pip$ and vice verse. However, \ttkpip\ does not have a considerable CEX fraction to begin with, so changing CEX will have a minimal impact on its prediction. Hence, this is one of the most effective paths to decrease the \minpiz\ cross section prediction without affecting other measurements, and indeed the $\picex$ is heavily suppressed as shown in Table~\ref{tab:restunes} and illustrated in Fig.~\ref{fig:CEX-minpiz-dat-pi0}b compared to Fig.~\ref{fig:CEX-minpiz-dat-pi0}a. However, due to the intricate correlation between the FSI fates in the hA implementation discussed in Sec.~\ref{sec:tuning-para-choice}, although $\piinel$ and $\pipiprod$ are not modified explicitly, a considerable increase is observed in both INEL and PIPD for \minpiz. 
 
-Suppressing both ``No Interaction'' and CEX for $\piz$ adjusts the \minpiz prediction to the appropriate magnitude with small impacts on other data sets.  The effects of the other parameter changes are more transparent in the comparison of the $\pn$ distribution of \minpiz between Figs.~\ref{fig:minpiz-pn-pr}a and~\ref{fig:minpiz-pn-pr}b. A relatively large increase in $\ncex$ and $\npiprod$ moves events away from the Fermi motion peak at $\pn\leq0.25~\textrm{GeV}/c$; the same effect can be achieved by an increased $\srcfr$. 
+Suppressing both ``No Interaction'' and CEX for $\piz$ adjusts the \minpiz\ prediction to the appropriate magnitude with small impacts on other data sets.  The effects of the other parameter changes are more transparent in the comparison of the $\pn$ distribution of \minpiz\ between Figs.~\ref{fig:minpiz-pn-pr}a and~\ref{fig:minpiz-pn-pr}b. A relatively large increase in $\ncex$ and $\npiprod$ moves events away from the Fermi motion peak at $\pn\leq0.25~\textrm{GeV}/c$; the same effect can be achieved by an increased $\srcfr$. 
 
-Another impact of the larger $\npiprod$ manifests in the appearance of 2p2h ($1\%$) and CCQE ($2 \%$) in the \minpiz cross section, as shown in Fig.~\ref{fig:g24-c-pn-reac}d. These neutrino-nucleon interactions do not produce pions, but the product nucleons can produce pions via re-scattering in the nucleus, leading to a contribution to topologies with pions in the final states. However, such contribution remains small.
+Another impact of the larger $\npiprod$ manifests in the appearance of 2p2h ($1\%$) and CCQE ($2\%$) in the \minpiz\ cross section, as shown in Fig.~\ref{fig:g24-c-pn-reac}d. These neutrino-nucleon interactions do not produce pions, but the product nucleons can produce pions via re-scattering in the nucleus, leading to a contribution to topologies with pions in the final states. However, such contribution remains small.
 
 \begin{figure}[!htb] 	
     \centering 		
@@ -468,7 +492,7 @@ A considerably smaller improvement is achieved by the intermediate tune, \gT, il
 
 
 \subsection{Discussion}
-For both \gC and \gT the fit results suggest extreme values, but the effect of the parameter change is less effective than the change in the parameter suggests. 
+For both \gC\ and \gT\ the fit results suggest extreme values, but the effect of the parameter change is less effective than the change in the parameter suggests. 
 For the individual FSI fate cross section, due to the re-normalization step after scaling, the effective change for one particular fate is smaller than the scaling parameter magnitude as explained in Sec.~\ref{sec:tuning-para-choice}. 
 As for the total FSI cross sections, only that of $\piz$ is changed. The total $\piz$-C scattering cross section for pion kinetic energy is plotted in Fig.~\ref{fig:pizmfp_change} to assess the overall impact. 
 The shape remains similar and consistent with Fig. 2.23 ($\pip$-C reactions) in Ref.~\cite{Andreopoulos:2015wxa} while the peak magnitude increases from $380$ to $489$ mb, a $29\%$ increase, considerably less than the scaling factor, $\pizmfp=0.34$, seemingly suggests. 
@@ -493,11 +517,11 @@ Further refinement will be available once more data will be included in the fit,
 
 
 \section{\label{sec:summary} Summary and outlook}
-This work represents the first global tuning effort on TKI data. Our partial tune of the \sfcfg and hA models, $\restunefull$ (\gC), provides an effective theory to better describe both the neutrino-hydrocarbon pionless and pion production.
-The largest change in the model is demanded by the \minpiz TKI measurement~\cite{MINERvA:2020anu} that was significantly overestimated in \genie. 
+This work represents the first global tuning effort on TKI data. Our partial tune of the \sfcfg\ and hA models, $\restunefull$ (\gC), provides an effective theory to better describe both the neutrino-hydrocarbon pionless and pion production.
+The largest change in the model is demanded by the \minpiz\ TKI measurement~\cite{MINERvA:2020anu} that was significantly overestimated in \genie. 
 The improvement is crucial for future precision GeV neutrino experiments.  This tuning configuration has been integrated into the \texttt{master} branch of \genie and is slated for inclusion in the upcoming release.  
 
-To develop an effective model, we focused on the most sensitive parameters, $\srcfr$, $\pizmfp$, $\picex$, $\ncex$, $\nabs$, and $\npiprod$, of the \sfcfg and hA models, reducing the total number of parameters from $14$ to $6$. The corresponding best combination of observables is $\dat$, $\pn$ (or $\dpt$ if no $\pn$ is available), and $\dptt$, from pionless and pion-production measurements in both T2K and MINERvA. 
+To develop an effective model, we focused on the most sensitive parameters, $\srcfr$, $\pizmfp$, $\picex$, $\ncex$, $\nabs$, and $\npiprod$, of the \sfcfg\ and hA models, reducing the total number of parameters from $14$ to $6$. The corresponding best combination of observables is $\dat$, $\pn$ (or $\dpt$ if no $\pn$ is available), and $\dptt$, from pionless and pion-production measurements in both T2K and MINERvA. 
 In doing so, the pion production model is held fixed such that the tuned values of $\pizmfp$, $\picex$, $\nabs$, and $\npiprod$ depart from the established constraints from hadron measurements. 
 A different pion production model might compensate part of these model tuning effects~\cite{Yan:2024kkg}. 
 We also chose the hA FSI model for practical reasons. Its sequential treatment of MFP and rescattering should be considered as a numerical advantage (as was also pointed out in Ref.~\cite{GENIE:2022qrc}). Other more sophisticated models could be considered in future tunes.  With the existing four TKI measurements from T2K and MINERvA, we have also derived other effective tunes like $\alttune$ (\gT). The degeneracy can be resolved with additional data, particularly from argon-based measurements~\cite{MicroBooNE:2022emb, MicroBooNE:2023cmw, MicroBooNE:2023tzj, MicroBooNE:2023wzy, MicroBooNE:2024tmp, MicroBooNE:2015bmn} and e4nu data~\cite{CLAS:2021neh}.
