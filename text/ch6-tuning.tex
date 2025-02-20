@@ -9,36 +9,43 @@ There is no one who loves pain itself, who seeks after it and wants to have it, 
 
 \minitoc
 
-Cross section measurement can not only be used for model discrimination but also help constrain existing model parameters for better data-MC agreement through tuning. 
-Although it is not yet possible to perform cross section measurement using the upgraded ND data, there are available cross section results from past measurements. 
-Hence, it is instructive to explore the tuning procedure with the existing measurements to prepare for future tuning using the upgraded data~\footnote{This chapter is based on the work published in Ref.~\cite{GENIE:2024ufm}.}. 
+Current neutrino interaction models are effective models, i.e. they have variable parameters, aiming to parameterize our ignorance of the true underlying physics.
+These parameters can be constrained by comparing model predictions to data, which is the so-called tuning process.
+The data used in tuning are the cross section measurements from various neutrino experiments.
+A successfully tuned model will have a better agreement with the data used in tuning than the original model, and it could also shed light on the direction of future model development.
+The validity of the tuned model can be tested against new data.
+In view of the incoming data collected by the upgraded ND280, it is the perfect time to tune the current model to the existing data to maximize the utility of the new data.
+The GENIE collabration has developed a comprehensive tuning framework, and has collected an extensive database of neutrino, charged lepton, and hadron scattering measurements. 
+Hence, we have performed the tuning of an effective model in \genie using this frameowrk.
+The procedures and the results are presented in this chapter~\footnote{This chapter is based on the work published in Ref.~\cite{GENIE:2024ufm}.}.
 
-The GENIE collaboration has demonstrated successful tuning of the various components of the neutrino-nucleus interaction model. 
-For instance, 
+\section{\label{sec:Tuning}Tuning procedure}
+This study employs the tuning procedure delineated in Ref.~\cite{GENIE:2022qrc}, utilizing $N_{\textrm{par}}$ model parameters. 
+The primary objective is to determine the best fit—that is, the optimal set of parameter values—within the parameter space by minimizing the $\chi^2$ between the model predictions and the experimental data. 
+Due to the high dimensionality of the parameter space, a brute-force, grid-based point-by-point scan is impractical. 
+Therefore, a sufficiently large number of points in the model parameter space is sampled at random, with each point initiliating a full simulation. 
+Subsequently, the simulation output for each data observable bin is parametrized using Professor~\cite{Buckley:2009bj} with a polynomial of the model parameters of a given order, $N_{\textrm{ord}}$. 
+The minimal number of points ($N_{\textrm{s}}$) required for tuning $N_{\textrm{par}}$ parameters with a polynomial of order $N_{\textrm{ord}}$ is determined by the combinatorial formula,
+\begin{equation}
+    N_{\textrm{s}} = \binom{N_{\textrm{par}}+N_{\textrm{ord}}}{N_{\textrm{ord}}}.
+\end{equation}
+Since $N_\textrm{s}$ increases factorially, it is imperative to exercise caution when increasing either the number of parameters or the polynomial degree. 
+Given that our tuning incorporates all $2$ \sfcfg\ and $12$ hA parameters (see Sec.~\ref{sec:tuning-para-choice}), a fourth-order parameterization necessitates over 6,000 simulation generations, which are already computationaly expensive.
+Thus, only polynomials up to order $4$ are considered, a choice that has been shown to reproduce the MC predictions satisfactorily, as illustrated in Fig.~\ref{fig:residual}. 
+\begin{figure}[!htb] 	
+    \centering 		
+    \includegraphics[width=\sgfigwid\textwidth]{figures/tuning/residual.eps}
+    \caption{\label{fig:residual} Fractional difference for the bin-by-bin cross sections between MC truth and the parameterized approximation using fourth-order polynomials, both in the Norm-Shape (NS)~\cite{DAgostini:1993arp,Hanson:2005mrg} space with \allpar. See Table~\ref{tab:hALFG-para} for the definition of \allpar. The residual exhibits a mean of $0.003$ and a standard deviation of $0.073$.} 
+\end{figure}
 
-The large data samples and superb imaging capabilities of modern neutrino experiments offer us a detailed new look at neutrino interaction physics. 
-Recently, the GENIE~\cite{Andreopoulos:2009rq, GENIE:2021npt} Collaboration has made substantial progress towards a global tuning using neutrino, charged lepton, and hadron scattering data, in an attempt to integrate new experimental constraints with state-of-the-art theories and construct robust and comprehensive simulations of neutrino interactions with matter. 
-Cross-experiment and cross-topology analyses are challenging tasks as each measurement features its unique selection criteria and various other aspects, such as the neutrino flux. 
-\genie has built an advanced tuning framework that enables the validation and tuning of comprehensive interaction models using an extensive curated database of measurements of neutrino, charged lepton, and hadron scattering off nucleus and nuclei. 
-So far, the non-resonant backgrounds~\cite{GENIE:2021zuu}, hadronization~\cite{GENIE:2021wox}, and the quasielastic (QE) and 2-particle-2-hole (2p2h) components~\cite{GENIE:2022qrc} of the neutrino-nucleus interaction have been tuned with $\nu_\mu$ and $\bar{\nu}_\mu$ charged-current (CC) pionless (0$\pi$) data from MiniBooNE, T2K, and MINERvA. 
-A partial tune was performed for each experiment, highlighting the neutrino energy dependence on the QE and 2p2h tuned cross sections. 
-Even though post-tune predictions enhanced the data description for each experiment, the added degrees of freedom were not sufficient to fully describe all CC0$\pi$ data and exhibited tensions with some proton observables~\cite{GENIE:2022qrc}. 
-More exclusive measurements result in additional model constraints. 
-In addition, observables that are sensitive to targeted aspects of the complex dynamics of neutrino interactions are invaluable for model tuning. 
-The transverse kinematic imbalance (TKI)~\cite{Lu:2015hea, Lu:2015tcr}, a final-state correlation between the CC lepton and the hadronic system, is a good example since it is sensitive to the initial-state nuclear environment and hadronic FSI. 
-Our next step is to incorporate TKI data from experiments where various exclusive topologies at different energies are considered. 
-This marks the first combined tuning on TKI data with and without pions in the final states and serves as the starting point of a more comprehensive tuning effort in the energy region most relevant for future accelerator-based neutrino experiments.  
+Furthermore, to circumvent Peelle's Pertinent Puzzle~\cite{PPP_FNL,Chakrani:2023htw}~\footnote{This is a phenomenon where unknown correlations between observables can skew the $\chi^2$ minimizaion.}, the Norm-Shape (NS) transformation prescription~\cite{DAgostini:1993arp,Hanson:2005mrg} is adopted. 
+Thereafter, the extremal point is determined by minimizing $\chi^2$ between the NS-transformed polynomial approximation and the NS-transformed data. 
+During the minimization process, priors—typically derived from systematic uncertainties—are imposed on each parameter to prevent them from deviating excessively from their nominal values. 
+The following subsections elaborate on the specific measurement observables and model parameters to be tuned.
 
-This chapter is structured as follows: 
-Sec.~\ref{sec:genie} reviews the \genie models, and Sec.~\ref{sec:Tuning} details the tuning considerations and procedures. 
-Results are summarized in Sec.~\ref{sec:results}, highlighting how the data-MC discrepancy in the \minpiz\ TKI measurement~\cite{MINERvA:2020anu} is resolved while maintaining good data-MC agreement elsewhere. 
-The last section summarises the chapter and outlines future work.
-
-This section surveyed four TKI data sets: T2K $0\pi$~\cite{T2K:2018rnz}, T2K $\pi^+$~\cite{T2K:2021naz}, MINERvA $0\pi$~\cite{MINERvA:2018hba, MINERvA:2019ope}, and MINERvA $\pi^0$~\cite{MINERvA:2020anu} measurements. 
-All four measurements require the presence of one CC muon and at least one proton in the final state. 
-While the \ttkpip\ measurement requires exactly one $\pi^+$, and \minpiz\ requires at least one $\pi^0$, the other two datasets require the absence of any pions. 
-The definitions of the kinematic cuts for these samples are summarized in Table~\ref{tab:data-sets-phase-space-cut}. 
-
+\section{Inputs}
+The first step towards tuning is to identify the models to be tuned and the data to be used by spotting the lacking area of the current model, which is manifested by the data-MC discrepancy.
+One such example is illustrated in Fig.~\ref{fig:g24-0-dat-reac} and Fig.~\ref{fig:g24-0-pn-reac}, which shows the data-MC comparison using \newtune\, one of the latest Comprehensive Model Configurations (CMC) in \genie, for four TKI measurements, namely \ttkzpi~\cite{T2K:2018rnz}, \ttkpip~\cite{T2K:2021naz}, \minzpi~\cite{MINERvA:2018hba, MINERvA:2019ope}, and \minpiz~\cite{MINERvA:2020anu}. 
 \begin{figure*} 
     \centering 		
     \includegraphics[width=\dbfigwid\textwidth]{figures/tuning/0000-t2k_0pi_dalphat_reac_decomp.eps} 
@@ -46,7 +53,7 @@ The definitions of the kinematic cuts for these samples are summarized in Table~
     \includegraphics[width=\dbfigwid\textwidth]{figures/tuning/0000-min_0pi_dalphat_reac_decomp.eps} 
     \includegraphics[width=\dbfigwid\textwidth]{figures/tuning/0000-min_pi0_dalphat_reac_decomp.eps}
     \caption{$\dat$ measurements decomposed in interaction types, compared to \gZero prediction.}   \label{fig:g24-0-dat-reac} 
-    		
+            
     \includegraphics[width=\dbfigwid\textwidth]{figures/tuning/0000-t2k_0pi_dpt_reac_decomp.eps}
     \includegraphics[width=\dbfigwid\textwidth]{figures/tuning/0000-t2k_pip_pn_reac_decomp.eps}
     \includegraphics[width=\dbfigwid\textwidth]{figures/tuning/0000-min_0pi_pn_reac_decomp.eps}
@@ -54,131 +61,257 @@ The definitions of the kinematic cuts for these samples are summarized in Table~
     \caption{\label{fig:g24-0-pn-reac} Similar to Fig.~\ref{fig:g24-0-dat-reac} but for the $\pn$ (\ttkpip, \minzpi and \minpiz) and $\dpt$ (\ttkzpi) measurements.
     } 
 \end{figure*}
+This data-comparison shows that the model fails to describe the MINERvA $\piz$ TKI data, despite that its prediction matches other TKI data well.
 
-\begin{table}[!htb]
-    \centering
-    \begin{tabular}{cc}
+As the neutrion-nucleus interacition is a complicated process, it requires multiple models to simulate the whole process, and the CMC in \genie specifies the combination of models to be used.
+Tuning the entire CMC is extremely omputationally expensive, and this is the first tuning on TKI data across event topology, i.e. on both $\cczpi$ and $\cczpi$. 
+Hence, before embarking on this ultimate step, it is important to first perfrom a proof-of-concept study to explore the model flexibility and to identify the most relevant model parameters.
+As TKI data are sensitive to the nuclear IS and FSI, this study focuses on the tuning of these two models.
+To lay the ground for better understanding of this tuning effort, I will provide a more detailed description of the inputs, i.e. the data and the models, in the following subsections. 
+
+\subsection{The models}
+\label{sec:tuning-para-choice}
+    The CMCs in \genie are fomratted strings, and they are sometimes also called tunes, regardless of whether they are obtained from an actual tuning.
+    The tune, \newtune, mentioned above is improved on the tune, $\geighteen$, which is obtained from the free nucleon tuning effort in Ref.~\cite{GENIE:2021zuu}, and describes bubble chamber data better.
+    As \newtune\ is widely used in the paper, it will be referred to as \gZero\ for simplicity. 
+
+    The IS in \gZero\ is modelled by the spectral-function-like Correlated Fermi Gas model (\sfcfg)~\cite{sfcfg-talk,sfcfg-GitHubCommit,GENIE:2021npt}. 
+    \sfcfg\ has more adjustable parameters for tuning and improved physics compared to the local fermi gas (LFG) model used in $\geighteen$.
+    The improvment arises from two aspects. 
+    ``Spectral-function-like'' refers to the implementation of removal energy as a varying function rather than a fixed value, while ``Correlated'' highlights the incorporation of the high-momentum tail above the Fermi momentum due to nucleon-nucleon short-range correlations (SRC), as evidenced by electron-scattering data~\cite{CLAS:2005ola}.
+
+    Both enhancements are incorporated into the Valencia Model (Ref.~\cite{Nieves:2004wx}).  
+    Consequently, \sfcfg\ more closely reproduces the Valencia initial state than previous LFG implementations.  
+    For further details on \sfcfg, see Ref.~\cite{GENIE:2021npt}.  
+    Note that the original Valencia Model employs its own approach to modeling FSI. 
+    However, since FSI is factorized from other processes in the \genie\ implementation, that method is not applied here.  
+    Instead, GENIE has developed the INTRANUKE hA FSI model (hA for short), which is chosen as the FSI candidate for the tuning performed in this work for its simplicity and interpretability.
+
+    Additional improvements of \gZero\ include:  
+    1) adopting a $z$-expansion axial-vector form factor~\cite{Hill:2010yb} in lieu of the Valencia dipole form factor for QE processes~\cite{Nieves:2004wx}; and  
+    2) substituting the Valencia model for 2p2h processes~\cite{Nieves:2011pp} with the SuSAv2 Model~\cite{Gonzalez-Jimenez:2014eqa}, which covers a broader region of the $q^0$ and $q^3$ phase space.  
+    The complete list of model components is provided in Table~\ref{tab:default-gen-list}.
+    \begin{table}[!htb]
+        \centering
+        \begin{tabular}{p{4cm}c}
+        \hline
+        \hline
+        \textrm{Simulation component} & \textrm{Model} \\
+        \hline
+        \textrm{Nuclear state}              & \sfcfg~\cite{sfcfg-talk,sfcfg-GitHubCommit,GENIE:2021npt} \\ 
+        \textrm{QE}               & Valencia~\cite{Nieves:2004wx} \\
+        \textrm{2p2h}               & SuSAv2~\cite{Gonzalez-Jimenez:2014eqa} \\
+        \textrm{QE $\Delta S=1$}           & Pais~\cite{Pais:1971er} \\
+        \textrm{QE $\Delta C=1$}                  & Kovalenko~\cite{Kovalenko:1990zi} \\
+        \textrm{Resonance (RES)}                        & Berger-Sehgal~\cite{Berger:2007rq}\\
+        Shallow/Deep inelastic \par scattering (SIS/DIS)                    & Bodek-Yang~\cite{Bodek:2002vp}\\
+        \textrm{DIS $\Delta C=1$}           & Aivazis-Tung-Olness~\cite{Aivazis:1991fy}\\
+        \textrm{Coherent $\pi$ production}  & Berger-Sehgal~\cite{Berger:2008xs}\\
+        \hline
+        \textrm{Hadronization}              & AGKY~\cite{Yang:2009zx}\\
+        \textrm{FSI}                        & INTRANUKE hA~\cite{Andreopoulos:2015wxa}\\
+        \hline
+        \hline
+        \end{tabular}
+        \caption{\label{tab:default-gen-list} Model components of \gZero\. Processes with non-trivial $\Delta S$ and $\Delta C$ are those with strangeness and charm production, respectively.}
+    \end{table}
+    Having selected the \gZero CMC as the tuning starting point, a closer look into the IS and FSI models, the models to be tuned, is necessary.
+    The \sfcfg\ and hA model contains a total of $14$ tuneable parameters of \sfcfg\ and hA.
+
+    The \sfcfg\ model behaviour is chiefly specified by two parameters: 
+    $\srcfr$, which quantifies the fraction of the high-momentum tail from SRC above the Fermi surface, and 
+    $\nurmec$, which defines the onset of the nuclear removal energy distribution for carbon.  
+    A higher $\srcfr$ suggests that the initial nucleons possess greater energy, whereas a larger $\nurmec$ implies that more energy is required to liberate a nucleon, resulting in lower-energy final-state particles.  
+    Due to the innovative yet loosely constrained nature of this spectral-function-like implementation, this study adopts relatively lenient priors of \(0.12\pm0.12\) for $\srcfr$ and \(0.01\pm0.005~\gev\) for $\nurmec$.
+
+    As for the hA model~\cite{Andreopoulos:2015wxa}, its widespread use is primarily due to its straightforward reweighting capability. 
+    Unlike cascade models such as the hN model~\cite{Andreopoulos:2015wxa}, the hA model assigns the FSI type for each hadron exactly once, without simulating further propagation of rescattered hadrons. 
+    This single-rescattering approach is critical for interpreting tuning results. The hA model parameters are described as follows.
+    \begin{enumerate}
+        \item \textbf{Mean Free Path (MFP) Scaling Factors}:
+        The model computes the MFP, $\lambda$, as a function of the hadron's energy, $E$, and its radial distance, $r$, from the nucleus center:
+        \begin{equation}
+            \lambda(E,r) = \frac{1}{\sigma_\textrm{hN,tot}(E)\rho(r)},
+        \end{equation}
+        where $\sigma_\textrm{hN,tot}$ is the total hadron–nucleon cross section and $\rho(r)$ is the local nucleon density. 
+        Once produced within the nucleus, a hadron travels a distance $\lambda$ before a probabilistic decision on rescattering is made. 
+        If no rescattering occurs, the hadron is propagated by another $\lambda$, and the process repeats until either a rescattering happens or the hadron escapes the nucleus. 
+        When rescattering occurs, its type is chosen based on the relevant cross sections; the relative probabilities of these types are extracted from stored hadron scattering data~\cite{LADS:1999dyv,Navon:1983xj,Carroll:1976hj,Clough:1974qt,BAUHOFF1986429,Mashnik:2000up,Ishibashi:1997gbe}. 
+        Once a specific rescattering type is determined, the resulting products are generated and considered final, with no further rescattering simulated.
+        The MFPs for pions and nucleons are adjustable via scaling factors ($\cpimfp$, $\pizmfp$, and $\nmfp$) as detailed in Table~\ref{tab:hALFG-para}. 
+        Due to isospin symmetry, both charged pions, $\pip$ and $\pim$, share the same scaling factor $\cpimfp$, while the $\piz$ MFP is computed from the charged pion values and adjusted separately by $\pizmfp$. 
+        A scaling factor greater than unity increases $\lambda$, which in turn reduces the number of propagation steps necessary for escape and diminishes the average probability of rescattering. 
+        Owing to the high precision of total hadron–nucleus cross section measurements~\cite{LADS:1999dyv,Navon:1983xj,Carroll:1976hj,Clough:1974qt,BAUHOFF1986429}, strict Gaussian priors with a standard deviation (\sigma) of 0.2 (matching the systematic uncertainties shown in Table~\ref{tab:hALFG-para}) are applied to the MFP scaling factors. 
+        Notably, varying $\pizmfp$ by $\pm2.5~\sigma$ significantly affects the \minpiz\ $\textrm{d}\sigma/\textrm{d}\pn$, as illustrated in Fig.~\ref{fig:minpiz-pn-pi0mfp}. 
+        In summary, a reduced MFP naturally increases rescattering, leading to fewer $\piz$s escaping the nucleus and a decreased cross section.
+        \begin{figure}[!htb]
+            \centering
+            \includegraphics[width=\sgfigwid\textwidth]{figures/tuning/minerva_pi0_dalphat_FSI_pi0mfp.eps}
+            \caption{Effect of varying $\pizmfp$ by $\pm2.5~\sigma$ compared to the MINERvA-$\pi^0$ measurement. Each band's width indicates the \genie prediction's statistical uncertainty from $10^5$ events.}
+            \label{fig:minpiz-pn-pi0mfp}
+        \end{figure}
+
+        \item \textbf{Rescattering Type Scaling Factors}: 
+        The relative probability for each rescattering type is adjusted by a scaling factor. 
+        Four rescattering types are available for both nucleons and pions: charge exchange (CEX), inelastic scattering (INEL), absorption (ABS), and pion production (PIPD). 
+        A detailed discussion of these tunable FSI types is provided in Sec.~\ref{sec:nuint-fsi}. 
+        The default energy-dependent probability distributions, derived from hadron data tuning~\cite{LADS:1999dyv,Navon:1983xj,Carroll:1976hj,Clough:1974qt,BAUHOFF1986429}, are modified by corresponding scaling factors (e.g., $\picex$ for the CEX of all pions) as listed in Table~\ref{tab:hALFG-para}. 
+        After scaling, the probabilities are renormalized so that they sum to one. 
+        For instance, if the initial absorption fraction, $f_\textrm{ABS}$, is 0.5 (with the remaining fraction, $f_\textrm{other}=f_\textrm{INEL}+f_\textrm{CEX}+f_\textrm{PIPD}$, also 0.5), scaling $f_\textrm{ABS}$ by $S_\textrm{ABS}=2$ yields
+        \begin{equation}
+            f^\prime_\textrm{ABS} = \frac{f_\textrm{ABS} \cdot S_\textrm{ABS}}{f_\textrm{ABS} \cdot S_\textrm{ABS}+f_\textrm{other}} = \frac{2}{3},
+        \end{equation}
+        illustrating that the effective increase in $f_\textrm{ABS}$ is less than the scaling factor alone due to normalization with the other FSI types.
+        Here, $f_\textrm{ABS}$ is effectively scaled by a factor of 1.3 rather than 2. 
+        Therefore, a relatively relaxed Gaussian prior with a $\sigma$ of 0.5 is imposed on the FSI fate scales, slightly exceeding the systematic uncertainties in Table~\ref{tab:hALFG-para}.
+        A side-effect due to this normalization is that changing one scaling factor inherently affects the others.
+        In practice, plotting the cross section by rescattering type clarifies the net changes.
+    \end{enumerate}
+    
+    Table~\ref{tab:hALFG-para} summarizes the tuneable parameters and their ranges imposed in tuning.
+    Nominal values and associated uncertainties for the hA model are taken from Table 17.3 in Ref.~\cite{Andreopoulos:2015wxa}. 
+    \begin{table}[!htb]
+        \centering
+        \begin{tabular}{ccccc}
+        \hline
+        \hline
+        \textrm{Parameter} & \textrm{Nominal} (\gZero)     & \textrm{Range In} \textrm{Tuning} & \allpar (\gT)  & \redpar (\gC) \\ 
+        \hline
+        \multicolumn{5}{c}{\sfcfg} \\
+        \hline
+        \textrm{$\srcfr$} & 0.12 & (0.0, 0.5)  & \tick & \tick\\
+        \textrm{$\nurmec$} & 0.01 & (0.0, 0.2) & \tick & \\
+        \hline
+        \multicolumn{5}{c}{hA} \\
+        \hline
+        \textrm{$\cpimfp$} & $1.0\pm0.2$ & (0.0, 3.0) & \tick & \\
+        \textrm{$\pizmfp$} & $1.0\pm0.2$ & (0.0, 3.0) & \tick & \tick\\
+        \textrm{$\nmfp$} & $1.0\pm0.2$ & (0.0, 3.0) & \tick &\\
+        \hline
+        \textrm{$\picex$} &  $1.0\pm0.5$ & (0.0, 3.0) & \tick & \tick \\
+        \textrm{$\ncex$} & $1.0\pm0.5$ & (0.0, 3.0)  & \tick & \tick\\
+        \hline
+        \textrm{$\piinel$} & $1.0\pm0.4$ & (0.0, 3.0) & \tick & \\
+        \textrm{$\ninel$} & $1.0\pm0.4$ & (0.0, 3.0)  & \tick &\\
+        \hline
+        \textrm{$\cpiabs$} & $1.0\pm0.2$ & (0.0, 3.0) & \tick &\\
+        \textrm{$\pizabs$} & $1.0\pm0.2$ & (0.0, 3.0) & \tick &\\
+        \textrm{$\nabs$} & $1.0\pm0.2$ & (0.0, 3.0)  & \tick & \tick\\
+        \hline
+        \textrm{$\pipiprod$} & $1.0\pm0.2$ & (0.0, 3.0) & \tick &\\
+        \textrm{$\npiprod$} & $1.0\pm0.2$ & (0.0, 3.0)  & \tick & \tick\\
+        \hline
+        \hline
+        \end{tabular}
+        \caption{\label{tab:hALFG-para}
+        Tuneable parameters and their ranges in the  \sfcfg\ (\textit{uppermost} group) and hA (\textit{lower} groups, uncertainties from Ref.~\cite{Andreopoulos:2015wxa}) models. Parameters to be tuned in the two sets are marked with ``\tick'''s. See later text for definitions of \gT and \gC.
+        }
+    \end{table}
+
+    \subsection{The data}
+    Not only the \minpiz data set, where the discrepancy lies, is used for tuning, but the other three data sets are also included, as it is important to maintain the good data-MC agreement for the existing data sets, while improving the agreement for the \minpiz data set.
+
+    The common requirement of the four measurements is the presence of one CC muon and at least one proton in the final state. 
+    The $0\pi$ data sets, i.e. \ttkzpi and \minzpi, require the absence of any pions, while \ttkpip\ requires exactly one $\pi^+$, and \minpiz\ requires at least one $\pi^0$.
+    The four data sets further differ slightly in the kinematic cuts, as summarized in Table~\ref{tab:data-sets-phase-space-cut}, and they also contain slightly different combinations of the TKI variables, as detailed in Table~\ref{tab:data-sets}.
+    \begin{table}[!htb]
+        \centering
+        \begin{tabular}{cc}
+        \hline
+        \hline
+        Variables & Cuts ($p$ in $\gevc$) \\
+        \hline
+        \multicolumn{2}{c}{\ttkzpi~\cite{T2K:2018rnz}} \\
+        \hline
+        $\vecpmu$    &  $0.25 < p_\mu $, $\cos\theta_\mu>-0.6$   \\
+        $\vecpp$     & $0.45< p_\text{p} <1.0$ , $\cos\theta_\text{p}>0.4$     \\
+        \hline
+        \multicolumn{2}{c}{\ttkpip~\cite{T2K:2021naz}} \\
+        \hline
+        $\vecpmu$    & $0.25 < p_\mu < 7$ , $\theta_\mu < 70^\degree$  \\
+        $\vecpp$     & $0.45 < p_\text{p} <1.2$  ,  $\theta_\text{p} < 70^\degree$   \\
+        $\vecppi$    & $0.15 < p_\pi <  1.2$, $\theta_\pi < 70^\degree$ \\
+        \hline
+        \multicolumn{2}{c}{\minzpi~\cite{MINERvA:2018hba, MINERvA:2019ope}} \\
+        \hline
+        $\vecpmu$     & $1.5< p_\mu < 10$ , $\theta_\mu < 20^\degree $  \\
+        $\vecpp$      & $0.45< p_\text{p} <1.2$  , $\theta_\text{p} < 70^\degree$    \\
+        \hline
+        \multicolumn{2}{c}{\minpiz~\cite{MINERvA:2020anu}} \\
+        \hline
+        $\vecpmu$   & $1.5< p_\mu < 20$ , $\theta_\mu < 25^\degree$  \\
+        $\vecpp$    & $0.45< p_\text{p} $                      \\
+        \hline
+        \hline
+        \end{tabular}
+        % \end{ruledtabular}
+        \caption{\label{tab:data-sets-phase-space-cut}
+        Kinematic cuts for the samples of the TKI measurements.
+        }
+    \end{table}
+
+    As not all TKI observables are linearly indepedent, such as $\dpt$ and $\pn$, and some might have strong dependence outside IS and FSI, such as $\dphit$ displaying a strong dependence on neutrino beam energy~\cite{Lu:2015tcr}, it might be redundant and ineffective to include all of them in the tuning.
+    In order to discern the most sensitive observables, a systematic evaluation of various combinations of observables was undertaken for the tuning process. 
+    A total of 26 combinations, as shown in Table~\ref{tab:fit-var-combo}, are examined. 
+    These combinations are formed according to the following patterns:
+    \begin{itemize}
+        \item \textbf{\texttt{Combi-}1 through 5} are cross-experiment selections of a single observable. 
+        For example, \texttt{Combi-}$3$ uses only $\dat$ from all four data sets. 
+        If a chosen observable is absent from a dataset, that dataset is excluded from the specific combination. 
+        For example, \ttkzpi is not used in \texttt{Combi-}1 due to the absence of $\pn$.
+        \item \textbf{\texttt{Combi-}6 through 9} incorporate all variables from a single measurement. For example, \texttt{Combi-}$9$ uses \minpiz only.
+        \item \textbf{\texttt{Combi-}10 to 13} uses two out of four measurements according to the experiment or topology. For example, \texttt{Combi-}$10$ uses only the two data sets from T2K, and \texttt{Combi-}$13$  only with pion production. 
+        \item \textbf{\texttt{Combi-}14 to 17} are cross-experiment selections of two observables. 
+        For example, \texttt{Combi-14} uses all $\dat$ and $\dptt$ measurements across all data sets, while \texttt{Combi-17} uses $\dat$ and $\dpt$.
+        \item \textbf{\texttt{Combi-}18 through 22} are cross-experiment selections of three observables. 
+        For example, \texttt{Combi-18} uses all available $\dat$, $\dptt$, and $\pn$, while \texttt{Combi-22} uses $\dpt$, $\dphit$, and $\pn$.
+        \item \textbf{\texttt{Combi-}23} uses all observables except $\dphit$ from all data sets.
+        \item \textbf{\texttt{Combi-}24} encompasses all variables, acting as the superset.
+        \item \textbf{\texttt{Combi-}25 and 26} are the same as \texttt{Combi-}$21$ and $23$, respectively, except that $\dpt$ in \minzpi is removed to avoid correlation with $\pn$ in the same data set.
+    \end{itemize}
+
+    \begin{table}[h]
+    \begin{tabular}{l|lllll|llll|llll|lp{1cm}ll|lllll|l|p{1cm}|lp{1cm}}
     \hline
     \hline
-    Variables & Cuts ($p$ in $\gevc$) \\
+    \texttt{Combi-}        & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 \par (\texttt{Best-}\par\allpar) & 16 & 17 & 18 & 19 & 20 & 21 & 22 & 23 & 24 \par (\texttt{Super-}\par\texttt{set}) & 25 & 26 \par (\texttt{Best-}\par\redpar)\\
+            \hline
+    \multicolumn{27}{c}{\ttkzpi} \\
     \hline
-    \multicolumn{2}{c}{\ttkzpi~\cite{T2K:2018rnz}} \\
+    $\dat$      &   &   & $\tick$ &   &   & $\tick$ &   &   &   & $\tick$  &    & $\tick$  &    & $\tick$  &    & $\tick$  & $\tick$  & $\tick$  & $\tick$  & $\tick$  & $\tick$  &    & $\tick$  & $\tick$  & $\tick$  & $\tick$  \\
+    $\dpt$   &   & $\tick$ &   &   &   & $\tick$ &   &   &   & $\tick$  &    & $\tick$  &    &    & $\tick$  &    & $\tick$  &    & $\tick$  &    & $\tick$  & $\tick$  & $\tick$  & $\tick$  & $\tick$  & $\tick$  \\
+    $\dphit$ &   &   &   & $\tick$ &   & $\tick$ &   &   &   & $\tick$  &    & $\tick$  &    &    &    &    &    &    &    & $\tick$  &    & $\tick$  &    & $\tick$  &    &    \\
     \hline
-    $\vecpmu$    &  $0.25 < p_\mu $, $\cos\theta_\mu>-0.6$   \\
-    $\vecpp$     & $0.45< p_\text{p} <1.0$ , $\cos\theta_\text{p}>0.4$     \\
+    \multicolumn{27}{c}{\ttkpip} \\
     \hline
-    \multicolumn{2}{c}{\ttkpip~\cite{T2K:2021naz}} \\
+    $\dat$      &   &   & $\tick$ &   &   &   & $\tick$ &   &   & $\tick$  &    &    & $\tick$  & $\tick$  &    & $\tick$  & $\tick$  & $\tick$  & $\tick$  & $\tick$  & $\tick$  &    & $\tick$  & $\tick$  & $\tick$  & $\tick$  \\
+    $\pn$       & $\tick$ &   &   &   &   &   & $\tick$ &   &   & $\tick$  &    &    & $\tick$  &    & $\tick$  & $\tick$  &    & $\tick$  &    &    & $\tick$  & $\tick$  & $\tick$  & $\tick$  & $\tick$  & $\tick$  \\
+    $\dptt$     &   &   &   &   & $\tick$ &   & $\tick$ &   &   & $\tick$  &    &    & $\tick$  & $\tick$  &    &    &    & $\tick$  & $\tick$  & $\tick$  &    &    & $\tick$  & $\tick$  &    & $\tick$  \\
     \hline
-    $\vecpmu$    & $0.25 < p_\mu < 7$ , $\theta_\mu < 70^\degree$  \\
-    $\vecpp$     & $0.45 < p_\text{p} <1.2$  ,  $\theta_\text{p} < 70^\degree$   \\
-    $\vecppi$    & $0.15 < p_\pi <  1.2$, $\theta_\pi < 70^\degree$ \\
+    \multicolumn{27}{c}{\minzpi} \\
     \hline
-    \multicolumn{2}{c}{\minzpi~\cite{MINERvA:2018hba, MINERvA:2019ope}} \\
+    $\dat$      &   &   & $\tick$ &   &   &   &   & $\tick$ &   &    & $\tick$  & $\tick$  &    & $\tick$  &    & $\tick$  & $\tick$  & $\tick$  & $\tick$  & $\tick$  & $\tick$  &    & $\tick$  & $\tick$  & $\tick$  & $\tick$  \\
+    $\pn$       & $\tick$ &   &   &   &   &   &   & $\tick$ &   &    & $\tick$  & $\tick$  &    &    & $\tick$  & $\tick$  &    & $\tick$  &    &    & $\tick$  & $\tick$  & $\tick$  & $\tick$  & $\tick$  & $\tick$  \\
+    $\dpt$      &   & $\tick$ &   &   &   &   &   & $\tick$ &   &    & $\tick$  & $\tick$  &    &    & $\tick$  &    & $\tick$  &    & $\tick$  &    & $\tick$  & $\tick$  & $\tick$  & $\tick$  &    &    \\
+    $\dphit$    &   &   &   & $\tick$ &   &   &   & $\tick$ &   &    & $\tick$  & $\tick$  &    &    &    &    &    &    &    & $\tick$  &    & $\tick$  &    & $\tick$  &    &    \\
     \hline
-    $\vecpmu$     & $1.5< p_\mu < 10$ , $\theta_\mu < 20^\degree $  \\
-    $\vecpp$      & $0.45< p_\text{p} <1.2$  , $\theta_\text{p} < 70^\degree$    \\
+    \multicolumn{27}{c}{\minpiz} \\
     \hline
-    \multicolumn{2}{c}{\minpiz~\cite{MINERvA:2020anu}} \\
+    $\dat$      &   &   & $\tick$ &   &   &   &   &   & $\tick$ &    & $\tick$  &    & $\tick$  & $\tick$  &    & $\tick$  & $\tick$  & $\tick$  & $\tick$  & $\tick$  & $\tick$  &    & $\tick$  & $\tick$  & $\tick$  & $\tick$  \\
+    $\pn$       & $\tick$ &   &   &   &   &   &   &   & $\tick$ &    & $\tick$  &    & $\tick$  &    & $\tick$  & $\tick$  &    & $\tick$  &    &    & $\tick$  & $\tick$  & $\tick$  & $\tick$  & $\tick$  & $\tick$  \\
+    $\dptt$     &   &   &   &   & $\tick$ &   &   &   & $\tick$ &    & $\tick$  &    & $\tick$  & $\tick$  &    &    &    & $\tick$  & $\tick$  & $\tick$  &    &    & $\tick$  & $\tick$  &    & $\tick$ \\
     \hline
-    $\vecpmu$   & $1.5< p_\mu < 20$ , $\theta_\mu < 25^\degree$  \\
-    $\vecpp$    & $0.45< p_\text{p} $                      \\
-    \hline
-    \hline
+    \hline    
     \end{tabular}
-    % \end{ruledtabular}
-    \caption{\label{tab:data-sets-phase-space-cut}
-    Kinematic cuts for the samples of the TKI measurements.
+    \caption{\label{tab:fit-var-combo}
+    Specifications of observable combinations within the tuning superset in Table~\ref{tab:data-sets}. \texttt{Combi-15} is \texttt{Best-}\allpar, \texttt{Combi-24} is \texttt{Superset}, and \texttt{Combi-26} is \texttt{Best-}\redpar. 
     }
-\end{table}
+    \end{table}
 
-\section{\genie Model Selection and Configuration}\label{sec:genie}
-\genie uses formatted strings to uniquely define configurations, which are usually called tunes. 
-Regardless of the name, they can refer to configurations either before or after an actual tuning procedure. 
-
-Free nucleon tuning effort in Ref.~\cite{GENIE:2021zuu} has produced a tune, $\geighteen$, with better description of bubble chamber data. 
-This is the starting point of the model we want to tune. 
-The first effect to apply to this model is adding the proper initial state. 
-Among the available \genie initial state models, the best choice is the spectral-function-like Correlated Fermi Gas model (\sfcfg)~\cite{sfcfg-talk,sfcfg-GitHubCommit,GENIE:2021npt}. 
-\sfcfg\ is essentially based on the previously implemented Local Fermi Gas (LFG) model in \genie with a larger number of adjustable degrees of freedom for tuning and improved physics. 
-It differs from the previous implementation of LFG in two aspects. 
-``Spectral-function-like'' refers to the implementation of removal energy as a varying function rather than a fixed value, while ``Correlated'' highlights the incorporation of the high-momentum tail above the Fermi momentum due to nucleon-nucleon short-range correlations (SRC), as evidenced by electron-scattering data~\cite{CLAS:2005ola}.
-These two improvements are considered and modeled in the Valencia Model in Ref.~\cite{Nieves:2004wx}.
-Hence, \sfcfg\ resembles closer the initial state of the Valencia model than previous LFG implementations.
-More details on the \sfcfg\ can be found in Ref.~\cite{GENIE:2021npt}. 
-Note that the original Valencia Model in Ref.~\cite{Nieves:2004wx} has its own method of modeling FSI. 
-However, since FSI is factorized from other models in implementation in \genie, this method is not used.
-Instead, GENIE develops the INTRANUKE hA FSI model (hA for short) for its simplicity and interpretability, which is the FSI candidate for the model to be tuned in this work.
-
-Further improvements to the configuration to be tuned include: 1) using $z$-expansion axial-vector form factor~\cite{Hill:2010yb} rather than the dipole form factor of the Valencia model in QE processes~\cite{Nieves:2004wx}; and 2) replacing the Valencia model~\cite{Nieves:2011pp} in 2p2h processes with the SuSAv2 Model~\cite{Gonzalez-Jimenez:2014eqa} since it covers larger region of the $q^0$, $q^3$ phase space.
-
-%\sout{Given its simplicity and interpretability, the INTRANUKE hA FSI model (hA for short) emerges as the FSI candidate for the model to be tuned.}
-The complete list of the model components are given in Table ~\ref{tab:default-gen-list}. 
-In the \genie code, this configuration is identified as \newtune\ and it is currently the default \genie configuration for a number of LAr based experiments. 
-As \newtune\ is widely used in the paper, we will call it \gZero\ for simplicity. 
-
-Comparing the \genie predictions for \gZero\ against TKI datasets, Figs.~\ref{fig:g24-0-dat-reac} and~\ref{fig:g24-0-pn-reac},  shows that the model fails to accurately describe the MINERvA $\pi^0$ TKI measurement~\cite{MINERvA:2020anu}. 
-
-\begin{table}[!htb]
-    \centering
-    \begin{tabular}{p{4cm}c}
-    \hline
-    \hline
-    \textrm{Simulation component} & \textrm{Model} \\
-    \hline
-    \textrm{Nuclear state}              & \sfcfg~\cite{sfcfg-talk,sfcfg-GitHubCommit,GENIE:2021npt} \\ 
-    \textrm{QE}               & Valencia~\cite{Nieves:2004wx} \\
-    \textrm{2p2h}               & SuSAv2~\cite{Gonzalez-Jimenez:2014eqa} \\
-    \textrm{QE $\Delta S=1$}           & Pais~\cite{Pais:1971er} \\
-    \textrm{QE $\Delta C=1$}                  & Kovalenko~\cite{Kovalenko:1990zi} \\
-    \textrm{Resonance (RES)}                        & Berger-Sehgal~\cite{Berger:2007rq}\\
-    Shallow/Deep inelastic \par scattering (SIS/DIS)                    & Bodek-Yang~\cite{Bodek:2002vp}\\
-    \textrm{DIS $\Delta C=1$}           & Aivazis-Tung-Olness~\cite{Aivazis:1991fy}\\
-    \textrm{Coherent $\pi$ production}  & Berger-Sehgal~\cite{Berger:2008xs}\\
-    \hline
-    \textrm{Hadronization}              & AGKY~\cite{Yang:2009zx}\\
-    \textrm{FSI}                        & INTRANUKE hA~\cite{Andreopoulos:2015wxa}\\
-    \hline
-    \hline
-    \end{tabular}
-    \caption{\label{tab:default-gen-list} Model components of \gZero\. Processes with non-trivial $\Delta S$ and $\Delta C$ are those with strangeness and charm production, respectively.}
-\end{table}
-
-
-\section{\label{sec:Tuning}Tuning initial-state and FSI models on TKI data}
-
-This study adopts the tuning procedure outlined in Ref.~\cite{GENIE:2022qrc}, utilizing $N_{\textrm{par}}$ model parameters. 
-The objective is to identify the best fit---that is, the optimal set of parameter values---within the parameter space that minimizes the $\chi^2$ between model predictions and data. 
-Given the high dimensionality of the parameter space, conducting a brute-force, point-by-point scan on a grid is infeasible. 
-Therefore, a sufficient number of points is randomly sampled. 
-Each point is used to run a full simulation. 
-The simulation output for each data observable bin is then parameterized using Professor~\cite{Buckley:2009bj} with a polynomial of the model parameters of a chosen order, $N_{\textrm{ord}}$. 
-The minimal number of points ($N_{\textrm{s}}$) required for tuning $N_{\textrm{par}}$ parameters with an order $N_{\textrm{ord}}$ polynomial is determined by the combination formula,
-\begin{equation}
-    N_{\textrm{s}} = \binom{N_{\textrm{par}}+N_{\textrm{ord}}}{N_{\textrm{ord}}}.
-\end{equation}
-Given that $N_\textrm{s}$ increases factorially, caution is essential when augmenting the number of parameters or the polynomial degree. 
-Given that our tuning incorporates all $2$ \sfcfg\ and $12$ hA parameters (see Sec.~\ref{sec:tuning-para-choice}), a degree-$4$ parameterization  necessitates over 6,000 generations. 
-Hence, only up to order $4$ polynomials are explored, and it has shown to reproduce the MC predictions well, as shown in Fig.~\ref{fig:residual}. 
-
-\begin{figure}[!htb] 	
-    \centering 		
-    \includegraphics[width=\sgfigwid\textwidth]{figures/tuning/residual.eps}
-    \caption{\label{fig:residual} Fractional difference for the bin-by-bin cross sections between MC truth and the parameterized approximation with order-4 polynomials,  both in the Norm-Shape (NS)~\cite{DAgostini:1993arp,Hanson:2005mrg} space with \allpar. See Table~\ref{tab:hALFG-para} for the definition of \allpar. The residual has a mean of $0.003$ and a standard deviation of $0.073$.} 
-\end{figure}
-
-Furthermore, to circumvent Peelle's Pertinent Puzzle~\cite{PPP_FNL,Chakrani:2023htw}, the Norm-Shape (NS) transformation prescription~\cite{DAgostini:1993arp,Hanson:2005mrg} is applied. 
-The extremal point is then found from a minimization of $\chi^2$ between this NS-transformed polynomial approximation and NS-transformed data. 
-In minimization, priors, usually based on systematic uncertainty, can be imposed on each parameter to penalize it from getting too far from its default value. 
-The following subsections elaborate on the specific choice of measurement observables and model parameters in this work.
-
-\subsection{\label{sec:tuning-obs-choice} Data points}
-The observables for the reported differential cross sections across the four TKI measurements---\ttkzpi, \ttkpip, \minzpi, and \minpiz---are detailed in Table~\ref{tab:data-sets}. 
-To identify the most sensitive variables, various combinations were evaluated  for tuning purposes. 
-A total of 26 combinations were assessed,  with the superset comprising $\dat$, $\dpt$, $\dphit$, $\pn$, and $\dptt$ (see Table~\ref{tab:fit-var-combo} in Appendix~\ref{sec:appcombi} for all combinations). 
-Each combination was evaluated such that non-selected variables---including proton momentum and angle ($p_\text{p}$ and $\theta_\text{p}$)~\cite{MINERvA:2018hba}, as well as $\dptx$ and $\dpty$~\cite{MINERvA:2019ope} in \minzpi---were used solely for validation; the model is expected to accurately predict these variables post-tuning. 
-When constructing the combinations, it was observed that $\dphit$ is strongly dependent  on neutrino beam energy~\cite{Lu:2015tcr}, which suppresses its sensitivity to nuclear effects. 
-Additionally, correlations exist between various observables, notably between $\dpt$ and $\pn$. 
-Therefore, determining the optimal combination is not straightforward; this study employs a criterion based on  the $\chi^2$ with the complete (tuned plus validation) observable set (Fig.~\ref{fig:allchi}).
+    For each combination, variables omitted from tuning—including proton momentum and angle ($p_\text{p}$ and $\theta_\text{p}$)~\cite{MINERvA:2018hba}, as well as $\dptx$ and $\dpty$~\cite{MINERvA:2019ope} in \minzpi—were reserved solely for validation; the expectation is that the model will accurately reproduce these observables following tuning. 
+    To identify the optimal combination, this study employs a criterion based on the $\chi^2$ calculated over the complete (tuned plus validation) observable set.
+    Figure~\ref{fig:allchi} shows the change in $\chi^2$ for the complete observable set as for each tuning combination, where the two sets of model parameters, \allpar and \redpar, are compared. 
+    The respective minima happen at \texttt{Combi-15} and 26. 
 
 
 \begin{table}[!htb]
@@ -231,109 +364,97 @@ Therefore, determining the optimal combination is not straightforward; this stud
     \caption{\label{fig:allchi} Change of $\chi^2$ calculated for the full (i.e., tuned plus validation) observable set as a function of the tuned combination (cf. Table~\ref{tab:fit-var-combo} in Appendix~\ref{sec:appcombi}). The two model parameter sets (\allpar and \redpar, see Table~\ref{tab:hALFG-para} for definitions) are compared and it can be seen that the respective minima happen at \texttt{Combi-13} and 26. }   
 \end{figure}
 
-\subsection{\label{sec:tuning-para-choice} Model parameters}
-As outlined in Sec.~\ref{sec:genie}, we focus exclusively on the currently tunable parameters within the \sfcfg\ and hA models. 
-Therefore, $14$ parameters (collectively referred to as the \allpar\ set) are utilized for tuning, as detailed in Table~\ref{tab:hALFG-para}. 
-Nominal values and associated uncertainties for the hA model are taken from Table 17.3 in Ref.~\cite{Andreopoulos:2015wxa}. 
+%========= old ===================
+The GENIE collaboration has demonstrated successful tuning of the various components of the neutrino-nucleus interaction model. 
+For instance, 
 
-\begin{table}[!htb]
-    \centering
-    \begin{tabular}{ccccc}
-    \hline
-    \hline
-    \textrm{Parameter} & \textrm{Nominal} (\gZero)     & \textrm{Range In} \textrm{Tuning} & \allpar (\gT)  & \redpar (\gC) \\ 
-    \hline
-    \multicolumn{5}{c}{\sfcfg} \\
-    \hline
-    \textrm{$\srcfr$} & 0.12 & (0.0, 0.5)  & \tick & \tick\\
-    \textrm{$\nurmec$} & 0.01 & (0.0, 0.2) & \tick & \\
-    \hline
-    \multicolumn{5}{c}{hA} \\
-    \hline
-    \textrm{$\cpimfp$} & $1.0\pm0.2$ & (0.0, 3.0) & \tick & \\
-    \textrm{$\pizmfp$} & $1.0\pm0.2$ & (0.0, 3.0) & \tick & \tick\\
-    \textrm{$\nmfp$} & $1.0\pm0.2$ & (0.0, 3.0) & \tick &\\
-    \hline
-    \textrm{$\picex$} &  $1.0\pm0.5$ & (0.0, 3.0) & \tick & \tick \\
-    \textrm{$\ncex$} & $1.0\pm0.5$ & (0.0, 3.0)  & \tick & \tick\\
-    \hline
-    \textrm{$\piinel$} & $1.0\pm0.4$ & (0.0, 3.0) & \tick & \\
-    \textrm{$\ninel$} & $1.0\pm0.4$ & (0.0, 3.0)  & \tick &\\
-    \hline
-    \textrm{$\cpiabs$} & $1.0\pm0.2$ & (0.0, 3.0) & \tick &\\
-    \textrm{$\pizabs$} & $1.0\pm0.2$ & (0.0, 3.0) & \tick &\\
-    \textrm{$\nabs$} & $1.0\pm0.2$ & (0.0, 3.0)  & \tick & \tick\\
-    \hline
-    \textrm{$\pipiprod$} & $1.0\pm0.2$ & (0.0, 3.0) & \tick &\\
-    \textrm{$\npiprod$} & $1.0\pm0.2$ & (0.0, 3.0)  & \tick & \tick\\
-    \hline
-    \hline
-    \end{tabular}
-    \caption{\label{tab:hALFG-para}
-    Tuneable parameters and their ranges in the  \sfcfg\ (\textit{uppermost} group) and hA (\textit{lower} groups, uncertainties from Ref.~\cite{Andreopoulos:2015wxa}) models. Parameters to be tuned in the two sets are marked with ``\tick'''s. See later text for definitions of \gT and \gC.
-    }
-\end{table}
+The large data samples and superb imaging capabilities of modern neutrino experiments offer us a detailed new look at neutrino interaction physics. 
+Recently, the GENIE~\cite{Andreopoulos:2009rq, GENIE:2021npt} Collaboration has made substantial progress towards a global tuning using neutrino, charged lepton, and hadron scattering data, in an attempt to integrate new experimental constraints with state-of-the-art theories and construct robust and comprehensive simulations of neutrino interactions with matter. 
+Cross-experiment and cross-topology analyses are challenging tasks as each measurement features its unique selection criteria and various other aspects, such as the neutrino flux. 
+\genie has built an advanced tuning framework that enables the validation and tuning of comprehensive interaction models using an extensive curated database of measurements of neutrino, charged lepton, and hadron scattering off nucleus and nuclei. 
+So far, the non-resonant backgrounds~\cite{GENIE:2021zuu}, hadronization~\cite{GENIE:2021wox}, and the quasielastic (QE) and 2-particle-2-hole (2p2h) components~\cite{GENIE:2022qrc} of the neutrino-nucleus interaction have been tuned with $\nu_\mu$ and $\bar{\nu}_\mu$ charged-current (CC) pionless (0$\pi$) data from MiniBooNE, T2K, and MINERvA. 
+A partial tune was performed for each experiment, highlighting the neutrino energy dependence on the QE and 2p2h tuned cross sections. 
+Even though post-tune predictions enhanced the data description for each experiment, the added degrees of freedom were not sufficient to fully describe all CC0$\pi$ data and exhibited tensions with some proton observables~\cite{GENIE:2022qrc}. 
+More exclusive measurements result in additional model constraints. 
+In addition, observables that are sensitive to targeted aspects of the complex dynamics of neutrino interactions are invaluable for model tuning. 
+The transverse kinematic imbalance (TKI)~\cite{Lu:2015hea, Lu:2015tcr}, a final-state correlation between the CC lepton and the hadronic system, is a good example since it is sensitive to the initial-state nuclear environment and hadronic FSI. 
+Our next step is to incorporate TKI data from experiments where various exclusive topologies at different energies are considered. 
+This marks the first combined tuning on TKI data with and without pions in the final states and serves as the starting point of a more comprehensive tuning effort in the energy region most relevant for future accelerator-based neutrino experiments.  
 
-In our analysis of the \sfcfg\ model, the two most relevant parameters are $\srcfr$, representing the fraction of the high-momentum tail from SRC, notably above the Fermi surface, and $\nurmec$, marking the commencement of the nuclear removal energy distribution for carbon. 
-A larger $\srcfr$ indicates the presence of more energetic initial nucleons, while an increased $\nurmec$ implies that greater energy is necessary to liberate a nucleon from the carbon nucleus, so the product particles will possess lower energy. 
-Given the novelty and limited constraints of the spectral-function-like implementation, this study employs relatively relaxed priors for $\srcfr$ and $\nurmec$, at 0.12$\pm$0.12 and 0.01$\pm$0.005~\gev, respectively.
+This chapter is structured as follows: 
+Sec.~\ref{sec:genie} reviews the \genie models, and Sec.~\ref{sec:Tuning} details the tuning considerations and procedures. 
+Results are summarized in Sec.~\ref{sec:results}, highlighting how the data-MC discrepancy in the \minpiz\ TKI measurement~\cite{MINERvA:2020anu} is resolved while maintaining good data-MC agreement elsewhere. 
+The last section summarises the chapter and outlines future work.
 
-\genie users employ the hA model~\cite{Andreopoulos:2015wxa} for the majority of neutrino analysis, owing to its straightforward reweighting capability. 
-Unlike cascade models such as the hN model~\cite{Andreopoulos:2015wxa}, this model determines the FSI type for each hadron exactly once, without considering further propagation of rescattered hadrons within the nucleus. 
-Understanding each rescattering type is crucial for interpreting tuning results.
-The hA model parameters are explained as follows.
+The definitions of the kinematic cuts for these samples are summarized in Table~\ref{tab:data-sets-phase-space-cut}. 
 
-\begin{enumerate}
-    \item 
-    The model evaluates a mean free path (MFP), $\lambda$, which varies with the hadron's energy, $E$, and its radial distance, $r$, from the nucleus center,  as follows:
-    \begin{equation}
-        \lambda(E,r) = \frac{1}{\sigma_\textrm{hN,tot}(E)\rho(r)},
-    \end{equation}
-    where $\sigma_\textrm{hN,tot}$ is the total hadron-nucleon cross section and $\rho$ is the number density of the nucleons inside the nucleus. 
-    Once a hadron is generated inside the nucleus, it travels a distance $\lambda$ before a probabilistic determination of rescattering occurs, inversely related to  $\lambda$. 
-    If no rescattering happens, the hadron will be propagated for another $\lambda$ and the dice will be thrown again. 
-    The cycle repeats until a rescattering happens or the hadron is propagated far enough to escape the nucleus without any interactions. 
-    If a rescattering happens, the type of rescattering is evaluated according to their cross section. 
-    The relative probabilities of each type are extracted from stored hadron scattering data~\cite{LADS:1999dyv,Navon:1983xj,Carroll:1976hj,Clough:1974qt,BAUHOFF1986429,Mashnik:2000up,Ishibashi:1997gbe}. 
-    After a specific rescattering type is chosen, the rescattered product will be generated. 
-    These rescattered products will not undergo further rescattering and will be considered out of the nucleus as final state particles.  
-    The MFP values for pions and nucleons can be modified using scaling factors ($\cpimfp$, $\pizmfp$,  and $\nmfp$) detailed in Table~\ref{tab:hALFG-para}. 
-    Both changed pions, $\pip$ and $\pim$, are scaled by the same factor, $\cpimfp$, due to isospin symmetry.
-    The $\lambda$ for $\piz$ is calculated from those of charged pions based on isospin symmetry as well and can be adjusted separately by $\pizmfp$. 
-    If the factor is larger than $1$, $\lambda$ will increase and hence the total number of steps required for the hadron to escape the nucleus reduces, thereby reducing the average probability of rescattering. 
-    Given the high precision with which total hadron-nucleus cross sections are determined~\cite{LADS:1999dyv,Navon:1983xj,Carroll:1976hj,Clough:1974qt,BAUHOFF1986429}, strict Gaussian priors (error---$\sigma$, not to be confused with the various cross sections---of $0.2$, same as the systematic uncertainties shown in 
-    Table~\ref{tab:hALFG-para}) are applied to the MFP scaling factors. 
-    Varying $\pizmfp$ by $\pm2.5~\sigma$ significantly affects the \minpiz\ $\textrm{d}\sigma/\textrm{d}\pn$, as depicted in Fig.~\ref{fig:minpiz-pn-pi0mfp}. 
-    Decreasing MFP naturally leads to increased rescattering. 
-    Hence, fewer $\piz$s can escape the nucleus and fewer events will have $\piz$ in the final states, thereby reducing the cross section. 
 
-    \begin{figure}[!htb]
-        \centering
-        \includegraphics[width=\sgfigwid\textwidth]{figures/tuning/minerva_pi0_dalphat_FSI_pi0mfp.eps}
-        \caption{Effect of varying $\pizmfp$ by $\pm2.5~\sigma$ compared to the MINERvA-$\pi^0$ measurement. Each band's width indicates the \genie prediction's statistical uncertainty from $10^5$ events.}
-        \label{fig:minpiz-pn-pi0mfp}
-    \end{figure}
 
-    \item 
-    The relative probability of each rescattering type can be adjusted by a scale factor. 
-    There are four rescattering types for both nucleons and pions available for tuning. 
-    They are charge exchange (CEX), inelastic scattering (INEL), absorption (ABS), and pion production (PIPD). 
-    A detailed elaboration of the four tunable FSI types has been given in Sec.~\ref{sec:nuint-fsi}. 
-    The default energy-dependent probability distributions come from hadron data tuning~\cite{LADS:1999dyv,Navon:1983xj,Carroll:1976hj,Clough:1974qt,BAUHOFF1986429} and can be adjusted by respective scaling factors, like $\picex$ for CEX of all pions, listed in Table~\ref{tab:hALFG-para}. 
-    The relative probabilities of all four rescattering types will be normalized such that they sum up to one. 
-    Scaling factors directly multiply the probability of each type, with new relative probabilities subsequently renormalized. 
-    More specifically, suppose the initial fraction of absorption, $f_\textrm{ABS}$, is $0.5$, which means that the sum of the other fractions is  $f_\textrm{other}=f_\textrm{INEL}+f_\textrm{CEX}+f_\textrm{PIPD}=1-0.5=0.5$. 
-    If $f_\textrm{ABS}$ is scaled up with $S_\textrm{ABS}=2$, the new absorption fraction is 
-    \begin{equation}
-        f^\prime_\textrm{ABS} = \frac{f_\textrm{ABS}*S_\textrm{ABS}}{f_\textrm{ABS}*S_\textrm{ABS}+f_\textrm{oth}} = 2/3,
-    \end{equation}
-    which is not equal to simply multiplying $f_\textrm{ABS}$ by $S_\textrm{ABS}$ due to the presence of the other rescattering types. 
-    Hence, it is unavoidable that a change of the scaling factor for one type would affect others. 
-    Nonetheless, when the cross section is plotted with a breakdown according to rescattering type, the interpretation will be clear regarding the increase or decrease of a particular FSI type. 
-    This correlation implies that the scaling parameters' effective impact on FSI fate is often less pronounced than what the raw numbers suggest. 
-    As illustrated in the above example, $f_\textrm{ABS}$ is only scaled up by $ f^\prime_\textrm{ABS}/f_\textrm{ABS}=4/3=1.3$ instead of $S_\textrm{ABS}=2$. 
-    Hence, a relatively more relaxed Gaussian prior, with a $\sigma$ of $0.5$, is placed on the FSI fate scales, slightly larger than the systematic uncertainties shown in Table~\ref{tab:hALFG-para}. 
-\end{enumerate}
+\section{\genie Model Selection and Configuration}\label{sec:genie}
+% \genie uses formatted strings to uniquely define configurations, which are usually called tunes. 
+% Regardless of the name, they can refer to configurations either before or after an actual tuning procedure. 
+
+% Free nucleon tuning effort in Ref.~\cite{GENIE:2021zuu} has produced a tune, $\geighteen$, with better description of bubble chamber data. 
+% This is the starting point of the model we want to tune. 
+% The first effect to apply to this model is adding the proper initial state. 
+% Among the available \genie initial state models, the best choice is the spectral-function-like Correlated Fermi Gas model (\sfcfg)~\cite{sfcfg-talk,sfcfg-GitHubCommit,GENIE:2021npt}. 
+% \sfcfg\ is essentially based on the previously implemented Local Fermi Gas (LFG) model in \genie with a larger number of adjustable degrees of freedom for tuning and improved physics. 
+% It differs from the previous implementation of LFG in two aspects. 
+% ``Spectral-function-like'' refers to the implementation of removal energy as a varying function rather than a fixed value, while ``Correlated'' highlights the incorporation of the high-momentum tail above the Fermi momentum due to nucleon-nucleon short-range correlations (SRC), as evidenced by electron-scattering data~\cite{CLAS:2005ola}.
+% These two improvements are considered and modeled in the Valencia Model in Ref.~\cite{Nieves:2004wx}.
+% Hence, \sfcfg\ resembles closer the initial state of the Valencia model than previous LFG implementations.
+% More details on the \sfcfg\ can be found in Ref.~\cite{GENIE:2021npt}. 
+% Note that the original Valencia Model in Ref.~\cite{Nieves:2004wx} has its own method of modeling FSI. 
+% However, since FSI is factorized from other models in implementation in \genie, this method is not used.
+% Instead, GENIE develops the INTRANUKE hA FSI model (hA for short) for its simplicity and interpretability, which is the FSI candidate for the model to be tuned in this work.
+
+% Further improvements to the configuration to be tuned include: 1) using $z$-expansion axial-vector form factor~\cite{Hill:2010yb} rather than the dipole form factor of the Valencia model in QE processes~\cite{Nieves:2004wx}; and 2) replacing the Valencia model~\cite{Nieves:2011pp} in 2p2h processes with the SuSAv2 Model~\cite{Gonzalez-Jimenez:2014eqa} since it covers larger region of the $q^0$, $q^3$ phase space.
+
+%\sout{Given its simplicity and interpretability, the INTRANUKE hA FSI model (hA for short) emerges as the FSI candidate for the model to be tuned.}
+% The complete list of the model components are given in Table ~\ref{tab:default-gen-list}. 
+% In the \genie code, this configuration is identified as \newtune\ and it is currently the default \genie configuration for a number of LAr based experiments. 
+% As \newtune\ is widely used in the paper, we will call it \gZero\ for simplicity. 
+
+% Comparing the \genie predictions for \gZero\ against TKI datasets, Figs.~\ref{fig:g24-0-dat-reac} and~\ref{fig:g24-0-pn-reac},  shows that the model fails to accurately describe the MINERvA $\pi^0$ TKI measurement~\cite{MINERvA:2020anu}. 
+
+% \begin{table}[!htb]
+%     \centering
+%     \begin{tabular}{p{4cm}c}
+%     \hline
+%     \hline
+%     \textrm{Simulation component} & \textrm{Model} \\
+%     \hline
+%     \textrm{Nuclear state}              & \sfcfg~\cite{sfcfg-talk,sfcfg-GitHubCommit,GENIE:2021npt} \\ 
+%     \textrm{QE}               & Valencia~\cite{Nieves:2004wx} \\
+%     \textrm{2p2h}               & SuSAv2~\cite{Gonzalez-Jimenez:2014eqa} \\
+%     \textrm{QE $\Delta S=1$}           & Pais~\cite{Pais:1971er} \\
+%     \textrm{QE $\Delta C=1$}                  & Kovalenko~\cite{Kovalenko:1990zi} \\
+%     \textrm{Resonance (RES)}                        & Berger-Sehgal~\cite{Berger:2007rq}\\
+%     Shallow/Deep inelastic \par scattering (SIS/DIS)                    & Bodek-Yang~\cite{Bodek:2002vp}\\
+%     \textrm{DIS $\Delta C=1$}           & Aivazis-Tung-Olness~\cite{Aivazis:1991fy}\\
+%     \textrm{Coherent $\pi$ production}  & Berger-Sehgal~\cite{Berger:2008xs}\\
+%     \hline
+%     \textrm{Hadronization}              & AGKY~\cite{Yang:2009zx}\\
+%     \textrm{FSI}                        & INTRANUKE hA~\cite{Andreopoulos:2015wxa}\\
+%     \hline
+%     \hline
+%     \end{tabular}
+%     \caption{\label{tab:default-gen-list} Model components of \gZero\. Processes with non-trivial $\Delta S$ and $\Delta C$ are those with strangeness and charm production, respectively.}
+% \end{table}
+
+
+
+
+\subsection{\label{sec:tuning-obs-choice} Data points}
+% The observables for the reported differential cross sections across the four TKI measurements---\ttkzpi, \ttkpip, \minzpi, and \minpiz---are detailed in Table~\ref{tab:data-sets}. 
+% To identify the most sensitive variables, various combinations were evaluated for tuning purposes. 
+% A total of 26 combinations were assessed,  with the superset comprising $\dat$, $\dpt$, $\dphit$, $\pn$, and $\dptt$ (see Table~\ref{tab:fit-var-combo} in Appendix~\ref{sec:appcombi} for all combinations). 
+% Each combination was evaluated such that non-selected variables---including proton momentum and angle ($p_\text{p}$ and $\theta_\text{p}$)~\cite{MINERvA:2018hba}, as well as $\dptx$ and $\dpty$~\cite{MINERvA:2019ope} in \minzpi---were used solely for validation; the model is expected to accurately predict these variables post-tuning. 
+% When constructing the combinations, it was observed that $\dphit$ is strongly dependent  on neutrino beam energy~\cite{Lu:2015tcr}, which suppresses its sensitivity to nuclear effects. 
+% Additionally, correlations exist between various observables, notably between $\dpt$ and $\pn$. 
+% Therefore, determining the optimal combination is not straightforward; this study employs a criterion based on  the $\chi^2$ with the complete (tuned plus validation) observable set (Fig.~\ref{fig:allchi}).
+
+
 
 
 \section{\label{sec:results}The first TKI-driven \genie tunes}
