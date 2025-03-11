@@ -605,6 +605,12 @@
 \newcommand{\gC}{\texttt{G24-c}\xspace}
 \newcommand{\gT}{\texttt{G24-t}\xspace}
 
+\newcommand{\geoa}{\texttt{G18-0a}~}
+\newcommand{\getwoa}{\texttt{G18-02a}~}
+\newcommand{\geta}{\texttt{G18-10a}~}
+\newcommand{\getb}{\texttt{G18-10b}~}
+
+
 % ------ Latex utils --------
 % \newcommand{\blue}[1]{\textcolor{blue}{#1}}
 \newcommand{\code}[1]{\texttt{#1}}
