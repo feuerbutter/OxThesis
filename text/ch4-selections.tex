@@ -46,7 +46,7 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
    \label{sec:sel-esc-imp}
 	As the ESC selection is based on $\dedx$ at the end of the proton track, accurate reconstruction of $\dedx$ must first be obtained.
 	To investigate the proper way of estimating $\dedx$, I have simulated multiple particle gun (PGUN) samples with protons traveling in different directions in the SFGD.
-	More specifically, three samples travel along the $x$-, $y$-, and $z$-axes, and five other samples travel at \blue{$15\deg$, $30$\deg, $45\deg$, $60\deg$, and $75\deg$(need to check why the degree command doesn't work)} to the $x$-axis in the $x$-$z$ plane.
+	More specifically, three samples travel along the $x$-, $y$-, and $z$-axes, and five other samples travel at $15^\circ$, $30^\circ$, $45^\circ$, $60^\circ$, and $75^\circ$ to the $x$-axis in the $x$-$z$ plane.
 	As the proton direction should not affect its energy deposition, distinct characteristics of $\dedx$ along the proton trajectory can be utilized to validate the quality of the reconstructed $\dedx$.
 	Besides the Bragg peak, another distinct feature of $\dedx$ is the minimal ionizing particle (MIP) region, where particles at high momentum traverse the scintillator depositing the minimal amount of energy. 
 	Hence, the $\dedx$ remains at a relatively constant value for all such particles.
@@ -337,17 +337,17 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
                \end{subfigure}
                \begin{subfigure}{\dbfigwid\textwidth}
                     \includegraphics[width=\textwidth]{figures/sel/inclusive_pion_theta_CDF_0.8.png}
-                    \caption{Primary pion angle cumulative distribution. The $80\%$ angle is $87\deg$.}
+                    \caption{Primary pion angle cumulative distribution. The $80\%$ angle is $87^\circ$.}
                     \label{subfig:pi-theta-cum}
                \end{subfigure}
           \end{figure}
                
           The median momentum is approximately $300~\mevc$, with about $30\%$ of pions having momentum below $200~\mevc$ and $80\%$ below $800~\mevc$. 
-          Similarly, the pion angle distribution, depicted in Fig.~\ref{subfig:pi-theta-cum}, shows that approximately $80\%$ of pions have an angle below $87\deg$.
+          Similarly, the pion angle distribution, depicted in Fig.~\ref{subfig:pi-theta-cum}, shows that approximately $80\%$ of pions have an angle below $87^\circ$.
 
           The second step is to simulate pion propagation in SFGD with the relevant kinematics. 
-          A total of six samples, each containing 10,000 events, were simulated with pions traveling at momenta of $200~\mevc$, $300~\mevc$, and $800~\mevc$, and angles of $0\deg$ and $70\deg$. 
-          Since SFGD reconstruction is largely independent of pion direction, the $70\deg$ samples serve as consistency checks. 
+          A total of six samples, each containing 10,000 events, were simulated with pions traveling at momenta of $200~\mevc$, $300~\mevc$, and $800~\mevc$, and angles of $0^\circ$ and $70^\circ$. 
+          Since SFGD reconstruction is largely independent of pion direction, the $70^\circ$ samples serve as consistency checks. 
           For each sample, the fate of each pion was determined using the truth information.
 
           A total of ten fate topologies are defined as follows:
@@ -381,46 +381,46 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
           In summary, the trackless technique is most applicable to Fates 1 and 2.
 
           The fate distributions are shown in Fig.~\ref{fig:pi-fate}. 
-          For the $200~\mevc$ samples, both at $0\deg$ and $70\deg$, more than $70\%$ of the pions fall into Fates 1 and 2. 
-          In the $300~\mevc$ samples, this fraction drops to $30\%$ for the $0\deg$ angle and about $12\%$ for the $70\deg$ angle. 
+          For the $200~\mevc$ samples, both at $0^\circ$ and $70^\circ$, more than $70\%$ of the pions fall into Fates 1 and 2. 
+          In the $300~\mevc$ samples, this fraction drops to $30\%$ for the $0^\circ$ angle and about $12\%$ for the $70^\circ$ angle. 
           This trend is expected because as pion momentum increases, the decay length increases, and the probability of secondary interactions rises. 
-          The further decrease observed at $70\deg$ is attributed to an increased escape fraction. 
+          The further decrease observed at $70^\circ$ is attributed to an increased escape fraction. 
           The geometry of SFGD, being much shorter in the vertical direction, facilitates the escape of high-angle pions. 
-          For $800~\mevc$ pions, the decay length is too long for SFGD, resulting in a significant increase in the escape fraction—approximately $30\%$ at $0\deg$ and $50\%$ at $70\deg$. 
+          For $800~\mevc$ pions, the decay length is too long for SFGD, resulting in a significant increase in the escape fraction—approximately $30\%$ at $0^\circ$ and $50\%$ at $70^\circ$. 
           The unescaped pions are those that have undergone secondary interactions, rendering them unreconstructable by the trackless technique at this high momentum.
 
           \begin{figure}[t]
                \centering
                \begin{subfigure}{\dbfigwid\textwidth}
                     \includegraphics[width=\textwidth]{figures/sel/pion_fate_200_0.png}
-                    \caption{$\ppi=200\mevc$ and $\tpi=0\deg$.}
+                    \caption{$\ppi=200\mevc$ and $\tpi=0^\circ$.}
                     \label{subfig:pi-fate-200-0}
                \end{subfigure}
                \begin{subfigure}{\dbfigwid\textwidth}
                     \includegraphics[width=\textwidth]{figures/sel/pion_fate_200_70.png}
-                    \caption{$\ppi=200\mevc$ and $\tpi=70\deg$.}
+                    \caption{$\ppi=200\mevc$ and $\tpi=70^\circ$.}
                     \label{subfig:pi-fate-200-70}
                \end{subfigure}
               \\
                \begin{subfigure}{\dbfigwid\textwidth}
                     \includegraphics[width=\textwidth]{figures/sel/pion_fate_300_0.png}
-                    \caption{$\ppi=300\mevc$ and $\tpi=0\deg$.}
+                    \caption{$\ppi=300\mevc$ and $\tpi=0^\circ$.}
                     \label{subfig:pi-fate-300-0}
                \end{subfigure}
                \begin{subfigure}{\dbfigwid\textwidth}
                     \includegraphics[width=\textwidth]{figures/sel/pion_fate_300_70.png}
-                    \caption{$\ppi=300\mevc$ and $\tpi=70\deg$.}
+                    \caption{$\ppi=300\mevc$ and $\tpi=70^\circ$.}
                     \label{subfig:pi-fate-300-70}
                \end{subfigure}
               \\
                \begin{subfigure}{\dbfigwid\textwidth}
                     \includegraphics[width=\textwidth]{figures/sel/pion_fate_800_0.png}
-                    \caption{$\ppi=800\mevc$ and $\tpi=0\deg$.}
+                    \caption{$\ppi=800\mevc$ and $\tpi=0^\circ$.}
                     \label{subfig:pi-fate-800-0}
                \end{subfigure}
                \begin{subfigure}{\dbfigwid\textwidth}
                     \includegraphics[width=\textwidth]{figures/sel/pion_fate_800_70.png}
-                    \caption{$\ppi=800\mevc$ and $\tpi=70\deg$.}
+                    \caption{$\ppi=800\mevc$ and $\tpi=70^\circ$.}
                     \label{subfig:pi-fate-800-70}
                \end{subfigure}
                \caption{Pion fates in the SFGD for different combinations of pion kinematics}

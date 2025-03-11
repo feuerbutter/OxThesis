@@ -615,7 +615,7 @@
 % \newcommand{\blue}[1]{\textcolor{blue}{#1}}
 \newcommand{\code}[1]{\texttt{#1}}
 % \newcommand{\deg}{\ensuremath{^\circ}}
-\newcommand{\deg}{\textdegree}
+\newcommand{\degree}{^\circ}
 \newcommand{\tick}{\checkmark}
 
 \newcommand{\sgfigwid}{0.6}
