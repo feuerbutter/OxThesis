@@ -28,7 +28,7 @@ The heart of animals is the foundation of their life, the sovereign of everythin
         \item \code{HNL-LeptonMixing}, the mixing coefficient of the extended PMNS matrix between the HNL and the electron neutrino and muon neutrino respectively.
             $\uae$ and $\uam$ are chosen to be equal to $10^{-7}$. 
             They are chosen to be small such that the first order approximation of the proportionality between the number of observed events and the fourth power of the mixing elements are valid.
-        \item \code{HNL-2B_x_y}, the switch for a particular HNL decay channel, where x and y are the two decay products, for example \code{mu} and \code{pi}.
+        \item \code{HNL-2B\_x\_y}, the switch for a particular HNL decay channel, where x and y are the two decay products, for example \code{mu} and \code{pi}.
             If one wants to investigate all decay channels without having to worry about accounting for the proper decay widths, one could set all the channels to be true, as they account for the vast majority of the decay channels.
     \end{enumerate}
 
@@ -42,13 +42,13 @@ The heart of animals is the foundation of their life, the sovereign of everythin
     The USER frame is the coordinate system setup at ND280 for event selection and analysis.
     Parameters describing the frame transformation are as follows.
     \begin{enumerate}
-        \item \code{Near2Beam_R}, the rotation of the BEAM frame with respect to the NEAR. 
+        \item \code{Near2Beam\_R}, the rotation of the BEAM frame with respect to the NEAR. 
         According to the beam centre coordinates given in the T2K flux file, the variables \code{Bxfd} and \code{Byfd}, the beam centre has a $(x,y)$-coordinate, $(0,-1780.400)$~cm at the centre of ND280, which is located at $z=28010$~cm. 
         This correspond to a rotation of $\arctan(-1780.400/28010)=-0.06348$~rad around the $x$-axis.
         Hence, this parameter should be set to \code{0.0 ; 0.0 ; -0.06348}. 
-        \item \code{Near2User_T}, position of the centre of USER in the NEAR frame.
+        \item \code{Near2User\_T}, position of the centre of USER in the NEAR frame.
         For T2K, the ND centre is located at \code{(-3.222 ; -8.146 ; 280.1)}~m.
-        \item \code{DetCentre_User}, position of the detector centre ikn the USER frame. 
+        \item \code{DetCentre\_User}, position of the detector centre ikn the USER frame. 
         As origin of the USER frame is the centre of the whole ND280, the centre of the upgrade part, namely SFGD and HAT, is located at \code{(0.0 ; 0.029985 ; -1.94394)} in the USER frame.
     \end{enumerate}   
 
@@ -57,6 +57,8 @@ The heart of animals is the foundation of their life, the sovereign of everythin
         \item \code{ParentPOTScalings}, the average number of HNL parents produced per POT for all, muons, pions and $K^{L}$.
         \item \code{IsParentOnAxis}, this should be set to \code{false}, as ND280 is located off axis.
         \item \code{InputFluxesInBEAM}, this should be set to \code{false}, as the T2K flux input is given in the NEUT frame, i.e. the NEAR frame, instead of the BEAM frame.
+        \item \code{CollectionRadius}, the radius of the detector in the USER frame, which is set to \code{6.0}~m. 
+        It should be large enough to cover the whole ND280.
     \end{enumerate}
 
 
