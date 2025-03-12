@@ -452,6 +452,7 @@
 \usepackage{braket}
 \usepackage{tikz}
 \usepackage{tikz-feynman}
+\usepackage{xeCJK}
 % ------ units --------
 \newcommand{\gevc}{\textrm{GeV}/c}
 \newcommand{\mevc}{\textrm{MeV}/c}
