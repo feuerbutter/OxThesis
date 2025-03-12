@@ -116,13 +116,13 @@ As proton kinematics are required for these high-level constructed variables, da
           \begin{subfigure}[b]{\dbfigwid\textwidth}
                \centering
                \includegraphics[width=\textwidth]{figures/perf/tki/dphit_rat_hist_al14.eps}
-               \caption{$\dphit$ before muon bias correction \blue{(REPLOT NEEDED)}}
+               \caption{$\dphit$ before muon bias correction.}
                \label{subfig:esc-dphit-bfmu}
           \end{subfigure}
           \begin{subfigure}[b]{\dbfigwid\textwidth}
                \centering
                \includegraphics[width=\textwidth]{figures/perf/tki/cor_dphit_rat_hist_al14.eps}
-               \caption{$\dphit$ after muon bias correction \blue{(REPLOT NEEDED)}}
+               \caption{$\dphit$ after muon bias correction.}
                \label{subfig:esc-dphit-afmu}
           \end{subfigure}
           \\
@@ -177,6 +177,10 @@ As proton kinematics are required for these high-level constructed variables, da
      The TKI variables for the $\numuccopiop$ selection are shown in Fig.~\ref{fig:mc-tki-1pi}, with even better resolution than the $\numucczpiop$-ESC selection.
      For example, Fig.~\ref{subfig:1pi-pn} shows a fitted HWHM of $12\%$, significantly than either of the sub-samples shown in the previous section.
      This improvement could be due to a purer sample due to the requirment of the presence of the extra pion.
+     However, considerbale underestimation is observed for $\dpt$ in Fig.~\ref{subfig:1pi-dpt}, which is surprising given the good performance of the other TKI variables.
+     This could be due to a bug in the recconstruction, but as the current reconstruction software has become obsolete, this issue will be furthere investigated when the new and stable reconstruction become available.
+     Nevertheless, the excellent resolutions shown in other TKI variables demonstrate a potential for the upgraded ND280 detector to achieve high-precision TKI measurements.
+     The same workflow of the ESC technique and muon momentum bias correction can be applied to the future software, while keeping in mind of the unexpected behavior in $\dpt$.
      \begin{figure}
           \begin{subfigure}[b]{\dbfigwid\textwidth}
                \centering
@@ -194,7 +198,7 @@ As proton kinematics are required for these high-level constructed variables, da
           \begin{subfigure}[b]{\dbfigwid\textwidth}
                \centering
                \includegraphics[width=\textwidth]{figures/perf/tki/SFGpTPCmu_dpt_rat_hist_al14.eps}
-               \caption{$\dpt$ \blue{(REPLOT NEEDED)}}
+               \caption{$\dpt$}
                \label{subfig:1pi-dpt}
           \end{subfigure}
           \begin{subfigure}[b]{\dbfigwid\textwidth}
@@ -206,6 +210,7 @@ As proton kinematics are required for these high-level constructed variables, da
           \caption{TKI variables for the $\numuccopiop$ selection.}
           \label{fig:mc-tki-1pi}
      \end{figure}
+
      In addition to the single transverse variables presented above, the $\numuccopiop$ sample can also be used to measure the double transverse variable, $\dptt$, the net momentum transverse to both the neutrino momentum and the muon momentum.
      Without FSI, $\dptt$ should be $0$. 
      This special property can be exploited to select $\nu$-H events amidst $\nu$-C events as suggested in Ref.~\cite{Lu:2015hea}. 
