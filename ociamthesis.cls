@@ -452,7 +452,7 @@
 \usepackage{braket}
 \usepackage{tikz}
 \usepackage{tikz-feynman}
-\usepackage{xeCJK}
+\usepackage{CJKutf8}
 % ------ units --------
 \newcommand{\gevc}{\textrm{GeV}/c}
 \newcommand{\mevc}{\textrm{MeV}/c}
@@ -616,7 +616,7 @@
 % \newcommand{\blue}[1]{\textcolor{blue}{#1}}
 \newcommand{\code}[1]{\texttt{#1}}
 % \newcommand{\deg}{\ensuremath{^\circ}}
-\newcommand{\degree}{^\circ}
+% \newcommand{\degree}{^\circ}
 \newcommand{\tick}{\checkmark}
 
 \newcommand{\sgfigwid}{0.6}
