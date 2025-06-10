@@ -583,7 +583,7 @@
 \newcommand{\ttthr}{\theta_{23}}
 \newcommand{\delmtwoo}{\Delta m^2_{21}}
 \newcommand{\delmthro}{|\Delta m^2_{31}|}
-\newcommand{\delmthrt}{|\Delta m^2_{32}|}
+\newcommand{\delmthrt}{\Delta m^2_{32}}
 
 % ------ Tuning samples ------
 \newcommand{\ttkzpi}{T2K-$0\pi$\xspace}
