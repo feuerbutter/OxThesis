@@ -21,13 +21,13 @@ The different flavours of neutrinos will only produce the corresponding lepton i
 However, neutrinos propagate through space as mass eigenstates, $\nu_1$, $\nu_2$, and $\nu_3$.
 The reason for neutrino oscillation to occur is twofold.
 One is because the mass eigenstates do not have a simple one-to-one correspondence with the weak eigenstates. 
-They are superpositions of the weak eigenstates and vice versa.
+They are superpositions of the weak eigenstates.
 The other reason is that these mass eigenstates have different masses.
 Neutrinos are created as flavour eigenstates in weak interactions, but they propagate as a linear combination of mass eigenstates, which propagate with different phase velocities due to their different masses.
 Hence, throughout the propagation, the linear combination of mass eigenstates continually changes, leading to a varying superposition of flavour eigenstates, and thus, neutrino oscillation.
 
 To be more specific, the matrix describing the mixing of mass eigenstates into flavour eigenstates is the PMNS matrix.
-It is conventionally parameterised as follows:
+It is conventionally parameterised as 
 \begin{equation}
 U_{\text{PMNS}} = 
 \begin{pmatrix}
@@ -44,11 +44,11 @@ c_{13} & 0 & s_{13} e^{-i\dcp} \\
 c_{12} & s_{12} & 0 \\
 -s_{12} & c_{12} & 0 \\
 0 & 0 & 1
-\end{pmatrix}
+\end{pmatrix},
 \end{equation}
 where $c_{ij} = \cos\theta_{ij}$ and $s_{ij} = \sin\theta_{ij}$, and $\dcp$ is the CP violation phase.
 The angles $\theta_{ij}$ are the mixing angles. 
-Using the PMNS matrix, the flavour eigenstates can be expressed in terms of the mass eigenstates as follows:
+Using the PMNS matrix, the flavour eigenstates can be expressed in terms of the mass eigenstates as 
 \begin{equation}
 \begin{pmatrix}
 \nu_e \\
@@ -61,20 +61,21 @@ U_{\text{PMNS}}
 \nu_1 \\
 \nu_2 \\
 \nu_3
-\end{pmatrix}
+\end{pmatrix}.
 \end{equation}
-To keep a close focus on the development of the theoretical idea, detailed derivations are rendered to the Appendix~\ref{app:oscillation}\blue{if necessary?}, and only important results are included here for elaboration.
+The derivations of the following results can be obtained readily with pen and paper, so 
+to keep a close focus on the development of the theoretical idea, detailed derivations are not included here. 
 Due to the small neutrino masses, a mass eigenstate with mass $m_i$ acquires the following phase approximately:
 \begin{equation}
   \ket{\nu_i(L)} = e^{-i \frac{m_i^2 L}{2E}} \ket{\nu_i(0)},
 \end{equation}
 after travelling a distance $L$ with energy $E$.
 Hence, the probability that a neutrino of flavour $\alpha$ created at the source is detected as a neutrino of flavour $\beta$ after travelling a distance $L$ is given by
-\begin{eqnarray}{rl}
+\begin{align}
   P_{(\alpha \to \beta)} &= \left|\braket{\nu_\beta | \nu_\alpha(L)} \right|^2 = \left| \sum_i U_{\alpha i} U^*_{\beta i} e^{-i \frac{m_i^2 L}{2E}} \right|^2 \\
-  &= \delta_{\alpha\beta} - 4 \sum_{i>j} \text{Re} \bigl( U_{\alpha i} U^*_{\beta i} U^*{\alpha j} U_{\beta j} \bigr) \,\sin^2 \!\Bigl( \frac{\Delta m^2_{ij} L}{4E} \Bigr) \\
-  &\quad + 2 \sum_{i>j} \text{Im} \bigl( U_{\alpha i} U^*{\beta i} U^*{\alpha j} U_{\beta j} \bigr) \,\sin \!\Bigl( \frac{\Delta m^2_{ij} L}{2E} \Bigr),
-\end{eqnarray}
+  &= \delta_{\alpha\beta} - 4 \sum_{i>j} \text{Re} \bigl( U_{\alpha i} U^*_{\beta i} U^*_{\alpha j} U_{\beta j} \bigr) \,\sin^2 \!\Bigl( \frac{\Delta m^2_{ij} L}{4E} \Bigr) \\
+  &\quad + 2 \sum_{i>j} \text{Im} \bigl( U_{\alpha i} U^*_{\beta i} U^*_{\alpha j} U_{\beta j} \bigr) \,\sin \!\Bigl( \frac{\Delta m^2_{ij} L}{2E} \Bigr),
+\end{align}
 where $\delta_{\alpha\beta}$ is the Kronecker delta, $U_{\alpha i}$ is the element of the PMNS matrix, and $\Delta m^2_{ij} = m_i^2 - m_j^2$.
 This result shows that the oscillation probability depends on the mixing angle through the PMNS matrix elements and on the mass difference and neutrino energy through the sine terms.
 For brevity, the dependence on the sine terms can be characterised by a phase angle,
@@ -86,7 +87,7 @@ where the oscillation is maximal when $\Delta_{ij} = \pi / 2$.
 These results can be used to better understand how the various parameters are measured in different types of neutrino experiments.
 The different sensitivities of these experiments arise from the relatively large differences in both the mixing angles and the mass differences.
 The latest values for the neutrino parameters based on Ref.~\cite{Capozzi:2021fjo,ParticleDataGroup:2024cfk} are provided in Table~\ref{tab:neutrino-parameters}, which shows that the magnitude of $\delmtwoo$ is much smaller than that of $\delmthro$.
-Unlike the CKM matrix, where all mixing angles are small, only $\theta_{13}$ is small here, while the other two angles are considerably larger, suggesting significant mixing.
+Unlike the CKM matrix, where all mixing angles are small, only $\theta_{13}$ is small here, while the other two angles are considerably larger, giving rise to significant mixing.
 
 \begin{table}[h]
   \centering
@@ -96,9 +97,9 @@ Unlike the CKM matrix, where all mixing angles are small, only $\theta_{13}$ is 
     \hline
     $\Delta m^2_{21}~(\text{eV}^2)$ & $7.36^{+0.16}_{-0.15} \times 10^{-5}$ & Reactor and solar \\
     $|\Delta m^2_{31}|~(\ev^2)$ & $2.448^{+0.023}_{-0.031} \times 10^{-3}$ & Atmospheric \\
-    $\theta_{12}$ ($^\circ$) & $33.40^{+0.80}_{0.82}$ & Reactor and solar \\
-    $\theta_{23}$ ($^\circ$)       & $42.4^{+1.0}_{0.9}$ & Atmospheric\\
-    $\theta_{13}$ ($^\circ$)       & $8.59^{+0.13}_{0.12}$ & Reactor and solar \\
+    $\theta_{12}$ ($^\circ$) & $33.40^{+0.80}_{-0.82}$ & Reactor and solar \\
+    $\theta_{23}$ ($^\circ$)       & $42.4^{+1.0}_{-0.9}$ & Atmospheric\\
+    $\theta_{13}$ ($^\circ$)       & $8.59^{+0.13}_{-0.12}$ & Reactor and solar \\
     $\dcp$ ($^\circ$) & $223^{+32}_{-23}$   & Accelerator and atmospheric \\
     \hline
   \end{tabular}
@@ -127,12 +128,12 @@ Substituting the reactor neutrino energy into Eq.~\ref{eq:osc-length}, one obtai
 Hence, by placing detectors kilometres away from the power plants, reactor neutrino experiments offer the unique opportunity to measure $\theta_{13}$ and $\delmthro$, sometimes referred to as the reactor mixing angle and mass difference, respectively.
 Additionally, placing detectors at about $O(100)~\km$ from the power plants allows measurements of $\delmtwoo$.
 
-\subsubsection{Solar neutrinos}
+\subsection{Solar neutrinos}
 Solar neutrinos are mostly electron neutrinos produced from nuclear fusion in the Sun.
 Most solar neutrinos have energies below $1~\mev$, except those from $^8$B decay, which can reach $15~\mev$.
 The distance travelled by solar neutrinos is of the order of $O(10^8)~\km$.
 Substituting these values into Eq.~\ref{eq:osc-length}, one obtains $L_{\text{osc}} = O(10^4)~\m$ for $\delmtwoo$ and $L_{\text{osc}} = O(10^3)~\m$ for $\delmthro$.
-Both are much smaller than the average distance travelled, so observing the clear oscillatory pattern (as in other neutrino experiments) would require knowing each neutrino’s exact travel distance with extremely high precision, which is beyond current detection capabilities.
+Both are much smaller than the average distance travelled, so observing the clear oscillatory pattern (as in other neutrino experiments) would require knowing each neutrino’s travel distance and starting position with extremely high precision, which is beyond current detection capabilities.
 Fortunately, the average oscillation result can still be measured by the total survival rate of electron neutrinos.
 
 Beyond the usual neutrino oscillation, there is another important phenomenon in solar neutrino measurements: the Mikheyev–Smirnov–Wolfenstein (MSW) matter effect~\cite{Wolfenstein:1977ue,Mikheyev:1985zog}.
@@ -143,9 +144,9 @@ Roughly speaking, the required electron density is proportional to the mass diff
 Hence, lower neutrino energy or a larger mass difference necessitates a higher electron density to modify the oscillation probability.
 Because $\delmthro$ is considerably larger, for nearly all solar neutrino energies, the electron density in the Sun is insufficient to modify the mixing between $\nu_1$ and $\nu_3$ significantly.
 As for the relatively smaller $\delmtwoo$, the electron density is high enough to substantially modify the mixing between $\nu_1$ and $\nu_2$ for the high-energy neutrinos from $^8$B decay.
-The outcome for these high-energy electron neutrinos is a rearrangement of their mass-eigenstate composition such that, upon leaving the Sun’s surface, they are mostly $\nu_2$, a considerably greater fraction than in the unmodified scenario.
+The outcome for these high-energy electron neutrinos is a rearrangement of their mass-eigenstate composition such that, upon leaving the Sun’s surface, they are mostly $\nu_2$, a considerably greater fraction than in the unmodified scenario for the low-energy electron neutrinos.
 The MSW effect is seen when different experiments measure solar neutrinos at different energies and observe varying electron-neutrino survival rates.
-The absolute survival rates are sensitive to $\theta_{12}$ and $\theta_{13}$ for low-energy and high-energy regions, respectively.
+Hence, the absolute survival rates are particularly sensitive to $\theta_{12}$, which is often referred to as the solar mixing angle. 
 
 \subsection{Accelerator neutrinos}
 In accelerator neutrino experiments, there is relatively greater flexibility than in other types of neutrino experiments because both the neutrino source and the detector can be designed to optimise oscillation studies.
@@ -161,9 +162,10 @@ Since the neutrino energy from meson decay depends on the emission angle, varyin
 T2K places its detectors $2.5^\circ$ off-axis to obtain a neutrino beam with a narrow energy peak at about $0.6~\gev$.
 According to Eq.~\ref{eq:osc-phase}, for maximal oscillation with the larger mass difference (i.e.\ $\delmthro \approx 2.5 \times 10^{-3}~\ev^2$), the far detector should be placed around $300$~km from the source.
 Hence, accelerator measurements are sensitive to $\theta_{13}$.
+Furthermore, by analyzing muon neutrino disapperance, accelerator experiments can also measure $\theta_{23}$ and $\delmthrt$.
 By analysing oscillations in neutrino and antineutrino modes, T2K can extract a best-fit value of $\delta_{CP}$ that describes the observed data~\cite{T2K:2019bcf}.
 However, the current measurement is severely limited by statistics and thus suffers large uncertainties.
-In the Hyper-K era, statistics are expected to increase significantly, and reducing systematic uncertainties proportionally will be paramount for fully exploiting that potential.
+Due to the significant increase in the fiducial volume of Hyper-K, statistics are expected to increase significantly, and reducing systematic uncertainties proportionally will be paramount for fully exploiting that potential.
 This leads naturally to the discussion of one of the major sources of systematic uncertainty in neutrino experiments: neutrino interactions.
 
 \section{Interaction}
@@ -225,7 +227,7 @@ The most fundamental interaction between a neutrino and matter is the weak inter
   \caption{Feynman diagrams for neutrino interactions with a quark.}
   \label{fig:nu-q-feyn}
 \end{figure}
-More specifically, Fig.~\ref{fig:cc-interaction} is mediated by the $W$ boson, and the neutrino is converted into a charged lepton, while Fig.~\ref{fig:nc-interaction} is mediated by the $Z$ boson, and the neutrino remains a neutrino.
+More specifically, the interaction shown in Fig.~\ref{fig:cc-interaction} is mediated by the $W$ boson, and the neutrino is converted into a charged lepton, while Fig.~\ref{fig:nc-interaction} is mediated by the $Z$ boson, and the neutrino remains a neutrino.
 The former is the charged current (CC) interaction, while the latter is the neutral current (NC) interaction.
 Following the Feynman diagram, it is straightforward to write down the amplitude for the interaction.
 The amplitude for the CC interaction is given by:
@@ -298,13 +300,12 @@ Hence, the effective $\nu$-nucleon interaction Feynman diagram is shown in Fig.~
 \end{figure}
 The leptonic current remains the same, but the hadronic current is now a nucleon current instead of a quark current.
 Hence, the hadronic current is much more complicated, comprising several form factors that parameterise our understanding of the nucleon structure.
-For instance, the hadronic current for the CC interaction is given by:
-\begin{eqnarray}{r}
+For instance, the amplitude for the CC interaction in Fig.~\ref{fig:cc-interaction-n} is given by:
+\begin{align}
   \mathcal{M}_{\text{CC}} = \frac{G_F}{\sqrt{2}} \,\bar{u}_\ell(p')\,\gamma^\mu (1 - \gamma^5)\,u_\nu(p) \\
   \times \,\bar{u}_N(k')\,\left[ F_1(q^2)\,\gamma_\mu + F_2(q^2)\,\frac{i\,\sigma_{\mu\nu}\,q^\nu}{2M} + F_A(q^2)\,\gamma_\mu\,\gamma^5 + F_P(q^2)\,\frac{q_\mu\,\gamma^5}{m_\pi} \right]\,u_N(k),
-\end{eqnarray}
-where $G_F$ is the Fermi constant, $F_1$, $F_2$, $F_A$, and $F_P$ are the form factors, $M$ is the nucleon mass, and $m_\pi$ is the pion mass.
-The derivation is complicated and beyond the scope of this thesis. 
+\end{align}
+where $G_F$ is the Fermi constant, $M$ is the nucleon mass, $m_\pi$ is the pion mass, and the hadronic current is parameterised by the form factors, $F_1$, $F_2$, $F_A$, and $F_P$.
 More details can be found in Ref.~\cite{LlewellynSmith:1978te}.
 It is important to note that $F_1$ and $F_2$ are the vector form factors, which can be extracted from electron scattering measurements, and $F_P$ is the pseudoscalar form factor, which can be related to $F_A$, the axial form factor, through the Partially Conserved Axial Current (PCAC) hypothesis.
 Hence, the axial form factor is unique to neutrino experiments and can only be extracted from past measurements.
@@ -340,8 +341,8 @@ The neutrino sees each nucleon as independent, so the interaction reduces to the
 Even in this simplest case, the presence of the nuclear medium still affects the interaction in two ways: the initial state (IS) effect and the final state interaction (FSI).
 
 As the neutrino energy decreases, IA is no longer valid, and the nucleus can only be resolved as a whole.
-In this case, Random Phase Approximation (RPA) corrections are needed, which are beyond the scope of this thesis and will not be elaborated further. 
-Interested readers can refer to Ref.~[SajjadAthar:2022pjt] for more details.
+In this case, Random Phase Approximation (RPA) corrections are needed.
+Interested readers can refer to Ref.~\cite{SajjadAthar:2022pjt} for more details.
 Instead, the two nuclear effects are elaborated below.
 
 \subsubsection{Initial state}
@@ -367,27 +368,27 @@ They are more pronounced for hadrons than for leptons, as the latter are less li
 There are several types of FSI, including elastic scattering, charge exchange, and absorption.
 \begin{enumerate}
   \item 
-  CEX (charge exchange) involves changing the charge of the participating particles; for example,
+  Charge exchange (CEX) involves changing the charge of the participating particles; for example,
   \begin{equation}
       \pi^+ + n \rightarrow \pi^0 + p,
   \end{equation}
   or vice versa. This rescattering type is crucial for event topologies requiring the presence of a pion; depending on the signal pion’s charge, CEX could migrate events between signal and background. 
 
   \item 
-  INEL (inelastic scattering) is the case where the nucleus is left in an excited state after rescattering. This category applies only to situations where a single additional nucleon is emitted or knocked out after rescattering. Since it does not affect the number of pions, it will not convert a pionless topology into a pion-production topology. However, it can change the number of final-state nucleons and affect the kinematics of the leading particle.
+  Inelastic scattering (INEL) is the case where the nucleus is left in an excited state after rescattering. This category applies only to situations where a single additional nucleon is emitted or knocked out after rescattering. Since it does not affect the number of pions, it will not convert a pionless topology into a pion-production topology. However, it can change the number of final-state nucleons and affect the kinematics of the leading particle.
 
   \item 
-  ABS (absorption) refers to processes where the pion is effectively absorbed. For instance, $\pi^+$ can interact with multiple nucleons, initially forming a baryon resonance that subsequently emits multiple nucleons rather than a pion. Thus, the $\pi^+$ no longer emerges from the nucleus.
+  Absorption (ABS) refers to processes where the pion is effectively absorbed. For instance, $\pi^+$ can interact with multiple nucleons, initially forming a baryon resonance that subsequently emits multiple nucleons rather than a pion. Thus, the $\pi^+$ no longer emerges from the nucleus.
 
   \item 
-  PIPD (pion production) can occur for energetic particles where an extra pion is generated through rescattering, for example:
+  Pion production (PIPD) can occur for energetic particles where an extra pion is generated through rescattering, for example:
   \begin{equation}
       p + p \rightarrow p + n + \pi^+.
   \end{equation}
   Such an interaction significantly alters the event topology, adding an extra pion.
 \end{enumerate}
 
-\subsubsection{TKI}
+\subsubsection{Transverse Kinematic Imbalance}
 \label{sec:nuint-tki}
 Due to the heavy target nucleus in current neutrino experiments, nuclear effects are almost inextricable from conventional single-particle kinematic measurements.
 This greatly impedes model development because nuclear effects can mimic different underlying $\nu$-N processes.
@@ -412,7 +413,7 @@ Because of the initial state (IS), the nucleon’s momentum distribution causes 
 Moreover, if the nucleus is initially at rest and no additional particles (beyond the muon and proton) are knocked out, the nucleon initial momentum $\pn$ can be estimated with an $\mathcal{O}(20\%)$ correction~\cite{Yang:2023dxk} following methods in Refs.~\cite{Furmanski:2016wqo, Lu:2019nmf}. 
 Hence, $\dpt$ and $\pn$ serve as good probes of IS models.
 While FSI tends to smear these distributions, the general shape and peak location mainly reflect the IS model.
-Since most IS models assume no preferred direction for nucleon motion, one expects a uniform distribution in $\dat$, the angle between the initial nucleon momentum and the proton momentum in the transverse plane.
+Since most IS models assume no preferred direction for nucleon motion, one expects a uniform distribution in $\dat$, the angle between the initial nucleon momentum and the lepton momentum in the transverse plane.
 Any deviation from flatness in $\dat$ is thus attributed to FSI, making it an excellent probe of FSI. 
 
 In pion-production events, a double-transverse variable, $\dptt$, can be constructed by projecting $\vecdpt$ onto the axis perpendicular to the lepton scattering plane, defined by $\vecpl$ and $\vecpnu$ (see Fig.~\ref{fig:dtki}).
@@ -422,7 +423,6 @@ In pion-production events, a double-transverse variable, $\dptt$, can be constru
     \caption{\label{fig:dtki} Schematic illustration of the double TKI variable. Diagram taken from Ref.~\cite{T2K:2021naz}.} 
 \end{figure}
 
-begin{figure}
 In the absence of nuclear effects, $\dptt$ should be zero.
 Its distribution width reveals the role of nuclear effects in pion production~\cite{MINERvA:2020anu, T2K:2021naz}.
 Analogous variables, $\dptx$ and $\dpty$, have been proposed and studied in MINERvA~\cite{MINERvA:2019ope} for pionless channels.
