@@ -26,7 +26,7 @@ This study employs the tuning procedure delineated in Ref.~\cite{GENIE:2022qrc},
 The primary objective is to determine the best fit—that is, the optimal set of parameter values—within the parameter space by minimizing the $\chi^2$ between the model predictions and the experimental data. 
 Due to the high dimensionality of the parameter space, a brute-force, grid-based point-by-point scan is impractical. 
 Therefore, a sufficiently large number of points in the model parameter space is sampled at random, with each point initiliating a full simulation. 
-Subsequently, the simulation output for each data observable bin is parametrized using Professor~\cite{Buckley:2009bj} with a polynomial of the model parameters of a given order, $N_{\textrm{ord}}$. 
+Subsequently, the simulation output for each data observable bin is parametrized using Professor\footnote{A software capable of approximating and extrapolating cross-section outputs in terms of polynomials of chosen moded parameters.}~\cite{Buckley:2009bj} with a polynomial of the model parameters of a given order, $N_{\textrm{ord}}$.
 The minimal number of points ($N_{\textrm{s}}$) required for tuning $N_{\textrm{par}}$ parameters with a polynomial of order $N_{\textrm{ord}}$ is determined by the combinatorial formula,
 \begin{equation}
     N_{\textrm{s}} = \binom{N_{\textrm{par}}+N_{\textrm{ord}}}{N_{\textrm{ord}}}.
@@ -47,33 +47,33 @@ The following subsections elaborate on the specific measurement observables and 
 
 \section{Inputs}
 The first step towards tuning is to identify the models to be tuned and the data to be used by spotting the lacking area of the current model, which is manifested by the data-MC discrepancy.
-One such example is illustrated in Fig.~\ref{fig:g24-0-dat-reac} and Fig.~\ref{fig:g24-0-pn-reac}, which shows the data-MC comparison using \newtune\, one of the latest Comprehensive Model Configurations (CMC) in \genie, for four TKI measurements, namely \ttkzpi~\cite{T2K:2018rnz}, \ttkpip~\cite{T2K:2021naz}, \minzpi~\cite{MINERvA:2018hba, MINERvA:2019ope}, and \minpiz~\cite{MINERvA:2020anu}. 
+One such example is illustrated in Fig.~\ref{fig:g24-0-dat-reac} and Fig.~\ref{fig:g24-0-pn-reac}, which shows the data-MC comparison using \newtune, one of the latest Comprehensive Model Configurations (CMC) in \genie, for four TKI measurements, namely \ttkzpi~\cite{T2K:2018rnz}, \ttkpip~\cite{T2K:2021naz}, \minzpi~\cite{MINERvA:2018hba, MINERvA:2019ope}, and \minpiz~\cite{MINERvA:2020anu}. 
 \begin{figure*} 
     \centering 		
     \includegraphics[width=\dbfigwid\textwidth]{figures/tuning/0000-t2k_0pi_dalphat_reac_decomp.eps} 
     \includegraphics[width=\dbfigwid\textwidth]{figures/tuning/0000-t2k_pip_dalphat_reac_decomp.eps} 
     \includegraphics[width=\dbfigwid\textwidth]{figures/tuning/0000-min_0pi_dalphat_reac_decomp.eps} 
     \includegraphics[width=\dbfigwid\textwidth]{figures/tuning/0000-min_pi0_dalphat_reac_decomp.eps}
-    \caption{$\dat$ measurements decomposed in interaction types, compared to \gZero prediction.}   \label{fig:g24-0-dat-reac} 
+    \caption{$\dat$ measurements decomposed in interaction types, compared to \gZero\ prediction.}   \label{fig:g24-0-dat-reac} 
             
     \includegraphics[width=\dbfigwid\textwidth]{figures/tuning/0000-t2k_0pi_dpt_reac_decomp.eps}
     \includegraphics[width=\dbfigwid\textwidth]{figures/tuning/0000-t2k_pip_pn_reac_decomp.eps}
     \includegraphics[width=\dbfigwid\textwidth]{figures/tuning/0000-min_0pi_pn_reac_decomp.eps}
     \includegraphics[width=\dbfigwid\textwidth]{figures/tuning/0000-min_pi0_pn_reac_decomp.eps}
-    \caption{\label{fig:g24-0-pn-reac} Similar to Fig.~\ref{fig:g24-0-dat-reac} but for the $\pn$ (\ttkpip, \minzpi and \minpiz) and $\dpt$ (\ttkzpi) measurements.
+    \caption{\label{fig:g24-0-pn-reac} Similar to Fig.~\ref{fig:g24-0-dat-reac} but for the $\pn$ (\ttkpip, \minzpi, and \minpiz) and $\dpt$ (\ttkzpi) measurements.
     } 
 \end{figure*}
 This data-comparison shows that the model fails to describe the MINERvA $\piz$ TKI data, despite that its prediction matches other TKI data well.
 
-As the neutrion-nucleus interacition is a complicated process, it requires multiple models to simulate the whole process, and the CMC in \genie specifies the combination of models to be used.
-Tuning the entire CMC is extremely omputationally expensive, and this is the first tuning on TKI data across event topology, i.e. on both $\cczpi$ and $\cczpi$. 
+As the neutrino-nucleus interaction is a complicated process, it requires multiple models to simulate the whole process, and the CMC in \genie specifies the combination of models to be used.
+Tuning the entire CMC is extremely omputationally expensive, and this is the first tuning on TKI data across event topology, i.e. on both $\cczpi$ and $\ccopi$. 
 Hence, before embarking on this ultimate step, it is important to first perfrom a proof-of-concept study to explore the model flexibility and to identify the most relevant model parameters.
 As TKI data are sensitive to the nuclear IS and FSI, this study focuses on the tuning of these two models.
 To lay the ground for better understanding of this tuning effort, I will provide a more detailed description of the inputs, i.e. the data and the models, in the following subsections. 
 
 \subsection{The models}
 \label{sec:tuning-para-choice}
-    The CMCs in \genie are fomratted strings, and they are sometimes also called tunes, regardless of whether they are obtained from an actual tuning.
+    The CMCs in \genie are formatted strings, and they are sometimes also called tunes, regardless of whether they are obtained from an actual tuning.
     The tune, \newtune, mentioned above is improved on the tune, $\geighteen$, which is obtained from the free nucleon tuning effort in Ref.~\cite{GENIE:2021zuu}, and describes bubble chamber data better.
     As \newtune\ is widely used in the paper, it will be referred to as \gZero\ for simplicity. 
 
@@ -115,7 +115,7 @@ To lay the ground for better understanding of this tuning effort, I will provide
         \hline
         \hline
         \end{tabular}
-        \caption{\label{tab:default-gen-list} Model components of \gZero\. Processes with non-trivial $\Delta S$ and $\Delta C$ are those with strangeness and charm production, respectively.}
+        \caption{\label{tab:default-gen-list} Model components of \gZero. Processes with non-trivial $\Delta S$ and $\Delta C$ are those with strangeness and charm production, respectively.}
     \end{table}
     Having selected the \gZero CMC as the tuning starting point, a closer look into the IS and FSI models, the models to be tuned, is necessary.
     The \sfcfg\ and hA model contains a total of $14$ tuneable parameters of \sfcfg\ and hA.
@@ -143,7 +143,7 @@ To lay the ground for better understanding of this tuning effort, I will provide
         The MFPs for pions and nucleons are adjustable via scaling factors ($\cpimfp$, $\pizmfp$, and $\nmfp$) as detailed in Table~\ref{tab:restunes}. 
         Due to isospin symmetry, both charged pions, $\pip$ and $\pim$, share the same scaling factor $\cpimfp$, while the $\piz$ MFP is computed from the charged pion values and adjusted separately by $\pizmfp$. 
         A scaling factor greater than unity increases $\lambda$, which in turn reduces the number of propagation steps necessary for escape and diminishes the average probability of rescattering. 
-        Owing to the high precision of total hadron–nucleus cross section measurements~\cite{LADS:1999dyv,Navon:1983xj,Carroll:1976hj,Clough:1974qt,BAUHOFF1986429}, strict Gaussian priors with a standard deviation (\sigma) of 0.2 (matching the systematic uncertainties shown in Table~\ref{tab:restunes}) are applied to the MFP scaling factors. 
+        Owing to the high precision of total hadron–nucleus cross section measurements~\cite{LADS:1999dyv,Navon:1983xj,Carroll:1976hj,Clough:1974qt,BAUHOFF1986429}, strict Gaussian priors with a standard deviation ($\sigma$) of 0.2 (matching the systematic uncertainties shown in Table~\ref{tab:restunes}) are applied to the MFP scaling factors. 
         Notably, varying $\pizmfp$ by $\pm2.5~\sigma$ significantly affects the \minpiz\ $\textrm{d}\sigma/\textrm{d}\pn$, as illustrated in Fig.~\ref{fig:minpiz-pn-pi0mfp}. 
         In summary, a reduced MFP naturally increases rescattering, leading to fewer $\piz$s escaping the nucleus and a decreased cross section.
         \begin{figure}[!htb]
@@ -271,8 +271,8 @@ To lay the ground for better understanding of this tuning effort, I will provide
     Not only the \minpiz data set, where the discrepancy lies, is used for tuning, but the other three data sets are also included, as it is important to maintain the good data-MC agreement for the existing data sets, while improving the agreement for the \minpiz data set.
 
     The common requirement of the four measurements is the presence of one CC muon and at least one proton in the final state. 
-    The $0\pi$ data sets, i.e. \ttkzpi and \minzpi, require the absence of any pions, while \ttkpip\ requires exactly one $\pi^+$, and \minpiz\ requires at least one $\pi^0$.
-    The four data sets further differ slightly in the kinematic cuts, as summarized in Table~\ref{tab:data-sets-phase-space-cut}, and they also contain slightly different combinations of the TKI variables, as detailed in Table~\ref{tab:data-sets}.
+    The $0\pi$ data sets, i.e. \ttkzpi\ and \minzpi, require the absence of any pions, while \ttkpip\ requires exactly one $\pi^+$, and \minpiz\ requires at least one $\pi^0$.
+    The four data sets further differ slightly in the kinematic cuts, as summarized in Table~\ref{tab:fit-var-combo-phase-space-cut}, and they also contain slightly different combinations of the TKI variables, as detailed in Table~\ref{tab:fit-var-combo}.
     \begin{table}[!htb]
         \centering
         \begin{tabular}{cc}
@@ -304,7 +304,7 @@ To lay the ground for better understanding of this tuning effort, I will provide
         \hline
         \end{tabular}
         % \end{ruledtabular}
-        \caption{\label{tab:data-sets-phase-space-cut}
+        \caption{\label{tab:fit-var-combo-phase-space-cut}
         Kinematic cuts for the samples of the TKI measurements.
         }
     \end{table}
@@ -317,8 +317,8 @@ To lay the ground for better understanding of this tuning effort, I will provide
         \item \textbf{\texttt{Combi-}1 through 5} are cross-experiment selections of a single observable. 
         For example, \texttt{Combi-}$3$ uses only $\dat$ from all four data sets. 
         If a chosen observable is absent from a dataset, that dataset is excluded from the specific combination. 
-        For example, \ttkzpi is not used in \texttt{Combi-}1 due to the absence of $\pn$.
-        \item \textbf{\texttt{Combi-}6 through 9} incorporate all variables from a single measurement. For example, \texttt{Combi-}$9$ uses \minpiz only.
+        For example, \ttkzpi\ is not used in \texttt{Combi-}1 due to the absence of $\pn$.
+        \item \textbf{\texttt{Combi-}6 through 9} incorporate all variables from a single measurement. For example, \texttt{Combi-}$9$ uses \minpiz\ only.
         \item \textbf{\texttt{Combi-}10 to 13} uses two out of four measurements according to the experiment or topology. For example, \texttt{Combi-}$10$ uses only the two data sets from T2K, and \texttt{Combi-}$13$  only with pion production. 
         \item \textbf{\texttt{Combi-}14 to 17} are cross-experiment selections of two observables. 
         For example, \texttt{Combi-14} uses all $\dat$ and $\dptt$ measurements across all data sets, while \texttt{Combi-17} uses $\dat$ and $\dpt$.
@@ -373,13 +373,13 @@ To lay the ground for better understanding of this tuning effort, I will provide
 
 \section{Results}
     A priori, it is difficult to ascertain which parameters are most relevant. 
-    Hence, all 14 parameters are used in the initial tuning, denoted as \allpar\, and a reduced set, denoted as \redpar\, is subsequently employed after identifying the most sensitive parameters.
-    In order to perform the tuning with a degree 4 polynomial parameterization using \allpar\, $6,600$ points are randomly sampled from the parameter space, and the corresponding event generation is performed.
-    Note that this is considerably larger than the minimal number of points required in Sec.~\ref{sec:tuning-method} to accommodate failed event generation and to provide more points for better parameterization.
+    Hence, all 14 parameters are used in the initial tuning, denoted as \allpar, and a reduced set, denoted as \redpar, is subsequently employed after identifying the most sensitive parameters.
+    In order to perform the tuning with a degree 4 polynomial parameterization using \allpar, $6,600$ points are randomly sampled from the parameter space, and the corresponding event generation is performed.
+    Note that this is considerably larger than the minimal number of points required in Sec.~\ref{sec:Tuning-method} to accommodate failed event generation and to provide more points for better parameterization.
     
     \subsection{\allpar\ tune}
     After all simulations are completed, a 4th order polynomial parameterization of MC predictions for all observable bins in terms of \allpar\ is obtained from Professor.
-    The $\chi^2$ between the data and the parameterised MC predicitons for each combinations of observables can be calculated and minimized to find the optimal set of \allpar\.
+    The $\chi^2$ between the data and the parameterised MC predicitons for each combinations of observables can be calculated and minimized to find the optimal set of \allpar.
     By construction, the $\chi^2$ over the observables used in the tuning should decrease after the tuning process.
     However, a successful model should also make good predictions for the observables not used in the tuning, i.e. the validation observables.
     Hence, to identify the optimal combination, this study employs a criterion based on the total $\chi^2$ calculated over the complete (tuned plus validation) observable set.
@@ -390,7 +390,7 @@ To lay the ground for better understanding of this tuning effort, I will provide
         \includegraphics[width=\sgfigwid\textwidth]{figures/tuning/chi2_hist_covfix.eps} 
         \caption{\label{fig:allchi} Change of $\chi^2$ calculated for the full (i.e., tuned plus validation) observable set as a function of the tuned combination (cf. Table~\ref{tab:fit-var-combo} in Appendix~\ref{sec:appcombi}). The two model parameter sets (\allpar and \redpar, see Table~\ref{tab:restunes} for definitions) are compared and it can be seen that the respective minima happen at \texttt{Combi-13} and 26. }   
     \end{figure}
-    The largest reduction in $\chi^2$ is -25.39 for \texttt{Combi-13}, denoted as \cbAllPar\ for subsequent discussion
+    The largest reduction in $\chi^2$ is -25.39 for \texttt{Combi-13}, denoted as \cbAllPar\ for subsequent discussion.
     The parameters resulted from this tune are referred to as \gT\ for conciseness and are summarized in Table~\ref{tab:restunes}, in which the upper part contains the parameter values and the lower section illustrates $\chi^2$ improvements for selected observables and their corresponding validation sets. 
 
     MC predictions using \gT\ are compared to the data in Fig.~\ref{fig:g24-t-dat-reac} and Fig.~\ref{fig:g24-t-pn-reac} for the $\dat$ and $\pn$ measurements, respectively.
@@ -401,7 +401,7 @@ To lay the ground for better understanding of this tuning effort, I will provide
         \includegraphics[width=\dbfigwid\textwidth]{figures/tuning/0013-min_0pi_dalphat_reac_decomp.eps}
         \includegraphics[width=\dbfigwid\textwidth]{figures/tuning/0013-min_pi0_dalphat_reac_decomp.eps}
         \caption{\label{fig:g24-t-dat-reac} 
-        Similar to Fig.~\ref{fig:g24-0-dat-reac} but with \gT.  The \gC\, the best tune obtained (see next subsection), prediction is also plotted for comparison. 
+        Similar to Fig.~\ref{fig:g24-0-dat-reac} but with \gT. The \gC, the best tune obtained (see next subsection), prediction is also plotted for comparison. 
         } 
 
         \includegraphics[width=\dbfigwid\textwidth]{figures/tuning/0013-t2k_0pi_dpt_reac_decomp.eps}
@@ -416,7 +416,7 @@ To lay the ground for better understanding of this tuning effort, I will provide
 
     % To further investigate the improvement, \gT, illustrated in Fig.~\ref{fig:minpiz-alttune}. 
     The most prominant change of \gT\ is the noticable increase of $\srcfr$ from $0.12$ to $0.17$, while all other FSI fates are close to the nominal values.
-    This increases the high energy tail in the $\pn$ distribution, raising the dip in the MC prediction of the $\pn$ distribution between $250\mevc$ and $300\mevc$ and moving the distribution peak to the appropriate place, thereby closing the gap between the data and the MC prediction in the high energy region.
+    This increases the high energy tail in the $\pn$ distribution, raising the dip in the MC prediction of the $\pn$ distribution between $250~\mevc$ and $300~\mevc$ and moving the distribution peak to the appropriate place, thereby closing the gap between the data and the MC prediction in the high energy region.
     However, as the \minpiz\ $\pn$ prediciton using \gZero\ is already higher than data, this increase in $\srcfr$ does not improve the data-MC agreement for \minpiz.
     Overall, this leads to a moderate reduction of $25.39$ in $\chi^2$ (Table~\ref{tab:restunes}), as well as a relatively improved data-MC agreement across all data sets. 
     % \begin{figure}[!htb] 	
@@ -428,7 +428,7 @@ To lay the ground for better understanding of this tuning effort, I will provide
     % \end{figure}
     Regarding the other combinations of data sets, there does not seem to be a consistent pattern regarding to observable combinations with respect to the $\chi^2$ reduction.
     For example, as \minpiz\ has the largest deviation, one might expect that the combinations containing \minpiz\ would have larger reduction in $\chi^2$. 
-    This is true for \texttt{Combi-13}, which includes only the pion data, i.e. \ttkpip\ and \minpiz\, but not for \texttt{Combi-11}, which includes only MINERvA data, i.e. \minzpi\ and \minpiz\.
+    This is true for \texttt{Combi-13}, which includes only the pion data, i.e. \ttkpip\ and \minpiz, but not for \texttt{Combi-11}, which includes only MINERvA data, i.e. \minzpi\ and \minpiz.
     Unexpectedly, the majority of the combinations yield an increase in $\chi^2$.
     This could be due to the intricate correlations among model parameters, so correlation between \allpar\ in the tuning using \cbAllPar\ is plotted in Fig.~\ref{fig:comb_26_cor_allpar}.
     Indeed, considerable correlation and anti-correlation are observed between different FSI fates for the same particle, e.g. $\cpiabs$ and $\pipiprod$. 
@@ -450,12 +450,12 @@ To lay the ground for better understanding of this tuning effort, I will provide
     Moreover, it was observed that for most combinations, several parameters stayed near their nominal values—typically within one standard deviation of the imposed priors. 
     For instance, $\pipiprod$ remained largely unchanged since no data set significantly constrains the PIPD contribution of pions, indicating that excluding these parameters from the tuning has little effect on the results.
     Consequently, we constructed a reduced set consisting only of $\srcfr$, $\pizmfp$, $\picex$, $\ncex$, $\nabs$, and $\npiprod$ (denoted as \redpar\ in Table~\ref{tab:restunes}) and applied the tuning procedure to all 26 observable combinations using this parameter subset.
-    Note that only one of the set of considerably correlated parameters, shown by the central square in Fig.~\ref{fig:comb_26_cor_allpar}, namely $\ncex$ is present in \redpar\. 
+    Note that only one of the set of considerably correlated parameters, shown by the central square in Fig.~\ref{fig:comb_26_cor_allpar}, namely $\ncex$ is present in \redpar. 
 
 
     \subsection{\redpar\ tune}
     The \redpar\ tuning proved more stable, with the majority of combinations showing a more negative $\chi^2$ change than the \allpar\ tuning, as shown in Fig.~\ref{fig:allchi}. 
-    The most significant reduction in $\chi^2$ is observed for \texttt{Combi-26} (referred to as \cbRedPar\ in Table~\ref{tab:data-sets}). 
+    The most significant reduction in $\chi^2$ is observed for \texttt{Combi-26} (referred to as \cbRedPar\ in Table~\ref{tab:fit-var-combo}). 
     This combination selects all TKI observables except for $\dphit$ and $\dpt$—namely, $\dat$, $\pn$ (or $\dpt$ if $\pn$ is missing), and $\dptt$—from both pionless and pion-production measurements in T2K and MINERvA.
 
     The $\chi^2$ improvement for \cbRedPar\ is -60.28, which is significantgly better than the improvement obtained with \cbAllPar\ tuning.
@@ -482,8 +482,8 @@ To lay the ground for better understanding of this tuning effort, I will provide
     \end{figure*}
 
     For the \gC\ tune, the modifications to the \sfcfg\ model are moderate (with $\srcfr$ decreasing from $0.12$ to $0.09$), whereas in the hA model both $\pizmfp$ and $\picex$ are substantially suppressed, resulting in a nucleon FSI with increased CEX and PIPD and reduced ABS.  
-    For the \ttkzpi\, \ttkpip\, and \minzpi\ datasets, the new $\chi^2$ values remain comparable to those obtained with \gZero\, with variations smaller than the degree of freedom. 
-    In the case of \minpiz\, \gC\ clearly outperforms \gZero\, demonstrating that an accurate simultaneous description of both pionless and pion production samples is achievable using constrained parameters from cross-topology TKI tuning. 
+    For the \ttkzpi, \ttkpip, and \minzpi\ datasets, the new $\chi^2$ values remain comparable to those obtained with \gZero, with variations smaller than the degree of freedom. 
+    In the case of \minpiz, \gC\ clearly outperforms \gZero, demonstrating that an accurate simultaneous description of both pionless and pion production samples is achievable using constrained parameters from cross-topology TKI tuning. 
     It should be noted that in the region of $\pn\sim0.3~\gevc$, the model deficit previously reported in Ref.~\cite{MINERvA:2018hba} (and shown in Fig.~\ref{fig:g24-0-pn-reac}c) persists even after the fit. 
     This deficit may be attributed to the strength of the 2p2h contribution~\cite{MINERvA:2018hba}, although its exact origin remains a subject of considerable discussion within the community.
 
@@ -502,11 +502,11 @@ To lay the ground for better understanding of this tuning effort, I will provide
     In \minpiz, the number of $\piz$s that experience no FSI (``No Interaction'', as shown in the figures) is controlled by the $\pizmfp$ parameter. 
     Reducing $\pizmfp$ diminishes the fraction of ``No Interaction'' events, as illustrated by the comparison between Fig.~\ref{fig:CEX-minpiz-dat-pi0}b and Fig.~\ref{fig:CEX-minpiz-dat-pi0}a. 
     In contrast, an enhancement in $\piz$ rescattering appears in pionless measurements only via ABS. 
-    Although there is an increase in ABS for $\piz$ in \ttkzpi\ and \minzpi\, the overall fraction is low, resulting in a limited impact. 
+    Although there is an increase in ABS for $\piz$ in \ttkzpi\ and \minzpi, the overall fraction is low, resulting in a limited impact. 
     While the increased $\piz$ rescattering could boost \ttkpip\ through CEX (as discussed subsequently), the substantial suppression of CEX ensures that its effect on \ttkpip\ remains minimal (for a detailed breakdown, see Figs.~\ref{fig:g24-0-dat-pi0}--\ref{fig:g24-c-pn-pi0} in Appendix~\ref{sec:appfate}). 
 
     As shown in Fig.~\ref{fig:CEX-minpiz-dat-pi0}a, the nominal \minpiz\ prediction contains significant contributions from CEX governed by $\picex$. 
-    Since CEX merely alters the pion type without removing them, it does not affect \ttkzpi\ and \minzpi\, where events with pions in the final state are rejected regardless of the pion charge. 
+    Since CEX merely alters the pion type without removing them, it does not affect \ttkzpi\ and \minzpi, where events with pions in the final state are rejected regardless of the pion charge. 
     In principle, CEX can also transfer events between the signal and background definitions for \ttkpip\ when a $\piz$ is converted to a $\pip$ and vice versa. 
     However, given the initially negligible CEX fraction in \ttkpip, adjustments in CEX have little impact on its prediction. 
     Thus, suppressing CEX represents an effective approach to reducing the \minpiz\ cross section prediction without significantly altering other measurements; indeed, $\picex$ is markedly suppressed, as indicated in Table~\ref{tab:restunes} and by the contrast between Fig.~\ref{fig:CEX-minpiz-dat-pi0}b and Fig.~\ref{fig:CEX-minpiz-dat-pi0}a. 
@@ -552,7 +552,7 @@ Consequently, this modification does not conflict with existing agreements based
 \begin{figure}[!htb] 	
     \centering 		
     \includegraphics[width=\sgfigwid\textwidth]{figures/tuning/pi0mfp_change_covfix.eps}
-    \caption{\label{fig:pizmfp_change} Change in MC prediction for $\piz$ cross section between \gZero and \gC. } 
+    \caption{\label{fig:pizmfp_change} Change in MC prediction for $\piz$ cross section between \gZero\ and \gC. } 
 \end{figure}
 Furthermore, the overall agreement of this tune with most non-TKI neutrino datasets remains virtually unchanged before and after tuning, thereby corroborating the physicality of the model.
 
@@ -561,17 +561,17 @@ The ``Electrons for Neutrinos'' (e4nu) collaboration uses data from the CLAS6 sp
 However, in the context of electron-scattering pion production, \genie\ tends to over-predict the data due to the absence of dedicated tunes based on free nucleon data. 
 Large uncertainties in the pion production model thus obscure any underlying nuclear or FSI dependence. 
 To resolve these effects, one must first tune electron scattering to free nucleon data. 
-The current tuning study can be extended in the future when dedicated electro-pion production measurements become available.
+The current tuning study can be extended in the future when dedicated electron-pion production measurements become available.
 
 In summary, this tune constitutes a valid and effective model that serves as a robust starting point for further analyses. 
 Future refinements will be achievable as additional data, including non-TKI observables and electron-scattering measurements, are incorporated into the fit.
 
 \section{\label{sec:summary}Summary and outlook}
 This work represents the first global tuning effort on TKI data. 
-Our partial tune of the \sfcfg\ and hA models, $\restunefull$ (\gC\), yields an effective model that improves the description of both neutrino-hydrocarbon pionless and pion production interactions. 
-The most significant modification in the model is driven by the \minpiz\ TKI measurement~\cite{MINERvA:2020anu}, which was considerably overestimated by \genie\. 
+Our partial tune of the \sfcfg\ and hA models, $\restunefull$ (\gC), yields an effective model that improves the description of both neutrino-hydrocarbon pionless and pion production interactions. 
+The most significant modification in the model is driven by the \minpiz\ TKI measurement~\cite{MINERvA:2020anu}, which was considerably overestimated by \genie\ as shown in Fig.~\ref{fig:g24-0-dat-reac}d and Fig.~\ref{fig:g24-0-pn-reac}d. 
 This improvement is crucial for the next generation of precision GeV neutrino experiments. 
-This tuning configuration has been integrated into the \texttt{master} branch of \genie and is scheduled for inclusion in the upcoming release.
+This tuning configuration has been integrated into the \texttt{master} branch of \genie\ and is scheduled for inclusion in the upcoming release.
 
 To develop an effective model, we concentrated on the parameters most sensitive to the data, namely $\srcfr$, $\pizmfp$, $\picex$, $\ncex$, $\nabs$, and $\npiprod$, thereby reducing the total number of adjustable parameters from 14 to 6. 
 The optimal combination of observables comprises $\dat$, $\pn$ (or $\dpt$ when $\pn$ is unavailable), and $\dptt$, drawn from both pionless and pion-production measurements in T2K and MINERvA. 
@@ -604,7 +604,7 @@ The degeneracy among these tunes can be resolved with additional data, particula
 % Results are summarized in Sec.~\ref{sec:results}, highlighting how the data-MC discrepancy in the \minpiz\ TKI measurement~\cite{MINERvA:2020anu} is resolved while maintaining good data-MC agreement elsewhere. 
 % The last section summarises the chapter and outlines future work.
 
-% The definitions of the kinematic cuts for these samples are summarized in Table~\ref{tab:data-sets-phase-space-cut}. 
+% The definitions of the kinematic cuts for these samples are summarized in Table~\ref{tab:fit-var-combo-phase-space-cut}. 
 
 % \section{\genie Model Selection and Configuration}\label{sec:genie}
 % \subsection{\label{sec:tuning-obs-choice} Data points}

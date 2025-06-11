@@ -526,6 +526,7 @@
 
 \newcommand{\mn}{M_{\textrm{N}}}
 
+\newcommand{\chindf}{\chi^2/{\textrm{NDF}}}
 % --- SPK
 \newcommand{\pp}{p_\textrm{p}}
 \newcommand{\ppr}{p_\textrm{p}}
