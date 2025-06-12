@@ -594,7 +594,7 @@
 \newcommand{\minpiz}{MINERvA-$\pi^{0}$\xspace}
 
 % ------ Coding ------------
-\newcommand{\genie}{\texttt{GENIE}~}
+\newcommand{\genie}{\texttt{GENIE}}
 % -- tunes
 \newcommand{\blue}[1]{\color{blue}#1\color{black}}
 \newcommand{\geighteen}{\texttt{G18\_10a\_02\_11b}}
@@ -607,10 +607,10 @@
 \newcommand{\gC}{\texttt{G24-c}\xspace}
 \newcommand{\gT}{\texttt{G24-t}\xspace}
 
-\newcommand{\geoa}{\texttt{G18-0a}~}
-\newcommand{\getwoa}{\texttt{G18-02a}~}
-\newcommand{\geta}{\texttt{G18-10a}~}
-\newcommand{\getb}{\texttt{G18-10b}~}
+\newcommand{\geoa}{\texttt{G18-01a}}
+\newcommand{\getwoa}{\texttt{G18-02a}}
+\newcommand{\geta}{\texttt{G18-10a}}
+\newcommand{\getb}{\texttt{G18-10b}}
 
 
 % ------ Latex utils --------

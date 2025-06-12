@@ -10,16 +10,16 @@ There is always only one truth.
 \chapter{\label{ch:datamc}High-Level Variables} 
 \minitoc
 
-As elaborated in the previous chapter, the neutrino-nucleus interaction is a complex process involving multiple components, including the neutrino-nucleon interaction, the nucleon initial states (IS), and final state interactions (FSI).
+As elaborated in Sec.~\ref{sec:nuint-nucleus}, the neutrino-nucleus interaction is a complex process involving multiple components, including the neutrino-nucleon interaction, the nucleon initial states (IS), and final state interactions (FSI).
 Hadronic single particle kinematics (SPK) are easy to measure and interpret, but they are affected by all components of the neutrino-nucleus interaction. 
 Hence, changes in different components can lead to similar changes in the SPK, thereby making it difficult to use them to improve neutrino–nucleus interaction models.
 To match the statistical improvement of the next generation long-baseline neutrino experiments, it is imperative to refine neutrino interaction models to significantly reduce the systematic uncertainties.
 To address this issue, high-level variables are cleverly constructed to probe specific components of the neutrino–nucleus interaction.
 This chapter focuses on the potential improvements in measuring these high-level variables with the upgraded ND280 detector.
-Besides the well-established Transverse Kinematic Imbalance (TKI) variables elaborated in Sec.~\ref{sec:nuint-tki}, the centre-of-momentum (COM) variables are introduced for the first time to probe FSI independent of IS.
+Besides the well-established Transverse Kinematic Imbalance (TKI) variables elaborated in Sec.~\ref{sec:nuint-tki}, the centre-of-momentum (COM) variables are introduced for the first time to probe FSI with strong robustness against changes in IS.
 The first section provides a brief introduction to these constructed variables, while the following section presents the MC study results.
 Although it would be highly valuable to perform data–MC comparisons of these variables, the current state of the global simulation and reconstruction does not permit them.
-Because the global simulation and reconstruction are still under development, the ESC technique is not yet implemented in the latest analysis chain; thus, data–MC comparisons are not currently feasible.
+Because the global simulation and reconstruction are still under development, the ESC technique is not yet implemented in the latest analysis chain.
 As proton kinematics are required for these high-level constructed variables, data–MC comparisons for these variables are not possible at this stage, and improvements for these variables will only be demonstrated with MC studies.
 
 \section{The TKI Variables}
@@ -29,7 +29,7 @@ As proton kinematics are required for these high-level constructed variables, da
      \subsection{$\numucczpiop$ selection}
      \label{sec:mc-tki-0pi}
           To demonstrate the benefits of the ESC technique, the TKI reconstruction in two samples is compared: the $\numucczpiop$ and the $\numucczpiop$-ESC sample.
-          The $\numucczpiop$(-ESC) sample is selected by requiring the presence of exactly one contained SFGD (ESC) proton, in addition to the $\numucc$-inclusive selection.
+          The $\numucczpiop$(-ESC) sample is selected by requiring the presence of exactly one contained SFGD (ESC) proton, in addition to the $\numucczpi$-inclusive selection.
           As discussed in Sec.~\ref{sec:sel-esc}, the ESC technique comprises the proton ESC cut and the muon momentum bias correction for TKI calculations.
           Hence, TKI reconstruction comparisons are presented step by step.
           Note that the result shown in this section for each selection is the sub-sample where the primary muon escapes SFGD and passes through the vertical TPC. 
@@ -92,14 +92,14 @@ As proton kinematics are required for these high-level constructed variables, da
                \caption{$\pn$ after ESC}
                \label{subfig:esc-pn-afesc}
           \end{subfigure}
-          \caption{TKI variables before and after ESC for the $\numucczpiop$ selection.}
+          \caption{Reconstruction quality plots of truth against reconstruction values for TKI variables before (left) and after (right) ESC for the $\numucczpiop$ selection.}
           \label{fig:mc-tki-0pi-esc}
      \end{figure}
 
      The impact of the muon momentum bias correction is best illustrated with a resolution fit in Fig.~\ref{fig:mc-tki-0pi-mubias}.
      This correction has a negligible impact on the angular variables, but it helps reduce bias in the momentum variables.
-     As shown in Fig.~\ref{subfig:esc-dpt-bfmu} and Fig.~\ref{subfig:esc-dpt-afmu}, the $\dpt$ fitted mean improves from $0.92$ to $0.95$ after the muon bias correction.
-     Similarly, in Fig.~\ref{subfig:esc-pn-bfmu} and Fig.~\ref{subfig:esc-pn-afmu}, the $\pn$ fitted mean improves from $0.94$ to $1.01$.
+     As shown in Fig.~\ref{subfig:esc-dpt-bfmu} and Fig.~\ref{subfig:esc-dpt-afmu}, the fitted mean for the truth to reconstruction ratio for $\dpt$ improves from $0.92$ to $0.95$ after the muon bias correction.
+     Similarly, in Fig.~\ref{subfig:esc-pn-bfmu} and Fig.~\ref{subfig:esc-pn-afmu}, the fitted mean for the truth to reconstruction ratio for $\pn$ improves from $0.94$ to $1.01$.
      This reduction in bias can also be observed in the decreased overestimated tails in the $\dpt$ and $\pn$ distributions.
      \begin{figure}
           \begin{subfigure}[b]{\dbfigwid\textwidth}
@@ -153,7 +153,7 @@ As proton kinematics are required for these high-level constructed variables, da
                \caption{$\pn$ after muon bias correction}
                \label{subfig:esc-pn-afmu}
           \end{subfigure}
-          \caption{TKI variables before and after muon bias correction for the $\numucczpiop$ selection.}
+          \caption{Fits of reconstruction resolution for TKI variables before (left) and after (right) muon bias correction for the $\numucczpiop$ selection.}
           \label{fig:mc-tki-0pi-mubias}
      \end{figure}
 
@@ -167,7 +167,7 @@ As proton kinematics are required for these high-level constructed variables, da
      \begin{figure}
           \centering
           \includegraphics[width=\sgfigwid\textwidth]{figures/perf/tki/cor_pn_rat_hist_al11_sfgmu.eps}
-          \caption{\label{fig:sfgmu-0pi-pn} $\pn$ distribution for the SFGD-$\mu$ sub-sample.}
+          \caption{\label{fig:sfgmu-0pi-pn} $\pn$ distribution for the SFGD-$\mu$ sub-sample after ESC selection.}
      \end{figure}
 
      \subsection{$\numuccopiop$ selection}
@@ -218,6 +218,7 @@ As proton kinematics are required for these high-level constructed variables, da
      This special property can be exploited to select $\nu$-H events amidst $\nu$-C events as suggested in Ref.~\cite{Lu:2015hea}. 
      Hence, the main figure of merit for $\dptt$ measurement is the width of its distribution for $\nu$-H events, where the hydrogen events are picked by an additional check on the MC truth information.
      As shown in Fig.~\ref{fig:1pi-tki-dptt}, the fitted half width is about $12~\mevc$, which is significantly improved compared to $21~\mevc$, the pre-upgrade ND280 result~\cite{Lu:2015hea}, suggesting a greater potential to apply it for a hydrogen sample selection, which will be discussed at the end of this chapter in Sec.~\ref{sec:mc-hydrogen}.
+     However, the final sample size of the hydrogen sample, 31 events, is statistically limited, so the practical improvement of the $\dptt$ measurement needs to be further assessed with more simulation and data.
      \begin{figure}[!htb] 
           \centering 		
           \includegraphics[width=\sgfigwid\textwidth]{figures/perf/tki/SFGpTPCmu_dptt_hist_al15_H_bin100_range500_Lfit.eps}
@@ -249,7 +250,7 @@ $\thetapidel$ is a resonance property that follows an underlying distribution de
 
 The kinematics in the lab frame are related to those in the $\deltapp$ rest frame by a boost with $\vecpdel$, as depicted in the top right of Fig.~\ref{fig:COM-diagram}. 
 Without FSI, $\vecpdel$ equals the sum of $\vecpp$ and $\vecppi$.
-However, the target materials of modern-day detectors are mainly comprised of nuclei with multiple nucleons, and FSI alters the kinematics of the hadrons considerably, as illustrated by the dotted arrows in the bottom right of Fig.~\ref{fig:COM-diagram}.
+However, the target materials of modern day detectors are mainly comprised of nuclei with multiple nucleons and FSI alters the kinematics of the hadrons considerably, as illustrated by the dotted arrows in the bottom right of Fig.~\ref{fig:COM-diagram}.
 
 The altered momenta, $\vecppp$ and $\vecppip$, are the ones measured by detectors. 
 Their sum generally differs from $\vecpdel$.
@@ -265,11 +266,12 @@ $\thetapidel$, being a rest-frame property of $\deltapp$, is independent of the 
 In neutrino event generators, $\thetacom$ deviates from $\thetapidel$ only due to FSI, which is independent of neutrino energy and IS.
 Therefore, $\thetacom$ retains these important independencies.
 As different resonances could have different decay properties, $\thetaR$, the similarly defined pion decay angle of a higher resonance $R$, generally differs from $\thetapidel$. 
-Hence, $\thetacom$, a superposition of $\thetapidel$ and all possible $\thetaR$, will deviate from $\thetapidel$ when more resonances become energetically possible with an increase in neutrino energy. 
+Hence, $\thetacom$, a superposition of $\thetapidel$ and all possible $\thetaR$, will deviate from $\thetapidel$, when more resonances become energetically possible with an increase in neutrino energy. 
 This deviation will be further elaborated in Sec.~\ref{sec:dis}.
 
 Moreover, the total energy in the COM frame, $\ecom$, will be equal to the mass of the resonance in the absence of FSI.
 Cutting on events with total energy far from the rest mass peak of the resonance will select events with minimal FSI effects, such as $\nu$-H events. 
+Also, an upper cut on $\ecom$, e.g. $\ecom<1330~\gev$, can help to select events with a $\deltapp$ resonance, as the $\deltapp$ rest mass is $1232~\mev$.
 The application of $\ecom$ for hydrogen event selection will be discussed in Sec.~\ref{sec:mc-hydrogen}.
 
 Up to this point, the discussion of resonance decay has been entirely general and can thus be applied to and validated by various experiments, including hadron scattering measurements. 
@@ -288,8 +290,8 @@ Additionally, the necessity of reconstructing the neutrino energy renders $\thet
      \subsection{Analysis result}
      \label{sec:com-ana}
      In the absence of existing measurements of the COM angle, MC studies were conducted to evaluate its potential advantages—namely, robustness against IS effects and sensitivity to FSI effects.
-     MC samples were generated using \genie \cite{Andreopoulos:2009rq, GENIE:2021npt} for the T2K beam and target, unless otherwise noted. 
-     Several \genie tunes are employed in this section, and their model details are summarized in Table~\ref{tab:genie-tunes}.
+     MC samples were generated using \genie\ \cite{Andreopoulos:2009rq, GENIE:2021npt} for the T2K beam and target, unless otherwise noted. 
+     Several \genie\ tunes are employed in this section, and their model details are summarized in Table~\ref{tab:genie-tunes}.
      Each sample consists of $600,000$ muon neutrino events. 
      For the T2K flux on carbon, approximately $70\%$ of the events are charge‐current (CC) events, of which on average $16\%$ are CC single pion ($\numuccopi$) events and $9\%$ are CC single pion single proton ($\numuccopiop$) events.
      A selection of $\numuccopiop$ events was used to generate the plots.
@@ -301,20 +303,21 @@ Additionally, the necessity of reconstructing the neutrino energy renders $\thet
      \centering
      \begin{tabular}{c|c|c|c|c|c}
           CMC                  &  IS  &  QE                & 2p2h         & RES & FSI\\
-          \colrule
-          \geoa    &  RFG         &   LS               & Dytman       & RS  & hA\\
-          \getwoa    &  RFG         &   LS               & Dytman       & BS  & hA\\
-          \geta    
+          \hline
+          \hline
+          \geoa\    &  RFG         &   LS               & Dytman       & RS  & hA\\
+          \getwoa\    &  RFG         &   LS               & Dytman       & BS  & hA\\
+          \geta\    
                               &  LFG         &  Valencia          & Nieves       & BS  & hA\\
-          \getb    &  LFG         &  Valencia          & Nieves       & BS  & hN\\
-          \gZero    &  SF-CFG      &  Valencia          & SuSAv2       & BS  & hA\\
-          \gC    &  SF-CFG      &  Valencia          & SuSAv2       & BS  & hA(tuned)\\
+          \getb\    &  LFG         &  Valencia          & Nieves       & BS  & hN\\
+          \gZero\    &  SF-CFG      &  Valencia          & SuSAv2       & BS  & hA\\
+          \gC\    &  SF-CFG      &  Valencia          & SuSAv2       & BS  & hA(tuned)\\
      \end{tabular}
      \caption{
           The full tune names are: 1) \geoa: \texttt{G18\_01a\_02\_11b}; 2) \getwoa: \texttt{G18\_02a\_02\_11b}; 3) \geta: \texttt{G18\_10a\_02\_11b}; 4) \getb: \texttt{G18\_10b\_02\_11b}; 5) \gZero: \texttt{G24\_20i\_00\_000}; 6) \gC: \texttt{G24\_20i\_06\_22c}.
           The four nuclear IS models are relativistic Fermi gas (RFG), local Fermi gas (LFG), spectral-function-like CFG (SF-CFG)~\cite{sfcfg-talk,sfcfg-GitHubCommit,GENIE:2021npt}. 
      The respective cross-section models are: 1) Quasielastic (QE) - Llewellyn-Smith (LS)~\cite{LlewellynSmith:1971uhs} and Valencia~\cite{Nieves:2004wx}; 2) 2 particle 2 hole (2p2h) - Dytman~\cite{genie:2p2h-dytman}, Nieves~\cite{Nieves:2011pp} and SuSAv2~\cite{Gonzalez-Jimenez:2014eqa}; 3) Resonance(RES) - Rein-Sehgal (RS)~\cite{Rein:1980wg} and Berger-Sehgal (BS)~\cite{Berger:2007rq}. 
-     The FSI models used are the built-in \genie models~\cite{Andreopoulos:2015wxa}: INTRANUKE hA and hN.
+     The FSI models used are the built-in \genie\ models~\cite{Andreopoulos:2015wxa}: INTRANUKE hA and hN.
      Note that in \texttt{G24\_20i\_06\_22c}~\cite{GENIE:2024ufm}, the hA model has been tuned using TKI data, resulting in parameters that differ from the default version of hA.
      }
      \label{tab:genie-tunes}
@@ -345,7 +348,7 @@ Additionally, the necessity of reconstructing the neutrino energy renders $\thet
           \caption{Area normalized $\thetacom$ distribution - $\numuccopiop$ selection restricted to $\deltapp$ decay only.}
           \label{subfig:ch-comp-com-dpp}
      \end{subfigure}
-     \caption{Cross-section normalized (\ref{subfig:ch-comp-xnorm}) and area normalized (\ref{subfig:ch-comp-com-cc1pi1p} and \ref{subfig:ch-comp-com-dpp}) comparisons for FSI on/off for carbon and hydrogen with \geta for $\thetacom$ using the T2K flux. (\ref{subfig:ch-comp-com-dpp}) has a more stringent selection to restrict the resonance to be $\deltapp$.}
+     \caption{Cross-section normalized (\ref{subfig:ch-comp-xnorm}) and area normalized (\ref{subfig:ch-comp-com-cc1pi1p} and \ref{subfig:ch-comp-com-dpp}) comparisons for FSI on/off for carbon and hydrogen with \geta\ for $\thetacom$ using the T2K flux. (\ref{subfig:ch-comp-com-dpp}) has a more stringent selection to restrict the resonance to be $\deltapp$.}
      \label{fig:ch-comp}
      \end{figure}
 
@@ -358,7 +361,7 @@ Additionally, the necessity of reconstructing the neutrino energy renders $\thet
      To examine the detailed effect of IS on $\thetacom$, the cross-section shape of $\nu$-C events (with FSI enabled and disabled) is compared to that of $\nu$-H in Fig.~\ref{subfig:ch-comp-com-cc1pi1p}.
      To better quantify the shape differences, $\chindf$ values (where NDF stands for the number of degrees of freedom) are calculated for all shape‐comparison plots.
      Each $\chindf$ value is calculated with respect to the first curve in its respective plot, accounting only for statistical uncertainties.
-     As shown by the ``\geta FSI-off C'' and ``\geta C'' curves in Fig.~\ref{subfig:ch-comp-com-cc1pi1p}, enabling FSI leads to a drastic change in the cross-section shape.
+     As shown by the ``\geta\ FSI-off C'' and ``\geta\ C'' curves in Fig.~\ref{subfig:ch-comp-com-cc1pi1p}, enabling FSI leads to a drastic change in the cross-section shape.
      In contrast, the $\nu$-H and $\nu$-C (FSI-off) curves are much closer to each other.
      This bolsters the claim that FSI has a much stronger impact on the $\thetacom$ distribution than do IS effects.
      Nonetheless, the FSI-off $\nu$-C distribution remains considerably different from the $\nu$-H distribution, with a large $\chindf$ value of $321/8$.
@@ -367,9 +370,9 @@ Additionally, the necessity of reconstructing the neutrino energy renders $\thet
      It is challenging to pinpoint the exact cause of this large difference, which should be reserved for investigation in future studies.
 
      Because comparing FSI-off carbon with FSI-off hydrogen appears to be too aggressive a test to isolate the impact of IS modeling, a more reasonable approach is to compare different IS models while keeping other factors fixed.
-     The simulation results for the default \geta and its variant using the correlated Fermi gas (CFG) model are shown in Fig.~\ref{subfig:10alfg-comp-t2k}.
-     The $\chindf$ value of $18/8$ between \geta (LFG) and \geta (CFG) is indeed small, suggesting that $\thetacom$ is robust against changes in IS models.
-     Since $\thetaadt$ is conceptually similar to $\thetacom$ but exhibits a larger dependence on IS, it is imperative to compare the $\thetaadt$ distributions for \geta (LFG) and \geta (CFG) as well, as shown in Fig.~\ref{subfig:10alfg-comp-t2k-adt}, to assess the impact of the IS model change.
+     The simulation results for the default \geta\ and its variant using the correlated Fermi gas (CFG) model are shown in Fig.~\ref{subfig:10alfg-comp-t2k}.
+     The $\chindf$ value of $18/8$ between \geta\ (LFG) and \geta\ (CFG) is indeed small, suggesting that $\thetacom$ is robust against changes in IS models.
+     Since $\thetaadt$ is conceptually similar to $\thetacom$ but exhibits a larger dependence on IS, it is imperative to compare the $\thetaadt$ distributions for \geta\ (LFG) and \geta\ (CFG) as well, as shown in Fig.~\ref{subfig:10alfg-comp-t2k-adt}, to assess the impact of the IS model change.
      Unexpectedly, an even smaller difference between the two curves for $\thetaadt$ is observed in Fig.~\ref{subfig:10alfg-comp-t2k-adt} compared to Fig.~\ref{subfig:10alfg-comp-t2k}, indicating that despite its dependence on IS, changing from LFG to CFG does not distort the shape of $\thetaadt$ appreciably.
      \begin{figure}
      \centering
@@ -422,32 +425,32 @@ Additionally, the necessity of reconstructing the neutrino energy renders $\thet
      Another important property of $\thetacom$ to verify is its sensitivity to FSI effects.
      Similar to the investigation of IS effects, the $\thetacom$ distributions for different FSI models are shown in Fig.~\ref{fig:fsi-comp}.
      There are two commonly used FSI models in \genie, namely hA and hN.
-     Thus, two \genie tunes—\geta (hA) and \getb (hN), which differ only in FSI modeling—are compared in Fig.~\ref{subfig:10a10b-comp-t2k}.
+     Thus, two \genie\ tunes—\geta\ (hA) and \getb\ (hN), which differ only in FSI modeling—are compared in Fig.~\ref{subfig:10a10b-comp-t2k}.
      The $\thetacom$ distributions for these two tunes are statistically incompatible, with a large $\chindf$ value of $64/8$, a difference that is significantly more pronounced than the fluctuation induced by changing the IS model from LFG to CFG, as shown in Fig.~\ref{subfig:10alfg-comp-t2k}.
-     To further verify the sensitivity of $\thetacom$ to FSI effects, a comparison between \gZero (hA) and \gC (tuned hA) is presented in Fig.~\ref{subfig:g240c-comp-t2k}.
+     To further verify the sensitivity of $\thetacom$ to FSI effects, a comparison between \gZero\ (hA) and \gC\ (tuned hA) is presented in Fig.~\ref{subfig:g240c-comp-t2k}.
      In \gC~\cite{GENIE:2024ufm}, the hA model has been tuned to maintain good agreement with the T2K TKI $\numuccopiop$ data~\cite{T2K:2021naz}, so the considerable difference—$\chindf=29/8$—between the two distributions in Fig.~\ref{subfig:g240c-comp-t2k} further demonstrates the sensitivity of $\thetacom$ to FSI effects.
 
      \begin{figure}
      \begin{subfigure}[b]{\dbfigwid\textwidth}
           \centering
           \includegraphics[width=\textwidth]{figures/COM/anorm-10a10b-lfgdef_da_tan.eps}
-          \caption{\geta vs \getb }
+          \caption{\geta\ vs \getb\ }
           \label{subfig:10a10b-comp-t2k}
      \end{subfigure}
      \begin{subfigure}[b]{\dbfigwid\textwidth}
           \centering
           \includegraphics[width=\textwidth]{figures/COM/anorm-g240c-t2k-_da_tan.eps}
-          \caption{\gZero vs \gC}
+          \caption{\gZero\ vs \gC}
           \label{subfig:g240c-comp-t2k}
      \end{subfigure}
-     \caption{Area normalized comparisons for different FSI models, \ref{subfig:10a10b-comp-t2k} for \geta (hA) and \getb (hN) and \ref{subfig:g240c-comp-t2k} for \gZero (hA) and \gC (tuned hA) with the T2K flux on carbon.}
+     \caption{Area normalized comparisons for different FSI models, \ref{subfig:10a10b-comp-t2k} for \geta\ (hA) and \getb\ (hN) and \ref{subfig:g240c-comp-t2k} for \gZero\ (hA) and \gC\ (tuned hA) with the T2K flux on carbon.}
      \label{fig:fsi-comp}
      \end{figure}
 
      The two major advantages of $\thetacom$ have been demonstrated, namely its robustness against IS effects and its sensitivity to FSI effects.
      The next step is to investigate the impact of other factors in neutrino–nucleus interactions on $\thetacom$.
      Since $\thetacom$ is calculated from the decay products of resonances, it can be affected by changes in RES modeling, which dictate the production and decay of these resonances.
-     As a proxy for investigating the effect of a change in the RES model on $\thetacom$, the axial mass parameter, $\MA$, in the \gZero tune was varied to an exaggerated—and most likely unphysical—extent, as shown in Fig.~\ref{fig:ma-comp}.
+     As a proxy for investigating the effect of a change in the RES model on $\thetacom$, the axial mass parameter, $\MA$, in the \gZero\ tune was varied to an exaggerated—and most likely unphysical—extent, as shown in Fig.~\ref{fig:ma-comp}.
      As anticipated, Fig.~\ref{subfig:ma-comp-xsec} demonstrates that varying $\MA$ alters the cross-section, while the shape of $\thetacom$ remains almost unchanged—as confirmed by the small $\chindf$ values in Fig.~\ref{subfig:ma-comp-area}.
      This is likely because $\deltapp$ is the dominant resonance for the T2K flux, and changes in $\MA$ do not appreciably alter its decay properties—thereby leaving the $\thetacom$ distribution largely unaffected.
      \begin{figure}
@@ -510,7 +513,7 @@ Additionally, the necessity of reconstructing the neutrino energy renders $\thet
      \end{figure}
 
      Besides varying a parameter in the RES model, a more aggressive test is to compare two different RES models directly.
-     This comparison is achieved by contrasting two \genie tunes—\geoa (employing the RS model) and \getwoa (employing the BS model)—as shown in Fig.~\ref{fig:0102a-comp}.
+     This comparison is achieved by contrasting two \genie\ tunes—\geoa\ (employing the RS model) and \getwoa\ (employing the BS model)—as shown in Fig.~\ref{fig:0102a-comp}.
      The results using the T2K flux and the MINERvA flux are presented in Fig.~\ref{subfig:0102a-comp-t2k} and Fig.~\ref{subfig:0102a-comp-minerva}, respectively.
      Both $\chindf$ values are low—specifically, $6/8$ and $8/8$—suggesting that this change in the RES model is far less extreme than the unphysically large modification of $\MA$ shown in Fig.~\ref{fig:ma-comp} and that such a reasonable change in RES modeling does not lead to a noticeable alteration of the $\thetacom$ distribution.
      \begin{figure}
@@ -527,7 +530,7 @@ Additionally, the necessity of reconstructing the neutrino energy renders $\thet
           \caption{MINERvA}
           \label{subfig:0102a-comp-minerva}
      \end{subfigure}
-     \caption{Area normalized comparisons for different RES models with the T2K (\ref{subfig:0102a-comp-t2k}) and MINERvA (\ref{subfig:0102a-comp-minerva}) fluxes using \geoa and \getwoa.
+     \caption{Area normalized comparisons for different RES models with the T2K (\ref{subfig:0102a-comp-t2k}) and MINERvA (\ref{subfig:0102a-comp-minerva}) fluxes using \geoa\ and \getwoa.
      Both select $\numuccopiop$ events, but the MINERvA sample has a additional cut of $\ecom<1330~\mev$.}
      \label{fig:0102a-comp}
      \end{figure}
@@ -536,7 +539,7 @@ Additionally, the necessity of reconstructing the neutrino energy renders $\thet
      On the other hand, this behavior implies that $\thetacom$ is sensitive to the onset of higher resonances.
      Given that the robustness of $\thetacom$ against both IS effects and considerable changes of RES modeling have been demonstrated, the difference between the $\thetacom$ distributions with and without the $\ecom$ cut (as shown in Fig.~\ref{fig:ma-comp-minerva}) is most likely attributable to the onset of higher resonances.
      This advocates employing $\thetacom$ to study both the production of higher resonances and the correlations among their production.
-     Since the BS model in \genie does not implement resonance correlations, this potential application of $\thetacom$ is reserved for future studies—when more advanced models, such as the MK model~\cite{Kabirnezhad:2017jmf,Kabirnezhad:2020wtp,Kabirnezhad:2022znc}, are reliably implemented and validated.
+     Since the BS model in \genie\ does not implement resonance correlations, this potential application of $\thetacom$ is reserved for future studies—when more advanced models, such as the MK model~\cite{Kabirnezhad:2017jmf,Kabirnezhad:2020wtp,Kabirnezhad:2022znc}, are reliably implemented and validated.
 
      Besides its appealing sensitivity and robustness, $\thetacom$ has the practical advantage that its reconstruction does not require determining the kinematics of the incoming neutrino.
      This decouples the reconstruction of $\thetacom$ from the systematic uncertainties associated with neutrino energy reconstruction—which are among the largest in neutrino measurements~\cite{T2K:2019yqu,T2K:2021naz,MicroBooNECollaboration:2024gvg,NOvA:2023uxq,MINERvA:2022djk}.
@@ -603,7 +606,7 @@ Additionally, the necessity of reconstructing the neutrino energy renders $\thet
      A similar level of robustness should be attainable for other fluxes, although flux-specific cuts may be necessary; this remains an avenue for future investigation.
 
      The observed robustness of $\thetacom$ against $\enu$ variations in $\nu$-H events—across a wide range of $\enu$ with an $\ecom < 1330~\mev$ cut, as seen in Fig.~\ref{fig:enu-comp-h}—opens up a new avenue for cross-experiment comparisons.
-     As depicted in Fig.~\ref{fig:flux-comp}, the $\thetacom$ distributions for the T2K, MINERvA, and MicroBooNE~\footnote{There is no hydrogen in the target for MicroBooNE, but such a simulation is possible and plotted for reference only.} fluxes on a hydrogen target using tune \gZero are highly statistically compatible, with $\chindf$ values of $10/8$ and $9/8$, respectively.
+     As depicted in Fig.~\ref{fig:flux-comp}, the $\thetacom$ distributions for the T2K, MINERvA, and MicroBooNE~\footnote{There is no hydrogen in the target for MicroBooNE, but such a simulation is possible and plotted for reference only.} fluxes on a hydrogen target using tune \gZero\ are highly statistically compatible, with $\chindf$ values of $10/8$ and $9/8$, respectively.
      \begin{figure}
      \includegraphics[width=\scfigwid\textwidth]{figures/COM/anorm-flux-9bin-wcut_da_tan.eps}
      \caption{Area normalized comparisons for different fluxes on hydrogen with the $\ecom<1330~\mev$ cut imposed for MINERvA. The nominal tune is \gZero.}
@@ -615,7 +618,7 @@ Additionally, the necessity of reconstructing the neutrino energy renders $\thet
      Given a high‐purity hydrogen sample, the $\thetacom$ cross section can be directly compared across different experiments.
 
      Thus far, the discussion has primarily focused on the insensitivity of $\thetacom$ to variations in one aspect (excluding FSI) of the complex neutrino–nucleus interactions.
-     To further demonstrate the robustness of $\thetacom$, a comparison among different \genie tunes is presented in Fig.~\ref{fig:mod-comp}, in which multiple components of the neutrino–nucleus interactions vary concurrently.
+     To further demonstrate the robustness of $\thetacom$, a comparison among different \genie\ tunes is presented in Fig.~\ref{fig:mod-comp}, in which multiple components of the neutrino–nucleus interactions vary concurrently.
      \begin{figure}[ht!]
      % \begin{subfigure}[ht!]{\scfigwid\textwidth}
           \centering
@@ -623,20 +626,20 @@ Additionally, the necessity of reconstructing the neutrino energy renders $\thet
           % \caption{}
           % \label{subfig:mod-comp-ratio}
      % \end{subfigure}
-     \caption{$\thetacom$ distribution comparisons using the T2K flux on carbon with multiple \genie configuations. }
+     \caption{$\thetacom$ distribution comparisons using the T2K flux on carbon with multiple \genie\ configuations. }
      \label{fig:mod-comp}
      \end{figure}
 
-     Notably, the configurations differing in their FSI model—\gC (tuned hA) and \getb (hN)—exhibit the largest $\chindf$ values, $29/8$ and $58/8$, respectively.
-     \gC differs from \gZero only in its FSI model, as discussed in Fig.~\ref{subfig:g240c-comp-t2k}.
-     In addition to differing in the FSI model, \getb also differs from \gZero in its IS and 2p2h models.
-     In contrast, \geta—which shares the same FSI model as \gZero but differs in IS and 2p2h models in a manner similar to \getb—exhibits a much smaller $\chindf$ value of $13/8$, providing strong evidence that FSI is the primary reason for the large deviation observed in \getb relative to \gZero.
+     Notably, the configurations differing in their FSI model—\gC\ (tuned hA) and \getb\ (hN)—exhibit the largest $\chindf$ values, $29/8$ and $58/8$, respectively.
+     \gC\ differs from \gZero\ only in its FSI model, as discussed in Fig.~\ref{subfig:g240c-comp-t2k}.
+     In addition to differing in the FSI model, \getb\ also differs from \gZero\ in its IS and 2p2h models.
+     In contrast, \geta—which shares the same FSI model as \gZero\ but differs in IS and 2p2h models in a manner similar to \getb—exhibits a much smaller $\chindf$ value of $13/8$, providing strong evidence that FSI is the primary reason for the large deviation observed in \getb\ relative to \gZero.
 
-     Furthermore, \geoa and \getwoa differ from \gZero in additional model components, yet both exhibit relatively small $\chindf$ values.
-     In particular, \getwoa is statistically compatible with \gZero—with a $\chi^2/\textrm{NDF}$ of $13/8$—despite differences in its IS, QE, and 2p2h models.
-     While a change in the RES model alone does not impact $\thetacom$, as illustrated by the comparison between \geoa and \getwoa in Fig.~\ref{fig:0102a-comp}, the combined modifications in QE, IS, and 2p2h models cause \geoa to deviate further from \gZero, yielding a $\chindf$ of $24/8$.
+     Furthermore, \geoa\ and \getwoa\ differ from \gZero\ in additional model components, yet both exhibit relatively small $\chindf$ values.
+     In particular, \getwoa\ is statistically compatible with \gZero—with a $\chi^2/\textrm{NDF}$ of $13/8$—despite differences in its IS, QE, and 2p2h models.
+     While a change in the RES model alone does not impact $\thetacom$, as illustrated by the comparison between \geoa\ and \getwoa\ in Fig.~\ref{fig:0102a-comp}, the combined modifications in QE, IS, and 2p2h models cause \geoa\ to deviate further from \gZero, yielding a $\chindf$ of $24/8$.
 
-     This comparison between different \genie tunes demonstrates that $\thetacom$ is most sensitive to changes in FSI while remaining robust against variations in other model components.
+     This comparison between different \genie\ tunes demonstrates that $\thetacom$ is most sensitive to changes in FSI while remaining robust against variations in other model components.
      A change in the RES model combined with modifications in other components can result in a noticeable alteration of the $\thetacom$ distribution, whereas a change in the RES model alone does not appear to have a significant impact.
 
 
@@ -679,9 +682,9 @@ Additionally, the necessity of reconstructing the neutrino energy renders $\thet
      While Refs.~\cite{Baudis:2023tma} and \cite{MINERvA:2023avz} focus on neutrino and antineutrino pion-less events, respectively, Ref.~\cite{Lu:2015hea} pertains to the same event topology as that used for the COM total energy.
      With new or future detectors—e.g., the SFGD and the 3DST of DUNE~\cite{DUNE:2021tad}—there is greater potential to implement novel techniques for selecting a high-purity $\nu$-H sample.
      To this end, the sensitivity of the COM frame to FSI can be leveraged not only to study FSI but also to select events with minimal FSI.
-     Preliminary studies have shown that at the SFGD, a considerable number of carbon background events remain after optimal cuts on TKI variables—namely, $\dptt$ and $\dpt$.
-     Adding a cut on $\ecom$ can remove a significant portion of these background events, thereby achieving higher purity.
-     A more thorough investigation of this application of $\ecom$ is required to obtain a reliable assessment of the improvement in purity and will be explored in future studies.
+     % Preliminary studies have shown that at the SFGD, a considerable number of carbon background events remain after optimal cuts on TKI variables—namely, $\dptt$ and $\dpt$.
+     % Adding a cut on $\ecom$ can remove a significant portion of these background events, thereby achieving higher purity.
+     % A more thorough investigation of this application of $\ecom$ is required to obtain a reliable assessment of the improvement in purity and will be explored in future studies.
 
      \subsection{Reconstruction Quality}
      \label{sec:com-reco}
@@ -754,14 +757,14 @@ Therefore, a COM total energy cut is proposed to complement $\dptt$, and this se
      \caption{Decomposed distributions for $\dptt$ and $\dpt$ for hydrogen and carbon events.}
      \label{fig:hsel-tki-decomp}
      \end{figure}
-     Based on $\dptt$ alone, the most effective cut is $-10\mevc \leq \dptt \leq 30\mevc$.
-     This cut yields 16 hydrogen events and 16 carbon events, for a purity of $50\%$.
+     Based on $\dptt$ alone, the most effective cut is $-10~\mevc \leq \dptt \leq 30~\mevc$.
+     This cut yields 16 hydrogen events and 16 carbon events, for a purity of $(50\pm8.9)\%$, where the uncertainty is statistical only.
      In comparison, Ref.~\cite{MINERvA:2023avz} reported ``5,580(180) signal events over an estimated background of 12,500 events,'' which corresponds to a purity lower than $50\%$ but a much larger total number of events.
      Hence, for the T2K sample to be most useful, maximizing purity is essential to minimize systematic uncertainties in parameter measurements.
 
      Because SFGD excels in 3D tracking, a cut on $\dpt$ may further reduce carbon backgrounds.
      A similar decomposition is shown in Fig.~\ref{subfig:hsel-dpt-stack} for $\dpt$.
-     It is observed that $\dpt$ and $\dptt$ for hydrogen events cluster near $0$, while carbon events exhibit more spread.
+     It is observed that $\dpt$ and $\dptt$ for hydrogen events cluster near $0$, while carbon events exhibit a wider spread.
      Since the variables are not entirely independent (because $\abs{\dptt} \leq \dpt$), identifying a suitable two-dimensional cut is simpler by plotting them together, as shown in Fig.~\ref{fig:hsel-dpt-dptt} for hydrogen and carbon separately.
      \begin{figure}
           \begin{subfigure}[b]{\dbfigwid\textwidth}
@@ -780,7 +783,7 @@ Therefore, a COM total energy cut is proposed to complement $\dptt$, and this se
           \label{fig:hsel-dpt-dptt}
      \end{figure}
 
-     Fig.~\ref{fig:hsel-dpt-dptt} suggests the cuts, $\dpt < 80\mevc$ and $-40\mevc \leq \dptt \leq 30\mevc$, which lead to a sample of $19$ hydrogen events and $10$ carbon events, with a purity of $65.5\%$.
+     Fig.~\ref{fig:hsel-dpt-dptt} suggests the cuts, $\dpt < 80~\mevc$ and $-40~\mevc \leq \dptt \leq 30~\mevc$, which lead to a sample of $19$ hydrogen events and $10$ carbon events, with a purity of $(65.5\pm8.9)\%$.
      This is the optimal purity and efficiency achievable by using TKI variables only.
      To further improve the purity, an additional cut on the COM variables is proposed.
      Similar to Fig.~\ref{fig:hsel-tki-decomp}, the decompositions for the COM variables are shown in Fig.~\ref{fig:hsel-com-decomp}.
@@ -803,7 +806,7 @@ Therefore, a COM total energy cut is proposed to complement $\dptt$, and this se
      \caption{Decomposed distributions for $\ecom$ and $\thetacom$ for hydrogen and carbon events.}
      \label{fig:hsel-com-decomp}
      \end{figure}
-     Hence, an additional cut, $1168~\mev<\ecom<1257~\mev$ is implemented to further reduce the carbon backgrounds, achieving a sample of $18$ hydrogen events and $5$ carbon events, with an impressive purity of $78\%$.
+     Hence, an additional cut, $1168~\mev<\ecom<1257~\mev$ is implemented to further reduce the carbon backgrounds, achieving a sample of $18$ hydrogen events and $5$ carbon events, with an impressive purity of $(78.3\pm8.6)\%$.
 
      To demonstrate the effectiveness of these cuts, the $\dptt$ distributions are plotted step-wise in Fig.~\ref{fig:hsel-dptt-step}.
      Comparing the $\dptt$ distributions before and after each cut, namely the cuts on $\dpt$ and $\ecom$, it is evident that these cuts successfully remove carbon backgrounds in the low $\dptt$ region, which is impossible to remove based on $\dptt$ alone.
@@ -819,13 +822,13 @@ Therefore, a COM total energy cut is proposed to complement $\dptt$, and this se
      \begin{subfigure}[b]{\trfigwid\textwidth}
           \centering
           \includegraphics[width=\textwidth]{figures/perf/tki/SFGpTPCmu_dptt_stack_al15_dpt80.eps}
-          \caption{$\dpt < 80\mevc$}
+          \caption{$\dpt < 80~\mevc$}
           \label{subfig:hsel-dang-dpt80}
      \end{subfigure}
      \begin{subfigure}[b]{\trfigwid\textwidth}
           \centering
           \includegraphics[width=\textwidth]{figures/perf/tki/SFGpTPCmu_dptt_stack_al15_GetH_dpt80_wdang.eps}
-          \caption{$\dpt < 80\mevc$ and $\ecom$ cut}
+          \caption{$\dpt < 80~\mevc$ and $\ecom$ cut}
           \label{subfig:hsel-dang-dpt80-ecom}
      \end{subfigure}
      \caption{Step-wise $\dptt$ distributions for hydrogen and carbon events.}
@@ -838,6 +841,8 @@ Therefore, a COM total energy cut is proposed to complement $\dptt$, and this se
      The impact of the resolution is amplified as the cuts are placed to select events with small values when reconstruction uncertainties could relatively easily move the signal events out of the cut.
      On the other hand, while $\ecom$ has excellent reconstruction quality as it is independent of neutrino direction, its true distribution has a natural half-width of about $60~\mev$~\cite{ParticleDataGroup:2024cfk}.
      Hence, even if $\ecom$ can be reconstructed perfectly, it cannot separate hydrogen events from carbon events completely.
-     Due to the limited amount of MC events available and the relatively small fraction of resonance events in the T2K beam, the statistics of the selection are too small to be conclusive.
-     Nevertheless, the results are promising and suffice in demonstrating the complementarity of the transverse variables and $\ecom$.
+     Due to the limited amount of MC events available and the relatively small fraction of resonance events in the T2K beam, the statistics of the hydrogen selection are too small to be conclusive.
+     Given the relatively large statistical uncertainties in the purity estimates, (approximately $9\%$ for all the selections), the realistic improvement of utilizing the COM variables needs to be further investigated with larger MC samples.
+     The results presented in this sub-seciton is for illustraion of the idea only.
+     Nevertheless, the reduction of carbon background events after adding the $\ecom$ cut does emphasize the existance of carbon events that cannot be removed by the transverse variables alone, thereby bosltering the argument that the COM variables are complementary to the transverse variables.
      Hence, it is hopeful that using the two kinds of variables together, the upgraded ND280 data can produce a hydrogen sample with high purity.
