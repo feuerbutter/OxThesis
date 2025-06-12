@@ -209,7 +209,7 @@ As proton kinematics are required for these high-level constructed variables, da
                \caption{$\pn$}
                \label{subfig:1pi-pn}
           \end{subfigure}
-          \caption{TKI variables for the $\numuccopiop$ selection.}
+          \caption{Fits of reconstruction resolution for TKI variables for the $\numuccopiop$ selection.}
           \label{fig:mc-tki-1pi}
      \end{figure}
 
@@ -222,7 +222,9 @@ As proton kinematics are required for these high-level constructed variables, da
      \begin{figure}[!htb] 
           \centering 		
           \includegraphics[width=\sgfigwid\textwidth]{figures/perf/tki/SFGpTPCmu_dptt_hist_al15_H_bin100_range500_Lfit.eps}
-          \caption{\label{fig:1pi-tki-dptt} $\dptt$ distribution for $\nu$-H events.} 
+          \caption{\label{fig:1pi-tki-dptt} $\dptt$ distribution for $\nu$-H events selected from the $\numuccopiop$ sample based on true information.
+          The resolution is approximately $12~\mevc$, a considerable improvement from the pre-upgrade ND280 result of $21~\mevc$~\cite{Lu:2015hea}.
+          However, the sample size is statistically limited, so the concrete improvement requires further investigation with higher statistics.} 
      \end{figure}
 
 
@@ -715,7 +717,7 @@ Additionally, the necessity of reconstructing the neutrino energy renders $\thet
                \caption{$\ecom$ Resolution}
                \label{subfig:reco-com-e-res}
           \end{subfigure}
-          \caption{COM variables for the $\numuccopiop$ selection.}
+          \caption{Reconstruction quality plots of truth against reconstruction values and fits of reconstruction resolution for COM variables for the $\numuccopiop$ selection.}
           \label{fig:com-reco}
      \end{figure}
      The analysis presented in Sec.~\ref{sec:com-ana} uses a binning of $20^\circ$ for $\thetacom$. In contrast, Fig.~\ref{subfig:reco-com-t-res} demonstrates that the reconstruction has an excellent half-width of $2.6^\circ$, significantly smaller than the analysis binning. This suggests that reconstruction will not impede the model differentiation capability discussed in Sec.~\ref{sec:com-ana} and may even enhance it due to the superb reconstruction quality of the SFGD. The fitted half-width of $\ecom$ is approximately $6.0~\mev$, which is also exceedingly precise. It will be more relevant for hydrogen sample selection, as discussed in the next section. 
@@ -754,7 +756,9 @@ Therefore, a COM total energy cut is proposed to complement $\dptt$, and this se
           \caption{$\dpt$}
           \label{subfig:hsel-dpt-stack}
      \end{subfigure}
-     \caption{Decomposed distributions for $\dptt$ and $\dpt$ for hydrogen and carbon events.}
+     \caption{Decomposed distributions for $\dptt$ and $\dpt$ for hydrogen and carbon events.
+     It suggests that carbon backgrounds can be rejected by selecting large $\dptt$ and $\dpt$ values.
+     }
      \label{fig:hsel-tki-decomp}
      \end{figure}
      Based on $\dptt$ alone, the most effective cut is $-10~\mevc \leq \dptt \leq 30~\mevc$.
@@ -779,7 +783,9 @@ Therefore, a COM total energy cut is proposed to complement $\dptt$, and this se
                \caption{Carbon events}
                \label{subfig:hsel-dpt-dptt-c}
           \end{subfigure}
-          \caption{Two-dimensional distributions of $\dpt$ and $\dptt$ for hydrogen and carbon events.}
+          \caption{Two-dimensional distributions of $\dpt$ and $\dptt$ for hydrogen and carbon events.
+          They display distinct distributions, suggesting that a two-dimensional cut can effectively separate hydrogen and carbon events.
+          }
           \label{fig:hsel-dpt-dptt}
      \end{figure}
 
@@ -803,7 +809,9 @@ Therefore, a COM total energy cut is proposed to complement $\dptt$, and this se
           \caption{$\thetacom$}
           \label{subfig:hsel-com-theta}
      \end{subfigure}
-     \caption{Decomposed distributions for $\ecom$ and $\thetacom$ for hydrogen and carbon events.}
+     \caption{Decomposed distributions for $\ecom$ and $\thetacom$ for hydrogen and carbon events.
+     Rejecting events with $\ecom$ deviating significantly from the $\deltapp$ mass can remove considerable carbon backgrounds, while $\thetacom$ does not show a differentiating feature.
+     }
      \label{fig:hsel-com-decomp}
      \end{figure}
      Hence, an additional cut, $1168~\mev<\ecom<1257~\mev$ is implemented to further reduce the carbon backgrounds, achieving a sample of $18$ hydrogen events and $5$ carbon events, with an impressive purity of $(78.3\pm8.6)\%$.
@@ -831,7 +839,10 @@ Therefore, a COM total energy cut is proposed to complement $\dptt$, and this se
           \caption{$\dpt < 80~\mevc$ and $\ecom$ cut}
           \label{subfig:hsel-dang-dpt80-ecom}
      \end{subfigure}
-     \caption{Step-wise $\dptt$ distributions for hydrogen and carbon events.}
+     \caption{Step-wise $\dptt$ distributions for hydrogen and carbon events.
+     The cut on $\dpt$ has removed a significant portion of carbon backgrounds as swhon in Fig.~\ref{subfig:hsel-dang-dpt80}.
+     The cut on $\ecom$ is able to further remove carbon backgrounds in the centre region of the $\dptt$ distribution, as shown in Fig.~\ref{subfig:hsel-dang-dpt80-ecom}, which cannot be removed by the transverse variables alone.
+     }
      \label{fig:hsel-dptt-step}
      \end{figure}
 
