@@ -15,7 +15,23 @@ Keep calm and eat lychees.
 \section{\code{dk2nu} conversions}
 \label{sec:app-hnl-dk2nu}
 
-    TABLE- Conversion of variables from T2K flux file to \code{dk2nu}.
+    % Table: Conversion of variables from T2K flux file to \code{dk2nu}
+\begin{table}[h]
+  \centering
+  \begin{tabular}{|l|l|l|}
+    \hline
+    \textbf{Quantity} & \textbf{\genie\ (dk2nu)} & \textbf{T2K} \\
+    \hline
+    parent PDG & decay\_ptype & ppid \\
+    nu parent decay coordinates [cm] & decay\_vx,vy,vz & Xpi[0],Xpi[1],Xpi[2] \\
+    parent momentum in lab frame [GeV/c] & decay\_pdp{x,y,z} & ppi*(npi[0],npi[1],npi[2]) \\
+    $E_\nu$ in centre-of-mass frame of parents [GeV] & decay\_necm & calculated \\
+    relative weight of each event entry & decay\_nimpwt & norm~\footnote{Please refer to T2K Technical Note 274.} \\
+    \hline
+  \end{tabular}
+  \caption{Conversion of variables from T2K flux file to \code{dk2nu}.}
+  \label{tab:dk2nu-conversion}
+\end{table}
 
 \section{HNL Input Parameter Calculations}
 \label{sec:app-hnl-input}

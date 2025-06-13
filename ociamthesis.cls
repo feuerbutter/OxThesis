@@ -560,6 +560,8 @@
 \newcommand{\MA}{M_{\textrm{A}}}
 \newcommand{\dcp}{\delta_\textrm{CP}}
 \newcommand{\umas}{U_{\alpha}}
+\newcommand{\uae}{U_{e}}
+\newcommand{\uam}{U_{\mu}}
 
 
 \newcommand{\cpimfp}{S_\lambda^{\pi^{\pm}}}
