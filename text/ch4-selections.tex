@@ -12,7 +12,7 @@ With great techniques come great measurements.
 \minitoc
 
 The upgraded detector has enhanced measuring capabilities, which is especially important for hadrons,
-As hadrons tend to have much shorter tracks and are conventionally harder to reconstruct in scintillator detectors compared to muons, the explored hadronic kinematic phase space has been relatively restricted, and the reconstructed hadronic variables have relatively large uncertainties.
+As hadrons tend to have much shorter tracks and are conventionally harder to reconstruct in scintillator detectors compared to muons, the previously explored hadronic kinematic phase space has been relatively restricted, and the reconstructed hadronic variables have relatively large uncertainties.
 Since more exclusive event topologies, such as $\numuccopiop$, allow the measurement of high-level variables like the Transverse Kinematic Imbalance (TKI) variables, which provide invaluable insights on neutrino-nucleus interactions, it is highly desirable to reconstruct hadrons, measure their kinematic properties as precisely as possible, and explore their phase space as extensively as possible.
 
 Two of the most common product hadrons from neutrino-nucleus interactions are protons and pions. 
@@ -22,7 +22,7 @@ It can reconstruct proton momentum with an excellent resolution of about $3.5\%$
 
 To address these gaps, I have developed and implemented new techniques for both hadrons, exploiting the precise position and $\dedx$ measurements and timing resolution.
 For pions, I have invented the pion trackless reconstruction, a novel technique to reconstruct pions without requiring the presence of a reconstructed track, thereby lowering the detection threshold and significantly increasing reconstruction efficiency for low-momentum pions. 
-As for protons, I have adapted the Elastically Scattered and Contained (ESC) protons technique~\cite{Lu:2016mjf}, first implemented in MINERvA, to demonstrate significant improvement in proton momentum reconstruction resolution, to SFGD. 
+As for protons, I have adapted the Elastically Scattered and Contained (ESC) protons technique~\cite{Lu:2016mjf} to SFGD, showing significant improvement in proton momentum reconstruction resolution,  
 These new techniques are applied in the development of two signal sample selections, namely the $\numucczpiop$-ESC selection and the $\numuccopi$-TL selection, where the ``TL'' refers to the use of the trackless reconstruction technique.
 Additionally, to prepare for the data-MC comparisons and future cross-section analysis, I have also developed a stopping pion control sample selection.
 
@@ -33,13 +33,15 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
    %------------------- ESC ----------------%
     \subsection{Working Principles}
     \label{sec:sel-esc-wp}
-     Protons stopping at rest deposit a large amount of energy—the so-called Bragg Peak—just before stopping.
+     Protons coming to rest deposit a large amount of energy—the so-called Bragg Peak—just before stopping.
      These protons tend to have their momenta better reconstructed as their momentum is more strongly correlated with their range. 
      As shown in Fig.~\ref{fig:dedx-pprres-eg}, protons having energy deposits below $1000$ units show large variances in momentum reconstruction. 
+     The energy deposit output from the SFGD reconstruction does not have a physical unit, but its magnitude is an algorithmic estimate of the energy deposited by the particle at each node.
 
     \begin{figure}[h]
         \centering
-        \includegraphics[width=\sgfidwid\linewidth]{figures/sel/an_dedx2_colnor_vs_p_pr_res_hist2d_al12_zoom.png}
+     %    \includegraphics[width=\sgfidwid\linewidth]{figures/sel/an_dedx2_colnor_vs_p_pr_res_hist2d_al12_zoom.png}
+        \includegraphics[width=\sgfidwid\linewidth]{figures/sel/fig51.eps}
         \caption{Proton momentum fractional difference against energy deposited at the third last node.}
         \label{fig:dedx-pprres-eg}
     \end{figure}
@@ -62,17 +64,17 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
         \centering
         \begin{subfigure}[b]{\dbfigwid\textwidth}
              \centering
-             \includegraphics[width=\textwidth]{figures/sel/dedx5_pdf_skew_smooth_labelled.eps}
+             \includegraphics[width=\textwidth]{figures/sel/dedx5_pdf_skew_smooth.eps}
              \caption{Smoothed energy}
              \label{subfig:esc-smooth-e}
         \end{subfigure}
         \begin{subfigure}[b]{\dbfigwid\textwidth}
              \centering
-             \includegraphics[width=\textwidth]{figures/sel/an_dedx5_pdf_skew_smooth_angnorm_labelled.eps}
+             \includegraphics[width=\textwidth]{figures/sel/an_dedx5_pdf_skew_smooth_angnorm.eps}
              \caption{Angle-normalized smoothed energy}
              \label{subfig:esc-an-smooth-e}
         \end{subfigure}
-        \caption{$\dedx$ estimation.}
+        \caption{$\dedx$ estimation. Each colour represents a proton sample going in different directions. Each line style represents a different node from the end of the track. Altogether, there are 5 samples, each plotting for 4 nodes, resulting in 20 curves.}
         \label{fig:esc-angnorm}
   \end{figure}
      However, there are still some discrepancies.
@@ -80,45 +82,51 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
      This is due to the different grouping of hits into nodes for protons traveling in different directions.
      The different numbers of hits in a node lead to different distances between nodes, so using the energy deposited per node as an estimation of $\dedx$ is not strictly valid.
      To account for the different propagation directions, I divided the energy by the sine of the angle between the trajectory and the $z$-axis.
-     The angle-normalized energy is plotted in Fig.~\ref{subfig:esc-an-smooth-e}, which demonstrates that the angle-normalization step has achieved its goal—all MIP peaks have the same position.
+     The angle-normalized energy is plotted in Fig.~\ref{subfig:esc-an-smooth-e}, which demonstrates that the angle-normalization step has achieved its goal—all MIP peaks have the similar position.
      Hence, the angle-normalized energy can serve as a good reconstruction of $\dedx$ for the ESC selection.
 
      The multiple PGUN samples are combined into one large sample to determine suitable threshold $\dedx$ values.
-     While plots like Fig.~\ref{fig:dedx-pprres-eg} clearly show the underlying idea of the ESC selection, profile plots are better suited for determining proper thresholds, as shown in Fig.~\ref{fig:esc-andedx-slice}.
+     While plots like Fig.~\ref{fig:dedx-pprres-eg} show the underlying idea of the ESC selection, profile plots are better suited for determining proper thresholds, as shown in Fig.~\ref{fig:esc-andedx-slice}.
      For example, Fig.~\ref{subfig:ans-dedx0-ppr-slice} shows large fluctuations below $200$, where a cut should be palced to exclude events below.
      Similarly, the threshold values for the other nodes are $500$, $1000$, $900$, $840$, and $740$ respectively.
 
   \begin{figure}[t]
       \centering
       \begin{subfigure}{\dbfigwid\textwidth}
-           \includegraphics[width=\textwidth]{figures/sel/ans_dedx0_vs_p_pr_res_hist2d_al2_selpr_con_slice.eps}
+          %  \includegraphics[width=\textwidth]{figures/sel/ans_dedx0_vs_p_pr_res_hist2d_al2_selpr_con_slice.eps}
+           \includegraphics[width=\textwidth]{figures/sel/fig53a.eps}
            \caption{dedx0}
            \label{subfig:ans-dedx0-ppr-slice}
       \end{subfigure}
       \begin{subfigure}{\dbfigwid\textwidth}
-           \includegraphics[width=\textwidth]{figures/sel/ans_dedx1_vs_p_pr_res_hist2d_al2_selpr_con_slice.eps}
+          %  \includegraphics[width=\textwidth]{figures/sel/ans_dedx1_vs_p_pr_res_hist2d_al2_selpr_con_slice.eps}
+           \includegraphics[width=\textwidth]{figures/sel/fig53b.eps}
            \caption{dedx1}
            \label{subfig:dedx1}
       \end{subfigure}
       \\
       \begin{subfigure}{\dbfigwid\textwidth}
-           \includegraphics[width=\textwidth]{figures/sel/ans_dedx2_vs_p_pr_res_hist2d_al2_selpr_con_slice.eps}
+           \includegraphics[width=\textwidth]{figures/sel/fig53c.eps}
+          %  \includegraphics[width=\textwidth]{figures/sel/ans_dedx2_vs_p_pr_res_hist2d_al2_selpr_con_slice.eps}
            \caption{dedx2}
            \label{subfig:dedx2}
       \end{subfigure}
       \begin{subfigure}{\dbfigwid\textwidth}
-           \includegraphics[width=\textwidth]{figures/sel/ans_dedx3_vs_p_pr_res_hist2d_al2_selpr_con_slice.eps}
+          %  \includegraphics[width=\textwidth]{figures/sel/ans_dedx3_vs_p_pr_res_hist2d_al2_selpr_con_slice.eps}
+           \includegraphics[width=\textwidth]{figures/sel/fig53d.eps}
            \caption{dedx3}
            \label{subfig:dedx3}
       \end{subfigure}
       \\
       \begin{subfigure}{\dbfigwid\textwidth}
-           \includegraphics[width=\textwidth]{figures/sel/ans_dedx4_vs_p_pr_res_hist2d_al2_selpr_con_slice.eps}
+          %  \includegraphics[width=\textwidth]{figures/sel/ans_dedx4_vs_p_pr_res_hist2d_al2_selpr_con_slice.eps}
+           \includegraphics[width=\textwidth]{figures/sel/fig53e.eps}
            \caption{dedx4}
            \label{subfig:dedx4}
       \end{subfigure}
       \begin{subfigure}{\dbfigwid\textwidth}
-           \includegraphics[width=\textwidth]{figures/sel/ans_dedx5_vs_p_pr_res_hist2d_al2_selpr_con_slice.eps}
+          %  \includegraphics[width=\textwidth]{figures/sel/ans_dedx5_vs_p_pr_res_hist2d_al2_selpr_con_slice.eps}
+           \includegraphics[width=\textwidth]{figures/sel/53f.eps}
            \caption{dedx5}
            \label{subfig:dedx5}
       \end{subfigure}
@@ -134,34 +142,40 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
   \begin{figure}[t]
     \centering
     \begin{subfigure}{\dbfigwid\textwidth}
-         \includegraphics[width=\textwidth]{figures/sel/ans_dedx0_pdf_al2_selpr_con_test.eps}
+     %     \includegraphics[width=\textwidth]{figures/sel/ans_dedx0_pdf_al2_selpr_con_test.eps}
+         \includegraphics[width=\textwidth]{figures/sel/fig54a.eps}
          \caption{dedx0 peak fit}
          \label{subfig:dedx0-peak}
     \end{subfigure}
     \begin{subfigure}{\dbfigwid\textwidth}
-         \includegraphics[width=\textwidth]{figures/sel/ans_dedx1_pdf_al2_selpr_con_test.eps}
+     %     \includegraphics[width=\textwidth]{figures/sel/ans_dedx1_pdf_al2_selpr_con_test.eps}
+         \includegraphics[width=\textwidth]{figures/sel/fig54b.eps}
          \caption{dedx1 peak fit}
          \label{subfig:dedx1-peak}
     \end{subfigure}
     \\
     \begin{subfigure}{\dbfigwid\textwidth}
-         \includegraphics[width=\textwidth]{figures/sel/ans_dedx2_pdf_al2_selpr_con_test.eps}
+     %     \includegraphics[width=\textwidth]{figures/sel/ans_dedx2_pdf_al2_selpr_con_test.eps}
+         \includegraphics[width=\textwidth]{figures/sel/fig54c.eps}
          \caption{dedx2 peak fit}
          \label{subfig:dedx2-peak}
     \end{subfigure}
     \begin{subfigure}{\dbfigwid\textwidth}
-         \includegraphics[width=\textwidth]{figures/sel/ans_dedx3_pdf_al2_selpr_con_test.eps}
+     %     \includegraphics[width=\textwidth]{figures/sel/ans_dedx3_pdf_al2_selpr_con_test.eps}
+         \includegraphics[width=\textwidth]{figures/sel/fig54d.eps}
          \caption{dedx3 peak fit}
          \label{subfig:dedx3-peak}
     \end{subfigure}
     \\
     \begin{subfigure}{\dbfigwid\textwidth}
-         \includegraphics[width=\textwidth]{figures/sel/ans_dedx4_pdf_al2_selpr_con_test.eps}
+     %     \includegraphics[width=\textwidth]{figures/sel/ans_dedx4_pdf_al2_selpr_con_test.eps}
+         \includegraphics[width=\textwidth]{figures/sel/fig54e.eps}
          \caption{dedx4 peak fit}
          \label{subfig:dedx4-peak}
     \end{subfigure}
     \begin{subfigure}{\dbfigwid\textwidth}
-         \includegraphics[width=\textwidth]{figures/sel/ans_dedx5_pdf_al2_selpr_con_test.eps}
+     %     \includegraphics[width=\textwidth]{figures/sel/ans_dedx5_pdf_al2_selpr_con_test.eps}
+         \includegraphics[width=\textwidth]{figures/sel/fig54f.eps}
          \caption{dedx5 peak fit}
          \label{subfig:dedx5-peak}
     \end{subfigure}
@@ -177,13 +191,14 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
     Similar to the determination of the threshold for the individual $\dedx$, the momentum fractional difference is plotted against $\chi^2$, as shown in Fig.~\ref{fig:esc-mom-res-chi2}.
     \begin{figure}[h]
        \centering
-       \includegraphics[width=\sgfidwid\textwidth]{figures/sel/brchi2_colnor_vs_p_pr_res_hist2d_al2_selpr_con_test.eps} 
+     %   \includegraphics[width=\sgfidwid\textwidth]{figures/sel/brchi2_colnor_vs_p_pr_res_hist2d_al2_selpr_con_test.eps} 
+       \includegraphics[width=\sgfidwid\textwidth]{figures/sel/fig55.eps} 
        \caption{Proton momentum reconstruction fractional difference against $\chi^2$ for determination of $\chi^2$ thresholds.}
        \label{fig:esc-mom-res-chi2}
     \end{figure}
     The upper cut on $\chi^2$ is implemented at $800$, above which considerably larger fluctuations are observed.
 
-    \subsection{Momentum reconstruction bias accessment}
+    \subsection{Momentum reconstruction bias assessment}
     \label{sec:sel-esc-bias}
      In Ref.~\cite{Lu:2016mjf}, reconstruction bias in the transverse component of the momentum is observed after the ESC implementation.
      Hence, such bias is also checked for the signal sample in SFGD.
@@ -241,9 +256,9 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
      \label{fig:esc-cormupt}
      \end{figure}
 
-    \subsection{Impacts on SPK}
+    \subsection{Impacts on Single Particle Kinematics}
      The ESC technique is completed with the transverse momentum bias correction.
-     The overall impact of the technique on proton kinematics is shown in Fig.~\ref{fig:esc-spk}.
+     The overall impact of the technique on the reconstructed single particle kinematics (SPK), i.e. reconstructed proton kinematics in this case, is shown in Fig.~\ref{fig:esc-spk}.
      It has significantly reduced off-diagonal entries, which represent badly reconstructed events.
      Moreover, the conspicuous line with a negative slope in the $\tpr$ has mostly disappeared.
      These could be due to a mis-reconstruction of the track direction for short protons, which are excluded by the first requirement of the ESC step: the number of nodes has to be at least $6$.
@@ -279,7 +294,7 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
         \label{fig:esc-spk}
   \end{figure}
 
-     The overall improvement in the SPK is best illustrated with a Cauchy fit to the proton momentum reconstruction resolution histogram, as shown in Fig.~\ref{subfig:ppr-res-bfESC} and Fig.~\ref{subfig:ppr-res-afESC}, which shows a more than $50\%$ reduction in the width of the distribution.
+     The overall improvement in the SPK is best illustrated with a Cauchy fit to the proton momentum reconstruction resolution histogram, as shown in Fig.~\ref{subfig:ppr-res-bfESC} and Fig.~\ref{subfig:ppr-res-afESC}, which shows a more than $50\%$ reduction in the fitted half width at half maximum (HWHM) of the distribution.
      This improvement is achieved at the cost of a two-thirds reduction in efficiency, as shown in Fig.~\ref{subfig:ppr-eff-bfESC} and Fig.~\ref{subfig:ppr-eff-afESC}.
      The drop in efficiency might seem drastic, but it proves to be necessary for the TKI analysis, as shown later in Sec.~\ref{sec:mc-tki}, which showcases the significant improvement in the evaluation of TKI variables due to the ESC technique.
 
@@ -287,7 +302,7 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
       \centering
       \begin{subfigure}{\dbfigwid\textwidth}
            \includegraphics[width=\textwidth]{figures/sel/p_pr_res_pdf_al13_zoom.eps}
-           \caption{$\pp$ resolution before ESC selection. The fitted half width is about $3.5\%$.}
+           \caption{$\pp$ resolution before ESC selection. The fitted HWHM is about $3.5\%$.}
            \label{subfig:ppr-res-bfESC}
       \end{subfigure}
       \begin{subfigure}{\dbfigwid\textwidth}
@@ -318,31 +333,73 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
           Hence, low-momentum particles, which travel only a short distance, could not be reconstructed at all. 
           When these low-momentum pions are not reconstructed, these $\ccopi$ events are misidentified as $\cczpi$ events, both decreasing the signal for the $\ccopi$ samples and increasing the background for the $\cczpi$ sample. 
           Thus, it would be highly beneficial if we could reconstruct these pions. 
-          The pion trackless reconstruction technique I have developed can address this gap perfectly.
+          The pion trackless reconstruction technique I have developed can address this gap well.
 
-     
-       \subsection{preliminary Study}
+          \subsection{Working Principles}
+          \label{sec:tl-wp}
+          The trackless technique is an advancement of previous methods. 
+          It was first attempted in MINER$\nu$A~\cite{poster:minerva-pime} and in the Fine Grain Detectors of ND280~\cite{poster:minerva-pime}. 
+          In MINER$\nu$A, a reconstructed cluster must be identified as a pion candidate. 
+          In contrast, ND280 includes a prototype of the trackless reconstruction; however, it is integrated with other pion reconstruction methods, and its full potential has not yet been explored.
+
+          This reconstruction technique is based on two key aspects of the pion decay chain, $\pi \rightarrow \mu \rightarrow e$:
+
+          \begin{enumerate}
+          \item \textbf{Delayed Michel Electron (ME) Signal:} The ME, as the grandchild in the decay chain, produces a delayed signal that occurs on a much longer timescale compared to other processes, such as $\piz$ decay. 
+          Consequently, the presence of the primary pion can be inferred from the delayed ME signal in the SFGD.
+          
+          \item \textbf{Kinematic Determination via Energy-Momentum Conservation:} The pion decay, $\pi \rightarrow \mu + \nu$, is a two-body process. 
+          The kinematics of the daughter particles are entirely determined by energy-momentum conservation. 
+          When a pion decays at rest, the daughter muon moves only about $0.12~\textrm{cm}$. 
+          Therefore, the starting point of the ME provides a reliable estimate of the pion's endpoint.
+          \end{enumerate}
+
+          Using the distance between the primary neutrino interaction vertex and the ME starting point, the pion momentum can be reconstructed by range. 
+          Note that the pion must decay at rest for this technique to be applicable. 
+          For pions that undergo secondary interactions, their range does not correlate with their momentum, so their momentum cannot be reconstructed by range.
+          For a pion decaying in flight, its daughter muon will have a non-negligible momentum and hence travel an appreciable distance before decaying into the ME.
+          Hence, the ME starting point is no longer a good estimate of the pion's endpoint.
+          Alternatively, the muon starting point can be used to estimate the pion's  endpoint, but the range of the pion does not correlate with the pion starting momentum well as the ending momentum is non-zero.
+          It might be possible to reconstruct the pion's ending momentum from the muon momentum due to the two-body decay kinematics, and then to reconstruct the pion's starting momentum from the pion's range and its ending momentum.
+          This will be an interesting avenue to explore in the future, while the current analysis focuses on pions decaying at rest.
+
+          For these target pions, an empirical relationship between the pion's kinetic energy and its range was established using a PGUN sample, as shown in Fig.~\ref{fig:pi-mombr-fit}. 
+          The PGUN sample initiates pions from the center of SFGD and propagates them isotropically. 
+          It comprises $500,000$ events with kinetic energies uniformly distributed between $20~\mev$ and $200~\mev$. 
+          The $\log_{10}$ of the true kinetic energy is plotted against the true pion length in Fig.~\ref{fig:pi-mombr-fit}.
+          The central region of the plots is fitted with a fourth-order polynomial.
+          Although the $\chindf$ of the fit is relatively large, the fitted line matchhes the data points well.
+          Since the simulation is not yet final, this fit is sufficient for the current analysis and should be updated once the simulation is finalized.
+          \begin{figure}[h]
+          \centering
+          \includegraphics[width=\sgfidwid\textwidth]{figures/sel/pi_len_pi_len_vs_pi_ke_hist2d_al0_true_nokink.eps} 
+          \caption{A degree 4 polynomial fit of $\log_{10}{T_\pi}$ against $\log_{10}{L_\pi}$, where $T_\pi$ and $L_\pi$ are the kinetic energy and the range of the pion, respectively. The $p_i$'s are the corresponding coefficients of the term of order $i$. The fit matches the data points well.}
+          \label{fig:pi-mombr-fit}
+          \end{figure}
+
+       \subsection{Preliminary Study on Pion Fates}
        \label{sec:tl-ps}
-          Before developing the pion trackless reconstruction technique, it is essential to assess its potential significance, as this technique can only reconstruct pions that decay at rest. 
+          Before implementing the pion trackless reconstruction technique, it is essential to assess its potential significance, as this technique can only reconstruct pions that decay at rest. 
           If only a limited number of pions decay in this manner, the technique would be inapplicable. 
           Therefore, a preliminary study on pion fates relevant to T2K was conducted.
 
-          The first step involved examining the primary pion momentum distribution in SFGD as produced by the T2K flux. 
+          The first step involved examining the primary pion momentum distribution in SFGD as produced by the T2K neutrino beam. 
           For a rough estimation, the first 100,000 events in the T2K input flux file were processed through the T2K ND simulation, and events containing a primary pion were recorded. 
           The true pion momentum cumulative distribution is shown in Fig.~\ref{subfig:pi-mom-cum}, indicating that the majority of pions have momentum below $1000~\mevc$.
 
           \begin{figure}[t]
                \centering
                \begin{subfigure}{\dbfigwid\textwidth}
-                    \includegraphics[width=\textwidth]{figures/sel/inclusive_pion_mom_CDF_0.5.png}
+                    \includegraphics[width=\textwidth]{figures/sel/pion_mom_pdf.png}
                     \caption{Primary pion momentum cumulative distribution. The median momentum is about $300~\mevc$.}
                     \label{subfig:pi-mom-cum}
                \end{subfigure}
                \begin{subfigure}{\dbfigwid\textwidth}
-                    \includegraphics[width=\textwidth]{figures/sel/inclusive_pion_theta_CDF_0.8.png}
+                    \includegraphics[width=\textwidth]{figures/sel/pion_theta_pdf.png}
                     \caption{Primary pion angle cumulative distribution. The $80\%$ angle is $87^\circ$.}
                     \label{subfig:pi-theta-cum}
                \end{subfigure}
+               \caption{Cumulative density functions of Primary pion kinematics in SFGD.}
           \end{figure}
                
           The median momentum is approximately $300~\mevc$, with about $30\%$ of pions having momentum below $200~\mevc$ and $80\%$ below $800~\mevc$. 
@@ -434,38 +491,6 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
           For these pions, the majority decay at rest, producing an ME that can be utilized in the trackless technique. 
           Thus, the trackless technique is applicable to approximately $30\%$ of the total pion events in SFGD, making it a significant reconstruction method to develop.
 
-     \subsection{Working Principles}
-     \label{sec:tl-wp}
-          The trackless technique is an advancement of previous methods. 
-          It was first attempted in MINER$\nu$A~\cite{poster:minerva-pime} and in the Fine Grain Detectors of ND280~\cite{poster:minerva-pime}. 
-          In MINER$\nu$A, a reconstructed cluster must be identified as a pion candidate. 
-          In contrast, ND280 includes a prototype of the trackless reconstruction; however, it is integrated with other pion reconstruction methods, and its full potential has not yet been explored.
-
-          This reconstruction technique is based on two key aspects of the pion decay chain, $\pi \rightarrow \mu \rightarrow e$:
-
-          \begin{enumerate}
-          \item \textbf{Delayed Michel Electron (ME) Signal:} The ME, as the grandchild in the decay chain, produces a delayed signal that occurs on a much longer timescale compared to other processes, such as $\piz$ decay. 
-          Consequently, the presence of the primary pion can be inferred from the delayed ME signal in the SFGD.
-          
-          \item \textbf{Kinematic Determination via Energy-Momentum Conservation:} The pion decay, $\pi \rightarrow \mu + \nu$, is a two-body process. 
-          The kinematics of the daughter particles are entirely determined by energy-momentum conservation. 
-          When a pion decays at rest, the daughter muon moves only about $0.12~\textrm{cm}$. 
-          Therefore, the starting point of the ME provides a reliable estimate of the pion's endpoint.
-          \end{enumerate}
-
-          Using the distance between the primary neutrino interaction vertex and the ME starting point, the pion momentum can be reconstructed by range. 
-          An empirical relationship between the pion's kinetic energy and its range was established using a PGUN sample, as shown in Fig.~\ref{fig:pi-mombr-fit}. 
-          The PGUN sample initiates pions from the center of SFGD and propagates them isotropically. 
-          It comprises $500,000$ events with kinetic energies uniformly distributed between $20~\mev$ and $200~\mev$. 
-          The $\log_{10}$ of the true kinetic energy is plotted against the true pion length in Fig.~\ref{fig:pi-mombr-fit}. 
-          A fourth-order polynomial fits the central region of the plots well, accurately capturing the relationship between kinetic energy and range.
-
-          \begin{figure}[h]
-          \centering
-          \includegraphics[width=\sgfidwid\textwidth]{figures/sel/pi_len_pi_len_vs_pi_ke_hist2d_al0_true_nokink.eps} 
-          \caption{A degree 4 polynomial fit of $\log_{10}{T_\pi}$ against $\log_{10}{L_\pi}$, where $T_\pi$ and $L_\pi$ are the kinetic energy and the range of the pion, respectively. The $p_i$'s are the corresponding coefficients of the term of order $i$. The fit is satisfactory, with a $\chi^2/\textrm{n.d.f.}$ value close to 1.}
-          \label{fig:pi-mombr-fit}
-          \end{figure}
 
      \subsection{Implementation}
      \label{sec:tl-imp}
@@ -592,9 +617,9 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
           \begin{figure}[!htb] 	
                \centering 		
                \includegraphics[width=\sgfigwid\textwidth]{figures/shortPion.png}
-               \caption{\label{fig:cc1pi-tl} A $\ccopi$-TL candidate event in upgraded ND280, where the long track is the primary muon and the other track is a delayed ME, which implies the exisitence of a very low momentum primary pion.} 
+               \caption{\label{fig:cc1pi-tl} A $\ccopi$-TL candidate event in upgraded ND280, where the long track is the primary muon and the other track is a delayed ME, which implies the existence of a very low momentum primary pion.} 
           \end{figure}
-          This short distance makes reconstruction using a track-based method impossible.
+          This short distance makes reconstruction using a track-based method practically unfeasible.
 
      \subsection{Comparison with Conventional Method}
      \label{sec:comparison-conventional}
@@ -650,7 +675,7 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
           As shown in Fig.~\ref{fig:ppi-stack}, the trackless selection has achieved its goal of reconstructing low-momentum pions.
           A considerable number of events contain pions with momentum below $100~\mevc$, corresponding to a track length of approximately $50~\textrm{mm}$.
           Moreover, pions with momentum below $80~\mevc$ have also been reconstructed; these pions travel about $30~\textrm{mm}$ and cannot be reconstructed as tracks.
-          Furthermore, the momentum-by-range calculation has achieved an excellent resolution of approximately $2\%$, as shown in Fig.~\ref{fig:ppi-res}.
+          Furthermore, the momentum-by-range calculation has achieved an excellent HWHM of approximately $2\%$, as shown in Fig.~\ref{fig:ppi-res}.
           More encouragingly, the overall efficiencies remain relatively high.
           The step-by-step efficiencies for each selection step are shown in Fig.~\ref{fig:tl-accum-eff}.
           The signal definition used in the calculation requires one true muon that has traveled to the vertical TPC and one true pion that is contained in SFGD.
@@ -659,7 +684,7 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
           All pions undergoing secondary interactions, except for deflection, cannot be reconstructed via this method.
           Hence, the relative efficiency of $0.37/0.66\approx56\%$ is considerably high.
           A further significant drop in efficiency occurs in the next step, the kink cut, which is reasonable as a considerable portion of pions undergo deflection.
-          Subsequent drops are graduate cuts to remove backgrounds, resulting in a high purity of $\numuccopi$, as shown in Fig.~\ref{fig:ppi-stack}.
+          The gradual drops are subsequent cuts to remove backgrounds, resulting in a high purity of $\numuccopi$, as shown in Fig.~\ref{fig:ppi-stack}.
 
           \begin{figure}[t]
               \centering
@@ -837,7 +862,7 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
           \label{sec:sppi-syst}
           The control sample is developed with evaluation of the pion momentum by range reconstruction in mind.
           Although the selection is not finalized as the HAT reconstruction and global track matching are still subjected to changes, it is still valuable to develop the systematics evaluation framework.
-          One is the to learn the method of performing systematics evaluation, the other is to get a first glimpse of the performance of the pion momentum reconstruction in SFGD.
+          One is to learn the method of performing systematics evaluation, the other is to get a first glimpse of the performance of the pion momentum reconstruction in SFGD.
 
           The systematics evaluation follows that in the FGD analysis as outlined in Ref.~\cite{Jenkins:2022ljx}.
           While it is straightforward to examine the reconstruction resolution with MC studies, there is no truth information when analysing data.
