@@ -16,7 +16,8 @@ As hadrons tend to have much shorter tracks and are conventionally harder to rec
 Since more exclusive event topologies, such as $\numuccopiop$, allow the measurement of high-level variables like the Transverse Kinematic Imbalance (TKI) variables, which provide invaluable insights on neutrino-nucleus interactions, it is highly desirable to reconstruct hadrons, measure their kinematic properties as precisely as possible, and explore their phase space as extensively as possible.
 
 Two of the most common product hadrons from neutrino-nucleus interactions are protons and pions. 
-The default particle identification and momentum reconstruction have been developed by colleagues at T2K using the Boosted Decision Tree (BDT) algorithm. The BDT algorithm has good performance, but it is still lacking in some aspects.
+The default particle identification and momentum reconstruction have been developed by colleagues at T2K using the Boosted Decision Tree (BDT) algorithm, which is a machine learning algorithm that takes the energy deposit as the input and outputs the particle identity and momentum. 
+The BDT algorithm has good performance, but it is still lacking in some aspects.
 For instance, as it uses only single-track information, it cannot effectively distinguish between pions and muons. 
 It can reconstruct proton momentum with an excellent resolution of about $3.5\%$, but it is insufficient for TKI analysis, which is highly sensitive to hadron kinematics. 
 
@@ -28,16 +29,28 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
 
 \section{$\numucczpiop$-ESC}
 \label{sec:sel-esc}
-     The $\numucczpiop$-ESC adds an additional ESC selection step to the $\numucczpiop$ selection developed by a T2K colleague.
-     The details of the ESC step are elaborated below.
+     % The $\numucczpiop$-ESC adds an additional ESC selection step to the $\numucczpiop$ selection developed by a T2K colleague.
+     % The details of the ESC step are elaborated below.
    %------------------- ESC ----------------%
-    \subsection{Working Principles}
+    \subsection{Working Principles of the ESC technique}
     \label{sec:sel-esc-wp}
-     Protons coming to rest deposit a large amount of energy—the so-called Bragg Peak—just before stopping.
-     These protons tend to have their momenta better reconstructed as their momentum is more strongly correlated with their range. 
-     As shown in Fig.~\ref{fig:dedx-pprres-eg}, protons having energy deposits below $1000$ units show large variances in momentum reconstruction. 
-     The energy deposit output from the SFGD reconstruction does not have a physical unit, but its magnitude is an algorithmic estimate of the energy deposited by the particle at each node.
+     The subsection elaborates on the underlying principles of the ESC selection technique.
+     Protons coming to rest deposit a large amount of energy within a short distance just before stopping.
+     Hence, for these protons, if the energy deposited per distance, $\dedx$, is plotted along the particle trajectory, a peak, the so-called Bragg Peak, appears near the track end.
+     This feature can be exploited to select protons that come to rest without undergoing secondary interactions, which are thus called "elastically scattered" protons by the original developer of the technique~\cite{Lu:2016mjf}.
+     To identify the Bragg peak, the entire proton track must be contained within the scintillation detector such that the $\dedx$ can be measured at the end of the track.
+     Thus, this technique is called the elastically scattered and contained technique.
+     These ESC protons are of particular interest because their range is strongly correlated with their momentum, which could be exploited by the machine learning algorithm.
+     Hence, even though all proton momenta are reconstructed by the BDT algorithm, the ESC protons tend to better momentum reconstruction resolution.
 
+     In the SFGD, having the Bragg peak implies large $\dedx$ for the last few nodes of the proton track.
+     For illustration, the fractional differencce between the reconstructed and ture proton momentum is plotted against the energy deposited at the third last node of the proton track in Fig.~\ref{fig:dedx-pprres-eg} with column normalization.
+     More specifically, all bins with the same $x$ value are considered to be in the same column, and the bin height is normalized by the largest bin height in the column.
+     Thus, the maximum value in each column is $1$, thereby visualising the comparison between columns.
+     For instance, in Fig.~\ref{fig:dedx-pprres-eg}, the red bins (the bin with the largest value) concentrate around $y=0$, i.e. small differences between reconstructed and true proton momentum, for columns having $\dedx$ above $1000$ arbitrary units\footnote{ 
+     The energy deposit output from the SFGD reconstruction does not have a physical unit, but its magnitude is an algorithmic estimate of the energy deposited by the particle at each node.}, while for columns with $\dedx$ below $1000$, the red bins deviate from $y=0$ with larger fluctuations.
+     Thus, selecting protons with large $\dedx$ for the last few nodes of the proton track can produce a sample with good proton momentum reconstruction resolution.
+     This is the underlying principle of the ESC technique.
     \begin{figure}[h]
         \centering
      %    \includegraphics[width=\sgfidwid\linewidth]{figures/sel/an_dedx2_colnor_vs_p_pr_res_hist2d_al12_zoom.png}
@@ -45,22 +58,28 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
         \caption{Proton momentum fractional difference against energy deposited at the third last node.}
         \label{fig:dedx-pprres-eg}
     \end{figure}
-     Hence, these protons can be selected by placing a lower boundary cut on the energy deposited at the nodes near the end of the reconstructed tracks to obtain a sample with high proton momentum resolution.   
     
    \subsection{Implementation}
    \label{sec:sel-esc-imp}
 	As the ESC selection is based on $\dedx$ at the end of the proton track, accurate reconstruction of $\dedx$ must first be obtained.
-	To investigate the proper way of estimating $\dedx$, I have simulated multiple particle gun (PGUN) samples with protons traveling in different directions in the SFGD.
+     The ND280 reconstruction software provides a smoothed energy deposit at each node as an estimate of $\dedx$.
+	To investigate the quality of this estimate of $\dedx$, I have simulated multiple particle gun (PGUN) samples with protons traveling in different directions in the SFGD.
 	More specifically, three samples travel along the $x$-, $y$-, and $z$-axes, and five other samples travel at $15^\circ$, $30^\circ$, $45^\circ$, $60^\circ$, and $75^\circ$ to the $x$-axis in the $x$-$z$ plane.
-	As the proton direction should not affect its energy deposition, distinct characteristics of $\dedx$ along the proton trajectory can be utilized to validate the quality of the reconstructed $\dedx$.
-	Besides the Bragg peak, another distinct feature of $\dedx$ is the minimal ionizing particle (MIP) region, where particles at high momentum traverse the scintillator depositing the minimal amount of energy. 
-	Hence, the $\dedx$ remains at a relatively constant value for all such particles.
-	When the $\dedx$ at the end of the proton tracks is plotted, besides the Bragg peak at large $\dedx$ corresponding to protons stopping at rest, there should be another peak at smaller $\dedx$ corresponding to protons that undergo secondary interactions and thus stop prematurely while still possessing high momentum.
+	As the proton direction should not affect its energy deposition, distinct characteristics of $\dedx$ along the proton trajectory should be consistent for the different proton samples.
+     This consistency can be an indicator of the quality of the reconstructed $\dedx$.
 
-	The first attempt is to use the smoothed energy directly. 
-	Fig.~\ref{subfig:esc-smooth-e} plots energy deposits for the third to sixth nodes from the end for all PGUN samples traveling at non-orthogonal angles.
+     The first feature is the Bragg peak due to the ESC protons as elaborated in Sec.~\ref{sec:sel-esc-wp}.
+	Another distinct feature of $\dedx$ is the minimal ionizing particle (MIP) region, where particles at high momentum traverse the scintillator depositing a minimal amount of energy, $E_{\textrm{MIP}}$, per unit distance.
+     This is due to the fact that the energy loss of a particle traveling through matter is proportional to the square of its charge and inversely proportional to its velocity, as described by the Bethe-Bloch formula~\cite{Bethe:1930zza}.
+     For protons, which are charged particles, the $\dedx$ is relatively constant at high momentum, as they are fast enough that their energy loss per unit distance is dominated by ionization losses rather than other processes like nuclear interactions or radiation losses.
+     Hence, for protons traveling at high momentum, the $\dedx$ remains at a relatively constant and small value for all such particles.
+	Hence, the $\dedx$ remains at a relatively constant and small value for all such particles.
+     When a proton undergoes a secondary interaction while still possessing high momentum, its track ends prematurely, and the $\dedx$ values near the end of this track would be close to $E_{\textrm{MIP}}$ per distance.
+	Thus, when the $\dedx$ values for each node near the end of the proton tracks are plotted, besides the Bragg peak at large $\dedx$ corresponding to ESC protons, there should be another peak at smaller $\dedx$ corresponding to protons that undergo secondary interactions, which will be referred to as the MIP peak for subsequent discussion.
+
+	Fig.~\ref{subfig:esc-smooth-e} plots the smoothed energy deposits for the third to sixth nodes from the end for all PGUN samples traveling at non-orthogonal angles.
 	It is reassuring to indeed observe the two peaks, the MIP peak and the Bragg peak, as hypothesized. 
-  \begin{figure}
+     \begin{figure}
         \centering
         \begin{subfigure}[b]{\dbfigwid\textwidth}
              \centering
@@ -74,116 +93,120 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
              \caption{Angle-normalized smoothed energy}
              \label{subfig:esc-an-smooth-e}
         \end{subfigure}
-        \caption{$\dedx$ estimation. Each colour represents a proton sample going in different directions. Each line style represents a different node from the end of the track. Altogether, there are 5 samples, each plotting for 4 nodes, resulting in 20 curves.}
+        \caption{$\dedx$ estimation. Each colour represents a proton sample going in different directions. Each line style represents a different node from the end of the track. Altogether, there are 5 samples, each plotting for 4 nodes, resulting in 20 curves. Due to the large number of curves, the legend is omitted. The individual differences between the curves are not of interest here, but rather the overall agreement of the MIP peak positions across all curves can validate the quality of the estimation of $\dedx$. Fig.~\ref{sub:esc-smooth-e} shows considerable spread in the MIP peak positions across different curves, while the MIP peak positions in Fig.~\ref{sub:esc-an-smooth-e} are much closer across different curves. Therefore, the angle-normalized smoothed energy is a better estimate of $\dedx$ than the smoothed energy.}
         \label{fig:esc-angnorm}
-  \end{figure}
+     \end{figure}
      However, there are still some discrepancies.
      The MIP peaks are close to each other, but their positions differ noticeably.
      This is due to the different grouping of hits into nodes for protons traveling in different directions.
-     The different numbers of hits in a node lead to different distances between nodes, so using the energy deposited per node as an estimation of $\dedx$ is not strictly valid.
+     The different numbers of hits in a node lead to different distances between nodes, so using the smoothed energy deposited per node as an estimation of $\dedx$ is not strictly valid.
      To account for the different propagation directions, I divided the energy by the sine of the angle between the trajectory and the $z$-axis.
      The angle-normalized energy is plotted in Fig.~\ref{subfig:esc-an-smooth-e}, which demonstrates that the angle-normalization step has achieved its goal—all MIP peaks have the similar position.
-     Hence, the angle-normalized energy can serve as a good reconstruction of $\dedx$ for the ESC selection.
+     Hence, the angle-normalized energy is used as a good reconstruction of $\dedx$ for the ESC selection, and it will be referred to as $\dedx$ in the following discussion.
 
-     The multiple PGUN samples are combined into one large sample to determine suitable threshold $\dedx$ values.
-     While plots like Fig.~\ref{fig:dedx-pprres-eg} show the underlying idea of the ESC selection, profile plots are better suited for determining proper thresholds, as shown in Fig.~\ref{fig:esc-andedx-slice}.
-     For example, Fig.~\ref{subfig:ans-dedx0-ppr-slice} shows large fluctuations below $200$, where a cut should be palced to exclude events below.
-     Similarly, the threshold values for the other nodes are $500$, $1000$, $900$, $840$, and $740$ respectively.
+     While the MIP peaks serve as a validation of the quality of the $\dedx$ estimation, the Bragg peaks are used to determine specific $\dedx$ thresholds for the ESC selection.
+     To have a larger sample for threshold determination, the multiple PGUN samples are combined into one large sample.
+     While plots like Fig.~\ref{fig:dedx-pprres-eg} show the underlying idea of the ESC selection, profile plots are better suited for determining proper thresholds.
+     Hence, the profile plots of $\dedx$ for the last six nodes at the end of the proton track are collected in Fig.~\ref{fig:esc-andedx-slice}.
+     To simplify the discussion, the $\dedx$ at the last node is referred to as $\dedx_1$, the second last node as $\dedx_2$, and so on, up to the sixth last node as $\dedx_6$.
+     For example, Fig.~\ref{subfig:ans-dedx0-ppr-slice} shows considerably larger fluctuations in reconstruction quality when $\dedx_1$ falls below $200$, where a cut should be placed to exclude these events.
+     Similarly, the threshold values from $\dedx_2$ to $\dedx_6$ are extracted to be $500$, $1000$, $900$, $840$, and $740$ respectively.
 
   \begin{figure}[t]
       \centering
       \begin{subfigure}{\dbfigwid\textwidth}
           %  \includegraphics[width=\textwidth]{figures/sel/ans_dedx0_vs_p_pr_res_hist2d_al2_selpr_con_slice.eps}
            \includegraphics[width=\textwidth]{figures/sel/fig53a.eps}
-           \caption{dedx0}
+           \caption{$\dedx_1$, considerably larger fluctuations in reconstruction quality when $\dedx_1$ falls below $200$.}
            \label{subfig:ans-dedx0-ppr-slice}
       \end{subfigure}
       \begin{subfigure}{\dbfigwid\textwidth}
           %  \includegraphics[width=\textwidth]{figures/sel/ans_dedx1_vs_p_pr_res_hist2d_al2_selpr_con_slice.eps}
            \includegraphics[width=\textwidth]{figures/sel/fig53b.eps}
-           \caption{dedx1}
+           \caption{$\dedx_2$, considerably larger fluctuations in reconstruction quality when $\dedx_2$ falls below $500$.}
            \label{subfig:dedx1}
       \end{subfigure}
       \\
       \begin{subfigure}{\dbfigwid\textwidth}
            \includegraphics[width=\textwidth]{figures/sel/fig53c.eps}
           %  \includegraphics[width=\textwidth]{figures/sel/ans_dedx2_vs_p_pr_res_hist2d_al2_selpr_con_slice.eps}
-           \caption{dedx2}
+           \caption{$\dedx_3$, considerably larger fluctuations in reconstruction quality when $\dedx_3$ falls below $1000$.}
            \label{subfig:dedx2}
       \end{subfigure}
       \begin{subfigure}{\dbfigwid\textwidth}
           %  \includegraphics[width=\textwidth]{figures/sel/ans_dedx3_vs_p_pr_res_hist2d_al2_selpr_con_slice.eps}
            \includegraphics[width=\textwidth]{figures/sel/fig53d.eps}
-           \caption{dedx3}
+           \caption{$\dedx_4$, considerably larger fluctuations in reconstruction quality when $\dedx_4$ falls below $900$.}
            \label{subfig:dedx3}
       \end{subfigure}
       \\
       \begin{subfigure}{\dbfigwid\textwidth}
           %  \includegraphics[width=\textwidth]{figures/sel/ans_dedx4_vs_p_pr_res_hist2d_al2_selpr_con_slice.eps}
            \includegraphics[width=\textwidth]{figures/sel/fig53e.eps}
-           \caption{dedx4}
+           \caption{$\dedx_5$, considerably larger fluctuations in reconstruction quality when $\dedx_5$ falls below $840$.}
            \label{subfig:dedx4}
       \end{subfigure}
       \begin{subfigure}{\dbfigwid\textwidth}
           %  \includegraphics[width=\textwidth]{figures/sel/ans_dedx5_vs_p_pr_res_hist2d_al2_selpr_con_slice.eps}
            \includegraphics[width=\textwidth]{figures/sel/fig53f.eps}
-           \caption{dedx5}
+           \caption{$\dedx_6$, considerably larger fluctuations in reconstruction quality when $\dedx_6$ falls below $740$.}
            \label{subfig:dedx5}
       \end{subfigure}
       \caption{Proton momentum reconstruction fractional difference against $\dedx$ for determination of $\dedx$ thresholds.}
       \label{fig:esc-andedx-slice}
   \end{figure}
 
-     Furthermore, based on distributions of angle-normalized energy for the last six nodes, the average Bragg peak profile can be obtained by fitting the peaks of the distributions.
-     As shown in Fig.~\ref{fig:esc-andedx-peaks}, the Bragg peak value for each node is extracted by fitting with a Cauchy function.
-     From the last node backwards, the fitted Bragg peak values are $989.5$, $1080$, $1234$, $1131$, $990.0$, and $887.2$, respectively.
-
+     Furthermore, based on the $6$ distributions of $\dedx$, the average Bragg peak profile can be obtained by fitting the peaks of these distributions.
+     Fig.~\ref{fig:esc-andedx-peaks} shows the $\dedx$ distributions for the last six nodes of the proton track.
+     The specific $\dedx$ values constituting the Bragg peak are extracted by fitting the distributions with a Cauchy function near the peak region.
+     Note that the fit is used to extract the peak value, not to model the entire distribution, so the fit quality is not of primary concern.
+     From $\dedx_1$ to $\dedx_6$, the fitted Bragg peak values are $989.5$, $1080$, $1234$, $1131$, $990.0$, and $887.2$, respectively.
 
   \begin{figure}[t]
     \centering
     \begin{subfigure}{\dbfigwid\textwidth}
      %     \includegraphics[width=\textwidth]{figures/sel/ans_dedx0_pdf_al2_selpr_con_test.eps}
          \includegraphics[width=\textwidth]{figures/sel/fig54a.eps}
-         \caption{dedx0 peak fit}
+         \caption{$\dedx_1$ Bragg peak value fit. The fitted peak value is $989.5$.}
          \label{subfig:dedx0-peak}
     \end{subfigure}
     \begin{subfigure}{\dbfigwid\textwidth}
      %     \includegraphics[width=\textwidth]{figures/sel/ans_dedx1_pdf_al2_selpr_con_test.eps}
          \includegraphics[width=\textwidth]{figures/sel/fig54b.eps}
-         \caption{dedx1 peak fit}
+         \caption{$\dedx_2$ Bragg peak value fit. The fitted peak value is $1080$.}
          \label{subfig:dedx1-peak}
     \end{subfigure}
     \\
     \begin{subfigure}{\dbfigwid\textwidth}
      %     \includegraphics[width=\textwidth]{figures/sel/ans_dedx2_pdf_al2_selpr_con_test.eps}
          \includegraphics[width=\textwidth]{figures/sel/fig54c.eps}
-         \caption{dedx2 peak fit}
+         \caption{$\dedx_3$ Bragg peak value fit. The fitted peak value is $1234$.}
          \label{subfig:dedx2-peak}
     \end{subfigure}
     \begin{subfigure}{\dbfigwid\textwidth}
      %     \includegraphics[width=\textwidth]{figures/sel/ans_dedx3_pdf_al2_selpr_con_test.eps}
          \includegraphics[width=\textwidth]{figures/sel/fig54d.eps}
-         \caption{dedx3 peak fit}
+         \caption{$\dedx_4$ Bragg peak value fit. The fitted peak value is $1131$.}
          \label{subfig:dedx3-peak}
     \end{subfigure}
     \\
     \begin{subfigure}{\dbfigwid\textwidth}
      %     \includegraphics[width=\textwidth]{figures/sel/ans_dedx4_pdf_al2_selpr_con_test.eps}
          \includegraphics[width=\textwidth]{figures/sel/fig54e.eps}
-         \caption{dedx4 peak fit}
+         \caption{$\dedx_5$ Bragg peak value fit. The fitted peak value is $990.0$.}
          \label{subfig:dedx4-peak}
     \end{subfigure}
     \begin{subfigure}{\dbfigwid\textwidth}
      %     \includegraphics[width=\textwidth]{figures/sel/ans_dedx5_pdf_al2_selpr_con_test.eps}
          \includegraphics[width=\textwidth]{figures/sel/fig54f.eps}
-         \caption{dedx5 peak fit}
+         \caption{$\dedx_6$ Bragg peak value fit. The fitted peak value is $887.2$.}
          \label{subfig:dedx5-peak}
     \end{subfigure}
     \caption{Cauchy fits to extract the peak values of $\dedx$ at each node to estimate the average Bragg peak values.}
     \label{fig:esc-andedx-peaks}
   \end{figure}
 
-     The angle-normalized energy for the last six nodes for each track can then be compared with this average profile using a $\chi^2$,
+     The $\dedx$ for the last six nodes for each track can then be compared with this average profile using a $\chi^2$,
     \begin{equation}
     \chi^2 = \sum_{i=1}^{6} \frac{(\dedx_i - \overline{\dedx_i})^2}{\overline{\dedx_i}}
     \end{equation}
@@ -193,7 +216,7 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
        \centering
      %   \includegraphics[width=\sgfidwid\textwidth]{figures/sel/brchi2_colnor_vs_p_pr_res_hist2d_al2_selpr_con_test.eps} 
        \includegraphics[width=\sgfidwid\textwidth]{figures/sel/fig55.eps} 
-       \caption{Proton momentum reconstruction fractional difference against $\chi^2$ for determination of $\chi^2$ thresholds.}
+       \caption{Proton momentum reconstruction fractional difference against $\chi^2$ for determination of $\chi^2$ thresholds. Considerably larger fluctuations in reconstruction quality when $\chi^2$ is above $800$.}
        \label{fig:esc-mom-res-chi2}
     \end{figure}
     The upper cut on $\chi^2$ is implemented at $800$, above which considerably larger fluctuations are observed.
@@ -268,29 +291,29 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
         \begin{subfigure}[b]{\dbfigwid\textwidth}
              \centering
              \includegraphics[width=\textwidth]{figures/sel/p_pr_colnor_resmat_al13.eps}
-             \caption{$\ppr$ before ESC cut.}
+             \caption{$\ppr$ before ESC selection.}
              \label{subfig:esc-ppr-bfesc}
         \end{subfigure}
         \begin{subfigure}[b]{\dbfigwid\textwidth}
              \centering
              \includegraphics[width=\textwidth]{figures/sel/theta_pr_colnor_resmat_al13.eps}
-             \caption{$\tpr$ before ESC cut.}
+             \caption{$\tpr$ before ESC selection.}
              \label{subfig:esc-tpr-bfesc}
         \end{subfigure}
         \\
         \begin{subfigure}[b]{\dbfigwid\textwidth}
              \centering
              \includegraphics[width=\textwidth]{figures/sel/p_pr_colnor_resmat_al14.eps}
-             \caption{$\ppr$ after ESC cut.}
+             \caption{$\ppr$ after ESC selection.}
              \label{subfig:esc-ppr-afesc}
         \end{subfigure}
         \begin{subfigure}[b]{\dbfigwid\textwidth}
              \centering
              \includegraphics[width=\textwidth]{figures/sel/theta_pr_colnor_resmat_al14.eps}
-             \caption{$\tpr$ after ESC cut.}
+             \caption{$\tpr$ after ESC selection.}
              \label{subfig:esc-tpr-afesc}
         \end{subfigure}
-        \caption{SPK before and after ESC.}
+        \caption{Reconstruction quality plots of truth against reconstruction values for SPK variables before (top) and after (bottom) selection. A significant reduction in the off-diagonal entries for both $\ppr$ and $tpi$ is observed after the ESC selection, indicating a better reconstruction quality. The conspicuous line with a negative slope for $\tpr$ has mostly disappeared.}
         \label{fig:esc-spk}
   \end{figure}
 
@@ -321,7 +344,7 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
            \caption{Selection efficiency after ESC selection. The overall efficiency is $736/8182\approx9.0\%$}
            \label{subfig:ppr-eff-afESC}
       \end{subfigure}
-      \caption{Proton ESC selection results. The grey histograms are the true probability distribution, while the pink ones are those that get reconstructed. }
+      \caption{Proton ESC selection results. The grey histograms are the true probability distribution, while the pink ones are those that get reconstructed. The selection efficiency has dropped from $25.8\%$ to $9.0\%$, while the proton momentum reconstruction resolution has improved from a fitted HWHM of $3.5\%$ to $1.6\%$.}
       \label{fig:esc-ppr-reseff}
    \end{figure}
 
@@ -427,7 +450,7 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
           \item \textbf{$\pim$} – While there is no single interaction that can convert a $\pip$ to a $\pim$, this fate—where a $\pim$ appears as one of the daughters of the $\pip$—is observed, albeit rarely, due to complex pion SI within the nucleus.
           \item \textbf{Escaped} – The pion escapes SFGD before decaying. 
           Regardless of its subsequent decay, the potential ME cannot be detected in SFGD.
-          \item \textbf{Others} – This category includes all uncategorized events, such as cases where the pion produces delta electrons or undergoes bremsstrahlung. 
+          \item \textbf{Others} – This category includes all uncategorized events, such as cases where the pion produces delta ray electrons or undergoes bremsstrahlung. 
           These events are relatively rare and do not require special treatment.
           \end{enumerate}
 
