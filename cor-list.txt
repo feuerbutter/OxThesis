@@ -14,7 +14,7 @@ It can be parameterised by three mixing angles, namely $\totwo$, $\tothr$ and $\
 -In chapter 3, some relevant experiments in the history of neutrino oscillation physics were not explained i.e. K2K, MINOS - these are important developments in establishing oscillations, should be reflected in the historical discussion.
 -----> Added descriptgion of both K2K and MINOS in the history chapter.
 
-//=================================================================================================================================================================================
+----------------------------------------------------------------------------------
 -In chapters 5 and 6, there are figures with labels that are experiment-specific jargon that are not clearly explained on first usage to the reader (i.e Fig, 5.1).
 
 -----> Elaborations are added in several places to aid reading.
@@ -39,7 +39,6 @@ Thus, the maximum value in each column is $1$, thereby visualising the compariso
 
 For single particle kinematics (SPK):   
 "The overall impact of the technique on the reconstructed single particle kinematics (SPK), i.e. reconstructed proton kinematics in this case, is shown in Fig.~\ref{fig:esc-spk}."
-
 
 ----------------------------------------------------------------------------------
 -In general the captions are too short to sufficiently explain the content of the figure, for example the column normalisation of Fig. 5.1 is not clearly explained, and fIgures with multiple lines need explanation of what each line is in legend and captions (i.e. Fig. 5.2).
@@ -71,8 +70,7 @@ Hence, stricter cuts are required to obtain a pion sample with higher purity.
 In particular, a direct upper on the muon pull is necessary.
 To determine the precise cut value, a further zoom of the first pull is shown in Fig.~\ref{fig:pull0-zoom}, suggesting a cut to exclude events with the muon pull larger than $0.04$.
 
-After the cut on the muon pull, the other pull distributions do not show a clear separation between the muon background and the pion signal, as illustrated in Fig.~\ref{fig:pulls-pid0}.
-"
+After the cut on the muon pull, the other pull distributions do not show a clear separation between the muon background and the pion signal, as illustrated in Fig.~\ref{fig:pulls-pid0}."
 
 ----------------------------------------------------------------------------------
 -The conclusion stated in the caption of 5.13 about the chi2/ndf is incorrect.
@@ -83,8 +81,6 @@ The chi2/ndf is instead addressed in text with added comments.
 "The central region of the plots is fitted with a fourth-order polynomial.
 Although the $\chindf$ of the fit is relatively large, the fitted line matchhes the data points well.
 Since the simulation is not yet final, this fit is sufficient for the current analysis and should be updated once the simulation is finalized."
-----------------------------------------------------------------------------------
-
 
 ----------------------------------------------------------------------------------
 -In chapters 5-8 in places the MC stats are quite low, and therefore statistical uncertainties need to be included in any statements in the text drawing conclusions from these distributions (i.e. 5.19 onwards, and in section 6.3.1).
@@ -122,7 +118,6 @@ The majority of SM events, with large $\dptmupi$, is thus not plotted in Fig.~\r
 In this particular case, applying the cut $\dptmupi<15~\mevc$ will retain eight HNL events and reject all SM backgrounds.
 A more realistic background estimation is given in the next subsection."
 
-
 ----------------------------------------------------------------------------------
 -The background estimate from Fig. 8.5 needs to be more quantitative.
 -----> Descriptions added before Fig. 8.5 to be clarify the procedure. The background estimate is obtained from an integration instead of crude eyeballing.
@@ -134,7 +129,6 @@ However, the zero event is partly due to the small statistics used in this preli
 To properly estimate the coherent background, the full distribution of $\dptmupi$ before the last cut is fitted with a Cauchy distribution as shown in Fig.~\ref{fig:coh-bkg}.
 The number of expected background events is obtained by integrating the fitted curve from $0$ to the cut value, i.e. $15~\mevc$, which is evaluated to be $0.33$. 
 Although the fit quality is not perfect due to the low statistics, the procedure is still valid and can be applied to the full statistics when available."
-
 
 ----------------------------------------------------------------------------------
 -The conclusion drawn in section 8.5 is not supported by the estimate
@@ -148,5 +142,4 @@ Secondly, the selection only includes the muons escaping into the vertical TPC, 
 While the background estimation appears optismistic, it is the signal to background ratio that is crucial for the sensitivity.
 As the MC statistics used is relatively low, the estimated number of signal events after the selection is susceptible to large statistical fluctuations. 
 Hence, the overall impact of including the SFGD to the HNL search can only be reliably assessed 
-with a larger sample and a full-scale background estimation when the ND280 upgrade software is ready.
-"
+with a larger sample and a full-scale background estimation when the ND280 upgrade software is ready."
