@@ -23,16 +23,16 @@ It can reconstruct proton momentum with an excellent resolution of about $3.5\%$
 
 To address these gaps, I have developed and implemented new techniques for both hadrons, exploiting the precise position and $\dedx$ measurements and timing resolution.
 For pions, I have invented the pion trackless reconstruction, a novel technique to reconstruct pions without requiring the presence of a reconstructed track, thereby lowering the detection threshold and significantly increasing reconstruction efficiency for low-momentum pions. 
-As for protons, I have adapted the Elastically Scattered and Contained (ESC) protons technique~\cite{Lu:2016mjf} to SFGD, showing significant improvement in proton momentum reconstruction resolution,  
+As for protons, I have adapted the Elastically Scattered and Contained (ESC) protons selection technique~\cite{Lu:2016mjf} to SFGD, showing significant improvement in proton momentum reconstruction resolution,  
 These new techniques are applied in the development of two signal sample selections, namely the $\numucczpiop$-ESC selection and the $\numuccopi$-TL selection, where the ``TL'' refers to the use of the trackless reconstruction technique.
 Additionally, to prepare for the data-MC comparisons and future cross-section analysis, I have also developed a stopping pion control sample selection.
 
-\section{$\numucczpiop$-ESC}
+\section{The Elastically Scattered and Contained (ESC) protons technique}
 \label{sec:sel-esc}
      % The $\numucczpiop$-ESC adds an additional ESC selection step to the $\numucczpiop$ selection developed by a T2K colleague.
      % The details of the ESC step are elaborated below.
    %------------------- ESC ----------------%
-    \subsection{Working Principles of the ESC technique}
+    \subsection{Working Principles of the ESC selection}
     \label{sec:sel-esc-wp}
      The subsection elaborates on the underlying principles of the ESC selection technique.
      Protons coming to rest deposit a large amount of energy within a short distance just before stopping.
@@ -55,7 +55,7 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
         \centering
      %    \includegraphics[width=\sgfidwid\linewidth]{figures/sel/an_dedx2_colnor_vs_p_pr_res_hist2d_al12_zoom.png}
         \includegraphics[width=\sgfidwid\linewidth]{figures/sel/fig51.eps}
-        \caption{Proton momentum fractional difference against angular normalized $\dedx$ (detailed explanation of this quantity is given in the next subsection) at the second last node. Considerable fluctuations occur when the }
+        \caption{Proton momentum fractional difference against the angular normalized $\dedx$ (detailed explanation of this quantity is given in the next subsection) at the second last node. Considerable fluctuations occur when the $\dedx_2$ falls below $800$.}
         \label{fig:dedx-pprres-eg}
     \end{figure}
     
@@ -70,7 +70,7 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
 
      The first feature is the Bragg peak due to the ESC protons as elaborated in Sec.~\ref{sec:sel-esc-wp}.
 	Another distinct feature of $\dedx$ is the minimal ionizing particle (MIP) region, where particles at high momentum traverse the scintillator depositing a minimal amount of energy, $E_{\textrm{MIP}}$, per unit distance.
-     This is due to the fact that the energy loss of a particle travelling through matter is proportional to the square of its charge and inversely proportional to its velocity, as described by the Bethe-Bloch formula~\cite{Bethe:1930zza}.
+     This is due to the fact that the energy loss of a particle travelling through matter is proportional to the square of its charge and inversely proportional to its velocity, as described by the Bethe-Bloch formula.
      For protons, which are charged particles, the $\dedx$ is relatively constant at high momentum, as they are fast enough that their energy loss per unit distance is dominated by ionization losses rather than other processes like nuclear interactions or radiation losses.
      Hence, for protons travelling at high momentum, the $\dedx$ remains at a relatively constant and small value for all such particles.
 	Hence, the $\dedx$ remains at a relatively constant and small value for all such particles.
@@ -100,7 +100,7 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
      The MIP peaks are close to each other, but their positions differ noticeably.
      This is due to the different grouping of hits into nodes for protons travelling in different directions.
      The different numbers of hits in a node lead to different distances between nodes, so using the smoothed energy deposited per node as an estimation of $\dedx$ is not strictly valid.
-     To account for the different propagation directions, I divided the energy by the sine of the angle between the trajectory and the $z$-axis.
+     To account for the different propagation directions, I divided the energy by the sine (or cosine, whichever is larger) of the angle between the trajectory and the $z$-axis.
      The angle-normalized energy is plotted in Fig.~\ref{subfig:esc-an-smooth-e}, which demonstrates that the angle-normalization step has achieved its goal—all MIP peaks have the similar position.
      Hence, the angle-normalized energy is used as a good reconstruction of $\dedx$ for the ESC selection, and it will be referred to as $\dedx$ in the following discussion.
 

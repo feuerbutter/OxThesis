@@ -94,10 +94,10 @@ This thesis focuses primarily on improving reconstruction performance; thus, the
 
 Each scintillator cube in the SFGD contains three passing optical fibres, each is connected to electronics at one of the ends. 
 As a charged particle traverses these cubes, scintillation photons travelled along the optical fibres and are measured by readout boards located on three orthogonal faces of the SFGD.  
-After calibration, these signals are digitized and assembled into three-dimensional “Hits,” each corresponding to a specific cube position and including a measure of the deposited charge.  
+After calibration, these signals are digitized and assembled into three-dimensional ``Hits'', each corresponding to a specific cube position and including a measure of the deposited charge.  
 The reconstruction software then sorts these Hits into either clusters or tracks using clustering and track-fitting algorithms.  
 Clusters consist of fewer than three Hits, whereas tracks typically contain many more, because objects containing too few Hits are not long enough to be considered as tracks. 
 Additionally, due to imperfect optical isolation between cubes, light may leak into neighbouring cubes not traversed by the particle.  
-To account for this, the reconstruction merges nearby Hits into “Nodes,” which more accurately capture the particle’s trajectory.  
+To account for this, the reconstruction merges nearby Hits into ``Nodes'', which more accurately capture the particle’s trajectory.  
 Energy deposition at each Node is then estimated from the associated Hits and refined according to the expected continuous energy loss along the path.  
 Finally, a Boosted Decision Tree (BDT), trained on Particle Gun simulations, uses these smoothed energy values and other measured parameters for particle identification and momentum estimation.  
