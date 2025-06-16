@@ -51,11 +51,11 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
      The energy deposit output from the SFGD reconstruction does not have a physical unit, but its magnitude is an algorithmic estimate of the energy deposited by the particle at each node.}, while for columns with $\dedx$ below $1000$, the red bins deviate from $y=0$ with larger fluctuations.
      Thus, selecting protons with large $\dedx$ for the last few nodes of the proton track can produce a sample with good proton momentum reconstruction resolution.
      This is the underlying principle of the ESC technique.
-    \begin{figure}[h]
+    \begin{figure}[!h]
         \centering
      %    \includegraphics[width=\sgfidwid\linewidth]{figures/sel/an_dedx2_colnor_vs_p_pr_res_hist2d_al12_zoom.png}
         \includegraphics[width=\sgfidwid\linewidth]{figures/sel/fig51.eps}
-        \caption{Proton momentum fractional difference against energy deposited at the third last node.}
+        \caption{Proton momentum fractional difference against angular normalized $\dedx$ (detailed explanation of this quantity is given in the next subsection) at the second last node. Considerable fluctuations occur when the }
         \label{fig:dedx-pprres-eg}
     \end{figure}
     
@@ -79,15 +79,15 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
 
 	Fig.~\ref{subfig:esc-smooth-e} plots the smoothed energy deposits for the third to sixth nodes from the end for all PGUN samples travelling at non-orthogonal angles.
 	It is reassuring to indeed observe the two peaks, the MIP peak and the Bragg peak, as hypothesized. 
-     \begin{figure}
+     \begin{figure}[h]
         \centering
-        \begin{subfigure}[b]{\dbfigwid\textwidth}
+        \begin{subfigure}{\dbfigwid\textwidth}
              \centering
              \includegraphics[width=\textwidth]{figures/sel/dedx5_pdf_skew_smooth.eps}
              \caption{Smoothed energy}
              \label{subfig:esc-smooth-e}
         \end{subfigure}
-        \begin{subfigure}[b]{\dbfigwid\textwidth}
+        \begin{subfigure}{\dbfigwid\textwidth}
              \centering
              \includegraphics[width=\textwidth]{figures/sel/an_dedx5_pdf_skew_smooth_angnorm.eps}
              \caption{Angle-normalized smoothed energy}
@@ -112,7 +112,7 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
      For example, Fig.~\ref{subfig:ans-dedx0-ppr-slice} shows considerably larger fluctuations in reconstruction quality when $\dedx_1$ falls below $200$, where a cut should be placed to exclude these events.
      Similarly, the threshold values from $\dedx_2$ to $\dedx_6$ are extracted to be $500$, $1000$, $900$, $840$, and $740$ respectively.
 
-  \begin{figure}[t]
+  \begin{figure}[ht]
       \centering
       \begin{subfigure}{\dbfigwid\textwidth}
           %  \includegraphics[width=\textwidth]{figures/sel/ans_dedx0_vs_p_pr_res_hist2d_al2_selpr_con_slice.eps}
@@ -152,7 +152,7 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
            \caption{$\dedx_6$, considerably larger fluctuations in reconstruction quality when $\dedx_6$ falls below $740$.}
            \label{subfig:dedx5}
       \end{subfigure}
-      \caption{Proton momentum reconstruction fractional difference against $\dedx$ for determination of $\dedx$ thresholds.}
+      \caption{Proton momentum reconstruction fractional difference against $\dedx$ for determination of $\dedx$ thresholds. The corresponding thresholds values are extracted in each subfigure.}
       \label{fig:esc-andedx-slice}
   \end{figure}
 
@@ -162,7 +162,7 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
      Note that the fit is used to extract the peak value, not to model the entire distribution, so the fit quality is not of primary concern.
      From $\dedx_1$ to $\dedx_6$, the fitted Bragg peak values are $989.5$, $1080$, $1234$, $1131$, $990.0$, and $887.2$, respectively.
 
-  \begin{figure}[t]
+  \begin{figure}[ht]
     \centering
     \begin{subfigure}{\dbfigwid\textwidth}
      %     \includegraphics[width=\textwidth]{figures/sel/ans_dedx0_pdf_al2_selpr_con_test.eps}
@@ -202,7 +202,7 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
          \caption{$\dedx_6$ Bragg peak value fit. The fitted peak value is $887.2$.}
          \label{subfig:dedx5-peak}
     \end{subfigure}
-    \caption{Cauchy fits to extract the peak values of $\dedx$ at each node to estimate the average Bragg peak values.}
+    \caption{Cauchy fits to extract the peak values of $\dedx$ at each node to estimate the average Bragg peak values. The corresponding fitted peak values are shown in each subfigure.}
     \label{fig:esc-andedx-peaks}
   \end{figure}
 
@@ -212,7 +212,7 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
     \end{equation}
     A proton coming to rest should have a similar profile, so an upper cut on $\chi^2$ could further select protons with good momentum resolution. 
     Similar to the determination of the threshold for the individual $\dedx$, the momentum fractional difference is plotted against $\chi^2$, as shown in Fig.~\ref{fig:esc-mom-res-chi2}.
-    \begin{figure}[h]
+    \begin{figure}[ht]
        \centering
      %   \includegraphics[width=\sgfidwid\textwidth]{figures/sel/brchi2_colnor_vs_p_pr_res_hist2d_al2_selpr_con_test.eps} 
        \includegraphics[width=\sgfidwid\textwidth]{figures/sel/fig55.eps} 
@@ -227,21 +227,21 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
      Hence, such bias is also checked for the signal sample in SFGD.
      However, unlike in Ref.~\cite{Lu:2016mjf}, no apparent bias in proton momentum reconstruction is present, while such bias is observed in muon momentum reconstruction as shown in Fig.~\ref{fig:esc-prmupt}.
 
-     \begin{figure}
+     \begin{figure}[ht]
      \centering
-     \begin{subfigure}[b]{\dbfigwid\textwidth}
+     \begin{subfigure}{\dbfigwid\textwidth}
           \centering
           \includegraphics[width=\textwidth]{figures/sel/pr_pt_vs_pr_pt_bias_hist2d_al14.eps}
           \caption{Ratio of true$/$reco for proton $p_T$ against proton $\pt$.}
           \label{subfig:esc-prpt}
      \end{subfigure}
-     \begin{subfigure}[b]{\dbfigwid\textwidth}
+     \begin{subfigure}{\dbfigwid\textwidth}
           \centering
           \includegraphics[width=\textwidth]{figures/sel/mu_pt_vs_mu_pt_bias_hist2d_al14.eps}
           \caption{Ratio of true$/$reco for muon $p_T$ against muon $\pt$.}
           \label{subfig:esc-mupt}
      \end{subfigure}
-     \caption{Momentum Reconstruction Bias Assessment}
+     \caption{Ratios of true$/$reco for the transverse component of the momentum for proton and muon are plotted against the transverse component for transverse momentum reconstruction bias assessment. No bias is observed for proton, while a linear bias is present for muon.}
      \label{fig:esc-prmupt}
      \end{figure}
 
@@ -251,21 +251,21 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
      However, such a direction bias should have affected the proton transverse momentum as well.
      As the impact is not pronounced and the simulation software is not the final stable version yet, a correction is done solely on the muon transverse momentum for the calculations of TKI variables, and further investigations on the root cause for this bias should be carried out after a stable simulation software version becomes available.
 
-     \begin{figure}
+     \begin{figure}[ht]
      \centering
-     \begin{subfigure}[b]{\dbfigwid\textwidth}
+     \begin{subfigure}{\dbfigwid\textwidth}
           \centering
           \includegraphics[width=\textwidth]{figures/sel/theta_mu_vs_theta_mu_res_hist2d_al14.eps}
-          \caption{Value of true$-$reco for $\tmu$ against $\tmu$ before ESC.}
+          \caption{Value of true$-$reco for $\tmu$ against $\tmu$ before ESC selection.}
           \label{subfig:esc-mutheta}
      \end{subfigure}
-     \begin{subfigure}[b]{\dbfigwid\textwidth}
+     \begin{subfigure}{\dbfigwid\textwidth}
           \centering
           \includegraphics[width=\textwidth]{figures/sel/mu_pt_vs_mu_pt_bias_hist2d_al13.eps}
-          \caption{Ratio of true$/$reco for muon $p_T$ against muon $\pt$ before ESC.}
+          \caption{Ratio of true$/$reco for muon $p_T$ against muon $\pt$ before ESC selection.}
           \label{subfig:esc-mupt-bfesc}
      \end{subfigure}
-     \caption{Muon Momentum Reconstruction Bias Assessment}
+     \caption{Muon transverse momentum reconstruction bias investigation plots. There is bias in the muon angle reconstruction, while the transverse momentum bias is present even before the ESC selection.}
      \label{fig:esc-muptcor}
      \end{figure}
 
@@ -275,7 +275,7 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
      \begin{figure}[h]
      \centering
      \includegraphics[width=\sgfidwid\textwidth]{figures/sel/mu_pt_vs_cor_mu_pt_bias_hist2d_al14.eps} 
-     \caption{Ratio of true$/$reco for muon $p_T$ against muon $\pt$ after correction.}
+     \caption{Ratio of true$/$reco for muon $p_T$ against muon $\pt$ after correction. The nearly flat line suggests that the bias has been rectified.}
      \label{fig:esc-cormupt}
      \end{figure}
 
@@ -286,28 +286,28 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
      Moreover, the conspicuous line with a negative slope in the $\tpr$ has mostly disappeared.
      These could be due to a mis-reconstruction of the track direction for short protons, which are excluded by the first requirement of the ESC step: the number of nodes has to be at least $6$.
      
-     \begin{figure}
+     \begin{figure}[ht]
         \centering
-        \begin{subfigure}[b]{\dbfigwid\textwidth}
+        \begin{subfigure}{\dbfigwid\textwidth}
              \centering
              \includegraphics[width=\textwidth]{figures/sel/p_pr_colnor_resmat_al13.eps}
              \caption{$\ppr$ before ESC selection.}
              \label{subfig:esc-ppr-bfesc}
         \end{subfigure}
-        \begin{subfigure}[b]{\dbfigwid\textwidth}
+        \begin{subfigure}{\dbfigwid\textwidth}
              \centering
              \includegraphics[width=\textwidth]{figures/sel/theta_pr_colnor_resmat_al13.eps}
              \caption{$\tpr$ before ESC selection.}
              \label{subfig:esc-tpr-bfesc}
         \end{subfigure}
         \\
-        \begin{subfigure}[b]{\dbfigwid\textwidth}
+        \begin{subfigure}{\dbfigwid\textwidth}
              \centering
              \includegraphics[width=\textwidth]{figures/sel/p_pr_colnor_resmat_al14.eps}
              \caption{$\ppr$ after ESC selection.}
              \label{subfig:esc-ppr-afesc}
         \end{subfigure}
-        \begin{subfigure}[b]{\dbfigwid\textwidth}
+        \begin{subfigure}{\dbfigwid\textwidth}
              \centering
              \includegraphics[width=\textwidth]{figures/sel/theta_pr_colnor_resmat_al14.eps}
              \caption{$\tpr$ after ESC selection.}
@@ -393,7 +393,7 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
           The central region of the plots is fitted with a fourth-order polynomial.
           Although the $\chindf$ of the fit is relatively large, the fitted line matches the data points well.
           Since the simulation is not yet final, this fit is sufficient for the current analysis and should be updated once the simulation is finalized.
-          \begin{figure}[h]
+          \begin{figure}[ht]
           \centering
           \includegraphics[width=\sgfidwid\textwidth]{figures/sel/pi_len_pi_len_vs_pi_ke_hist2d_al0_true_nokink.eps} 
           \caption{A degree 4 polynomial fit of $\log_{10}{T_\pi}$ against $\log_{10}{L_\pi}$, where $T_\pi$ and $L_\pi$ are the kinetic energy and the range of the pion, respectively. The $p_i$'s are the corresponding coefficients of the term of order $i$. The fit matches the data points well.}
@@ -422,7 +422,7 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
                     \caption{Primary pion angle cumulative distribution. The $80\%$ angle is $87^\circ$.}
                     \label{subfig:pi-theta-cum}
                \end{subfigure}
-               \caption{Cumulative density functions of Primary pion kinematics in SFGD.}
+               \caption{Cumulative density functions of primary pion kinematics in SFGD. The relevant values are extracted for subsequent investigation of pion fates.}
           \end{figure}
                
           The median momentum is approximately $300~\mevc$, with about $30\%$ of pions having momentum below $200~\mevc$ and $80\%$ below $800~\mevc$. 
@@ -472,7 +472,7 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
           For $800~\mevc$ pions, the decay length is too long for SFGD, resulting in a significant increase in the escape fraction—approximately $30\%$ at $0^\circ$ and $50\%$ at $70^\circ$. 
           The unescaped pions are those that have undergone secondary interactions, rendering them not reconstructable by the trackless technique at this high momentum.
 
-          \begin{figure}[t]
+          \begin{figure}[ht]
                \centering
                \begin{subfigure}{\dbfigwid\textwidth}
                     \includegraphics[width=\textwidth]{figures/sel/pion_fate_200_0.png}
@@ -506,7 +506,7 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
                     \caption{$\ppi=800\mevc$ and $\tpi=70^\circ$.}
                     \label{subfig:pi-fate-800-70}
                \end{subfigure}
-               \caption{Pion fates in the SFGD for different combinations of pion kinematics}
+               \caption{Pion fates in the SFGD for different combinations of pion kinematics. A significant fraction, approximately $80\%$ of pion decays at rest at $\ppi=200\mevc$ regardless of the angle. The fraction drops to about $30\%$ at $\ppi=300\mevc$ for low angles and $10\%$ for high angles, and further decreases to $0\%$ at $\ppi=800\mevc$.}
                \label{fig:pi-fate}
             \end{figure}
        
@@ -560,53 +560,53 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
           Further details on the other track number cuts are provided in Appendix.~\ref{sec:app-tlpi-trknumcut}. 
           The overall impact of the track number cuts is illustrated by the topological decomposition of the pion kinematic distributions in Fig.~\ref{fig:tl-trknum-cut-res}.
 
-            \begin{figure}
-               \centering
-               \begin{subfigure}{\dbfigwid\textwidth}
-                    \includegraphics[width=\textwidth]{figures/sel/TPCmu_p_pi_stack_al8.eps}
-                    \caption{TPC-$\mu$: $\ppi$ before track number cut.}
-                    \label{subfig:tlpi-ppi-bf-trknumcut-tpc}
-               \end{subfigure}
-               \begin{subfigure}{\dbfigwid\textwidth}
-                    \includegraphics[width=\textwidth]{figures/sel/TPCmu_theta_pi_stack_al8.eps}
-                    \caption{TPC-$\mu$: $\tpi$ before track number cut.}
-                    \label{subfig:tlpi-tpi-bf-trknumcut-tpc}
-               \end{subfigure}
-               \\
-               \begin{subfigure}{\dbfigwid\textwidth}
-                    \includegraphics[width=\textwidth]{figures/sel/TPCmu_p_pi_stack_al9.eps}
-                    \caption{TPC-$\mu$: $\ppi$ after track number cut.}
-                    \label{subfig:tlpi-ppi-af-trknumcut-tpc}
-               \end{subfigure}
-               \begin{subfigure}{\dbfigwid\textwidth}
-                    \includegraphics[width=\textwidth]{figures/sel/TPCmu_theta_pi_stack_al9.eps}
-                    \caption{TPC-$\mu$: $\tpi$ after track number cut.}
-                    \label{subfig:tlpi-tpi-af-trknumcut-tpc}
-               \end{subfigure}
-               \\
-               \begin{subfigure}{\dbfigwid\textwidth}
-                    \includegraphics[width=\textwidth]{figures/sel/SFGmu_p_pi_stack_al8.eps}
-                    \caption{SFGD-$\mu$: $\ppi$ before track number cut.}
-                    \label{subfig:tlpi-ppi-bf-trknumcut-sfg}
-               \end{subfigure}
-               \begin{subfigure}{\dbfigwid\textwidth}
-                    \includegraphics[width=\textwidth]{figures/sel/SFGmu_theta_pi_stack_al8.eps}
-                    \caption{SFGD-$\mu$: $\tpi$ before track number cut.}
-                    \label{subfig:tlpi-tpi-bf-trknumcut-sfg}
-               \end{subfigure}
-               \\
-               \begin{subfigure}{\dbfigwid\textwidth}
-                    \includegraphics[width=\textwidth]{figures/sel/SFGmu_p_pi_stack_al9.eps}
-                    \caption{SFGD-$\mu$: $\ppi$ after track number cut.}
-                    \label{subfig:tlpi-ppi-af-trknumcut-sfg}
-               \end{subfigure}
-               \begin{subfigure}{\dbfigwid\textwidth}
-                    \includegraphics[width=\textwidth]{figures/sel/SFGmu_theta_pi_stack_al9.eps}
-                    \caption{SFGD-$\mu$: $\tpi$ after track number cut.}
-                    \label{subfig:tlpi-tpi-af-trknumcut-sfg}
-               \end{subfigure}
-               \caption{Pion kinematics before and after track number cuts.}
-               \label{fig:tl-trknum-cut-res}
+          \begin{figure}[ht]
+             \centering
+             \begin{subfigure}{\dbfigwid\textwidth}
+                  \includegraphics[width=\textwidth]{figures/sel/TPCmu_p_pi_stack_al8.eps}
+                  \caption{TPC-$\mu$: $\ppi$ before track number cut.}
+                  \label{subfig:tlpi-ppi-bf-trknumcut-tpc}
+             \end{subfigure}
+             \begin{subfigure}{\dbfigwid\textwidth}
+                  \includegraphics[width=\textwidth]{figures/sel/TPCmu_p_pi_stack_al9.eps}
+                  \caption{TPC-$\mu$: $\ppi$ after track number cut.}
+                  \label{subfig:tlpi-ppi-af-trknumcut-tpc}
+             \end{subfigure}
+             \\
+             \begin{subfigure}{\dbfigwid\textwidth}
+                  \includegraphics[width=\textwidth]{figures/sel/TPCmu_theta_pi_stack_al8.eps}
+                  \caption{TPC-$\mu$: $\tpi$ before track number cut.}
+                  \label{subfig:tlpi-tpi-bf-trknumcut-tpc}
+             \end{subfigure}
+             \begin{subfigure}{\dbfigwid\textwidth}
+                  \includegraphics[width=\textwidth]{figures/sel/TPCmu_theta_pi_stack_al9.eps}
+                  \caption{TPC-$\mu$: $\tpi$ after track number cut.}
+                  \label{subfig:tlpi-tpi-af-trknumcut-tpc}
+             \end{subfigure}
+             \\
+             \begin{subfigure}{\dbfigwid\textwidth}
+                  \includegraphics[width=\textwidth]{figures/sel/SFGmu_p_pi_stack_al8.eps}
+                  \caption{SFGD-$\mu$: $\ppi$ before track number cut.}
+                  \label{subfig:tlpi-ppi-bf-trknumcut-sfg}
+             \end{subfigure}
+             \begin{subfigure}{\dbfigwid\textwidth}
+                  \includegraphics[width=\textwidth]{figures/sel/SFGmu_p_pi_stack_al9.eps}
+                  \caption{SFGD-$\mu$: $\ppi$ after track number cut.}
+                  \label{subfig:tlpi-ppi-af-trknumcut-sfg}
+             \end{subfigure}
+             \\
+             \begin{subfigure}{\dbfigwid\textwidth}
+                  \includegraphics[width=\textwidth]{figures/sel/SFGmu_theta_pi_stack_al8.eps}
+                  \caption{SFGD-$\mu$: $\tpi$ before track number cut.}
+                  \label{subfig:tlpi-tpi-bf-trknumcut-sfg}
+             \end{subfigure}
+             \begin{subfigure}{\dbfigwid\textwidth}
+                  \includegraphics[width=\textwidth]{figures/sel/SFGmu_theta_pi_stack_al9.eps}
+                  \caption{SFGD-$\mu$: $\tpi$ after track number cut.}
+                  \label{subfig:tlpi-tpi-af-trknumcut-sfg}
+             \end{subfigure}
+             \caption{Reconstructed pion kinematics before (left) and after (right) track number cuts. An appreciable reduction in the background is observed.}
+             \label{fig:tl-trknum-cut-res}
           \end{figure}
 
           As shown in Figs.~\ref{subfig:tlpi-ppi-bf-trknumcut-tpc} and \ref{subfig:tlpi-ppi-af-trknumcut-tpc}, the purity of the $\numuccopi$ selection improved from $74.1\%$ to $87.5\%$ after applying the track number cuts for the TPC-$\mu$ sub-sample. 
@@ -618,7 +618,7 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
           A quick consistency check involves plotting the distribution of the time difference between the ME and the primary vertex, which should equal the pion travel time plus the muon decay time. 
           Since the pion travel time is on the order of nanoseconds, the resulting distribution should closely follow the muon exponential decay. 
           The distributions of the ME time delay for the TPC-$\mu$ and SFGD-$\mu$ sub-samples are shown in Fig.~\ref{fig:tlpi-me-td}.
-          \begin{figure}
+          \begin{figure}[ht]
                \centering
                \begin{subfigure}{\dbfigwid\textwidth}
                     \includegraphics[width=\textwidth]{figures/sel/SFGmu_ME_td_hist_al9_fit.eps}
@@ -630,19 +630,19 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
                     \caption{TPC-$\mu$. The fitted lifetime is $2329\pm58~\ns$.}
                     \label{subfig:tlpi-me-td-tpcmu}
                \end{subfigure}
-              \caption{Time difference between ME and the end point of the stopping pion track.}
+              \caption{Time difference between ME and the end point of the pion track for the subsamples where the primary muon is contained in the SFGD or escapes into the TPC. Both distributions are fitted with an exponential decay function, and the fitted lifetimes are consistent with the expected muon lifetime of approximately $2200~\ns$.}
                \label{fig:tlpi-me-td}
             \end{figure}
           \end{figure}
 
           Fig.~\ref{fig:cc1pi-tl} displays a candidate $\ccopi$ event passing the $\numuccopi$-TL selection in the upgraded ND280 during the beam run in June 2024. 
           The second-longest track is the ME, whose starting point is very close to that of the primary muon, indicating the extremely short distance traveled by the primary pion. 
-          \begin{figure}[!htb] 	
+          This short distance makes reconstruction using a track-based method practically unfeasible.
+          \begin{figure}[!ht] 	
                \centering 		
                \includegraphics[width=\sgfigwid\textwidth]{figures/shortPion.png}
                \caption{\label{fig:cc1pi-tl} A $\ccopi$-TL candidate event in upgraded ND280, where the long track is the primary muon and the other track is a delayed ME, which implies the existence of a very low momentum primary pion.} 
           \end{figure}
-          This short distance makes reconstruction using a track-based method practically unfeasible.
 
      \subsection{Comparison with Conventional Method}
      \label{sec:comparison-conventional}
@@ -665,7 +665,7 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
           Secondly, the momentum threshold in $\numuccopi$-TL extends below $50~\mevc$, which is impossible for the conventional method.
           More encouragingly, this improvement in low momentum efficiency and lower threshold does not compromise selection purity, as shown in Figs.~\ref{subfig:stack-topo-tl} and \ref{subfig:stack-topo-tr}.
 
-          \begin{figure}
+          \begin{figure}[ht]
                \centering
                \begin{subfigure}{\dbfigwid\textwidth}
                     \includegraphics[width=\textwidth]{figures/sel/finhist_pi_mom_topology_TL.png}
@@ -674,7 +674,7 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
                \end{subfigure}
                \begin{subfigure}{\dbfigwid\textwidth}
                     \includegraphics[width=\textwidth]{figures/sel/finhist_pi_mom_topology_TR.png}
-                    \caption{$\numuccopi$-TL: Topology decomposition.}
+                    \caption{$\numuccopi$-TR: Topology decomposition.}
                     \label{subfig:stack-topo-tr}
                \end{subfigure}
                \\
@@ -688,7 +688,7 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
                     \caption{$\numuccopi$-TR: Reconstruction efficiency.}
                     \label{subfig:ppi-eff-tr}
                \end{subfigure}
-              \caption{Pion trackless reconstruction results.}
+              \caption{Comparison between the pion trackless reconstruction (TL) and the conventional track-based reconstruction (TR). Both the decomposition in event topology and the efficiency are plotted. The TL method achieves a significantly higher efficiency in the low-momentum region and a lower threshold, as suggested by the non-empty bin at $50~\mevc$ in Fig.~\ref{subfig:stack-topo-tl}.}
                \label{fig:tltr-comp}
             \end{figure}
 
@@ -709,7 +709,7 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
           A further significant drop in efficiency occurs in the next step, the kink cut, which is reasonable as a considerable portion of pions undergo deflection.
           The gradual drops are subsequent cuts to remove backgrounds, resulting in a high purity of $\numuccopi$, as shown in Fig.~\ref{fig:ppi-stack}.
 
-          \begin{figure}[t]
+          \begin{figure}[ht]
               \centering
               \begin{subfigure}{\trfigwid\textwidth}
                    \includegraphics[width=\textwidth]{figures/sel/ppi_stack.png}
@@ -726,7 +726,7 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
                    \caption{Accumulative efficiency.}
                    \label{fig:tl-accum-eff}
               \end{subfigure}
-              \caption{Pion trackless reconstruction results.}
+              \caption{Pion trackless reconstruction results. A significant number of low-momentum pions are reconstructed, with a threshold as low as $50~\mevc$. The fitted HWHM for the momentum reconstruction is excellent at $2.1\%$. The overall efficiency remains acceptable at $13\%$.}
               \label{fig:piTLres}
            \end{figure}
 
@@ -769,7 +769,7 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
           % For conciseness, these logarithms are simply referred to as the first pull and the fourth pull, respectively.
           % Although HAT is also a TPC, there are design differences, so the PID requirement may differ.
 
-          \begin{figure}
+          \begin{figure}[ht]
                \centering
                \begin{subfigure}{\dbfigwid\textwidth}
                     \includegraphics[width=\textwidth]{figures/sel/sspi_TOP_hat_pid0_stack_al5.eps}
@@ -800,14 +800,14 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
           Hence, stricter cuts are required to obtain a pion sample with higher purity.
           In particular, a direct upper on the muon pull is necessary.
           To determine the precise cut value, a further zoom of the first pull is shown in Fig.~\ref{fig:pull0-zoom}, suggesting a cut to exclude events with the muon pull larger than $0.04$.
-          \begin{figure}
+          \begin{figure}[ht]
                \centering
                \includegraphics[width=\textwidth]{figures/sel/sspi_TOP_hat_pid0_stack_al5_zoom.eps}
-               \caption{Zoom on the first pull distribution at HAT.}
+               \caption{Zoom on the muon pull distribution at HAT. A cut at $0.04$ strikes a good balance between removing muon background and keeping pion signal.}
                \label{fig:pull0-zoom}
           \end{figure}
           After the cut on the muon pull, the other pull distributions do not show a clear separation between the muon background and the pion signal, as illustrated in Fig.~\ref{fig:pulls-pid0}.
-          \begin{figure}
+          \begin{figure}[ht]
                \centering
                \begin{subfigure}{\dbfigwid\textwidth}
                     \includegraphics[width=\textwidth]{figures/sel/sspi_TOP_hat_pid0_stack_al5_pid0.eps}
@@ -830,7 +830,7 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
                     \caption{Heavy length.}
                     \label{subfig:sppi-heavylen-pid0}
                \end{subfigure}
-               \caption{Pull distributions and a distribution of heavy length at HAT after the cut on the muon pull.}
+               \caption{Pull distributions and a distribution of heavy length at HAT after the cut on the muon pull. The pull distributions can no longer provide a good separation between muons and pions, while a cut on long heavy length can still remove some background events.}
                \label{fig:pulls-pid0}
           \end{figure}
 
@@ -846,7 +846,7 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
           The Top HAT subsample has achieved a purity of $94.8\pm2.3\%$ as shown in Fig.~\ref{subfig:sppi-top-ppi} and Fig.~\ref{subfig:sppi-top-tpi}, which has $91$ $\pip$ signal events, $3$ $\mu^-$, and $2$ $\mu^+$ background events.
           Similarly, the Bottom HAT subsample has achieved a purity of $87.5\pm1.8\%$ as shown in Fig.~\ref{subfig:sppi-bot-ppi} and Fig.~\ref{subfig:sppi-bot-tpi}, which has $293$ $\pip$ signal events, $15$ $\mu^-$, $26$ $\mu^+$, and $1$ $\pim$ background event.
 
-          \begin{figure}
+          \begin{figure}[ht]
                \centering
                \begin{subfigure}{\dbfigwid\textwidth}
                     \includegraphics[width=\textwidth]{figures/sel/sspi_TOP_pi_mombr_stack_al6_zoom.eps}
@@ -869,7 +869,7 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
                     \caption{Bottom HAT $\tpi$.}
                     \label{subfig:sppi-bot-tpi}
                \end{subfigure}
-               \caption{Stopping pion kinematic distributions decomposed according to true particle type.}
+               \caption{Stopping pion kinematic distributions decomposed according to true particle type. Overall high purity is achieved.}
                \label{fig:sppi-kin}
           \end{figure}
 
@@ -879,7 +879,7 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
           This distribution should closely follow the muon exponential decay curve.
           The result is shown in Fig.~\ref{fig:sppi-me-td}.
 
-          \begin{figure}
+          \begin{figure}[ht]
                \centering
                \begin{subfigure}{\dbfigwid\textwidth}
                     \includegraphics[width=\textwidth]{figures/sel/sspi_TOP_ME_td_hist_al6_sfgfinposfit_comb.eps}
@@ -912,26 +912,26 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
           The distributions of the deviations for MC and data are shown in Fig.~\ref{fig:sppi-res} and the fitting parameters, the mean ($x_0$) and the HWHM ($\gamma$), are summarised in Table.~\ref{tab:sppi-res}.
           Both widths are significantly smaller than those in the FGD analysis presented in Ref.~\cite{Jenkins:2022ljx}, in the FGD study.
           However, due to the low data statistics, the numerical results here are for illustration only, and a more reliable evaluation of the reduction in the pion momentum-by-range reconstruction systematic error will be performed when the HAT reconstruction is finalized and more data are collected.
-          \begin{figure}[h]
+          \begin{figure}[ht]
           \centering
-          \begin{subfigure}[h]{\dbfigwid\textwidth}
+          \begin{subfigure}{\dbfigwid\textwidth}
           \centering
           \includegraphics[width=\textwidth]{figures/sel/sspi_TOP_pi_mombr_hatp_difhist_al6_mc.eps}
           \caption{Momentum difference between SFGD and HAT for MC.}
           \label{subfig:sfgp-hatp-dif-mc}
           \end{subfigure}
           \hfill
-          \begin{subfigure}[h]{\dbfigwid\textwidth}
+          \begin{subfigure}{\dbfigwid\textwidth}
           \centering
           \includegraphics[width=\textwidth]{figures/sel/sspi_TOP_pi_mombr_hatp_difhist_al4_CombHAT_data.eps}
           \caption{Momentum difference between SFGD and HAT for data.}
           \label{subfig:sfgp-hatp-dif-data}
           \end{subfigure}
-          \caption{Momentum difference for stopping pion control sample.}
+          \caption{Pion momentum reconstruction resolution estimation for MC and data. Both momentum deviations have shown small widths, $6.9\pm0.7~\mevc$ for MC and $16\pm5~\mevc$ for data. The statstics for data is low, so the numerical results are for illustration only.}
           \label{fig:sppi-res}
           \end{figure}
 
-          \begin{table}[htbp]
+          \begin{table}[ht]
           \centering
           \begin{tabular}{c|cccc}
                        & MC-$x_0~(\mevc)$ & MC-$\gamma$~($\mevc$) & Data-$x_0~(\mevc)$ & Data-$\gamma$~($\mevc$)\\
@@ -939,28 +939,28 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
           FGD & $-25.03 \pm 0.52$ & $85.38 \pm 1.20$ & $-19.43 \pm 1.41$ & $93.57 \pm 4.15$ \\
           SFGD & $-5.29 \pm 0.73$  & $7.49 \pm 0.65$  & $-10.14 \pm 4.55$  & $16.34 \pm 5.21$ \\
           \end{tabular}
-          \caption{Fit parameters for the momentum deviation distributions.}
+          \caption{Fit parameters for the momentum deviation distributions in the SFGD compared to those in the FGD. Both MC and data in the SFGD have shown significant improvement in both the bias and the resolution. However, the data statistics in the SFGD is still low, so the numerical results are for demonstration of the systematic propagation process only.}
           \label{tab:sppi-res}
           \end{table}
 
           The systematic error parameters from Table~\ref{tab:sppi-res} are then passed to the HighLAND framework, the selection development and systematics propagation software used at T2K, to propagate the uncertainty through the $\numuccopi$-TL selection.
           The result is shown in Fig.~\ref{fig:tlpi-relerr}.
-          \begin{figure}[h]
+          \begin{figure}[ht]
           \centering
-          \begin{subfigure}[h]{\dbfigwid\textwidth}
+          \begin{subfigure}{\dbfigwid\textwidth}
           \centering
           \includegraphics[width=\textwidth]{figures/sel/relerr-tpcmu.png}
           \caption{Relative error for the TPC-$\mu$ sub-sample.}
           \label{subfig:relerr-tpcmu}
           \end{subfigure}
           \hfill
-          \begin{subfigure}[h]{\dbfigwid\textwidth}
+          \begin{subfigure}{\dbfigwid\textwidth}
           \centering
           \includegraphics[width=\textwidth]{figures/sel/relerr-sfgmu.png}
           \caption{Relative error for the SFGD-$\mu$ sub-sample.}
           \label{subfig:relerr-sfgmu}
           \end{subfigure}
-          \caption{Relative error for the $\numuccopi$-TL selection.}
+          \caption{Relative errors for the $\numuccopi$-TL selection. This shows the successful propagation of the systematic error. The specific values of the relative error are subject to change due to the low data statistics.}
           \label{fig:tlpi-relerr}  
           \end{figure}
           As shown in Fig.~\ref{fig:tlpi-relerr}, due to the limited amount of data, the difference between the data and MC is still relatively large that the magnitude of the average systematic error, about $3\%$ to $5\%$, is slightly larger than that in the FGD analysis, about $2\%$. 
@@ -1003,7 +1003,7 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
                     \caption{The SFGD-$\mu$ sub-sample: $\theta$.}
                     \label{subfig:datamc-theta-sfgmu}
                \end{subfigure}
-               \caption{Data-MC comparisons for the $\numuccopi$-TL selection.}
+               \caption{Data-MC comparisons for the $\numuccopi$-TL selection. Data and MC appears to be in good agreement. However, due to the low data statistics, this comparison is merely a demonstration of the data-MC comparison workflow, and no physics conclusion should be drawn.}
                \label{fig:tlpi-datamc}
           \end{figure}
 
