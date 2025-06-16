@@ -17,32 +17,32 @@ The data used in tuning are the cross section measurements from various neutrino
 A successfully tuned model will have a better agreement with the data used in tuning than the original model, and it could also shed light on the direction of future model development.
 The validity of the tuned model can be tested against new data.
 In view of the incoming data collected by the upgraded ND280, it is the perfect time to tune the current model to the existing data to maximize the utility of the new data.
-The GENIE collabration has developed a comprehensive tuning framework, and has collected an extensive database of neutrino, charged lepton, and hadron scattering measurements. 
-Hence, we have performed the tuning of an effective model in \genie using this frameowrk.
+The GENIE collaboration has developed a comprehensive tuning framework, and has collected an extensive database of neutrino, charged lepton, and hadron scattering measurements. 
+Hence, we have performed the tuning of an effective model in \genie using this framework.
 The procedures and the results are presented in this chapter~\footnote{This chapter is based on the work published in Ref.~\cite{GENIE:2024ufm}.}.
 
 \section{\label{sec:Tuning-method}Tuning methodology}
 This study employs the tuning procedure delineated in Ref.~\cite{GENIE:2022qrc}, utilizing $N_{\textrm{par}}$ model parameters. 
 The primary objective is to determine the best fit—that is, the optimal set of parameter values—within the parameter space by minimizing the $\chi^2$ between the model predictions and the experimental data. 
 Due to the high dimensionality of the parameter space, a brute-force, grid-based point-by-point scan is impractical. 
-Therefore, a sufficiently large number of points in the model parameter space is sampled at random, with each point initiliating a full simulation. 
-Subsequently, the simulation output for each data observable bin is parametrized using Professor\footnote{A software capable of approximating and extrapolating cross-section outputs in terms of polynomials of chosen moded parameters.}~\cite{Buckley:2009bj} with a polynomial of the model parameters of a given order, $N_{\textrm{ord}}$.
+Therefore, a sufficiently large number of points in the model parameter space is sampled at random, with each point initiating a full simulation. 
+Subsequently, the simulation output for each data observable bin is parametrized using Professor\footnote{A software capable of approximating and extrapolating cross-section outputs in terms of polynomials of chosen model parameters.}~\cite{Buckley:2009bj} with a polynomial of the model parameters of a given order, $N_{\textrm{ord}}$.
 The minimal number of points ($N_{\textrm{s}}$) required for tuning $N_{\textrm{par}}$ parameters with a polynomial of order $N_{\textrm{ord}}$ is determined by the combinatorial formula,
 \begin{equation}
     N_{\textrm{s}} = \binom{N_{\textrm{par}}+N_{\textrm{ord}}}{N_{\textrm{ord}}}.
 \end{equation}
 Since $N_\textrm{s}$ increases factorially, it is imperative to exercise caution when increasing either the number of parameters or the polynomial degree. 
-Given that our tuning incorporates all $2$ \sfcfg\ and $12$ hA parameters (see Sec.~\ref{sec:tuning-para-choice}), a fourth-order parameterization necessitates over 6,000 simulation generations, which are already computationaly expensive.
+Given that our tuning incorporates all $2$ \sfcfg\ and $12$ hA parameters (see Sec.~\ref{sec:tuning-para-choice}), a fourth-order parametrisation necessitates over 6,000 simulation generations, which are already computationally expensive.
 Thus, only polynomials up to order $4$ are considered, a choice that has been shown to reproduce the MC predictions satisfactorily, as illustrated in Fig.~\ref{fig:residual}. 
 \begin{figure}[!htb] 	
     \centering 		
     \includegraphics[width=\sgfigwid\textwidth]{figures/tuning/residual.eps}
-    \caption{\label{fig:residual} Fractional difference for the bin-by-bin cross sections between MC truth and the parameterized approximation using fourth-order polynomials, both in the Norm-Shape (NS)~\cite{DAgostini:1993arp,Hanson:2005mrg} space with \allpar. See Table~\ref{tab:restunes} for the definition of \allpar. The residual exhibits a mean of $0.003$ and a standard deviation of $0.073$.} 
+    \caption{\label{fig:residual} Fractional difference for the bin-by-bin cross sections between MC truth and the parametrised approximation using fourth-order polynomials, both in the Norm-Shape (NS)~\cite{DAgostini:1993arp,Hanson:2005mrg} space with \allpar. See Table~\ref{tab:restunes} for the definition of \allpar. The residual exhibits a mean of $0.003$ and a standard deviation of $0.073$.} 
 \end{figure}
 
-Furthermore, to circumvent Peelle's Pertinent Puzzle~\cite{PPP_FNL,Chakrani:2023htw}~\footnote{This is a phenomenon where unknown correlations between observables can skew the $\chi^2$ minimizaion.}, the Norm-Shape (NS) transformation prescription~\cite{DAgostini:1993arp,Hanson:2005mrg} is adopted. 
+Furthermore, to circumvent Peelle's Pertinent Puzzle~\cite{PPP_FNL,Chakrani:2023htw}~\footnote{This is a phenomenon where unknown correlations between observables can skew the $\chi^2$ minimisation.}, the Norm-Shape (NS) transformation prescription~\cite{DAgostini:1993arp,Hanson:2005mrg} is adopted. 
 Thereafter, the extremal point is determined by minimizing $\chi^2$ between the NS-transformed polynomial approximation and the NS-transformed data. 
-During the minimization process, priors—typically derived from systematic uncertainties—are imposed on each parameter to prevent them from deviating excessively from their nominal values. 
+During the minimisation process, priors—typically derived from systematic uncertainties—are imposed on each parameter to prevent them from deviating excessively from their nominal values. 
 The following subsections elaborate on the specific measurement observables and model parameters to be tuned.
 
 \section{Inputs}
@@ -66,8 +66,8 @@ One such example is illustrated in Fig.~\ref{fig:g24-0-dat-reac} and Fig.~\ref{f
 This data-comparison shows that the model fails to describe the MINERvA $\piz$ TKI data, despite that its prediction matches other TKI data well.
 
 As the neutrino-nucleus interaction is a complicated process, it requires multiple models to simulate the whole process, and the CMC in \genie specifies the combination of models to be used.
-Tuning the entire CMC is extremely omputationally expensive, and this is the first tuning on TKI data across event topology, i.e. on both $\cczpi$ and $\ccopi$. 
-Hence, before embarking on this ultimate step, it is important to first perfrom a proof-of-concept study to explore the model flexibility and to identify the most relevant model parameters.
+Tuning the entire CMC is extremely computationally expensive, and this is the first tuning on TKI data across event topology, i.e. on both $\cczpi$ and $\ccopi$. 
+Hence, before embarking on this ultimate step, it is important to first perform a proof-of-concept study to explore the model flexibility and to identify the most relevant model parameters.
 As TKI data are sensitive to the nuclear IS and FSI, this study focuses on the tuning of these two models.
 To lay the ground for better understanding of this tuning effort, I will provide a more detailed description of the inputs, i.e. the data and the models, in the following subsections. 
 
@@ -79,13 +79,13 @@ To lay the ground for better understanding of this tuning effort, I will provide
 
     The IS in \gZero\ is modelled by the spectral-function-like Correlated Fermi Gas model (\sfcfg)~\cite{sfcfg-talk,sfcfg-GitHubCommit,GENIE:2021npt}. 
     \sfcfg\ has more adjustable parameters for tuning and improved physics compared to the local fermi gas (LFG) model used in $\geighteen$.
-    The improvment arises from two aspects. 
+    The improvement arises from two aspects. 
     ``Spectral-function-like'' refers to the implementation of removal energy as a varying function rather than a fixed value, while ``Correlated'' highlights the incorporation of the high-momentum tail above the Fermi momentum due to nucleon-nucleon short-range correlations (SRC), as evidenced by electron-scattering data~\cite{CLAS:2005ola}.
 
     Both enhancements are incorporated into the Valencia Model (Ref.~\cite{Nieves:2004wx}).  
     Consequently, \sfcfg\ more closely reproduces the Valencia initial state than previous LFG implementations.  
     For further details on \sfcfg, see Ref.~\cite{GENIE:2021npt}.  
-    Note that the original Valencia Model employs its own approach to modeling FSI. 
+    Note that the original Valencia Model employs its own approach to modelling FSI. 
     However, since FSI is factorized from other processes in the \genie\ implementation, that method is not applied here.  
     Instead, GENIE has developed the INTRANUKE hA FSI model (hA for short), which is chosen as the FSI candidate for the tuning performed in this work for its simplicity and interpretability.
 
@@ -131,7 +131,7 @@ To lay the ground for better understanding of this tuning effort, I will provide
     This single-rescattering approach is critical for interpreting tuning results. The hA model parameters are described as follows.
     \begin{enumerate}
         \item \textbf{Mean Free Path (MFP) Scaling Factors}:
-        The model computes the MFP, $\lambda$, as a function of the hadron's energy, $E$, and its radial distance, $r$, from the nucleus center:
+        The model computes the MFP, $\lambda$, as a function of the hadron's energy, $E$, and its radial distance, $r$, from the nucleus centre:
         \begin{equation}
             \lambda(E,r) = \frac{1}{\sigma_\textrm{hN,tot}(E)\rho(r)},
         \end{equation}
@@ -309,7 +309,7 @@ To lay the ground for better understanding of this tuning effort, I will provide
         }
     \end{table}
 
-    As not all TKI observables are linearly indepedent, such as $\dpt$ and $\pn$, and some might have strong dependence outside IS and FSI, such as $\dphit$ displaying a strong dependence on neutrino beam energy~\cite{Lu:2015tcr}, it might be redundant and ineffective to include all of them in the tuning.
+    As not all TKI observables are linearly independent, such as $\dpt$ and $\pn$, and some might have strong dependence outside IS and FSI, such as $\dphit$ displaying a strong dependence on neutrino beam energy~\cite{Lu:2015tcr}, it might be redundant and ineffective to include all of them in the tuning.
     In order to discern the most sensitive observables, a systematic evaluation of various combinations of observables was undertaken for the tuning process. 
     A total of 26 combinations, as shown in Table~\ref{tab:fit-var-combo}, are examined. 
     These combinations are formed according to the following patterns:
@@ -374,12 +374,12 @@ To lay the ground for better understanding of this tuning effort, I will provide
 \section{Results}
     A priori, it is difficult to ascertain which parameters are most relevant. 
     Hence, all 14 parameters are used in the initial tuning, denoted as \allpar, and a reduced set, denoted as \redpar, is subsequently employed after identifying the most sensitive parameters.
-    In order to perform the tuning with a degree 4 polynomial parameterization using \allpar, $6,600$ points are randomly sampled from the parameter space, and the corresponding event generation is performed.
-    Note that this is considerably larger than the minimal number of points required in Sec.~\ref{sec:Tuning-method} to accommodate failed event generation and to provide more points for better parameterization.
+    In order to perform the tuning with a degree 4 polynomial parametrization using \allpar, $6,600$ points are randomly sampled from the parameter space, and the corresponding event generation is performed.
+    Note that this is considerably larger than the minimal number of points required in Sec.~\ref{sec:Tuning-method} to accommodate failed event generation and to provide more points for better parametrization.
     
     \subsection{\allpar\ tune}
-    After all simulations are completed, a 4th order polynomial parameterization of MC predictions for all observable bins in terms of \allpar\ is obtained from Professor.
-    The $\chi^2$ between the data and the parameterised MC predicitons for each combinations of observables can be calculated and minimized to find the optimal set of \allpar.
+    After all simulations are completed, a 4th order polynomial parametrization of MC predictions for all observable bins in terms of \allpar\ is obtained from Professor.
+    The $\chi^2$ between the data and the parametrised MC predictions for each combinations of observables can be calculated and minimized to find the optimal set of \allpar.
     By construction, the $\chi^2$ over the observables used in the tuning should decrease after the tuning process.
     However, a successful model should also make good predictions for the observables not used in the tuning, i.e. the validation observables.
     Hence, to identify the optimal combination, this study employs a criterion based on the total $\chi^2$ calculated over the complete (tuned plus validation) observable set.
@@ -415,9 +415,9 @@ To lay the ground for better understanding of this tuning effort, I will provide
     It is interesting that the decrease in $\chi^2$ for \gT\ mainly comes from the validation set, as evident in the small $\chi^2$ for $\pn$ of \minzpi\ in Fig.~\ref{fig:g24-t-pn-reac}.
 
     % To further investigate the improvement, \gT, illustrated in Fig.~\ref{fig:minpiz-alttune}. 
-    The most prominant change of \gT\ is the noticable increase of $\srcfr$ from $0.12$ to $0.17$, while all other FSI fates are close to the nominal values.
+    The most prominent change of \gT\ is the noticeable increase of $\srcfr$ from $0.12$ to $0.17$, while all other FSI fates are close to the nominal values.
     This increases the high energy tail in the $\pn$ distribution, raising the dip in the MC prediction of the $\pn$ distribution between $250~\mevc$ and $300~\mevc$ and moving the distribution peak to the appropriate place, thereby closing the gap between the data and the MC prediction in the high energy region.
-    However, as the \minpiz\ $\pn$ prediciton using \gZero\ is already higher than data, this increase in $\srcfr$ does not improve the data-MC agreement for \minpiz.
+    However, as the \minpiz\ $\pn$ prediction using \gZero\ is already higher than data, this increase in $\srcfr$ does not improve the data-MC agreement for \minpiz.
     Overall, this leads to a moderate reduction of $25.39$ in $\chi^2$ (Table~\ref{tab:restunes}), as well as a relatively improved data-MC agreement across all data sets. 
     % \begin{figure}[!htb] 	
     %     \centering 		
@@ -458,7 +458,7 @@ To lay the ground for better understanding of this tuning effort, I will provide
     The most significant reduction in $\chi^2$ is observed for \texttt{Combi-26} (referred to as \cbRedPar\ in Table~\ref{tab:fit-var-combo}). 
     This combination selects all TKI observables except for $\dphit$ and $\dpt$—namely, $\dat$, $\pn$ (or $\dpt$ if $\pn$ is missing), and $\dptt$—from both pionless and pion-production measurements in T2K and MINERvA.
 
-    The $\chi^2$ improvement for \cbRedPar\ is -60.28, which is significantgly better than the improvement obtained with \cbAllPar\ tuning.
+    The $\chi^2$ improvement for \cbRedPar\ is -60.28, which is significantly better than the improvement obtained with \cbAllPar\ tuning.
     The parameters obtained from this tuning are referred to as \gC\ for conciseness and are summarized in Table~\ref{tab:restunes}.
     The main reduction in $\chi^2$ for \gC\ comes from the tuned observables, which is as expected, and it is also encouraging that the validation observables have a negligible change of $2.8$ in $\chi^2$.
     The MC predictions using \gC\ are compared to the data in Fig.~\ref{fig:g24-c-dat-reac} and Fig.~\ref{fig:g24-c-pn-reac} for the $\dat$ and $\pn$ measurements, respectively.
@@ -538,7 +538,7 @@ Among the 26 observable combinations considered for the \allpar\ and \redpar\ tu
 This result offers valuable insights for future tuning efforts—both the selection of observables and the choice of parameters are critical for a successful tuning.
 Increasing the number of parameters and observables does not necessarily improve the outcome.
 Instead, it is preferable to include only those parameters that significantly affect the selected observables and only those observables that are highly sensitive to the chosen parameters while exhibiting minimal dependence on others.
-For example, $\dphit$ is excluded from \cbRedPar\ because it is strongly influenced by the neutrino energy, which is not modified by any of the tuning paramters.
+For example, $\dphit$ is excluded from \cbRedPar\ because it is strongly influenced by the neutrino energy, which is not modified by any of the tuning parameters.
 Admittedly, practical limitations in our understanding of the model and the data can preclude this ideal.
 Nevertheless, optimizing the sensitivity matching between observables and model parameters is essential for achieving the best results.
 

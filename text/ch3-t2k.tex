@@ -70,11 +70,11 @@ Surrounding these devices are various electromagnetic calorimeters (ECALs)—the
 The neutrino beam passes through the P0D, TPCs, and FGDs.  
 Each FGD consists of scintillator bars with a cross section of \(1.0~\mathrm{cm} \times 1.0~\mathrm{cm}\).  
 Every layer of bars is oriented orthogonally to the layer above it.  
-As a particle traverses these layers, it produces photons in the scintillator; these photons are collected by wavelength-shifting fibers embedded in each bar and ultimately read out by end electronics.  
+As a particle traverses these layers, it produces photons in the scintillator; these photons are collected by wavelength-shifting fibres embedded in each bar and ultimately read out by end electronics.  
 Hence, the bar recording the signal determines the track position transverse to the neutrino beam, while the layer index specifies the longitudinal position of the energy deposition.
 
 Originally, FGDs served as the active target for neutrino interactions.  
-However, their bar geometry offers limited acceptance for particles traveling at large angles to the beam direction—i.e., along the bar’s long axis—because such particles intersect only a few bars, making them difficult to reconstruct.  
+However, their bar geometry offers limited acceptance for particles travelling at large angles to the beam direction—i.e., along the bar’s long axis—because such particles intersect only a few bars, making them difficult to reconstruct.  
 At the far detector, the large Cherenkov detector offers near-isotropic acceptance.
 This mismatch in phase space between the near and far detectors increases uncertainties in oscillation analyses.  
 Moreover, having sparse signals along the particle trajectory degrades reconstruction resolution.  
@@ -85,19 +85,19 @@ The TOF comprises six layers of scintillator bars with sub-nanosecond timing res
 The HATs incorporate a redesigned field cage and new Micromegas detectors, expanding the tracking volume and improving resolution relative to the original vertical TPCs.  
 Serving as the new active target, the SFGD consists of about two million \(1\,\mathrm{cm}^3\) scintillator cubes.  
 Its finer segmentation markedly increases acceptance for high-angle tracks, better aligning with the near-isotropic acceptance at the far detector.  
-Additionally, the improved tracking, enabled by enhanced energy deposition measurements, lowers detection thresholds and sharpens resolution, facilitating new reconstruction strategies (e.g., trackless pion reconstruction) and innovative variables (e.g., center-of-mass variables), which will be introduced in the subsequent chapters.  
+Additionally, the improved tracking, enabled by enhanced energy deposition measurements, lowers detection thresholds and sharpens resolution, facilitating new reconstruction strategies (e.g., trackless pion reconstruction) and innovative variables (e.g., centre-of-mass variables), which will be introduced in the subsequent chapters.  
 Construction for the upgrade was completed in April 2024, and data taking with the upgraded ND280 commenced in June 2024.
 
 \section{Software}
 \label{sec:t2k-sw}
 This thesis focuses primarily on improving reconstruction performance; thus, the following overview of the software used for ND280’s upgraded system aims to clarify and contextualize the methodologies employed in later chapters.
 
-Each scintillator cube in the SFGD contains three passing optical fibers, each is connected to electronics at one of the ends. 
-As a charged particle traverses these cubes, scintillation photons travelled along the optical fibers and are measured by readout boards located on three orthogonal faces of the SFGD.  
+Each scintillator cube in the SFGD contains three passing optical fibres, each is connected to electronics at one of the ends. 
+As a charged particle traverses these cubes, scintillation photons travelled along the optical fibres and are measured by readout boards located on three orthogonal faces of the SFGD.  
 After calibration, these signals are digitized and assembled into three-dimensional “Hits,” each corresponding to a specific cube position and including a measure of the deposited charge.  
 The reconstruction software then sorts these Hits into either clusters or tracks using clustering and track-fitting algorithms.  
-Clusters consist of fewer than three Hits, whereas tracks typically contain many more, becasue objects containing too fews Hits are not long enough to be considered as tracks. 
-Additionally, due to imperfect optical isolation between cubes, light may leak into neighboring cubes not traversed by the particle.  
+Clusters consist of fewer than three Hits, whereas tracks typically contain many more, because objects containing too few Hits are not long enough to be considered as tracks. 
+Additionally, due to imperfect optical isolation between cubes, light may leak into neighbouring cubes not traversed by the particle.  
 To account for this, the reconstruction merges nearby Hits into “Nodes,” which more accurately capture the particle’s trajectory.  
 Energy deposition at each Node is then estimated from the associated Hits and refined according to the expected continuous energy loss along the path.  
 Finally, a Boosted Decision Tree (BDT), trained on Particle Gun simulations, uses these smoothed energy values and other measured parameters for particle identification and momentum estimation.  
