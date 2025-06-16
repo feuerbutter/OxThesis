@@ -1,0 +1,152 @@
+-the thesis needs spell-checking and there are a number of “??” in figure references.
+-----> Spell-checking and figure references are checked.
+
+----------------------------------------------------------------------------------
+-In chapters 1 and 2, terms are introduced without explanation on first usage (i.e. PMNS in chapter 1, etc.)
+-----> Brief descriptions of the terms, MSW and PMNS, are added to where they first appeared, while the detailed explanation remains in the theory chapter.
+For MSW,
+"It is the phenomenon that the neutrino propagation is affected by matter density. More details are provided in the next chapter."
+For PMNS,
+"The PMNS matrix describes the mixing between the three mass eigenstates of neutrinos to form the three flavour eigenstates, namely electron neutrino, muon neutrino, and tau neutrino.
+It can be parameterised by three mixing angles, namely $\totwo$, $\tothr$ and $\ttthr$, and a CP violation phase, $\dcp$."
+
+----------------------------------------------------------------------------------
+-In chapter 3, some relevant experiments in the history of neutrino oscillation physics were not explained i.e. K2K, MINOS - these are important developments in establishing oscillations, should be reflected in the historical discussion.
+-----> Added descriptgion of both K2K and MINOS in the history chapter.
+
+//=================================================================================================================================================================================
+-In chapters 5 and 6, there are figures with labels that are experiment-specific jargon that are not clearly explained on first usage to the reader (i.e Fig, 5.1).
+
+-----> Elaborations are added in several places to aid reading.
+For BDT:
+"The default particle identification and momentum reconstruction have been developed by colleagues at T2K using the Boosted Decision Tree (BDT) algorithm, which is a machine learning algorithm that takes the energy deposit as the input and outputs the particle identity and momentum."
+
+For ESC:
+"The subsection elaborates on the underlying principles of the ESC selection technique.
+Protons coming to rest deposit a large amount of energy within a short distance just before stopping.
+Hence, for these protons, if the energy deposited per distance, $\dedx$, is plotted along the particle trajectory, a peak, the so-called Bragg Peak, appears near the track end.
+This feature can be exploited to select protons that come to rest without undergoing secondary interactions, which are thus called "elastically scattered" protons by the original developer of the technique~\cite{Lu:2016mjf}.
+To identify the Bragg peak, the entire proton track must be contained within the scintillation detector such that the $\dedx$ can be measured at the end of the track.
+Thus, this technique is called the elastically scattered and contained technique.
+     
+These ESC protons are of particular interest because their range is strongly correlated with their momentum, which could be exploited by the machine learning algorithm.
+Hence, even though all proton momenta are reconstructed by the BDT algorithm, the ESC protons tend to better momentum reconstruction resolution."
+
+For column normlization, i.e. Fig. 5.1:
+"For illustration, the fractional differencce between the reconstructed and ture proton momentum is plotted against the energy deposited at the third last node of the proton track in Fig.~\ref{fig:dedx-pprres-eg} with column normalization.
+More specifically, all bins with the same $x$ value are considered to be in the same column, and the bin height is normalized by the largest bin height in the column.
+Thus, the maximum value in each column is $1$, thereby visualising the comparison between columns."
+
+For single particle kinematics (SPK):   
+"The overall impact of the technique on the reconstructed single particle kinematics (SPK), i.e. reconstructed proton kinematics in this case, is shown in Fig.~\ref{fig:esc-spk}."
+
+
+----------------------------------------------------------------------------------
+-In general the captions are too short to sufficiently explain the content of the figure, for example the column normalisation of Fig. 5.1 is not clearly explained, and fIgures with multiple lines need explanation of what each line is in legend and captions (i.e. Fig. 5.2).
+------> Captions are expanded in multiple figures.
+
+----------------------------------------------------------------------------------
+-In chapter 5, in places the selection criteria need more physical motivation.
+-The description of the pull analysis in section 5.3 is hard to follow.
+------> These two comments are related and hence are addressed together. A more physical and detailed explanation of the pulls and the selection criteria for the stoppint pion sample is added.
+"The preliminary result suggests that the control sample consists predominantly of tracks passing HAT and stopping in SFGD, while there are few events propagating backwards from TPCs to SFGD.
+As the current PID in HAT is not fully developed but indispensable for the control sample development, I developed a temporary PID method for HAT for demonstration only. 
+The HAT PID method will need to be updated in the future with a sophisticated version developed by HAT experts, but the other steps can remain intact.
+
+As HAT has fundamentally the same working principle as the TPC, I followed closely the TPC PID method.
+Different particles can be distinguished by their specific energy loss, i.e. $\dedx$, along the tracks in the TPC.
+The expected $\dedx$ for a given type of particle, like a proton, at a given moemntum can be obtained numerically.
+The measured $\dedx$ of a recontructed track is compared with the expected $\dedx$ to determine the particle type.
+This comparison is quantified by the "pulls", which are conventionally defined as the difference between the measured and expected $\dedx$ divided by the uncertainty of the measurement.
+The existing TPC PID is based on the logarithms of the pulls. 
+In practice, this value is constructed such that the closer the value is to $1$, the more likely the particle is of the corresponding type.
+For subsequent discussion, this value will simppily be referred to as the pull as well.
+
+There are four pulls for each reconstructed track, corresponding to the four particle types: muon, electron, proton, and pion.
+For the existing TPC PID, the pion pull was set to be larger than $0.3$ and the sum of the muon and the pion pull was set to be larger than $0.8$ for pion PID, due to the similarities between muons and pions.
+The distributions of the pulls at HAT for positively charged tracks before any cuts are shown in Fig.~\ref{fig:pulls}.
+
+A significant fraction of pions possess considerably large muon pulls, which indicates that a significant fraction of muons will remain after the TPC pull cuts.
+Hence, stricter cuts are required to obtain a pion sample with higher purity.
+In particular, a direct upper on the muon pull is necessary.
+To determine the precise cut value, a further zoom of the first pull is shown in Fig.~\ref{fig:pull0-zoom}, suggesting a cut to exclude events with the muon pull larger than $0.04$.
+
+After the cut on the muon pull, the other pull distributions do not show a clear separation between the muon background and the pion signal, as illustrated in Fig.~\ref{fig:pulls-pid0}.
+"
+
+----------------------------------------------------------------------------------
+-The conclusion stated in the caption of 5.13 about the chi2/ndf is incorrect.
+------> The comment regarding chi2/ndf is removed, and only the matching between the fit and data points is addressed:
+"The fit matches the data points well."
+
+The chi2/ndf is instead addressed in text with added comments.
+"The central region of the plots is fitted with a fourth-order polynomial.
+Although the $\chindf$ of the fit is relatively large, the fitted line matchhes the data points well.
+Since the simulation is not yet final, this fit is sufficient for the current analysis and should be updated once the simulation is finalized."
+----------------------------------------------------------------------------------
+
+
+----------------------------------------------------------------------------------
+-In chapters 5-8 in places the MC stats are quite low, and therefore statistical uncertainties need to be included in any statements in the text drawing conclusions from these distributions (i.e. 5.19 onwards, and in section 6.3.1).
+--------> statistical uncertainties are added where needed.
+For discussion on the stopping pion control sample:
+"The Top HAT subsample has achieved a purity of $94.8\pm2.3\%$ as shown in Fig.~\ref{subfig:sppi-top-ppi} and Fig.~\ref{subfig:sppi-top-tpi}, which has $91$ $\pip$ signal events, $3$ $\mu^-$, and $2$ $\mu^+$ background events.
+Similarly, the Bottom HAT subsample has achieved a purity of $87.5\pm1.8\%$ as shown in Fig.~\ref{subfig:sppi-bot-ppi} and Fig.~\ref{subfig:sppi-bot-tpi}, which has $293$ $\pip$ signal events, $15$ $\mu^-$, $26$ $\mu^+$, and $1$ $\pim$ background event.
+"
+
+The impact of low statistics on systematics evalution is stressed:
+"However, due to the low data statistics, the numerical results here are for illustraion only, and a more reliable evaluation of the reduction in the pion momentum-by-range reconstruction systematic error will be performed when the HAT reconstruction is finalized and more data are collected."
+
+For Sec. 6.3.1,
+"This cut yields 16 hydrogen events and 16 carbon events, for a purity of $(50\pm8.9)\%$, where the uncertainty is statistical only."
+
+"Fig.~\ref{fig:hsel-dpt-dptt} suggests the cuts, $\dpt < 80~\mevc$ and $-40~\mevc \leq \dptt \leq 30~\mevc$, which lead to a sample of $19$ hydrogen events and $10$ carbon events, with a purity of $(65.5\pm8.9)\%$."
+
+"Hence, an additional cut, $1168~\mev<\ecom<1257~\mev$ is implemented to further reduce the carbon backgrounds, achieving a sample of $18$ hydrogen events and $5$ carbon events, with an impressive purity of $(78.3\pm8.6)\%$."
+
+----------------------------------------------------------------------------------
+-The statistics in the study presented in chapter 8 are too low, i.e. 8.4(b). This should be addressed by increasing the statistics of the simulation in the FIgures in this chapter.
+------->The problem is acknowledged at the end of the introduction of this chapter:
+"As the global reconstruction and systematics for the upgraded ND280 is not yet available, the result presented in this section is to demonstrate the successful implementation of the whole sensitivity estimation workflow, including the HNL simulation and selection, the background estimation, and the sensitivity extraction. 
+For this purpose, the $N\rightarrow\mu+\pi$ channel is chosen due to its similar event topology to the $\numuccopiop$ selection presented in Sec.~\ref{sec:sel-tl}.
+Moreover, the MC statistics used are relatively low for a quick demonstration of the implementation rather than a comprehensive sensitivity study, which does require higher statistics but would only be possible when the nd280 upgrade software is sophisticated enough to include as many decay channels as possible and to allow a comprehensive background estimation."
+
+Further explanation near the figure 8.3a is also added:
+"Note that the number of HNL events reaching this cut as shown in Fig.~\ref{fig:hnl-mmupi} is relatively small, as this selection effectively includes only muons escaping from the SFGD and travelling into the vertical TPC. 
+The statistics will increase when other sub-samples including muons in the other subdetectors are included when the global reconstruction is available."
+
+Further explanation near the figure 8.4b is also added:
+"To determine the appropriate cut value, the histograms of the net transverse momentum, $\dptmupi$, are plotted for both HNL and SM events, as shown in Fig.~\ref{fig:mmupi-dpt}.
+As the goal is to select HNL events while rejecting SM backgrounds, the histrograms are only plotted for small $\dptmupi$ values, i.e., $\dptmupi<50~\mevc$. 
+The majority of SM events, with large $\dptmupi$, is thus not plotted in Fig.~\ref{fig:sm-mmupi}.
+In this particular case, applying the cut $\dptmupi<15~\mevc$ will retain eight HNL events and reject all SM backgrounds.
+A more realistic background estimation is given in the next subsection."
+
+
+----------------------------------------------------------------------------------
+-The background estimate from Fig. 8.5 needs to be more quantitative.
+-----> Descriptions added before Fig. 8.5 to be clarify the procedure. The background estimate is obtained from an integration instead of crude eyeballing.
+"The previous T2K HNL search found that the coherent pion production is the dominant source for the $\mu\pi$ channel~\cite{T2K:2019jwa}.
+Hence, this background source is chosen in this subsection to demonstrate the background estimation procedure, while a comprehensive background estimation will be performed in the future when the upgrade software is ready.
+        
+The $\dptmupi$ cut shown in Fig.~\ref{fig:sm-mupidpt} removes all coherent background. 
+However, the zero event is partly due to the small statistics used in this preliminary study.
+To properly estimate the coherent background, the full distribution of $\dptmupi$ before the last cut is fitted with a Cauchy distribution as shown in Fig.~\ref{fig:coh-bkg}.
+The number of expected background events is obtained by integrating the fitted curve from $0$ to the cut value, i.e. $15~\mevc$, which is evaluated to be $0.33$. 
+Although the fit quality is not perfect due to the low statistics, the procedure is still valid and can be applied to the full statistics when available."
+
+
+----------------------------------------------------------------------------------
+-The conclusion drawn in section 8.5 is not supported by the estimate
+presented in section 8.3.
+------> The conclusion in 8.5 is much toned down to focus on the successful implementation of the framework rather than any actual physical improvement, which can only be properly assessed in future studies.
+"This chapter has demonstrated the framework for the HNL sensitivity estimation using the SFGD has been successfully implemented.
+The crude sensitivity extracted from SFGD alone is approximately one order less sensitive the limit placed by the previous search, $U_{up}\approx4\times10^{-9}$, for $\mn=300~\mev$.
+There are two potential reasons for the lower sensitivity.
+Firstly, the current result includes only HNL decaying in SFGD, which has only about $1/3$ of the volume compared to the vertical TPCs, leading to at least a factor of $\sqrt{3}\approx1.73$ less sensitivity.
+Secondly, the selection only includes the muons escaping into the vertical TPC, while a considerable number of muons can escape into the HATPC, so the sensitivity will increase when the HATPC is included in the global reconstruction for selection development.
+While the background estimation appears optismistic, it is the signal to background ratio that is crucial for the sensitivity.
+As the MC statistics used is relatively low, the estimated number of signal events after the selection is susceptible to large statistical fluctuations. 
+Hence, the overall impact of including the SFGD to the HNL search can only be reliably assessed 
+with a larger sample and a full-scale background estimation when the ND280 upgrade software is ready.
+"
