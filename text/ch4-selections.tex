@@ -51,7 +51,7 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
      The energy deposit output from the SFGD reconstruction does not have a physical unit, but its magnitude is an algorithmic estimate of the energy deposited by the particle at each node.}, while for columns with $\dedx$ below $1000$, the red bins deviate from $y=0$ with larger fluctuations.
      Thus, selecting protons with large $\dedx$ for the last few nodes of the proton track can produce a sample with good proton momentum reconstruction resolution.
      This is the underlying principle of the ESC technique.
-    \begin{figure}[!h]
+    \begin{figure}[htb]
         \centering
      %    \includegraphics[width=\sgfidwid\linewidth]{figures/sel/an_dedx2_colnor_vs_p_pr_res_hist2d_al12_zoom.png}
         \includegraphics[width=\sgfidwid\linewidth]{figures/sel/fig51.eps}
@@ -79,7 +79,7 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
 
 	Fig.~\ref{subfig:esc-smooth-e} plots the smoothed energy deposits for the third to sixth nodes from the end for all PGUN samples travelling at non-orthogonal angles.
 	It is reassuring to indeed observe the two peaks, the MIP peak and the Bragg peak, as hypothesized. 
-     \begin{figure}[h]
+     \begin{figure}[htb]
         \centering
         \begin{subfigure}{\dbfigwid\textwidth}
              \centering
@@ -93,7 +93,7 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
              \caption{Angle-normalized smoothed energy}
              \label{subfig:esc-an-smooth-e}
         \end{subfigure}
-        \caption{$\dedx$ estimation. Each colour represents a proton sample going in different directions. Each line style represents a different node from the end of the track. Altogether, there are 5 samples, each plotting for 4 nodes, resulting in 20 curves. Due to the large number of curves, the legend is omitted. The individual differences between the curves are not of interest here, but rather the overall agreement of the MIP peak positions across all curves can validate the quality of the estimation of $\dedx$. Fig.~\ref{sub:esc-smooth-e} shows considerable spread in the MIP peak positions across different curves, while the MIP peak positions in Fig.~\ref{sub:esc-an-smooth-e} are much closer across different curves. Therefore, the angle-normalized smoothed energy is a better estimate of $\dedx$ than the smoothed energy.}
+        \caption{$\dedx$ estimation. Each colour represents a proton sample going in different directions. Each line style represents a different node from the end of the track. Altogether, there are 5 samples, each plotting for 4 nodes, resulting in 20 curves. Due to the large number of curves, the legend is omitted. The individual differences between the curves are not of interest here, but rather the overall agreement of the MIP peak positions across all curves can validate the quality of the estimation of $\dedx$. Fig.~\ref{subfig:esc-smooth-e} shows considerable spread in the MIP peak positions across different curves, while the MIP peak positions in Fig.~\ref{subfig:esc-an-smooth-e} are much closer across different curves. Therefore, the angle-normalized smoothed energy is a better estimate of $\dedx$ than the smoothed energy.}
         \label{fig:esc-angnorm}
      \end{figure}
      However, there are still some discrepancies.
@@ -112,22 +112,22 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
      For example, Fig.~\ref{subfig:ans-dedx0-ppr-slice} shows considerably larger fluctuations in reconstruction quality when $\dedx_1$ falls below $200$, where a cut should be placed to exclude these events.
      Similarly, the threshold values from $\dedx_2$ to $\dedx_6$ are extracted to be $500$, $1000$, $900$, $840$, and $740$ respectively.
 
-  \begin{figure}[ht]
+  \begin{figure}[!htb]
       \centering
-      \begin{subfigure}{\dbfigwid\textwidth}
+      \begin{subfigure}[!htb]{\dbfigwid\textwidth}
           %  \includegraphics[width=\textwidth]{figures/sel/ans_dedx0_vs_p_pr_res_hist2d_al2_selpr_con_slice.eps}
            \includegraphics[width=\textwidth]{figures/sel/fig53a.eps}
            \caption{$\dedx_1$, considerably larger fluctuations in reconstruction quality when $\dedx_1$ falls below $200$.}
            \label{subfig:ans-dedx0-ppr-slice}
       \end{subfigure}
-      \begin{subfigure}{\dbfigwid\textwidth}
+      \begin{subfigure}[!htb]{\dbfigwid\textwidth}
           %  \includegraphics[width=\textwidth]{figures/sel/ans_dedx1_vs_p_pr_res_hist2d_al2_selpr_con_slice.eps}
            \includegraphics[width=\textwidth]{figures/sel/fig53b.eps}
            \caption{$\dedx_2$, considerably larger fluctuations in reconstruction quality when $\dedx_2$ falls below $500$.}
            \label{subfig:dedx1}
       \end{subfigure}
       \\
-      \begin{subfigure}{\dbfigwid\textwidth}
+      \begin{subfigure}[!htb]{\dbfigwid\textwidth}
            \includegraphics[width=\textwidth]{figures/sel/fig53c.eps}
           %  \includegraphics[width=\textwidth]{figures/sel/ans_dedx2_vs_p_pr_res_hist2d_al2_selpr_con_slice.eps}
            \caption{$\dedx_3$, considerably larger fluctuations in reconstruction quality when $\dedx_3$ falls below $1000$.}
@@ -140,13 +140,13 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
            \label{subfig:dedx3}
       \end{subfigure}
       \\
-      \begin{subfigure}{\dbfigwid\textwidth}
+      \begin{subfigure}[!htb]{\dbfigwid\textwidth}
           %  \includegraphics[width=\textwidth]{figures/sel/ans_dedx4_vs_p_pr_res_hist2d_al2_selpr_con_slice.eps}
            \includegraphics[width=\textwidth]{figures/sel/fig53e.eps}
            \caption{$\dedx_5$, considerably larger fluctuations in reconstruction quality when $\dedx_5$ falls below $840$.}
            \label{subfig:dedx4}
       \end{subfigure}
-      \begin{subfigure}{\dbfigwid\textwidth}
+      \begin{subfigure}[!htb]{\dbfigwid\textwidth}
           %  \includegraphics[width=\textwidth]{figures/sel/ans_dedx5_vs_p_pr_res_hist2d_al2_selpr_con_slice.eps}
            \includegraphics[width=\textwidth]{figures/sel/fig53f.eps}
            \caption{$\dedx_6$, considerably larger fluctuations in reconstruction quality when $\dedx_6$ falls below $740$.}
@@ -471,7 +471,6 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
           The geometry of SFGD, being much shorter in the vertical direction, facilitates the escape of high-angle pions. 
           For $800~\mevc$ pions, the decay length is too long for SFGD, resulting in a significant increase in the escape fraction—approximately $30\%$ at $0^\circ$ and $50\%$ at $70^\circ$. 
           The unescaped pions are those that have undergone secondary interactions, rendering them not reconstructable by the trackless technique at this high momentum.
-
           \begin{figure}[ht]
                \centering
                \begin{subfigure}{\dbfigwid\textwidth}
@@ -559,48 +558,47 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
           A clean $\numuccopi$ event should have a limited number of lone tracks, which could result from noise or low-energy scattering of the ME, leading to clusters isolated from the ME track. 
           Further details on the other track number cuts are provided in Appendix.~\ref{sec:app-tlpi-trknumcut}. 
           The overall impact of the track number cuts is illustrated by the topological decomposition of the pion kinematic distributions in Fig.~\ref{fig:tl-trknum-cut-res}.
-
-          \begin{figure}[ht]
+          \begin{figure}
              \centering
-             \begin{subfigure}{\dbfigwid\textwidth}
+             \begin{subfigure}[!htb]{\dbfigwid\textwidth}
                   \includegraphics[width=\textwidth]{figures/sel/TPCmu_p_pi_stack_al8.eps}
                   \caption{TPC-$\mu$: $\ppi$ before track number cut.}
                   \label{subfig:tlpi-ppi-bf-trknumcut-tpc}
              \end{subfigure}
-             \begin{subfigure}{\dbfigwid\textwidth}
+             \begin{subfigure}[!htb]{\dbfigwid\textwidth}
                   \includegraphics[width=\textwidth]{figures/sel/TPCmu_p_pi_stack_al9.eps}
                   \caption{TPC-$\mu$: $\ppi$ after track number cut.}
                   \label{subfig:tlpi-ppi-af-trknumcut-tpc}
              \end{subfigure}
              \\
-             \begin{subfigure}{\dbfigwid\textwidth}
+             \begin{subfigure}[!htb]{\dbfigwid\textwidth}
                   \includegraphics[width=\textwidth]{figures/sel/TPCmu_theta_pi_stack_al8.eps}
                   \caption{TPC-$\mu$: $\tpi$ before track number cut.}
                   \label{subfig:tlpi-tpi-bf-trknumcut-tpc}
              \end{subfigure}
-             \begin{subfigure}{\dbfigwid\textwidth}
+             \begin{subfigure}[!htb]{\dbfigwid\textwidth}
                   \includegraphics[width=\textwidth]{figures/sel/TPCmu_theta_pi_stack_al9.eps}
                   \caption{TPC-$\mu$: $\tpi$ after track number cut.}
                   \label{subfig:tlpi-tpi-af-trknumcut-tpc}
              \end{subfigure}
              \\
-             \begin{subfigure}{\dbfigwid\textwidth}
+             \begin{subfigure}[!htb]{\dbfigwid\textwidth}
                   \includegraphics[width=\textwidth]{figures/sel/SFGmu_p_pi_stack_al8.eps}
                   \caption{SFGD-$\mu$: $\ppi$ before track number cut.}
                   \label{subfig:tlpi-ppi-bf-trknumcut-sfg}
              \end{subfigure}
-             \begin{subfigure}{\dbfigwid\textwidth}
+             \begin{subfigure}[!htb]{\dbfigwid\textwidth}
                   \includegraphics[width=\textwidth]{figures/sel/SFGmu_p_pi_stack_al9.eps}
                   \caption{SFGD-$\mu$: $\ppi$ after track number cut.}
                   \label{subfig:tlpi-ppi-af-trknumcut-sfg}
              \end{subfigure}
              \\
-             \begin{subfigure}{\dbfigwid\textwidth}
+             \begin{subfigure}[!htb]{\dbfigwid\textwidth}
                   \includegraphics[width=\textwidth]{figures/sel/SFGmu_theta_pi_stack_al8.eps}
                   \caption{SFGD-$\mu$: $\tpi$ before track number cut.}
                   \label{subfig:tlpi-tpi-bf-trknumcut-sfg}
              \end{subfigure}
-             \begin{subfigure}{\dbfigwid\textwidth}
+             \begin{subfigure}[!htb]{\dbfigwid\textwidth}
                   \includegraphics[width=\textwidth]{figures/sel/SFGmu_theta_pi_stack_al9.eps}
                   \caption{SFGD-$\mu$: $\tpi$ after track number cut.}
                   \label{subfig:tlpi-tpi-af-trknumcut-sfg}
@@ -618,14 +616,14 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
           A quick consistency check involves plotting the distribution of the time difference between the ME and the primary vertex, which should equal the pion travel time plus the muon decay time. 
           Since the pion travel time is on the order of nanoseconds, the resulting distribution should closely follow the muon exponential decay. 
           The distributions of the ME time delay for the TPC-$\mu$ and SFGD-$\mu$ sub-samples are shown in Fig.~\ref{fig:tlpi-me-td}.
-          \begin{figure}[ht]
+          \begin{figure}
                \centering
-               \begin{subfigure}{\dbfigwid\textwidth}
+               \begin{subfigure}[!htb]{\dbfigwid\textwidth}
                     \includegraphics[width=\textwidth]{figures/sel/SFGmu_ME_td_hist_al9_fit.eps}
                     \caption{SFGD-$\mu$. The fitted lifetime is $2226\pm67~\ns$.}
                     \label{subfig:tlpi-me-td-sfgmu}
                \end{subfigure}
-               \begin{subfigure}{\dbfigwid\textwidth}
+               \begin{subfigure}[!htb]{\dbfigwid\textwidth}
                     \includegraphics[width=\textwidth]{figures/sel/TPCmu_ME_td_hist_al9_fit.eps}
                     \caption{TPC-$\mu$. The fitted lifetime is $2329\pm58~\ns$.}
                     \label{subfig:tlpi-me-td-tpcmu}
@@ -664,8 +662,7 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
           The efficiency for $\numuccopi$-TR drops drastically below $80~\mevc$.
           Secondly, the momentum threshold in $\numuccopi$-TL extends below $50~\mevc$, which is impossible for the conventional method.
           More encouragingly, this improvement in low momentum efficiency and lower threshold does not compromise selection purity, as shown in Figs.~\ref{subfig:stack-topo-tl} and \ref{subfig:stack-topo-tr}.
-
-          \begin{figure}[ht]
+          \begin{figure}
                \centering
                \begin{subfigure}{\dbfigwid\textwidth}
                     \includegraphics[width=\textwidth]{figures/sel/finhist_pi_mom_topology_TL.png}
@@ -709,7 +706,7 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
           A further significant drop in efficiency occurs in the next step, the kink cut, which is reasonable as a considerable portion of pions undergo deflection.
           The gradual drops are subsequent cuts to remove backgrounds, resulting in a high purity of $\numuccopi$, as shown in Fig.~\ref{fig:ppi-stack}.
 
-          \begin{figure}[ht]
+          \begin{figure}
               \centering
               \begin{subfigure}{\trfigwid\textwidth}
                    \includegraphics[width=\textwidth]{figures/sel/ppi_stack.png}
@@ -769,7 +766,7 @@ Additionally, to prepare for the data-MC comparisons and future cross-section an
           % For conciseness, these logarithms are simply referred to as the first pull and the fourth pull, respectively.
           % Although HAT is also a TPC, there are design differences, so the PID requirement may differ.
 
-          \begin{figure}[ht]
+          \begin{figure}
                \centering
                \begin{subfigure}{\dbfigwid\textwidth}
                     \includegraphics[width=\textwidth]{figures/sel/sspi_TOP_hat_pid0_stack_al5.eps}
