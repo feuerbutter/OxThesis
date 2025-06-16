@@ -92,7 +92,7 @@ As proton kinematics are required for these high-level constructed variables, da
                \caption{$\pn$ after ESC}
                \label{subfig:esc-pn-afesc}
           \end{subfigure}
-          \caption{Reconstruction quality plots of truth against reconstruction values for TKI variables before (left) and after (right) ESC for the $\numucczpiop$ selection.}
+          \caption{Reconstruction quality plots of truth against reconstruction values for TKI variables before (left) and after (right) ESC for the $\numucczpiop$ selection. The ESC selection has significantly removed the off-diagonal entries for all TKI variables.}
           \label{fig:mc-tki-0pi-esc}
      \end{figure}
 
@@ -153,7 +153,7 @@ As proton kinematics are required for these high-level constructed variables, da
                \caption{$\pn$ after muon bias correction}
                \label{subfig:esc-pn-afmu}
           \end{subfigure}
-          \caption{Fits of reconstruction resolution for TKI variables before (left) and after (right) muon bias correction for the $\numucczpiop$ selection.}
+          \caption{Fits of reconstruction resolution for TKI variables before (left) and after (right) muon bias correction for the $\numucczpiop$ selection. The fitted HWHM remains at similar values, while the fitted means for both $\dpt$ and $\pn$ both changed to be closer to $1$, indicating a reduced bias.}
           \label{fig:mc-tki-0pi-mubias}
      \end{figure}
 
@@ -167,7 +167,7 @@ As proton kinematics are required for these high-level constructed variables, da
      \begin{figure}
           \centering
           \includegraphics[width=\sgfigwid\textwidth]{figures/perf/tki/cor_pn_rat_hist_al11_sfgmu.eps}
-          \caption{\label{fig:sfgmu-0pi-pn} $\pn$ distribution for the SFGD-$\mu$ sub-sample after ESC selection.}
+          \caption{\label{fig:sfgmu-0pi-pn} $\pn$ distribution for the SFGD-$\mu$ sub-sample after ESC selection. It shows an excellent resolution of $10\%$.}
      \end{figure}
 
      \subsection{$\numuccopiop$ selection}
@@ -209,7 +209,7 @@ As proton kinematics are required for these high-level constructed variables, da
                \caption{$\pn$}
                \label{subfig:1pi-pn}
           \end{subfigure}
-          \caption{Fits of reconstruction resolution for TKI variables for the $\numuccopiop$ selection.}
+          \caption{Fits of reconstruction resolution for TKI variables for the $\numuccopiop$ selection. All TKI variables except $\dpt$ show good resolutions, for example, the fitted HWHM for $\pn$ is $12\%$. The $\dpt$ variable shows an unexpected underestimation, which will be further investigated in the future with a stable version of the reconstruction software.}
           \label{fig:mc-tki-1pi}
      \end{figure}
 
@@ -717,7 +717,7 @@ Additionally, the necessity of reconstructing the neutrino energy renders $\thet
                \caption{$\ecom$ Resolution}
                \label{subfig:reco-com-e-res}
           \end{subfigure}
-          \caption{Reconstruction quality plots of truth against reconstruction values and fits of reconstruction resolution for COM variables for the $\numuccopiop$ selection.}
+          \caption{Reconstruction quality plots of truth against reconstruction values and fits of reconstruction resolution for COM variables for the $\numuccopiop$ selection. Both varibles show excellent resolutions. In particular, the fitted HWHM of $\ecom$ is approximately $6.0~\mev$, which will be crucial for hydrogen sample selection, which will be discussed later in Sec.~\ref{sec:mc-hydrogen}.}
           \label{fig:com-reco}
      \end{figure}
      The analysis presented in Sec.~\ref{sec:com-ana} uses a binning of $20^\circ$ for $\thetacom$. In contrast, Fig.~\ref{subfig:reco-com-t-res} demonstrates that the reconstruction has an excellent half-width of $2.6^\circ$, significantly smaller than the analysis binning. This suggests that reconstruction will not impede the model differentiation capability discussed in Sec.~\ref{sec:com-ana} and may even enhance it due to the superb reconstruction quality of the SFGD. The fitted half-width of $\ecom$ is approximately $6.0~\mev$, which is also exceedingly precise. It will be more relevant for hydrogen sample selection, as discussed in the next section. 
@@ -853,7 +853,7 @@ Therefore, a COM total energy cut is proposed to complement $\dptt$, and this se
      On the other hand, while $\ecom$ has excellent reconstruction quality as it is independent of neutrino direction, its true distribution has a natural half-width of about $60~\mev$~\cite{ParticleDataGroup:2024cfk}.
      Hence, even if $\ecom$ can be reconstructed perfectly, it cannot separate hydrogen events from carbon events completely.
      Due to the limited amount of MC events available and the relatively small fraction of resonance events in the T2K beam, the statistics of the hydrogen selection are too small to be conclusive.
-     Given the relatively large statistical uncertainties in the purity estimates, (approximately $9\%$ for all the selections), the realistic improvement of utilizing the COM variables needs to be further investigated with larger MC samples.
+     Given the relatively large statistical uncertainties in the purity estimates, approximately $9\%$ for all the selections, the realistic improvement of utilizing the COM variables needs to be further investigated with larger MC samples.
      The results presented in this sub-section is for illustration of the idea only.
      Nevertheless, the reduction of carbon background events after adding the $\ecom$ cut does emphasize the existence of carbon events that cannot be removed by the transverse variables alone, thereby bolstering the argument that the COM variables are complementary to the transverse variables.
      Hence, it is hopeful that using the two kinds of variables together, the upgraded ND280 data can produce a hydrogen sample with high purity.
